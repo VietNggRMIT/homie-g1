@@ -1,0 +1,1 @@
+prop_id|+|landlord|+|prop_name|+|city|+|district|+|street_adr|+|monthly_rent|+|rating
