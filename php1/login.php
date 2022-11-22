@@ -1,4 +1,10 @@
-<?= "Landlords, log in below!"; ?>
+<?php 
+    session_start();
+    if(isset($_SESSION['login'])){
+        echo "====Wrong username or password====<br>";
+    }
+    echo "Landlords, log in below!"; 
+?>
 
 <form action="verify_login.php" method="post">
     <label for="uname">Username</label>

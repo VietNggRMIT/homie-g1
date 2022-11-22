@@ -6,7 +6,7 @@ if (count($_POST) <= 0 ) {
     header("Location: login.php");
 }
 if (isset($_POST["signup"])){
-    $userlist = file ('./db/accounts.db'); //read the file into an array of lines
+    $userlist = file ('db/landlord.csv'); //read the file into an array of lines
     //get all the data from POST bc why not
     $new_fullname   = $_POST["fullname"];
     $new_phone      = $_POST["phone"];
@@ -17,7 +17,7 @@ if (isset($_POST["signup"])){
     $reg_success = TRUE;
     //go line by line to check existing usernames
     foreach ($userlist as $user) {
-        $user_details = explode('|+|', trim($user));
+        $user_details = explode(',', trim($user));
         if($new_uname == $user_details[1]){ //username already exists
             $reg_success = false;
             break;
@@ -70,14 +70,14 @@ if (isset($_POST["signup"])){
         }
     }
     if($reg_success){    
-        $pw_file = fopen("./db/accounts.db", "a");
-        $entry = sprintf("%s|+|%s|+|%s|+|%s|+|%s\n", $new_utype, $new_uname, $new_fullname, $new_wc, $new_pw);
+        $pw_file = fopen("./db/landlord.csv", "a");
+        $entry = sprintf("%s,%s,%s,%s,%s\n", $new_uname, $new_fullname, $new_phone, $new_email, $new_pw);
         fwrite($pw_file, $entry);
         fclose($pw_file);
-        $_SESSION['user']['type'] = $new_utype;
-        $_SESSION['user']['fullname'] = $new_fullname;
         $_SESSION['user']["uname"] = $new_uname;
-        $_SESSION['user']['wc'] = $new_wc;
+        $_SESSION['user']['fullname'] = $new_fullname;
+        $_SESSION['user']['phone'] = $new_phone;
+        $_SESSION['user']['email'] = $new_email;
         $_SESSION['user']['pfp'] = get_pfp($new_uname);
         unset($_SESSION['signup_failed']);
         header("Location: home.php");

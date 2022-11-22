@@ -8,13 +8,13 @@ if (isset($SESSION['signup_failed'])){
 <p><a href="home.php">Home</a></p>
 <p><a href="login.php">Log in</a></p>
 
-<form action="verify_signup.php" method="post">
+<form action="verify_signup.php" method="post" enctype="multipart/form-data">
     <label for="biz_name">Full name</label>
     <input class="form-control" id="fullname" name="fullname" placeholder="Full name"><br>
     <label for="biz_name">Phone number</label>
     <input class="form-control" id="phone" name="phone" placeholder="Phone number"><br>
     <label for="biz_name">Email</label>
-    <input class="form-control" id="email" name="email" placeholder="Email"><br>
+    <input class="form-control" id="email" name="email" placeholder="Email"><br><br>
 
     <label for="uname">Username</label>
     <input class="form-control" id="username" name="uname" placeholder="Username"><br>
