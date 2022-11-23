@@ -19,7 +19,7 @@
         }
         return $my_pfp;
     }
-    function find_prod_pfp($pid){ //get picture from property id
+    function find_prop_pfp($pid){ //get picture from property id
         $pimg = "";
         //get property image, use default img if not available
         $prod_dir = "res/prop/";
@@ -40,25 +40,30 @@
         return $pimg;
     }
 
-
     //methods below are to be replaced by SQL commands, but put them here just to be safe
-    function get_prod_deets($pid){ //get details from product id
-        $prod_fname = "../db/products.csv";
-        $fp = fopen($prod_fname, 'r');
+    function get_prop_dt($pid){ //get details from property id
+        $prop_fname = "db/property.csv";
+        $fp = fopen($prop_fname, 'r');
         $first = fgetcsv($fp);
         $p_deets = [];
         while ($row = fgetcsv($fp)) {
             $i = 0;
-            $prod = []; //single row of order
+            $prop = []; //single row of order
             foreach ($first as $col_name) {
-                $prod[$col_name] =  $row[$i];
+                $prop[$col_name] =  $row[$i];
                 $i++;
             }
-            if($prod['pid'] == $pid){
-                $p_deets['pname'] = $prod['product_name'];
-                $p_deets['price'] = $prod['price'];
-                $p_deets['vendor']= $prod['vendor'];
-                $p_deets['description'] = $prod['description'];
+            if($prop['pid'] == $pid){
+                $p_deets['landlord'] = $prop['landlord'];
+                $p_deets['pname'] = $prop['pname'];
+                $p_deets['city'] = $prop['city'];
+                $p_deets['district']= $prop['district'];
+                $p_deets['street_adr'] = $prop['street_adr'];
+                $p_deets['monthly_rent'] = $prop['monthly_rent'];
+                $p_deets['rating'] = $prop['rating'];
+                if($p_deets['rating'] == ''){
+                    $p_deets['rating'] = '(none)';
+                }
                 break;
             }
         }
