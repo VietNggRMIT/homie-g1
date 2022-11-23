@@ -1,1 +1,11 @@
 pid,landlord,pname,city,district,street_adr,monthly_rent,rating
+1,Balgruuf,Breezehome,Whiterun,Cloud,6th Oriental Avenue,5000,4.7
+2,Maven,Honeyside,Riften,Mistveil,35th Vermont Avenue,12000,4.9
+3,Ulfric,Vlindrel,Windhelm,East Gate,13th Leicester Square,6000,4.1
+4,Ulfric,Hjerim,Windhelm,Gnisis,1st Piccadilly,6000,3.9
+5,Maven,Proudspire,Riften,Riverwood,83rd Euston Road,9000,4.9
+6,Maven,Severin,Riften,Mistveil,44th Trafalgar Avenue,10000,3.4
+7,Balgruuf,Lakeview,Whiterun,Whitehall,13th Baltic Avenue,9000,4.2
+8,Ulfric,Windstad,Windhelm,Gnisis,21st Piccadilly,7000,4.3
+9,Maven,Ocean Garden,Riften,Riverwood,67th Euston Road,13000,4.4
+10,Ulfric,Heljarchen,Windhelm,East Gate,56th Leicester Square,8000,4.3
