@@ -41,7 +41,7 @@
     }
     read_searchfilter();
 ?>
-    <form class="search-filter-form" method="get" action="home.php">
+    <form class="search-filter-form" method="post" action="home.php">
         <!-- Search by name <input type="text" name="prop_name"> -->
         <div class="search-input">
             <input class="form-control" type="search" placeholder="Search..." name="pname">
@@ -75,15 +75,12 @@
                 </div>
                 <div class=card-body>
                     <p><?= "ID: " . $pid . " --- " . $pname . ", rated as: " . $prating . " stars"; ?></p>
-                    <form id='ll_form' action="ll_view.php" method="GET">
-                        <input type="hidden" name="ll" value="<?= $pll ?>">
-                        <a href="javascript:{}" onclick="document.getElementById('ll_form').submit(); return false;">Managed by: <?= $pll ?></a>
-                    </form>
+                    <a href="ll_view.php?ll=<?= $pll ?>&view_ll=">Managed by: <?= $pll ?></a>
                     <p>Monthly rent: <?= $prent; ?></p>
                 </div>
                 <form action="prop_view.php" method="GET">
                     <input type="hidden" name="pid" value="<?= $pid ?>">
-                    <button class="btn btn-primary" type="submit" name="view_prod">View this prop</button>
+                    <button class="btn btn-primary" type="submit" name="view_prop">View this prop</button>
                 </form>
             </div>
     <?php }
