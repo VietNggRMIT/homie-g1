@@ -75,9 +75,9 @@
                 </div>
                 <div class=card-body>
                     <p><?= "ID: " . $pid . " --- " . $pname . ", rated as: " . $prating . " stars"; ?></p>
-                    <form action="view_ll.php" method="GET">
+                    <form id='ll_form' action="ll_view.php" method="GET">
                         <input type="hidden" name="ll" value="<?= $pll ?>">
-                        <a type="submit" name="view_ll">Managed by: <?= $pll ?></a>
+                        <a href="javascript:{}" onclick="document.getElementById('ll_form').submit(); return false;">Managed by: <?= $pll ?></a>
                     </form>
                     <p>Monthly rent: <?= $prent; ?></p>
                 </div>
@@ -86,7 +86,6 @@
                     <button class="btn btn-primary" type="submit" name="view_prod">View this prop</button>
                 </form>
             </div>
-    <?php } 
+    <?php }
     } ?>
-
 
