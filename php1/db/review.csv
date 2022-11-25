@@ -1,1 +1,1 @@
-rid,pid,r_dname,r_email,content,rating,time
+review_id,review_name,review_description,review_rating,review_time,listing_id

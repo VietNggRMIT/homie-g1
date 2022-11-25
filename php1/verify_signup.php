@@ -1,41 +1,42 @@
 <?php
 session_start();
-include("func.php");
+include("functions.php");
 //trying to access this page without submitting -> login page
 if (count($_POST) <= 0 ) { 
     header("Location: login.php");
 }
 if (isset($_POST["signup"])){
     $userlist = file ('db/landlord.csv'); //read the file into an array of lines
-    //get all the data from POST bc why not
-    $new_fullname   = $_POST["fullname"];
+    //username,user_password,user_displayname,user_phone,user_email,user_description
+    $new_username   = $_POST["username"];
+    $new_password   = $_POST["password"];
+    $new_displayname   = $_POST["display"];
     $new_phone      = $_POST["phone"];
     $new_email      = $_POST["email"];
-    $new_uname      = $_POST["uname"];
-    $new_pw         = $_POST["psw"];
-    
-    $reg_success = TRUE;
+    $new_description= $_POST["description"];
+
+    $register_success = true;
     //go line by line to check existing usernames
     foreach ($userlist as $user) {
         $user_details = explode(',', trim($user));
         if($new_uname == $user_details[1]){ //username already exists
-            $reg_success = false;
+            $register_success = false;
             break;
         }
     }
     
-    if(!$reg_success){ 
+    if(!$register_success){ 
         $_SESSION['signup_failed'] = true;
-        header("Location: signup.php");
+        header("Location: user_signup.php");
         exit();
     }
-    //no dupes -> ok
-    //handle profile images; force the user to do this again if they don't submit an image
-    $target_dir = "res/pfp/";
-    $def_pfp = $target_dir . "default_pfp.jpg";
+    //no username dupes -> ok
+    //handle profile images
+    $target_dir = "resources/user_image/";
+    $default_image = $target_dir . "default_user_image.jpg";
     //no pfp -> use default pfp
     if(!file_exists($_FILES['fileup']['tmp_name']) || !is_uploaded_file($_FILES['fileup']['tmp_name'])) {
-        $_SESSION['user']['pfp'] = $def_pfp;
+        $_SESSION['user']['image'] = $default_image;
     }
     else{ //user uploaded some stuff
         $target_file = $target_dir . basename($_FILES["fileup"]["name"]);
@@ -55,30 +56,33 @@ if (isset($_POST["signup"])){
         }
         if (!$uploaded) { 
             echo $err_mes . " Please try again.";
-            $reg_success = FALSE;
+            $register_success = FALSE;
             header( "Refresh:5; url=" . $_SESSION['tryagain'], true, 303);
         } 
         else {
-            $new_pfp = $target_dir  . $new_uname . "." . $imageFileType;
-            if (move_uploaded_file($_FILES["fileup"]["tmp_name"], $new_pfp)) {
-                $_SESSION['user']['pfp'] = $new_pfp;
+            $new_image = $target_dir  . $new_username . "." . $imageFileType;
+            if (move_uploaded_file($_FILES["fileup"]["tmp_name"], $new_image)) {
+                $_SESSION['user']['image'] = $new_image;
             } else {
                 echo "Sorry, there was an error uploading your file. Default pfp used.";
-                $_SESSION['user']['pfp'] = $def_pfp;
+                $_SESSION['user']['image'] = $default_image;
                 //header( "Refresh:5; url=index.php", true, 303);
             }
         }
     }
-    if($reg_success){    
-        $pw_file = fopen("./db/landlord.csv", "a");
-        $entry = sprintf("%s,%s,%s,%s,%s\n", $new_uname, $new_fullname, $new_phone, $new_email, $new_pw);
-        fwrite($pw_file, $entry);
-        fclose($pw_file);
-        $_SESSION['user']["uname"] = $new_uname;
-        $_SESSION['user']['fullname'] = $new_fullname;
+    if($register_success){    
+        //username,user_password,user_displayname,user_phone,user_email,user_description
+        $user_file = fopen("./db/user.csv", "a");
+        $entry = sprintf("%s,%s,%s,%s,%s,%s\n", $new_username, $new_password, $new_displayname, 
+                    $new_phone, $new_email, $new_description);
+        fwrite($user_file, $entry);
+        fclose($user_file);
+        $_SESSION['user']['username'] = $new_username;
+        $_SESSION['user']['displayname'] = $new_displayname;
         $_SESSION['user']['phone'] = $new_phone;
         $_SESSION['user']['email'] = $new_email;
-        $_SESSION['user']['pfp'] = get_pfp($new_uname);
+        $_SESSION['user']['description'] = $new_description;
+        $_SESSION['user']['image'] = get_image("user",$new_username);
         unset($_SESSION['signup_failed']);
         header("Location: home.php");
     }
