@@ -60,12 +60,17 @@ nav {
     }
   
     a {
-      color: #737373;
+      color: #ffffff;
+      text-decoration: none;
   
       &:hover {
         color: #3366cc;
         text-decoration: none;
       }
+    }
+
+    .footer-logo{
+      width: 120px;
     }
   }
   
@@ -81,7 +86,7 @@ nav {
       color: #737373;
   
       &:active, &:focus, &:hover {
-        color: #3366cc;
+        color: #ffffff;
         text-decoration: none;
       }
     }
@@ -172,11 +177,11 @@ nav {
     }
   
     a {
-      &.facebook:hover {
+      &.facebook {
         background-color: #3b5998;
       }
   
-      &.github:hover {
+      &.github {
         background-color: #000000;
       }
     }
