@@ -1,12 +1,12 @@
-pid,landlord,pname,city,district,street_adr,monthly_rent,rating
-1,balgruuf,"Breezehome",Whiterun,Cloud,"6th Oriental Avenue",5000,4.7
-2,maven,"Honeyside",Riften,Mistveil,"35th Vermont Avenue",12000,4.9
-3,ulfric,"Vlindrel",Windhelm,East Gate,"13th Leicester Square",6000,4.1
-4,ulfric,"Hjerim",Windhelm,Gnisis,"1st Piccadilly",6000,3.9
-5,baven,"Proudspire",Riften,Riverwood,"83rd Euston Road",9000,4.9
-6,baven,"Severin",Riften,Mistveil,"44th Trafalgar Avenue",10000,3.4
-7,balgruuf,"Lakeview",Whiterun,Whitehall,"13th Baltic Avenue",9000,4.2
-8,ulfric,"Windstad",Windhelm,Gnisis,"21st Piccadilly",7000,4.3
-9,maven,"Ocean Garden",Riften,Riverwood,"67th Euston Road",13000,4.4
-10,ulfric,"Heljarchen",Windhelm,East Gate,"56th Leicester Square",8000,4.3
-11,maven,"Giant bird house",Hanoi,Ba Dinh,"123/45 NCT",4000000,2
+﻿pid,landlord,pname,city,district,street_adr,monthly_rent,rating,p_desc
+1,Balgruuf,Breezehome,Whiterun,Cloud,6th Oriental Avenue,5000,4.7,"""nhà mặt phố, bố làm to"""
+2,Maven,Honeyside,Riften,Mistveil,35th Vermont Avenue,12000,4.9,"""view nghĩa địa, đắc địa"""
+3,Ulfric,Vlindrel,Windhelm,East Gate,13th Leicester Square,6000,4.1,"""mặt tiền hồ, bơi free"""
+4,Ulfric,Hjerim,Windhelm,Gnisis,1st Piccadilly,6000,3.9,"""phòng thoáng, chưa được 2 con, vợ"""
+5,Maven,Proudspire,Riften,Riverwood,83rd Euston Road,9000,4.9,"""phòng đẹp, view phố, thoáng mát"""
+6,Maven,Severin,Riften,Mistveil,44th Trafalgar Avenue,10000,3.4,"""Nhà mới tinh, vị trí vô cùng thuận lợi."""
+7,Balgruuf,Lakeview,Whiterun,Whitehall,13th Baltic Avenue,9000,4.2,"""Nhà 2 mặt thoáng, đỗ xe ô tô xe máy thoải mái"""
+8,Ulfric,Windstad,Windhelm,Gnisis,21st Piccadilly,7000,4.3,"""Cửa sổ hướng đông, thoáng gió"""
+9,Maven,Ocean Garden,Riften,Riverwood,67th Euston Road,13000,4.4,"""Vị trí giao thông thuận lợi, nằm trên trục đường chính"""
+10,Ulfric,Heljarchen,Windhelm,East Gate,56th Leicester Square,8000,4.3,"""gần trung tâm thành phố, view đẹp"""
+11,abc,Giant bird house,Hanoi,Ba Dinh,123/45 NCT,4000000,2,"""gần cầu, lô trượt thì nhảy"""
