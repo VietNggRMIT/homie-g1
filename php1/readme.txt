@@ -3,7 +3,7 @@
     + listing_application (form for users to fill and apply to a specific listing)
     + user_add_listing (form for user to add a listing)
 - Functions to add:
-    + Clicking on 'district' or 'city' would show a page of search results for listings at those locations
+    + Clicking on 'district' or 'city' fields would show a page of search results for listings at those locations
     + On home.php, searching for 'district' or 'city' would show a dropdown
     + On home.php and user_account.php, allow sorting listings based on price (ascending/descending)
 

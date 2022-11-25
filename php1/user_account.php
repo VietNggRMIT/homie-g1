@@ -52,7 +52,8 @@
                             <div class="listing-title">Listing Name: <?=$listing['listing_name']; ?> </div>
                             <div class="listing-title">Listing Address: <?= $listing['listing_address'] . ", " . $listing['listing_district'] . ", " . $listing['listing_city']; ?> </div>
                             <div class="listing-price">Monthly Rent: <?= $listing['listing_price']; ?></div>
-                            <div class="listing-description">Description: <?= $listing['listing_description']; ?></div><br><br>
+                            <div class="listing-description">Description: <?= $listing['listing_description']; ?></div>
+                            <a href="listing_view.php?listing_id=<?= $listing['listing_id'] ?>&view_listing=">View this listing</a><br><br><br>
                         </div>
                     </div>
                 </a>

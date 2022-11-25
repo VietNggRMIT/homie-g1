@@ -45,7 +45,7 @@
     }
     read_searchfilter();
 ?>
-    <form class="search-filter-form" method="post" action="home.php">
+    <form class="search-filter-form" method="get" action="home.php">
         <div class="search-input">
             <input class="form-control" type="search" placeholder="Search..." name="listing_name">
         </div>
@@ -54,7 +54,7 @@
             <input class="form-control" type="number" oninput="validity.valid || (value='');" onkeypress="isNum(event)" id="max_price" name="max_price" min="0.00" step="1" placeholder="Max price">
         </div>
         <div class="form-btn">
-            <button class="btn btn-warning btn-lg" type="submit" name="act">Filter</button>
+            <button class="btn btn-warning btn-lg" type="submit" name="filter">Filter</button>
         </div>
     </form>
 <?php
@@ -72,6 +72,7 @@
             $listing_image = get_image("listing", $listing_id);
     ?>
             <div>
+                <p>==========================</p>
                 <div>
                     <img src="<?= $listing_image; ?>" alt="<?= $listing_name; ?>" height="150">
                 </div>
@@ -80,7 +81,7 @@
                     <a href="user_account.php?username=<?= $listing_user ?>&view_user=">Managed by: <?= $listing_user ?></a>
                     <p>Address: <?= $listing_address . ", " . $listing_district . ", " . $listing_city ?></p>
                     <p>Monthly rent: <?= $listing_price; ?></p>
-                    <a href="listing_view.php?listing_id=<?= $listing_id ?>&view_listing=">View this listing</a><br>
+                    <a href="listing_view.php?listing_id=<?= $listing_id ?>&view_listing=">View this listing</a><br><br>
                 </div>
             </div>
     <?php }

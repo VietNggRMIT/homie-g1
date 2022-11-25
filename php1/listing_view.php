@@ -33,7 +33,5 @@
     </div>
     <div>
         <h3>Address: <?= $listing_address . ", " . $listing_district . ", " . $listing_city ?></h3>
-    </div>
-    <div>
         <h2><?= "Monthly rent: " . $listing_price; ?> VND</h2>
     </div>
