@@ -2,4 +2,26 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+nav .container-fluid .navbar-brand .web-logo {
+  width: 50px;
+}
+footer {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+footer .footer-wrapper .container-fluid ul {
+  white-space: nowrap;
+  list-style-type: none;
+  overflow: hidden;
+}
+footer .footer-wrapper .container-fluid ul li {
+  display: inline;
+}
+footer .footer-wrapper .container-fluid ul li a {
+  color: white;
 }/*# sourceMappingURL=styles.css.map */

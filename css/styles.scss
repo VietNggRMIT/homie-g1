@@ -4,12 +4,59 @@
     box-sizing: border-box;
 }
 
+$base-color: #ad9ea6;
+
 // Common elements styling
 
 // Header styling
 
+nav {
+    .container-fluid {
+        .navbar-brand {
+            .web-logo {
+                width: 50px;
+
+                &:hover {
+                    
+                }
+            }
+
+            span {
+                
+            }
+        }
+    }
+}
+
+// .web-logo {
+//     width: 50px;
+// }
+
 // Body styling (components as well)
 
 // Footer styling
-
+footer {
+    margin: 0;
+		padding: 0;
+		border: 0;
+		font-size: 100%;
+		// font: ;
+		vertical-align: baseline;
+    .footer-wrapper {
+        .container-fluid {
+            ul {
+                white-space: nowrap;
+                list-style-type:none;
+                overflow:hidden;
+                li {
+                    display:inline;
+                    a {
+                        color:white;
+                        // display:
+                    }
+                }       
+            }
+        }
+    }
+}
 // Mobile responsive styling
