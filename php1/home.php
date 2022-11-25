@@ -2,7 +2,9 @@
 //plan: show all properties here
     include("functions.php");
     session_start();
-    echo "<p><a href=\"user_login.php\">Landlords, log in here</a></p>";
+    if(!isset($_SESSION['user']['username'])){
+        echo "<p><a href=\"user_login.php\">Landlords, log in here</a></p>";
+    }
     echo "<p><a href=\"user_signup.php\">Sign up</a></p>";
     if(isset($_SESSION['user']['username'])){
         echo "<p><a href=\"user_account.php?username=" . $_SESSION['user']['username'] ."&view_user=\">Account</a></p>";
@@ -57,8 +59,6 @@
     </form>
 <?php
     //get and show details for all properties matching filters
-    //listing_id,username,listing_name,listing_city,listing_district,listing_address,
-    //listing_price,listing_review_average,listing_description
     if (isset($_SESSION['listings'])){
         foreach($_SESSION['listings'] as $listing_details){
             $listing_id = $listing_details['listing_id'];
@@ -77,8 +77,7 @@
                 </div>
                 <div class=card-body>
                     <p><?= "ID: " . $listing_id . " --- " . $listing_name . ", rated as: " . $listing_review_average . " stars"; ?></p>
-                    <!-- <a href="user_account.php?username=<?= $listing_user ?>&view_user=">Managed by: <?= $listing_user ?></a> -->
-                    <a href="#">Managed by: <?= $listing_user ?></a>
+                    <a href="user_account.php?username=<?= $listing_user ?>&view_user=">Managed by: <?= $listing_user ?></a>
                     <p>Address: <?= $listing_address . ", " . $listing_district . ", " . $listing_city ?></p>
                     <p>Monthly rent: <?= $listing_price; ?></p>
                     <a href="listing_view.php?listing_id=<?= $listing_id ?>&view_listing=">View this listing</a><br>

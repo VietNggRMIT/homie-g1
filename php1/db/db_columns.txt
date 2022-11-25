@@ -12,10 +12,10 @@ username,user_password,user_displayname,user_phone,user_email,user_description
 ===listing.csv
 listing_id              primary key (generated)
 username                foreign key (user who posted the listing)
-listing_name            (aka the listing's title)
+listing_name            (aka the listing's title; put in double quotes while using vsc/notepad)
 listing_city            
 listing_district        
-listing_address         (street address)
+listing_address         (street address; put in double quotes while using vsc/notepad)
 listing_price           (grand total monthly rent of the listing)
 listing_review_average  (rounded to one significant figure)
 listing_description

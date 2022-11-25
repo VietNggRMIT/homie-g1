@@ -66,36 +66,27 @@
         else { return false; }
     }
     
-    function get_hub_adr($hub){
-        $fname = "../db/dhubs.csv";
-        $hub_list = file ($fname);
-        foreach ($hub_list as $hub_line) {
-            $hub_data = explode('|+|',$hub_line);
-            if($hub == $hub_data[0])
-                return $hub_data[1];
-            }
-        return false;
-    }
-    function get_ord_deets($oid){ //get product details from order id
-        $ord_fname = "../db/orders.csv";
-        $fp = fopen($ord_fname, 'r');
+    function get_user_details($username){ //get user details from username
+        $user_file = "./db/user.csv";
+        $fp = fopen($user_file, 'r');
         $first = fgetcsv($fp);
-        $o_deets = [];
+        $user_details = [];
         while ($row = fgetcsv($fp)) {
             $i = 0;
-            $ord = []; //single row of order
+            $user = []; //single row of user
             foreach ($first as $col_name) {
-                $ord[$col_name] =  $row[$i];
+                $user[$col_name] =  $row[$i];
                 $i++;
             }
-            if($ord['oid'] == $oid){
-                $o_deets['products'] = $ord['products'];
-                $o_deets['hub'] = $ord['hub'];
-                $o_deets['user_addr']= $ord['user_addr'];
-                $o_deets['status'] = $ord['status'];
+            if($user['username'] == $username){
+                $user_details['username'] = $user['username'];
+                $user_details['user_displayname'] = $user['user_displayname'];
+                $user_details['user_phone']= $user['user_phone'];
+                $user_details['user_email'] = $user['user_email'];
+                $user_details['user_description'] = $user['user_description'];
                 break;
             }
         }
-        if($o_deets) { return $o_deets; }
+        if($user_details) { return $user_details; }
         else { return false; }
     }
