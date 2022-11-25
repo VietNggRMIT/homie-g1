@@ -4,17 +4,27 @@
     box-sizing: border-box;
 }
 
+body {
+  min-height: 100vh; 
+  margin: 0; 
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
 $base-color: #ad9ea6;
 
 // Common elements styling
 
 // Header styling
+header {
+  min-height: 50px;
+}
 
 nav {
     .container-fluid {
         .navbar-brand {
             .web-logo {
-                width: 50px;
+                width: 150px;
 
                 &:hover {
                     
@@ -28,14 +38,14 @@ nav {
     }
 }
 
-// .web-logo {
-//     width: 50px;
-// }
-
-// Body styling (components as well)
+// Main styling (components as well)
 
 // Footer styling
-.footer {
+footer {
+  min-height: 50px; 
+}
+
+.footer-wrapper {
     background-color: #26272b;
     padding: 45px 0 20px;
     font-size: 15px;
@@ -96,7 +106,7 @@ nav {
     }
   }
   
-  .footer .social-icons {
+  footer .social-icons {
     text-align: right;
   
     a {
@@ -121,7 +131,7 @@ nav {
   }
   
   @media (max-width: 767px) {
-    .footer {
+    footer {
       padding-bottom: 0;
   
       .copyright-text, .social-icons {
