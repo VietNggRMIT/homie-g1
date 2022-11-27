@@ -43,8 +43,24 @@ nav {
                         &.nav-link {
                             &.active {
                                 border-radius: 50px;
-                                background-color: white;
+                                background-color: #F0F1F3;
                                 color: black;
+                            }
+                        }
+
+                        &.create-listing {
+                            border-radius: 10px;
+                            border: solid 1px #F0F1F3;
+                            transition: all 0.2s ease-in-out;
+
+                            &:hover {
+                                background-color: #F0F1F3;
+                                color: #000000;
+
+                                .fa-plus {
+                                    transition: all 0.2s ease-in-out;
+                                    transform: rotate(90deg);
+                                }
                             }
                         }
                     }
