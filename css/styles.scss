@@ -20,6 +20,7 @@ header {
   min-height: 50px;
 }
 
+// Navbar
 nav {
     .container {
         .navbar-brand {
@@ -37,12 +38,16 @@ nav {
         ul {
             &.nav-icons {
                 li {
-                    display: flex;
-                    align-items: center;
 
-                  i {
-                    color: #FFFFFF;
-                  }
+                    a {
+                        &.nav-link {
+                            &.active {
+                                border-radius: 50px;
+                                background-color: white;
+                                color: black;
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -97,9 +102,9 @@ footer {
     .footer-logo {
       width: 120px;
     }
-  }
+}
   
-  .footer-links {
+.footer-links {
     padding-left: 0;
     list-style: none;
   
@@ -119,9 +124,9 @@ footer {
     &.inline li {
       display: inline-block;
     }
-  }
+}
   
-  footer .social-icons {
+footer .social-icons {
     text-align: right;
   
     a {
@@ -133,29 +138,13 @@ footer {
       border-radius: 100%;
       background-color: #33353d;
     }
-  }
+}
   
-  .copyright-text {
+.copyright-text {
     margin: 0;
-  }
+}
   
-  @media (max-width: 991px) {
-    .site-footer [class^="col-"] {
-      margin-bottom: 30px;
-    }
-  }
-  
-  @media (max-width: 767px) {
-    footer {
-      padding-bottom: 0;
-  
-      .copyright-text, .social-icons {
-        text-align: center;
-      }
-    }
-  }
-  
-  .social-icons {
+.social-icons {
     padding-left: 0;
     margin-bottom: 0;
     list-style: none;
@@ -210,13 +199,83 @@ footer {
         background-color: #000000;
       }
     }
-  }
+}
   
-  @media (max-width: 767px) {
-    .social-icons li.title {
-      display: block;
-      margin-right: 0;
-      font-weight: 600;
-    }
-  }
 // Mobile responsive styling
+@media only screen and (max-width: 768px) {
+
+    // Mobile footer styling 
+    footer {
+        padding-bottom: 0;
+    
+        .copyright-text, .social-icons {
+          text-align: center;
+        }
+      }
+    
+    .social-icons {
+        padding-left: 0;
+        margin-bottom: 0;
+        list-style: none;
+    
+        li {
+            display: inline-block;
+            margin-bottom: 4px;
+        
+            &.title {
+                display: block;
+                margin-right: 15px;
+                text-transform: uppercase;
+                color: #96a2b2;
+                font-weight: 700;
+                font-size: 13px;
+
+                margin-right: 0;
+                font-weight: 600;
+            }
+        }
+    
+        a {
+            background-color: #eceeef;
+            color: #818a91;
+            font-size: 16px;
+            display: inline-block;
+            line-height: 44px;
+            width: 44px;
+            height: 44px;
+            text-align: center;
+            margin-right: 8px;
+            border-radius: 100%;
+            -webkit-transition: all 0.2s linear;
+            -o-transition: all 0.2s linear;
+            transition: all 0.2s linear;
+        
+            &:active, &:focus, &:hover {
+            color: #fff;
+            background-color: #29aafe;
+            }
+        }
+    
+        &.size-sm a {
+            line-height: 34px;
+            height: 34px;
+            width: 34px;
+            font-size: 14px;
+        }
+    
+        a {
+            &.facebook {
+            background-color: #3b5998;
+            }
+        
+            &.github {
+            background-color: #000000;
+            }
+        }
+    }
+}
+
+// Tablet responsive styling
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+
+}
