@@ -1,5 +1,9 @@
 <?php
     //include functions to be used in files
+    function logout(){
+        unset($_SESSION['user']);
+    }
+
     //get image from username or listing_id; 
     //PARAM: $role: specify role 'user' or 'listing; $id: username or listing_id
     function get_image($role, $id){ 

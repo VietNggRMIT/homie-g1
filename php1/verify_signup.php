@@ -10,7 +10,7 @@ if (isset($_POST["signup"])){
     //username,user_password,user_displayname,user_phone,user_email,user_description
     $new_username   = $_POST["username"];
     $new_password   = $_POST["password"];
-    $new_displayname   = $_POST["display"];
+    $new_displayname   = $_POST["displayname"];
     $new_phone      = $_POST["phone"];
     $new_email      = $_POST["email"];
     $new_description= $_POST["description"];

@@ -3,11 +3,12 @@
     include("functions.php");
     session_start();
     if(!isset($_SESSION['user']['username'])){
-        echo "<p><a href=\"user_login.php\">Landlords, log in here</a></p>";
+        echo "<p><a href=\"user_login.php\">Log in</a></p>";
+        echo "<p><a href=\"user_signup.php\">Sign up</a></p>";
     }
-    echo "<p><a href=\"user_signup.php\">Sign up</a></p>";
-    if(isset($_SESSION['user']['username'])){
+    else{
         echo "<p><a href=\"user_account.php?username=" . $_SESSION['user']['username'] ."&view_user=\">Account</a></p>";
+        echo "<p><a href=\"user_logout.php\">Log out</a></p>";
     }
     function read_searchfilter() { //to be replaced by sql commands
         $file_name = './db/listing.csv';
