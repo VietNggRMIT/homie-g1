@@ -8,8 +8,12 @@
         <script src="https://kit.fontawesome.com/8f1f885a37.js" crossorigin="anonymous"></script>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
         <link rel="stylesheet" href="css/styles.css">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,100&display=swap" rel="stylesheet">
         <title>Index</title>
     </head>
+
     <body>
         <header>
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -26,7 +30,7 @@
                                 <a class="nav-link active" aria-current="page" href="index.html"> <i class="fa-solid fa-house"></i> Home</a>
                             </li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     <i class="fa-solid fa-circle-info"></i> Resources
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-dark">
@@ -56,8 +60,66 @@
 
         <main>
             <div class="main-wrapper">
-                <div class="container">
-                    <h1>Yo!</h1>
+                <div class="container account-container">
+                    <div class="row account-bg">
+                        <div class="col-lg-6 d-lg-flex position-relative account-bgi">
+                            <div class="overlay">
+                                <div class="hero-item slogan">
+                                    <h2>Reliable and affordable housing starts here</h2>
+                                    <h2>Renting easily like renting from your Homie</h2>
+                                </div>
+                                <div class="hero-item"></div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="card account-card">
+                                <div class="card-content">
+                                    <h2>Start renting and listing easily on our platform</h1>
+                                    <form>
+                                        <div class="form-group mb-3">
+                                            <label for="username">Username</label>
+                                            <div class="input-group">
+                                                <i class="fa-solid fa-user"></i>
+                                                <input class="form-control" id="username" name="username" placeholder="Username">
+                                            </div>
+                                        </div>
+                                        <div class="form-group mb-3">
+                                            <label for="password">Pasword</label>
+                                            <div class="input-group">
+                                                <i class="fa-solid fa-key"></i>
+                                                <input class="form-control" id="password" name="password" placeholder="Pasword">
+                                            </div>
+                                        </div>
+                                        <div class="form-group mb-3">
+                                            <label for="phone">Phone number</label>
+                                            <div class="input-group">
+                                                <i class="fa-solid fa-phone"></i>
+                                                <input class="form-control" id="phone" name="phone" placeholder="Phone number">
+                                            </div>
+                                        </div>
+                                        <div class="form-group mb-3">
+                                            <label for="email">Email</label>
+                                            <div class="input-group">
+                                                <i class="fa-solid fa-envelope"></i>
+                                                <input class="form-control" id="email" name="email" placeholder="Email">
+                                            </div>
+                                        </div>
+                                        <div class="form-group mb-4">
+                                            <label for="fileup">Upload your profile picture (Optional)</label>
+                                            <div class="input-group">
+                                                <i class="fa-solid fa-image"></i>
+                                                <input class="form-control pic-upload" type="file" id="formFile" name="fileup"><br><br>
+                                            </div>
+                                        </div>
+                                        <div class="d-grid col-6 mx-auto mb-5">
+                                            <button class="btn btn-primary" type="submit" name="signup">Sign up</button>
+                                        </div>
+                                        <p class="text-center">Already a member? <a href="user_login.php">Sign in</a></p>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </main>
