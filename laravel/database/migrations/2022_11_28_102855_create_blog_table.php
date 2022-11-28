@@ -13,20 +13,21 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('reviews', function (Blueprint $table) {
+        Schema::create('blog', function (Blueprint $table) {
             $table->id();
-            $table->text('review_name')->nullable();
-            $table->text('review_description');
-            $table->integer('review_rating');
-            $table->unsignedBigInteger('listing_id');
-            $table->foreign('listing_id')
+
+            $table->string('blog_name');
+            $table->text('blog_description');
+
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')
                 ->references('id')
-                ->on('listings')
+                ->on('user')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
-//            $table->timestamps();
+
             $table->timestamp('created_at')->useCurrent();
-//            $table->timestamp('updated_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent();
         });
     }
 
@@ -37,6 +38,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('reviews');
+        Schema::dropIfExists('blog');
     }
 };

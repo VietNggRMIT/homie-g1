@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\User;
+use App\Models\Image;
 use Illuminate\Support\Facades\Route;
 use App\Models\Listing;
 use App\Http\Controllers\TasksController;
@@ -34,6 +35,12 @@ Route::get('/listing/{id}', function ($id) {
 Route::get('/user/{id}', function ($id) {
     return view('user', [
         'user' => User::find($id),
+    ]);
+})->where('id', '[0-9]+');
+
+Route::get('/listing_images/', function () {
+    return view('images', [
+        'images' => Image::all(),
     ]);
 })->where('id', '[0-9]+');
 

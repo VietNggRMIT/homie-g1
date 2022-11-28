@@ -41,8 +41,18 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+
+    protected $table = 'user'; // to bind 'User.php' with 'user' MySQL table
+
     public function listings()
     {
         return $this->hasMany('App\Models\Listing');
+    }
+
+    public function blogs()
+    {
+        return $this->hasMany('\app\Models\Blog');
     }
 }

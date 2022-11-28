@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Listing extends Model
 {
     use HasFactory;
-//    protected $table = 'listings'; // to bind 'Listing.php' with 'listings' MySQL table
+    protected $table = 'listing'; // to bind 'Listing.php' with 'listing' MySQL table
 
     public function reviews()
     {
@@ -18,5 +18,12 @@ class Listing extends Model
     {
         return $this->belongsTo('App\Models\User');
     }
-
+    public function applications()
+    {
+        return $this->hasMany('\app\Models\Application');
+    }
+    public function images()
+    {
+        return $this->hasMany('\app\Models\Image');
+    }
 }

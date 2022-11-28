@@ -72,7 +72,7 @@ class UserFactory extends Factory
 //            'remember_token' => Str::random(10),
 
             'user_email_address' => fake()->freeEmail(),
-            'user_phone_number' => fake()->phoneNumber(),
+            'user_phone_number' => fake()->e164PhoneNumber(),
             'user_real_name' => fake()->name(),
             'user_password' => fake()->password(),
             'user_description' => fake()->paragraphs(2, true)
