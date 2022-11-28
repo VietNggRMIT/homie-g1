@@ -14,9 +14,42 @@ body {
 $base-color: #ad9ea6;
 
 // Common elements styling
+@keyframes bgcolor {
+  0% {
+      background-color: #a8f6ff
+  }
+
+  30% {
+      background-color: #99f5ff
+  }
+
+  60% {
+      background-color: #95f4ff
+  }
+
+  90% {
+      background-color: #99f5ff
+  }
+
+  100% {
+      background-color: #a8f6ff
+  }
+}
+
+
+h1{
+  font-family: 'Dancing Script', cursive;
+}
+
 h2 {
   font-size: large;
   font-style: italic;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+h3{
+  font-family: 'Dancing Script', cursive;
+  font-size: 20px;
 }
 
 p{
@@ -24,6 +57,10 @@ p{
 }
 
 li{
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+td{
   font-family: 'Roboto Condensed', sans-serif;
 }
 
@@ -87,7 +124,11 @@ nav {
 
 // Main styling (components as well)
 .main-wrapper{
-  background-color: #ffffff;
+  -webkit-animation: bgcolor 20s infinite;
+  animation: bgcolor 10s infinite;
+  -webkit-animation-direction: alternate;
+  animation-direction: alternate;
+
   p{
     font-size: medium;
   }
@@ -98,32 +139,96 @@ nav {
 }
 
 .container-fluid{
+  #story-about{
+    margin-top: 400px;
+    height: 650px;
+  }
   #banner-box-1{
-    height: 500px;
-    img{
-      height: 300px;
+    height: auto;
+    h2{
+      color: rgb(255, 255, 255);
+      font-size: 70px;
+      font-family: 'Dancing Script', cursive;
+      text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
     }
-    #story-box{
-      margin-top:50px;
+    p{
+      color: white;
+      font-size: 30px;
+      font-family: 'Roboto', sans-serif;
+      text-shadow: -0.5px -0.5px 0 #000, 0.5px -0.5px 0 #000, -0.5px 0.5px 0 #000, 0.5px 0.5px 0 #000;
     }
+  }
+
+  @media only screen and (max-width: 768px) {
+      #story-about{
+        margin-top: 400px;
+        height: 550px;
+        p{
+          font-size: 20px;
+        }
+        h2{
+          font-size: 50px;
+        }
+      }
+      
     }
+    
   }  
-  &#banner-box-2{
+  #banner-box-2{
     background-image: url('..\\php1\\resources\\background\\hanoibackground.png');
-    height: 400px;
+    height: 600px;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
   #why-box{
     background-color: rgb(231, 231, 231);opacity: 10%;
-    margin-top: 50px;
+    margin-top: 150px;
     margin-bottom: 20px;
     opacity: 90%;
     padding: 10px;
     text-align: center;
     }
   }
+
+.mission{
+  margin-top: 100px;
+  margin-bottom: 50px;
+  background-color: rgb(231, 231, 231);
+  padding: 80px, 30px;
+  height: 300px;
+  i{
+    font-size: 45px;
+    margin: auto;
+    margin-top: 15px;
+  }
+  p{
+    font: 100;
+    padding: 12px;
+  }
+  hr{
+    height: 2px;
+    background-color: black;
+  }
+  &:hover{
+    background-color: #26272b;
+    p{
+      color: white;
+    }
+    hr{
+      color: white;
+    }
+    h3{
+      color: white;
+    }
+    i{
+      color: white;
+    }
+  }
+}
+
+.table-about{
+  margin: 100px;
 }
 
 
