@@ -103,12 +103,6 @@ nav .navbar-collapse ul.nav-icons li a.create-listing:hover .fa-plus {
   transform: rotate(90deg);
 }
 
-.main-wrapper {
-  -webkit-animation: bgcolor 20s infinite;
-  animation: bgcolor 10s infinite;
-  -webkit-animation-direction: alternate;
-  animation-direction: alternate;
-}
 .main-wrapper p {
   font-size: medium;
 }
@@ -122,6 +116,10 @@ nav .navbar-collapse ul.nav-icons li a.create-listing:hover .fa-plus {
   height: 650px;
 }
 .container-fluid #banner-box-1 {
+  -webkit-animation: bgcolor 20s infinite;
+  animation: bgcolor 10s infinite;
+  -webkit-animation-direction: alternate;
+  animation-direction: alternate;
   height: auto;
 }
 .container-fluid #banner-box-1 h2 {

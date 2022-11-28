@@ -124,11 +124,6 @@ nav {
 
 // Main styling (components as well)
 .main-wrapper{
-  -webkit-animation: bgcolor 20s infinite;
-  animation: bgcolor 10s infinite;
-  -webkit-animation-direction: alternate;
-  animation-direction: alternate;
-
   p{
     font-size: medium;
   }
@@ -144,6 +139,10 @@ nav {
     height: 650px;
   }
   #banner-box-1{
+    -webkit-animation: bgcolor 20s infinite;
+    animation: bgcolor 10s infinite;
+    -webkit-animation-direction: alternate;
+    animation-direction: alternate;
     height: auto;
     h2{
       color: rgb(255, 255, 255);
