@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,100&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -115,10 +116,6 @@ form .input-group i {
   margin-right: 15px;
 }
 
-header {
-  min-height: 50px;
-}
-
 nav .container .navbar-brand .web-logo {
   width: 150px;
 }
@@ -149,38 +146,42 @@ nav .navbar-collapse ul.nav-icons li a.create-listing:hover .fa-plus {
   padding-bottom: 50px;
 }
 
-.container-fluid #story-about {
+.container-fluid.about-box {
+  padding-left: 0;
+  padding-right: 0;
+}
+.container-fluid.about-box #story-about {
   margin-top: 400px;
   height: 650px;
 }
-.container-fluid #banner-box-1 {
+.container-fluid.about-box #banner-box-1 {
   -webkit-animation: bgcolor 20s infinite;
   animation: bgcolor 10s infinite;
   -webkit-animation-direction: alternate;
   animation-direction: alternate;
   height: auto;
 }
-.container-fluid #banner-box-1 h2 {
+.container-fluid.about-box #banner-box-1 h2 {
   color: rgb(255, 255, 255);
   font-size: 70px;
   font-family: "Dancing Script", cursive;
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
-.container-fluid #banner-box-1 p {
+.container-fluid.about-box #banner-box-1 p {
   color: white;
   font-size: 30px;
   font-family: "Roboto", sans-serif;
   text-shadow: -0.5px -0.5px 0 #000, 0.5px -0.5px 0 #000, -0.5px 0.5px 0 #000, 0.5px 0.5px 0 #000;
 }
 @media only screen and (max-width: 768px) {
-  .container-fluid #story-about {
+  .container-fluid.about-box #banner-box-1 #story-about {
     margin-top: 400px;
     height: 550px;
   }
-  .container-fluid #story-about p {
+  .container-fluid.about-box #banner-box-1 #story-about p {
     font-size: 20px;
   }
-  .container-fluid #story-about h2 {
+  .container-fluid.about-box #banner-box-1 #story-about h2 {
     font-size: 50px;
   }
 }
@@ -241,6 +242,76 @@ nav .navbar-collapse ul.nav-icons li a.create-listing:hover .fa-plus {
 
 .table-about {
   margin: 100px;
+}
+
+.banner-dashboard .fa-solid {
+  color: orangered;
+}
+.banner-dashboard .social-icons .icons {
+  size: 2px;
+  color: #26272b;
+}
+.banner-dashboard p {
+  color: rgb(155, 155, 155);
+}
+.banner-dashboard .card-img-top {
+  max-width: 200px;
+  max-height: 200px;
+  margin-top: 5px;
+  align-items: center;
+}
+.banner-dashboard .quick-info ul {
+  text-align: left;
+  list-style-type: none;
+}
+.banner-dashboard .box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.initial-post {
+  padding-bottom: 100px;
+  text-align: center;
+}
+.initial-post h1 {
+  font-family: "Roboto", sans-serif;
+  color: red;
+  font-size: 60px;
+}
+.initial-post p {
+  font-size: 25px;
+  text-shadow: -0.5px -0.5px 0 #000, 0.5px -0.5px 0 #000, -0.5px 0.5px 0 #000, 0.5px 0.5px 0 #000;
+  color: white;
+}
+.initial-post .container-fluid {
+  background-image: url("..\\php1\\resources\\article_image\\hanoicity.jpg");
+  background-color: #33353d;
+  height: 1000px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  background-position: 50% 0;
+}
+.initial-post .container-fluid #first-box {
+  margin-top: 200px;
+}
+
+.news-art .card {
+  margin-top: 50px;
+}
+.news-art a {
+  text-decoration: none;
+}
+.news-art img {
+  height: 200px;
+}
+.news-art h3 {
+  font-size: 30px;
+}
+.news-art h3:hover {
+  color: aquamarine;
 }
 
 footer {
@@ -368,6 +439,26 @@ footer .social-icons a {
 }
 
 @media only screen and (max-width: 768px) {
+  .initial-post h1 {
+    font-family: "Roboto", sans-serif;
+    color: red;
+    font-size: 30px;
+  }
+  .initial-post p {
+    font-size: 15px;
+    text-shadow: -0.5px -0.5px 0 #000, 0.5px -0.5px 0 #000, -0.5px 0.5px 0 #000, 0.5px 0.5px 0 #000;
+    color: white;
+  }
+  .news-art img {
+    height: auto;
+    width: 100%;
+  }
+  .news-art p {
+    font-size: 30px;
+  }
+  .news-art h3 {
+    font-size: 35px;
+  }
   footer {
     padding-bottom: 0;
   }
@@ -421,5 +512,17 @@ footer .social-icons a {
   }
   .social-icons a.github {
     background-color: #000000;
+  }
+}
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+  .initial-post h1 {
+    font-family: "Roboto", sans-serif;
+    color: rgb(255, 85, 85);
+    font-size: 50px;
+  }
+  .initial-post p {
+    font-size: 22.5px;
+    text-shadow: -0.5px -0.5px 0 #000, 0.5px -0.5px 0 #000, -0.5px 0.5px 0 #000, 0.5px 0.5px 0 #000;
+    color: white;
   }
 }/*# sourceMappingURL=styles.css.map */
