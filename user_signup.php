@@ -20,8 +20,8 @@
             <div class="main-wrapper">
                 <div class="container account-container">
                     <div class="row account-bg">
-                        <div class="col-lg-6 d-lg-flex position-relative account-bgi">
-                            <div class="overlay">
+                        <div class="col-lg-7 d-lg-flex d-none position-relative account-bgi bgi-signup">
+                            <div class="overlay overlay-signup">
                                 <div class="hero-item slogan">
                                     <h2>Reliable and affordable housing starts here</h2>
                                     <h2>Renting easily like renting from your Homie</h2>
@@ -29,7 +29,7 @@
                                 <div class="hero-item"></div>
                             </div>
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col-lg-5">
                             <div class="card account-card">
                                 <div class="card-content">
                                     <h2>Start renting and listing easily on our platform</h1>
@@ -84,6 +84,7 @@
 
         <?php
             require('footer.php');
+            require('bootstrapjs.php');
         ?>
 
     </body>

@@ -57,8 +57,45 @@
 
         <main>
             <div class="main-wrapper">
-                <div class="container">
-                    <h1>Yo!</h1>
+                <div class="container account-container">
+                    <div class="row account-bg">
+                        <div class="col-lg-7 d-lg-flex d-none position-relative account-bgi bgi-signin">
+                            <div class="overlay overlay-signin">
+                                <div class="hero-item slogan">
+                                    <h2>Reliable and affordable housing starts here</h2>
+                                    <h2>Renting easily like renting from your Homie</h2>
+                                </div>
+                                <div class="hero-item"></div>
+                            </div>
+                        </div>
+                        <div class="col-lg-5">
+                            <div class="card account-card">
+                                <div class="card-content">
+                                    <h2>Welcome back!</h1>
+                                    <form>
+                                        <div class="form-group mb-3">
+                                            <label for="username">Username</label>
+                                            <div class="input-group">
+                                                <i class="fa-solid fa-user"></i>
+                                                <input class="form-control" id="username" name="username" placeholder="Username">
+                                            </div>
+                                        </div>
+                                        <div class="form-group mb-4">
+                                            <label for="password">Pasword</label>
+                                            <div class="input-group">
+                                                <i class="fa-solid fa-key"></i>
+                                                <input class="form-control" id="password" name="password" placeholder="Pasword">
+                                            </div>
+                                        </div>
+                                        <div class="d-grid col-6 mx-auto mb-5">
+                                            <button class="btn btn-primary" type="submit" name="signup">Sign in</button>
+                                        </div>
+                                        <p class="text-center">Need an account? <a href="user_signup.php">Sign up</a></p>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </main>
