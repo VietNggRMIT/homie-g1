@@ -22,8 +22,8 @@ class Listing extends Model
     {
         return $this->hasMany('\app\Models\Application');
     }
-    public function images()
+    public function listingimages()
     {
-        return $this->hasMany('\app\Models\Image');
+        return $this->hasMany('\app\Models\ListingImage');
     }
 }

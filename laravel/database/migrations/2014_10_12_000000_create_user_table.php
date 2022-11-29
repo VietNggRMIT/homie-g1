@@ -49,11 +49,12 @@ return new class extends Migration {
     public function up()
     {
         Schema::create('user', function (Blueprint $table) {
-            $table->id('id');
+            $table->id();
             $table->string('user_email_address')->unique()->nullable()->default("");
             $table->string('user_phone_number')->unique();
             $table->string('user_password');
             $table->string('user_real_name');
+            $table->text('user_image_path');
             $table->text('user_description');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();

@@ -20,6 +20,7 @@ return new class extends Migration
             $table->text('listing_description')->nullable();
             $table->enum('listing_address_subdivision_1', $vietnam_provinces);
             $table->string('listing_address_subdivision_2')->nullable();
+            $table->string('listing_address_subdivision_3')->nullable();
 //            $table->string('listing_image')->nullable(); // formerly binary('listing_image')->nullable();
             $table->integer('listing_price');
             $table->integer('listing_rating')->nullable();

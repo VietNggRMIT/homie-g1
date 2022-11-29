@@ -25,8 +25,9 @@ class ListingFactory extends Factory
 //            'listing_address_subdivision_1' => fake()->city(),
             'listing_address_subdivision_1' => fake()->randomElement($vietnam_provinces),
             'listing_address_subdivision_2' => fake()->optional()->streetAddress(),
+            'listing_address_subdivision_3' => fake()->optional()->streetName(),
 //            'listing_image' => fake()->optional()->imageUrl(640, 480, 'listing', true, 'image', true),
-            'listing_price' => fake()->numberBetween(500, 20000).'000', // 500k->2m VND
+            'listing_price' => fake()->numberBetween(500, 20000).'000', // 500k->20m VND
             'listing_rating' => fake()->optional()->numberBetween(1,5), // 1-5 stars
             'listing_available' => fake()->numberBetween(0,1), // 0 is FALSE, 1 is TRUE
 //            'created_at' => now(),

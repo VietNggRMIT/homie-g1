@@ -1,7 +1,8 @@
 <?php
 
 use App\Models\User;
-use App\Models\Image;
+use App\Models\ListingImage;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use App\Models\Listing;
 use App\Http\Controllers\TasksController;
@@ -28,20 +29,23 @@ Route::get('/', function () {
 Route::get('/listing/{id}', function ($id) {
    return view('listing', [
        'listing' => Listing::find($id),
-//       'user' => DB::table('users')->where('id', $user_id)->get()
+       'user' => DB::table('user')
+           ->leftjoin('listing', 'user.id', '=', 'listing.user_id')
+           ->select('user.*', 'listing.*')
+           ->get()
    ]);
 })->where('id', '[0-9]+');
 
-Route::get('/user/{id}', function ($id) {
-    return view('user', [
-        'user' => User::find($id),
-    ]);
-})->where('id', '[0-9]+');
+//Route::get('/user/{id}', function ($id) {
+//    return view('user', [
+//        'user' => User::find($id),
+//    ]);
+//})->where('id', '[0-9]+');
 
 Route::get('/listing_images/', function () {
     return view('images', [
-        'images' => Image::all(),
+        'images' => ListingImage::all(),
     ]);
 })->where('id', '[0-9]+');
 
-Route::get('/index', 'TasksController@helloWorld');
+//Route::get('/index', 'TasksController@helloWorld');

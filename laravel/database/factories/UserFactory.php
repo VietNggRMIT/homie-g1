@@ -73,8 +73,9 @@ class UserFactory extends Factory
 
             'user_email_address' => fake()->freeEmail(),
             'user_phone_number' => fake()->e164PhoneNumber(),
-            'user_real_name' => fake()->name(),
             'user_password' => fake()->password(),
+            'user_real_name' => fake()->name(),
+            'user_image_path' => 'user_image_path_' . rand(1, 3) .'.jpg',
             'user_description' => fake()->paragraphs(2, true)
         ];
     }
