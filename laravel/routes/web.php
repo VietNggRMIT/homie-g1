@@ -30,17 +30,17 @@ Route::get('/listing/{id}', function ($id) {
    return view('listing', [
        'listing' => Listing::find($id),
        'user' => DB::table('user')
-           ->leftjoin('listing', 'user.id', '=', 'listing.user_id')
-           ->select('user.*', 'listing.*')
-           ->get()
+            ->leftJoin('listing','user.id', '=', 'listing.user_id')
+            ->where('listing.id', '=', $id)
+            ->first()
    ]);
 })->where('id', '[0-9]+');
 
-//Route::get('/user/{id}', function ($id) {
-//    return view('user', [
-//        'user' => User::find($id),
-//    ]);
-//})->where('id', '[0-9]+');
+Route::get('/user/{id}', function ($id) {
+   return view('user', [
+       'user' => User::find($id),
+   ]);
+})->where('id', '[0-9]+');
 
 Route::get('/listing_images/', function () {
     return view('images', [

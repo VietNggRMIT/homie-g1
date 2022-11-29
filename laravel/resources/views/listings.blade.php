@@ -15,7 +15,7 @@
         <div>Listing rating: {{$listing['listing_rating']}}</div>
         <div>Listing available: {{$listing['listing_available']}}</div>
         <div>Created at: {{$listing['created_at']}}, Updated at: {{$listing['updated_at']}}</div>
-        <div>Posted by: ?</div>
+        <div>Posted by: <a href="/user/{{$listing['user_id']}}">Some user</a></div>
     </div>
     <hr>
 

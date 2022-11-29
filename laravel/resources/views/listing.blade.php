@@ -10,4 +10,4 @@ Image: <img src="{{$listing['listing_image']}}">
 <div>Listing rating: {{$listing['listing_rating']}}</div>
 <div>Listing available: {{$listing['listing_available']}}</div>
 <div>Created at: {{$listing['created_at']}}, Updated at: {{$listing['updated_at']}}</div>
-<div>Posted by: {{ $user }}</div>
+<div>Posted by: <a href="/user/{{$listing['user_id']}}">{{ $user->user_real_name }}</a></div>
