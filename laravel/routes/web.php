@@ -1,11 +1,11 @@
 <?php
 
+use App\Http\Controllers\ListingsController;
 use App\Models\User;
 use App\Models\ListingImage;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use App\Models\Listing;
-use App\Http\Controllers\TasksController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,20 +21,18 @@ use App\Http\Controllers\TasksController;
 Route::get('/', function () {
     return view('listings', [
         'heading' => 'Latest Rental Listings',
-        'listings' => Listing::all(),
-        'users' => User::all()
+        'listings' => Listing::all(), //Listing join User (add user_real_name)
     ]);
 });
 
-Route::get('/listing/{id}', function ($id) {
-   return view('listing', [
-       'listing' => Listing::find($id),
-       'user' => DB::table('user')
-            ->leftJoin('listing','user.id', '=', 'listing.user_id')
-            ->where('listing.id', '=', $id)
-            ->first()
-   ]);
-})->where('id', '[0-9]+');
+// Laraval 9 way:
+Route::get('/listing/{id}', [ListingsController::class, 'index']);
+
+// Deprecated way (before Laravel 8):
+// Route::get('/index', 'TasksController@helloWorld');
+
+// Route::get('/listing/{id}', function ($id) {
+// })->where('id', '[0-9]+');
 
 Route::get('/user/{id}', function ($id) {
    return view('user', [
@@ -42,10 +40,8 @@ Route::get('/user/{id}', function ($id) {
    ]);
 })->where('id', '[0-9]+');
 
-Route::get('/listing_images/', function () {
+Route::get('/listing_images', function () {
     return view('images', [
         'images' => ListingImage::all(),
     ]);
 })->where('id', '[0-9]+');
-
-//Route::get('/index', 'TasksController@helloWorld');

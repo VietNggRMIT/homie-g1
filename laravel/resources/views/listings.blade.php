@@ -2,7 +2,9 @@
     {{$heading}} ({{count($listings)}})
 </h1>
 <hr>
-
+<form>
+    
+</form>
 @foreach ($listings as $listing)
 
     <h1>Listing name: <a href="/listing/{{$listing['id']}}">{{$listing['listing_name']}}</a></h1>
