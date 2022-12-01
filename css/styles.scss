@@ -1,4 +1,8 @@
-//font
+// Color variables
+$dark-gray: #26272B;
+$light-gray: #A9A9A9;
+$orange-star: #FFA500;
+// Gont
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,100&display=swap');
 
 * {
@@ -112,15 +116,87 @@ td {
   }
 }
 
+// Card styling specifics
+
 .card {
   &.account-card {
       border-color: #FFFFFF;
+  }
+
+  &.listing-card {
+    width: 23rem;
+    text-decoration: none;
+    color: $dark-gray;
+    border-radius: 1rem;
+    transition: all 0.25s ease-in-out;
+
+    .carousel {
+        .carousel-inner {
+            .carousel-item {
+                width: 100%;
+                height: 300px;
+                overflow: hidden;
+    
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        }
+    }
+
+    .card-body {
+        .card-description {
+
+        }
+        
+        .card-listing-location {
+            color: $dark-gray;
+            align-items: center;
+            
+            i {
+                margin-right: 0.5rem;
+            }
+        }
+
+        .listing-amenities {
+            justify-content: space-around;
+
+            .listing-feature {
+                text-align: center;
+
+                i {
+                    font-size: 1.5rem;
+                    display: block;
+                }
+            }
+        }
+
+        .card-price-rating {
+            justify-content: space-between;
+            
+        }
+    }
+
+    &:hover {
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+    }
   }
 }
 
 .card-content {
   padding: 5rem 1.5rem;
 }
+
+.fa-star {
+    color: $orange-star;
+}
+
+.light-gray {
+    color: $light-gray;
+}
+//Listing card styling
+
 
 form {
   input {
@@ -138,7 +214,7 @@ form {
 }
 
 
-// Navbar
+// Navbar styling
 nav {
     .container {
         .navbar-brand {
@@ -351,13 +427,13 @@ nav {
 .initial-post{
    padding-bottom: 100px;
    text-align: center;
-   h1{
+   h1 {
     font-family: 'Roboto', sans-serif;
     color: red;
     font-size: 60px;
    }
 
-   p{
+   p {
     font-size: 25px;
     text-shadow: -0.5px -0.5px 0 #000, 0.5px -0.5px 0 #000, -0.5px 0.5px 0 #000, 0.5px 0.5px 0 #000;  
     color: white;
@@ -373,29 +449,29 @@ nav {
     position: relative;
     background-position: 50% 0;
     
-    #first-box{
-      margin-top: 200px;
-    }
+        #first-box{
+        margin-top: 200px;
+        }
     } 
   } 
 
-  .news-art{
+  .news-art {
     
-    .card{
+    .card {
       margin-top: 50px;
     }
     
-    a{
+    a {
       text-decoration: none;
     }
 
-    img{
+    img {
       height: 200px;
     }
     
-    h3{
+    h3 {
       font-size: 30px;
-      &:hover{
+      &:hover {
         color: aquamarine;
       }
     }
@@ -412,7 +488,7 @@ footer {
   font-size: 15px;
   line-height: 24px;
   color: #737373;
-    p{
+    p {
       color: white;
     }
 
@@ -555,13 +631,13 @@ footer .social-icons {
   
   //mobile article page
 .initial-post{
-  h1{
+  h1 {
     font-family: 'Roboto', sans-serif;
     color: red;
     font-size: 30px;
    }
 
-   p{
+   p {
     font-size: 15px;
     text-shadow: -0.5px -0.5px 0 #000, 0.5px -0.5px 0 #000, -0.5px 0.5px 0 #000, 0.5px 0.5px 0 #000;  
     color: white;
@@ -569,16 +645,16 @@ footer .social-icons {
 }
 
 .news-art{
-  img{
+  img {
     height: auto;
     width: 100%;
   }
 
-  p{
+  p {
     font-size: 30px;
   }
 
-  h3{
+  h3 {
     font-size: 35px;
   }
 
@@ -662,17 +738,17 @@ footer .social-icons {
 // Tablet responsive styling
 @media only screen and (min-width: 769px) and (max-width: 1024px){
 //tablet article page
-.initial-post{
-  h1{
-    font-family: 'Roboto', sans-serif;
-    color: rgb(255, 85, 85);
-    font-size: 50px;
-   }
+    .initial-post{
+        h1 {
+            font-family: 'Roboto', sans-serif;
+            color: rgb(255, 85, 85);
+            font-size: 50px;
+        }
 
-   p{
-    font-size: 22.5px;
-    text-shadow: -0.5px -0.5px 0 #000, 0.5px -0.5px 0 #000, -0.5px 0.5px 0 #000, 0.5px 0.5px 0 #000;  
-    color: white;
-   }
-}
+        p {
+            font-size: 22.5px;
+            text-shadow: -0.5px -0.5px 0 #000, 0.5px -0.5px 0 #000, -0.5px 0.5px 0 #000, 0.5px 0.5px 0 #000;  
+            color: white;
+        }
+    }
 }

@@ -113,9 +113,56 @@ td {
 .card.account-card {
   border-color: #FFFFFF;
 }
+.card.listing-card {
+  width: 23rem;
+  text-decoration: none;
+  color: #26272B;
+  border-radius: 1rem;
+  transition: all 0.25s ease-in-out;
+}
+.card.listing-card .carousel .carousel-inner .carousel-item {
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+}
+.card.listing-card .carousel .carousel-inner .carousel-item img {
+  width: 100%;
+  height: 100%;
+}
+.card.listing-card .card-body .card-listing-location {
+  color: #26272B;
+  align-items: center;
+}
+.card.listing-card .card-body .card-listing-location i {
+  margin-right: 0.5rem;
+}
+.card.listing-card .card-body .listing-amenities {
+  justify-content: space-around;
+}
+.card.listing-card .card-body .listing-amenities .listing-feature {
+  text-align: center;
+}
+.card.listing-card .card-body .listing-amenities .listing-feature i {
+  font-size: 1.5rem;
+  display: block;
+}
+.card.listing-card .card-body .card-price-rating {
+  justify-content: space-between;
+}
+.card.listing-card:hover {
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+}
 
 .card-content {
   padding: 5rem 1.5rem;
+}
+
+.fa-star {
+  color: #FFA500;
+}
+
+.light-gray {
+  color: #A9A9A9;
 }
 
 form .input-group {
