@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 class ListingsController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display information of a single listing.
      *
      * @return \Illuminate\Http\Response
      */
@@ -24,17 +24,17 @@ class ListingsController extends Controller
         //          ->where('listing.id', '=', $id)
         //         //  ->select('user_real_name')
         //          ->get();
-        // return view('listing', compact($listing));
+        // return view('listing', ['listing' => $listing], compact('listing'));
         return view('listing', [
             'listing' => Listing::find($id),
             'user' => DB::table('user')
-                 ->join('listing','user.id', '=', 'listing.user_id')
-                 ->where('listing.id', '=', $id)
-                //  ->select('user_real_name')
-                 ->get()
+                ->leftJoin('listing','user.id', '=', 'listing.user_id')
+                ->where('listing.id', '=', $id)
+                ->first()
         ]);
     }
 
+    
     /**
      * Show the form for creating a new resource.
      *

@@ -21,7 +21,10 @@ use App\Models\Listing;
 Route::get('/', function () {
     return view('listings', [
         'heading' => 'Latest Rental Listings',
-        'listings' => Listing::all(), //Listing join User (add user_real_name)
+        'listings' => DB::table('listing')
+                    ->join('user', 'listing.user_id', '=', 'user.id')
+                    ->select('listing.*', 'user.user_real_name')
+                    ->get()
     ]);
 });
 
@@ -32,6 +35,13 @@ Route::get('/listing/{id}', [ListingsController::class, 'index']);
 // Route::get('/index', 'TasksController@helloWorld');
 
 // Route::get('/listing/{id}', function ($id) {
+//     return view('listing', [
+//             'listing' => Listing::find($id),
+//             'user' => DB::table('user')
+//                 ->join('listing','user.id', '=', 'listing.user_id')
+//                 ->where('listing.id', '=', $id)
+//                 ->first()
+//         ]);
 // })->where('id', '[0-9]+');
 
 Route::get('/user/{id}', function ($id) {
