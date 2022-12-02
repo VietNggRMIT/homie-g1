@@ -21,10 +21,11 @@ use App\Models\Listing;
 Route::get('/', function () {
     return view('listings', [
         'heading' => 'Latest Rental Listings',
-        'listings' => DB::table('listing')
-                    ->join('user', 'listing.user_id', '=', 'user.id')
-                    ->select('listing.*', 'user.user_real_name')
-                    ->get()
+//        'listings' => DB::table('listing')
+//                    ->join('user', 'listing.user_id', '=', 'user.id')
+//                    ->select('listing.*', 'user.user_real_name')
+//                    ->get()
+        'listings' => Listing::all(),
     ]);
 });
 

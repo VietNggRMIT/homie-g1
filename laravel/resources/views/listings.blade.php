@@ -3,7 +3,7 @@
 </h1>
 <hr>
 <form>
-    
+
 </form>
 @foreach ($listings as $listing)
 
@@ -16,6 +16,9 @@
         <div>Listing price: {{$listing->listing_price}}</div>
         <div>Listing rating: {{$listing->listing_rating}}</div>
         <div>Listing available: {{$listing->listing_available}}</div>
+        <div>Listing location (Lat, Long): {{ $listing['listing_location']->latitude.",".$listing['listing_location']->longitude }}</div>
+        <div>Listing location (Lat, Long): {{ $listing->listing_location->latitude.",".$listing->listing_location->longitude }}</div>
+        <div>Listing specification: {{ $listing->listing_specification_bedroom." bedrooms,".$listing->listing_specification_bathroom." bathrooms,". $listing->listing_specification_size." m2" }}</div>
         <div>Created at: {{$listing->created_at}}, Updated at: {{$listing->updated_at}}</div>
         <div>Posted by: <a href="/user/{{$listing->user_id}}"> {{$listing->user_real_name}}</a></div>
     </div>

@@ -9,5 +9,22 @@ Image: <img src="{{$listing['listing_image']}}">
 <div>Listing price: {{$listing['listing_price']}}</div>
 <div>Listing rating: {{$listing['listing_rating']}}</div>
 <div>Listing available: {{$listing['listing_available']}}</div>
+<div>
+    <div>Listing location:
+        {{$x=$listing->listing_location->latitude}},{{$y=$listing->listing_location->longitude}}
+    </div>
+    <div style="margin: 0 20em">
+        <iframe
+            width="100%"
+            height="500"
+            style="border:0"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            src="https://maps.google.com/maps?q={{$x.",".$y}}&amp;t=&amp;z=12&amp;iwloc=B&amp;output=embed">
+        </iframe>
+    </div>
+</div>
+<div>Listing specification: {{ $listing['listing_specification_bedroom']." bedrooms,".$listing['listing_specification_bathroom']." bathrooms,". $listing['listing_specification_size']." m2" }}</div>
 <div>Created at: {{$listing['created_at']}}, Updated at: {{$listing['updated_at']}}</div>
 <div>Posted by: <a href="/user/{{$listing['user_id']}}">{{ $user->user_real_name }}</a></div>
