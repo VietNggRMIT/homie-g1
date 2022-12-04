@@ -47,27 +47,30 @@ class DatabaseSeeder extends Seeder
         $listings = Listing::factory()
             ->count(14)
             ->recycle($users)
+            ->has(Review::factory()->times(2))
+            ->has(Application::factory()->times(2))
+            ->has(ListingImage::factory()->times(2))
             ->create();
 
-        Review::factory()
-            ->count(16)
-            ->recycle($listings)
-            ->create();
+//        Review::factory()
+//            ->count(16)
+//            ->recycle($listings)
+//            ->create();
 
         Blog::factory()
             ->count(23)
             ->recycle($users)
             ->create();
 
-        Application::factory()
-            ->count(14)
-            ->recycle($listings)
-            ->create();
+//        Application::factory()
+//            ->count(14)
+//            ->recycle($listings)
+//            ->create();
 
-        ListingImage::factory()
-            ->count(30)
-            ->recycle($listings)
-            ->create();
+//        ListingImage::factory()
+//            ->count(30)
+//            ->recycle($listings)
+//            ->create();
 
 //        =============================================================================================
 //        !IMPORTANT: DO NOT DELETE BELOW

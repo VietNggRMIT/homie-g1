@@ -46,10 +46,10 @@ class Listing extends Model
     }
     public function applications()
     {
-        return $this->hasMany('\app\Models\Application');
+        return $this->hasMany('\App\Models\Application');
     }
     public function listingimages()
     {
-        return $this->hasMany('\app\Models\ListingImage');
+        return $this->hasMany('\App\Models\ListingImage');
     }
 }

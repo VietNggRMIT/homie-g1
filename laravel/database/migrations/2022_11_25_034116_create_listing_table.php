@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('listing_address_subdivision_3')->nullable();
 //            $table->string('listing_image')->nullable(); // formerly binary('listing_image')->nullable();
             $table->integer('listing_price');
-            $table->integer('listing_rating')->nullable();
+//            $table->integer('listing_rating')->nullable();
             $table->boolean('listing_available')->default(1); // default to 1, which is TRUE
             $table->point('listing_location');
             $table->integer('listing_specification_bathroom');

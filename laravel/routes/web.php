@@ -1,11 +1,14 @@
 <?php
 
-use App\Http\Controllers\ListingsController;
 use App\Models\User;
+use App\Models\Listing;
 use App\Models\ListingImage;
+use App\Http\Controllers\ListingsController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\FallbackController;
+use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
-use App\Models\Listing;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,41 +21,55 @@ use App\Models\Listing;
 |
 */
 
-Route::get('/', function () {
-    return view('listings', [
-        'heading' => 'Latest Rental Listings',
-//        'listings' => DB::table('listing')
-//                    ->join('user', 'listing.user_id', '=', 'user.id')
-//                    ->select('listing.*', 'user.user_real_name')
-//                    ->get()
-        'listings' => Listing::all(),
-    ]);
-});
+// ==========================How to call Controller==========================
+//Route::get('/listing/{id}', [ListingsController::class, 'index']);
+// ==========================================================================
 
-// Laraval 9 way:
-Route::get('/listing/{id}', [ListingsController::class, 'index']);
+// Homepage route, placed at the beginning of the file
+//Route::redirect('/', '/listings/', 302);
 
-// Deprecated way (before Laravel 8):
-// Route::get('/index', 'TasksController@helloWorld');
+Route::get('/', HomeController::class)
+    ->name('route_home');
 
-// Route::get('/listing/{id}', function ($id) {
-//     return view('listing', [
-//             'listing' => Listing::find($id),
-//             'user' => DB::table('user')
-//                 ->join('listing','user.id', '=', 'listing.user_id')
-//                 ->where('listing.id', '=', $id)
-//                 ->first()
-//         ]);
-// })->where('id', '[0-9]+');
+Route::resource('/listings', ListingsController::class);
 
-Route::get('/user/{id}', function ($id) {
-   return view('user', [
-       'user' => User::find($id),
-   ]);
-})->where('id', '[0-9]+');
+//Route::prefix('listings')->group(function () {
+//
+////     Handles the path /listings/
+//    //        'listings' => DB::table('listing')
+////                    ->join('user', 'listing.user_id', '=', 'user.id')
+////                    ->select('listing.*', 'user.user_real_name')
+////                    ->get()
+////            'listings' => Listing::all(),
+//
+//    Route::get('/', [ListingsController::class, 'index'])
+//        ->name('directory_listing.index');
+//
+////     Handles the path /listings/{id}
+////    'listing' => Listing::find($id),
+////            'user' => DB::table('user')
+////        ->join('listing', 'user.id', '=', 'listing.user_id')
+////        ->where('listing.id', '=', $id)
+////        ->first()
+//
+//    Route::get('/{id}', [ListingsController::class, 'show'])
+//        ->name('directory_listing.show')
+//        ->where('id', '[0-9]+');
+//});
 
-Route::get('/listing_images', function () {
-    return view('images', [
-        'images' => ListingImage::all(),
-    ]);
-})->where('id', '[0-9]+');
+Route::resource('/users', UsersController::class);
+
+//Route::prefix('users')->group(function () {
+//
+//    // Handles the path /listings/{id}
+//    Route::get('/{id}', function ($id) {
+//        return view('user', [
+//            'user' => User::find($id),
+//        ]);
+//    })->where('id', '[0-9]+');
+//
+//});
+
+// Fallback route placed at the end of the file to catch all unmatched paths
+Route::fallback(FallbackController::class)
+    ->name('route_fallback');

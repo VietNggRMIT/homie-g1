@@ -35,7 +35,7 @@ class ListingFactory extends Factory
             'listing_address_subdivision_3' => fake()->optional()->streetName(),
 //            'listing_image' => fake()->optional()->imageUrl(640, 480, 'listing', true, 'image', true),
             'listing_price' => fake()->numberBetween(500, 20000).'000', // 500k->20m VND
-            'listing_rating' => fake()->optional()->numberBetween(1,5), // 1-5 stars
+//            'listing_rating' => fake()->optional()->numberBetween(1,5), // 1-5 stars
             'listing_available' => fake()->numberBetween(0,1), // 0 is FALSE, 1 is TRUE
             'listing_location' => new Point($x,  $y, 4326),
 //            'listing_location' => DB::raw("ST_PointFromText('POINT(" . $y . " " . $x . ")')"),
