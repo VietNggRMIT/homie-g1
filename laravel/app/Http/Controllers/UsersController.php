@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Models\Listing;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class UsersController extends Controller
 {
@@ -45,7 +49,13 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = DB::table('user')->find($id);
+        $listings = DB::table('listing')
+                ->where('user_id', '=', $id)
+                ->get();
+
+        return response()
+            ->view('directory_user.user', ['user' => $user, 'listings' => $listings], 200);
     }
 
     /**
