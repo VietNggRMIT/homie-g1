@@ -1,17 +1,17 @@
 /node_modules
-# npm install
+# Command: npm install
 
 /public/build
 /public/hot
 /public/storage
 /storage/*.key
+# Command: php artisan key:generate
 
 /vendor
-# composer install
+# Command: composer install
 
 #.env
-#cp .env.example .env
-#php artisan key:generate
+# Command: cp .env.example .env
 
 .env.backup
 .env.production
