@@ -31,10 +31,15 @@ class Listing extends Model
     protected $casts = [
         'listing_address_coordinate' => Point::class,
     ];
-
     public function newEloquentBuilder($query): SpatialBuilder
     {
         return new SpatialBuilder($query);
+    }
+
+    // Slug URL, part 3/3
+    public function getRouteKeyName()
+    {
+        return 'listing_name';
     }
 
     public function reviews()

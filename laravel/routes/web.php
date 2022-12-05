@@ -71,6 +71,14 @@ Route::resource('/users', UsersController::class);
 
 Route::resource('/blogs', BlogsController::class);
 
+Route::view('/about', 'directory_about.about')
+    ->name('route_about');
+
+// Slug URL, part 1/3
+Route::get('/{listing_name}', [ListingsController::class, 'slug']);
+Route::get('blogs/{blog_name}', [BlogsController::class, 'slug']);
+Route::get('users/{user_real_name}', [UsersController::class, 'slug']);
+
 // Fallback route placed at the end of the file to catch all unmatched paths
 Route::fallback(FallbackController::class)
     ->name('route_fallback');

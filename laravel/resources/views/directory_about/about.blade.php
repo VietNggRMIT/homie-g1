@@ -45,11 +45,11 @@
 
         <hr>
 
-        <h1>Error 404</h1>
-        <h2>This is the fallback page when there are no matching routes.</h2>
+        <h1>About Page</h1>
+        <h2>Write about the company</h2>
     </div>
 
-@vite('resources/js/app.js')
-@vite('webfonts.css')
+    @vite('resources/js/app.js')
+    @vite('webfonts.css')
 </body>
 </html>

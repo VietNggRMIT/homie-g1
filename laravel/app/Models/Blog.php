@@ -10,6 +10,12 @@ class Blog extends Model
     use HasFactory;
     protected $table = 'blog'; // to bind 'Blog.php' with 'blog' MySQL table
 
+    // Slug URL, part 3/3
+    public function getRouteKeyName()
+    {
+        return 'blog_name';
+    }
+
     public function user()
     {
         return $this->belongsTo('App\Models\User');

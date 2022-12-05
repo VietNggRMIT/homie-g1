@@ -10,19 +10,38 @@
 </head>
 <body>
     <div>
-        <button
-            onclick="window.location.href='{{ route('listings.index') }}';"
-            type="button"
-        >
-            Back to all listings
-        </button>
-        <button
-            onclick="window.location.href='{{ url()->previous() }}';"
-            type="button"
-        >
-            Back to previous page
-        </button>
-
+        <div>
+            <button
+                onclick="window.location.href='{{ route('route_home') }}';"
+                type="button"
+            >
+                Home
+            </button>
+            <button
+                onclick="window.location.href='{{ route('listings.index') }}';"
+                type="button"
+            >
+                Show all listings
+            </button>
+            <button
+                onclick="window.location.href='{{ route('blogs.index') }}'"
+                type="button"
+            >
+                Show all blogs
+            </button>
+            <button
+                onclick="window.location.href='{{ route('route_about') }}'"
+                type="button"
+            >
+                About
+            </button>
+            <button
+                onclick="window.location.href='{{ url()->previous() }}';"
+                type="button"
+            >
+                Back to previous page
+            </button>
+        </div>
         <hr>
 
         <div>
@@ -103,7 +122,7 @@
                     <div>
                         $blog->blog_name:
                         <button
-                            onclick="window.location.href='{{ route('blogs.show', ['blog' => $blog->id]) }}'"
+                            onclick="window.location.href='{{ route('blogs.show', ['blog' => $blog]) }}'"
                             type="button"
                         >
                             {{ $blog->blog_name }}

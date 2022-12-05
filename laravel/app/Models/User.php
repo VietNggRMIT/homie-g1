@@ -42,7 +42,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-
+    // ======================================================================
+    // Slug URL, part 3/3
+    public function getRouteKeyName()
+    {
+        return 'user_real_name';
+    }
 
     protected $table = 'user'; // to bind 'User.php' with 'user' MySQL table
 
@@ -50,12 +55,10 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Models\Listing');
     }
-
     public function blogs()
     {
         return $this->hasMany('\App\Models\Blog');
     }
-
     function reviews()
     {
         return $this->hasManyThrough('App\Models\Review', 'App\Models\Listing');

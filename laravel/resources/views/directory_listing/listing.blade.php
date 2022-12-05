@@ -10,18 +10,38 @@
 </head>
 <body>
     <div>
-        <button
-            onclick="window.location.href='{{ route('listings.index') }}';"
-            type="button"
-        >
-            Back to all listings
-        </button>
-        <button
-            onclick="window.location.href='{{ url()->previous() }}';"
-            type="button"
-        >
-            Back to previous page
-        </button>
+        <div>
+            <button
+                onclick="window.location.href='{{ route('route_home') }}';"
+                type="button"
+            >
+                Home
+            </button>
+            <button
+                onclick="window.location.href='{{ route('listings.index') }}';"
+                type="button"
+            >
+                Show all listings
+            </button>
+            <button
+                onclick="window.location.href='{{ route('blogs.index') }}'"
+                type="button"
+            >
+                Show all blogs
+            </button>
+            <button
+                onclick="window.location.href='{{ route('route_about') }}'"
+                type="button"
+            >
+                About
+            </button>
+            <button
+                onclick="window.location.href='{{ url()->previous() }}';"
+                type="button"
+            >
+                Back to previous page
+            </button>
+        </div>
 
         <hr>
 
@@ -61,7 +81,20 @@
                 </div>
                 <div>$listing->listing_price: {{ number_format( (int) $listing->listing_price) }}</div>
                 <div>$listing->listing_available: {{ $listing->listing_available }}</div>
-                <div>$listing->listing_address_coordinate: {{ $listing->listing_address_coordinate->latitude.",".$listing->listing_address_coordinate->longitude }}</div>
+                <div>$listing->listing_address_coordinate:
+                    {{ $x=$listing->listing_address_coordinate->latitude }},{{ $y=$listing->listing_address_coordinate->longitude }}
+                </div>
+                <div>
+                    <iframe
+                        width="400"
+                        height="300"
+                        style="border:0"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                        src="https://maps.google.com/maps?q={{$x.",".$y}}&amp;t=&amp;z=12&amp;iwloc=B&amp;output=embed">
+                    </iframe>
+                </div>
                 <div>$listing->listing_specification_bedroom: {{ $listing->listing_specification_bedroom }}</div>
                 <div>$listing->listing_specification_bathroom: {{ $listing->listing_specification_bathroom }}</div>
                 <div>$listing->listing_specification_size: {{ $listing->listing_specification_size }}</div>
@@ -83,7 +116,7 @@
                     <div>
                         $listing->user->user_real_name:
                         <button
-                            onclick="window.location.href='{{ route('users.show', ['user' => $listing->user_id]) }}';"
+                            onclick="window.location.href='{{ route('users.show', ['user' => $listing->user]) }}';"
                             type="button"
                         >
                             {{ $listing->user->user_real_name }}

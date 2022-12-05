@@ -19,7 +19,8 @@ class BlogFactory extends Factory
     {
         return [
             //
-            'blog_name' => fake()->realTextBetween(10, 100, 2),
+//            'blog_name' => fake()->realTextBetween(10, 100, 2),
+            'blog_name' => fake()->words(10, true), // === sentence(4);
             'blog_description' => fake()->paragraphs(5, true),
             'user_id' => User::factory(),
         ];
