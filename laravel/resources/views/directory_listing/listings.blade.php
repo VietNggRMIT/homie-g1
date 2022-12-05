@@ -97,7 +97,7 @@
             <fieldset>
                 <legend>Special:</legend>
                 <div>$listing->reviews_avg_review_rating: {{ (float) $listing->reviews_avg_review_rating }} stars from $listing->reviews_count: {{ (int) $listing->reviews_count }} reviews</div>
-                <div>$listing->applications_count: {{ (float) $listing->applications_count }} applications</div>
+                <div>$listing->applications_count: {{ (int) $listing->applications_count }} applications</div>
             </fieldset>
 
             <fieldset>

@@ -109,11 +109,4 @@ class UsersController extends Controller
     {
         //
     }
-
-    //    ============================User-generated functions============================
-    //    Slug URL, part 2/3
-    public function slug(User $user_real_name) {
-        return response()
-            ->view('directory_blog.blog', ['user' => $user_real_name], 200);
-    }
 }

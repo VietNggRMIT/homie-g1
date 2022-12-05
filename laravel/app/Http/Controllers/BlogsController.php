@@ -90,11 +90,4 @@ class BlogsController extends Controller
     {
         //
     }
-
-    //    ============================User-generated functions============================
-    //    Slug URL, part 2/3
-    public function slug(Blog $blog_name) {
-        return response()
-            ->view('directory_blog.blog', ['blog' => $blog_name], 200);
-    }
 }

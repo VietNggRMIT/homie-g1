@@ -136,11 +136,4 @@ class ListingsController extends Controller
     {
         //
     }
-
-//    ============================User-generated functions============================
-//    Slug URL, part 2/3
-    public function slug(Listing $listing_name) {
-        return response()
-            ->view('directory_listing.listing', ['listing' => $listing_name], 200);
-    }
 }
