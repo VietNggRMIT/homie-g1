@@ -9,8 +9,18 @@
     <title>Document</title>
 </head>
 <body>
+    <button
+        onclick="window.location.href='{{ url()->previous() }}';"
+        type="button"
+    >
+        Back to previous page
+    </button>
+
+    <hr>
+
     <h1>Error 404</h1>
     <h2>This is the fallback page when there are no matching routes.</h2>
+
 @vite('resources/js/app.js')
 @vite('webfonts.css')
 </body>

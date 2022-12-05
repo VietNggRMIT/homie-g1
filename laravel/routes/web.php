@@ -1,13 +1,10 @@
 <?php
 
-use App\Models\User;
-use App\Models\Listing;
-use App\Models\ListingImage;
-use App\Http\Controllers\ListingsController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\FallbackController;
+use App\Http\Controllers\ListingsController;
 use App\Http\Controllers\UsersController;
-use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\BlogsController;
+use App\Http\Controllers\FallbackController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -71,6 +68,8 @@ Route::resource('/users', UsersController::class);
 //    })->where('id', '[0-9]+');
 //
 //});
+
+Route::resource('/blogs', BlogsController::class);
 
 // Fallback route placed at the end of the file to catch all unmatched paths
 Route::fallback(FallbackController::class)

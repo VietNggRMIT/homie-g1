@@ -26,9 +26,10 @@ class ListingFactory extends Factory
         $y = fake()->longitude($min = 104, $max = 106);
 
         return [
-            'listing_name' => fake()->words(4, true), // === sentence(4);
-//            'listing_name' => fake()->realTextBetween(3, 30, 5), // generate 3 to 30 English characters; indexSize 1->5, I choose 5 to get most accurate word generation
-            'listing_description' => fake()->optional()->paragraphs(3, true),
+            'listing_name' => fake()->realTextBetween(10, 100, 2), // generate 10 to 100 English characters; indexSize 1->5, with 5 to get most accurate word generation
+//            'listing_name' => fake()->words(4, true), // === sentence(4);
+            'listing_description' => fake()->optional()->realTextBetween(10, 500, 5),
+//            'listing_description' => fake()->optional()->paragraphs(3, true),
             'listing_address_subdivision_1' => fake()->randomElement($vietnam_provinces), // fake()->city()
             'listing_address_subdivision_2' => fake()->optional()->streetAddress(),
             'listing_address_subdivision_3' => fake()->optional()->streetName(),

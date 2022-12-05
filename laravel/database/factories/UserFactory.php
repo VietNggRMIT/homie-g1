@@ -71,12 +71,14 @@ class UserFactory extends Factory
 //            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
 //            'remember_token' => Str::random(10),
 
-            'user_email_address' => fake()->freeEmail(),
-            'user_phone_number' => fake()->e164PhoneNumber(),
+            'user_email_address' => fake()->unique()->freeEmail(),
+            'user_phone_number' => fake()->unique()->e164PhoneNumber(),
             'user_password' => fake()->password(),
             'user_real_name' => fake()->name(),
-            'user_image_path' => 'user_image_path_' . rand(1, 3) .'.jpg',
-            'user_description' => fake()->paragraphs(2, true)
+//            'user_image_path' => "user_image_path_".fake()->optional()->numberBetween(1, 3).".jpg",
+            'user_image_path' => "user_image_path_".fake()->numberBetween(1, 3).".jpg",
+            'user_description' => fake()->realTextBetween(10, 100, 2)
+//            'user_description' => fake()->paragraphs(2, true)
         ];
     }
 }

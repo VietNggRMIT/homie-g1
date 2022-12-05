@@ -9,59 +9,93 @@
     <title>Document</title>
 </head>
 <body>
-    <button
-        onclick="window.location.href='{{ route('route_home') }}';"
-        type="button"
-    >
-        Back to Home
-    </button>
+    <div>
+        <button
+            onclick="window.location.href='{{ route('route_home') }}';"
+            type="button"
+        >
+            Back to Home
+        </button>
+        <button
+            onclick="window.location.href='{{ url()->previous() }}';"
+            type="button"
+        >
+            Back to previous page
+        </button>
 
-    <hr>
+        <hr>
 
-    @foreach ($listings_true as $listing)
+        <h1>Listings</h1>
 
-    <h1>
-        <a href={{ route('listings.show', ['listing' => $listing->id]) }}>Listing name: {{ $listing->listing_name }}</a>
-    </h1>
-
-    <div {!! $listing->listing_available == 0 ? 'style="opacity: 0.4"' : 'style="opacity: 1"' !!}>
-        <div>ID: {{ $listing->id }}</div>
-        <div>Listing description: {{ $listing->listing_description }}</div>
-        <div>Listing address: {{ $listing->listing_address_subdivision_1 . "-" . $listing->listing_address_subdivision_2 }}</div>
-            <div>
-                Images:
-                @if($listing->listingimages->isEmpty())
-                    <img
-                        src="https://via.placeholder.com/300.png/"
-                        width="100"
-                        height="100%"
+        @foreach ($custom_listings as $listing)
+            <div {!! $listing->listing_available == 0 ? 'style="opacity: 0.4"' : 'style="opacity: 1"' !!}>
+                <div>$listing->id: {{ $listing->id }}</div>
+                <div>
+                    $listing->listing_name:
+                    <button
+                        onclick="window.location.href='{{ route('listings.show', ['listing' => $listing]) }}';"
+                        type="button"
                     >
-                @else
-                    @foreach ($listing->listingimages as $listingimage)
+                        {{ $listing->listing_name }}
+                    </button>
+                </div>
+                <div>$listing->listing_description: {!!  nl2br(e($listing->listing_description)) !!}</div>
+                <div>$listing->listing_address_subdivision_1: {{ $listing->listing_address_subdivision_1 }}</div>
+                <div>$listing->listing_address_subdivision_2: {{ $listing->listing_address_subdivision_2 }}</div>
+                <div>$listing->listing_address_subdivision_3: {{ $listing->listing_address_subdivision_3 }}</div>
+                <div>
+                    $listing->listingimages:
+                    @if($listing->listingimages->isEmpty())
                         <img
-                            src="{{ asset('storage/images/').'/'.$listingimage->listing_image_path }}"
+                            src="https://via.placeholder.com/300.png/"
                             width="100"
                             height="100%"
                         >
-                    @endforeach
-                @endif
+                    @else
+                        @foreach ($listing->listingimages as $listingimage)
+                            <img
+                                src="{{ asset('storage/images/').'/'.$listingimage->listing_image_path }}"
+                                width="100"
+                                height="100%"
+                            >
+                        @endforeach
+                    @endif
+                </div>
+                <div>$listing->listing_price: {{ number_format( (int) $listing->listing_price) }}</div>
+                <div>$listing->listing_available: {{ $listing->listing_available }}</div>
+                <div>$listing->listing_address_coordinate: {{ $listing->listing_address_coordinate->latitude.",".$listing->listing_address_coordinate->longitude }}</div>
+                <div>$listing->listing_specification_bedroom: {{ $listing->listing_specification_bedroom }}</div>
+                <div>$listing->listing_specification_bathroom: {{ $listing->listing_specification_bathroom }}</div>
+                <div>$listing->listing_specification_size: {{ $listing->listing_specification_size }}</div>
+                <div>$listing->listing_specification_owner: {{ $listing->listing_specification_owner }}</div>
+                <div>$listing->listing_specification_tenant: {{ $listing->listing_specification_tenant }}</div>
             </div>
-        <div>Listing price: {{ number_format( (int) $listing->listing_price) }}</div>
+            <div>$listing->user_id: {{ $listing->user_id }}</div>
+            <div>$listing->created_at: {{ $listing->created_at }}</div>
+            <div>$listing->updated_at: {{ $listing->updated_at }}</div>
 
-        <div>Listing available: {{ $listing->listing_available }}</div>
-        <div>Listing location (Lat, Long): {{ $listing->listing_address_coordinate->latitude.",".$listing->listing_address_coordinate->longitude }}</div>
-        <div>Listing specification: {{ $listing->listing_specification_bedroom." bedrooms,".$listing->listing_specification_bathroom." bathrooms,". $listing->listing_specification_size." m2" }}</div>
-        <div>User ID: {{ $listing->user_id }}</div>
-        <div>Created at: {{ $listing->created_at }}, Updated at: {{ $listing->updated_at }}</div>
-        <div>Posted by: <a
-                href={{ route('users.show', ['user' => $listing->user_id]) }}> {{ $listing->user->user_real_name }}</a>
-        </div>
-        <hr>
-        <div>Ratings count: {{ (float) $listing->reviews_avg_review_rating }} stars from {{ (int) $listing->reviews_count }} reviews</div>
-        <div>Applications count: {{ (float) $listing->applications_count }} applications</div>
+            <fieldset>
+                <legend>Special:</legend>
+                <div>$listing->reviews_avg_review_rating: {{ (float) $listing->reviews_avg_review_rating }} stars from $listing->reviews_count: {{ (int) $listing->reviews_count }} reviews</div>
+                <div>$listing->applications_count: {{ (float) $listing->applications_count }} applications</div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Posted by:</legend>
+                <div>$listing->user->id: {{ $listing->user->id }}</div>
+                <div>
+                    $listing->user->user_real_name:
+                    <button
+                        onclick="window.location.href='{{ route('users.show', ['user' => $listing->user_id]) }}';"
+                        type="button"
+                    >
+                        {{ $listing->user->user_real_name }}
+                    </button>
+                </div>
+            </fieldset>
+            <hr>
+        @endforeach
     </div>
-    <hr>
-@endforeach
 
     @vite('resources/js/app.js')
     @vite('webfonts.css')

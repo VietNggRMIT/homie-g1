@@ -17,6 +17,7 @@ class ListingsController extends Controller
      */
     public function index()
     {
+//        ======================DO NOT DELETE======================
 //        $listings_true = DB::table('listing')
 //            ->leftJoin('user', 'listing.user_id', '=', 'user.id')
 //            ->select('listing.*', 'user.user_real_name')
@@ -27,20 +28,18 @@ class ListingsController extends Controller
 //            ->select('listing.*', 'user.user_real_name')
 //            ->where('listing_available', '0')
 //            ->get();
+//        ======================DO NOT DELETE======================
 
-        $listings_true = Listing::with('user')
+        $custom_listings = Listing::with('user')
             ->with('listingimages:listing_image_path,listing_id')
             ->withAvg('reviews', 'review_rating')
             ->withCount('reviews')
             ->withCount('applications')
 //            ->where('listing.listing_available', '=', '1')
             ->get();
-//        $listings_false = Listing::with(['user', 'listingimages', 'reviews', 'applications'])
-//            ->where('listing.listing_available', '=', '0')
-//            ->get();
 
             return response()
-                ->view('directory_listing.listings', ['listings_true' => $listings_true], 200);
+                ->view('directory_listing.listings', ['custom_listings' => $custom_listings], 200);
     }
 
     /**
@@ -72,6 +71,7 @@ class ListingsController extends Controller
      */
     public function show(Listing $listing)
     {
+//        ======================DO NOT DELETE======================
 //        Not working 1
 //        $new_listing = DB::table('listing')
 //            ->join('listing','user.id', '=', 'listing.user_id')
@@ -87,10 +87,14 @@ class ListingsController extends Controller
 //            ->leftJoin('application','application.listing_id', '=', 'listing.id')
 //            ->where('listing.id', '=', $listing->id)
 //            ->first();
+//        ======================DO NOT DELETE======================
 
 //        Good 1
         $custom_listing = Listing::
             with(['user','listingimages:listing_image_path,listing_id','applications','reviews'])
+            ->withAvg('reviews', 'review_rating')
+            ->withCount('reviews')
+            ->withCount('applications')
             ->find($listing->id);
 //            ->where('listing.id', '=', $listing->id)
 //            ->first();
