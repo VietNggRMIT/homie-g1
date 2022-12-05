@@ -22,14 +22,16 @@ return new class extends Migration
             $table->enum('listing_address_subdivision_1', $vietnam_provinces);
             $table->string('listing_address_subdivision_2')->nullable();
             $table->string('listing_address_subdivision_3')->nullable();
+            $table->point('listing_address_coordinate');
 //            $table->string('listing_image')->nullable(); // formerly binary('listing_image')->nullable();
             $table->integer('listing_price');
 //            $table->integer('listing_rating')->nullable();
             $table->boolean('listing_available')->default(1); // default to 1, which is TRUE
-            $table->point('listing_location');
             $table->integer('listing_specification_bathroom');
             $table->integer('listing_specification_bedroom');
             $table->integer('listing_specification_size');
+            $table->integer('listing_specification_owner');
+            $table->integer('listing_specification_tenant');
 
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')
@@ -42,7 +44,7 @@ return new class extends Migration
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();
         });
-        DB::statement('ALTER TABLE listing ADD SPATIAL INDEX(listing_location);');
+        DB::statement('ALTER TABLE listing ADD SPATIAL INDEX(listing_address_coordinate);');
     }
 
     /**

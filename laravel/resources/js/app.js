@@ -1,6 +1,5 @@
 import './bootstrap';
 import PureCounter from "@srexi/purecounterjs";
-import '../../node_modules/flowbite/dist/flowbite.js'
 
 // GUIDE: this is the template for all future counters
 new PureCounter({

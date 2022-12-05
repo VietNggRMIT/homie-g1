@@ -53,6 +53,19 @@ class User extends Authenticatable
 
     public function blogs()
     {
-        return $this->hasMany('\app\Models\Blog');
+        return $this->hasMany('\App\Models\Blog');
+    }
+
+    function reviews()
+    {
+        return $this->hasManyThrough('App\Models\Review', 'App\Models\Listing');
+    }
+    function applications()
+    {
+        return $this->hasManyThrough('App\Models\Application', 'App\Models\Listing');
+    }
+    function images()
+    {
+        return $this->hasManyThrough('App\Models\ListingImage', 'App\Models\Listing');
     }
 }

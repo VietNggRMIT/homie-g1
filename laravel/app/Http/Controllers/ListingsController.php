@@ -27,9 +27,11 @@ class ListingsController extends Controller
 //            ->select('listing.*', 'user.user_real_name')
 //            ->where('listing_available', '0')
 //            ->get();
+
         $listings_true = Listing::with('user')
             ->with('listingimages:listing_image_path,listing_id')
             ->withAvg('reviews', 'review_rating')
+            ->withCount('reviews')
             ->withCount('applications')
 //            ->where('listing.listing_available', '=', '1')
             ->get();
@@ -38,7 +40,7 @@ class ListingsController extends Controller
 //            ->get();
 
             return response()
-            ->view('directory_listing.listings', ['listings_true' => $listings_true], 200);
+                ->view('directory_listing.listings', ['listings_true' => $listings_true], 200);
     }
 
     /**
@@ -70,25 +72,31 @@ class ListingsController extends Controller
      */
     public function show(Listing $listing)
     {
+//        Not working 1
 //        $new_listing = DB::table('listing')
 //            ->join('listing','user.id', '=', 'listing.user_id')
 //            ->join('listing_image','user.id', '=', 'listing.user_id')
 //            ->where('listing.id', '=', $listing)
 //            ->first();
 
-//        $listings_true = DB::table('listing')
-//            ->leftJoin('user', 'listing.user_id', '=', 'user.id')
-//            ->select('listing.*', 'user.user_real_name')
-//            ->where('listing_available', '1')
-//            ->get();
+//        Not working 1
+//        $custom_listing = DB::table('listing')
+//            ->join('user','user.id', '=', 'listing.user_id')
+//            ->leftJoin('listing_image','listing_image.listing_id', '=', 'listing.id')
+//            ->leftJoin('review','review.listing_id', '=', 'listing.id')
+//            ->leftJoin('application','application.listing_id', '=', 'listing.id')
+//            ->where('listing.id', '=', $listing->id)
+//            ->first();
 
-//        $listing = Listing::with(['user', 'listingimages'])
-//            ->get();
-//
-//        dd($listing);
+//        Good 1
+        $custom_listing = Listing::
+            with(['user','listingimages:listing_image_path,listing_id','applications','reviews'])
+            ->find($listing->id);
+//            ->where('listing.id', '=', $listing->id)
+//            ->first();
 
         return response()
-            ->view('directory_listing.listing', ['listing' => $listing], 200);
+            ->view('directory_listing.listing', ['listing' => $custom_listing], 200);
     }
 
     /**

@@ -18,17 +18,18 @@ class Listing extends Model
         'listing_address_subdivision_1',
         'listing_address_subdivision_2',
         'listing_address_subdivision_3',
+        'listing_address_coordinate',
         'listing_price',
         'listing_rating',
         'listing_available',
-        'listing_location',
         'listing_specification_bathroom',
         'listing_specification_bedroom',
-        'listing_specification_size',
+        'listing_specification_owner',
+        'listing_specification_tenant',
     ];
 
     protected $casts = [
-        'listing_location' => Point::class,
+        'listing_address_coordinate' => Point::class,
     ];
 
     public function newEloquentBuilder($query): SpatialBuilder

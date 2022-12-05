@@ -29,20 +29,21 @@ class ListingFactory extends Factory
             'listing_name' => fake()->words(4, true), // === sentence(4);
 //            'listing_name' => fake()->realTextBetween(3, 30, 5), // generate 3 to 30 English characters; indexSize 1->5, I choose 5 to get most accurate word generation
             'listing_description' => fake()->optional()->paragraphs(3, true),
-//            'listing_address_subdivision_1' => fake()->city(),
-            'listing_address_subdivision_1' => fake()->randomElement($vietnam_provinces),
+            'listing_address_subdivision_1' => fake()->randomElement($vietnam_provinces), // fake()->city()
             'listing_address_subdivision_2' => fake()->optional()->streetAddress(),
             'listing_address_subdivision_3' => fake()->optional()->streetName(),
+            'listing_address_coordinate' => new Point($x,  $y, 4326),
+//            'listing_address_coordinate' => DB::raw("ST_PointFromText('POINT(" . $y . " " . $x . ")')"),
+//            'listing_address_coordinate' => DB::raw("ST_GeometryFromText('POINT(54.8765696 -2.9261824)')"),
 //            'listing_image' => fake()->optional()->imageUrl(640, 480, 'listing', true, 'image', true),
             'listing_price' => fake()->numberBetween(500, 20000).'000', // 500k->20m VND
 //            'listing_rating' => fake()->optional()->numberBetween(1,5), // 1-5 stars
-            'listing_available' => fake()->numberBetween(0,1), // 0 is FALSE, 1 is TRUE
-            'listing_location' => new Point($x,  $y, 4326),
-//            'listing_location' => DB::raw("ST_PointFromText('POINT(" . $y . " " . $x . ")')"),
-//            'listing_location' => DB::raw("ST_GeometryFromText('POINT(54.8765696 -2.9261824)')"),
+            'listing_available' => fake()->numberBetween(0,1), // 0,1 is FALSE, TRUE
             'listing_specification_bathroom' => fake()->numberBetween(0, 3), // 0-3 bathrooms
             'listing_specification_bedroom' => fake()->numberBetween(0, 4), // 0-4 bedrooms
             'listing_specification_size' => fake()->numberBetween(5, 120), // 5-120 m2
+            'listing_specification_owner' => fake()->numberBetween(0, 1), // 0,1 is FALSE, TRUE
+            'listing_specification_tenant' => fake()->numberBetween(1, 5), // 1 to 5 people allowed
 
 //            'created_at' => now(),
 //            'updated_at' => now(),

@@ -28,7 +28,9 @@ use Illuminate\Support\Facades\Route;
 // Homepage route, placed at the beginning of the file
 //Route::redirect('/', '/listings/', 302);
 
-Route::get('/', HomeController::class)
+Route::redirect('/', '/home', '302');
+
+Route::get('/home', HomeController::class)
     ->name('route_home');
 
 Route::resource('/listings', ListingsController::class);

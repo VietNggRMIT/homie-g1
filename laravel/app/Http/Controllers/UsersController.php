@@ -3,10 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use App\Models\Listing;
-use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class UsersController extends Controller
 {
@@ -44,27 +41,48 @@ class UsersController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $user)
     {
-        $user = DB::table('user')->find($id);
-        $listings = DB::table('listing')
-                ->where('user_id', '=', $id)
-                ->get();
+
+//        Viet Anh (05 Dec 2022)
+//        $user = DB::table('user')->find($id);
+//        $listings = DB::table('listing')
+//            ->where('user_id', '=', $id)
+//            ->get();
+//
+//        return response()
+//            ->view('directory_user.user', ['user' => $user, 'listings' => $listings], 200);
+
+//        Thanh Nguyen (05 Dec 2022)
+        $custom_user = User::
+            with('listings')
+            ->with('listings.listingimages:listing_image_path,listing_id')
+//            ->with('listings.reviews') // Cannot query grandchildren
+//            ->with('listings.applications') // Cannot query grandchildren
+            ->with(['listings' => function($query){
+                $query->withCount('reviews');
+                $query->withCount('applications');
+            }])
+//            ->withCount(['listings', 'reviews'])
+//            ->withCount(['listings', 'applications'])
+            ->find($user->id);
+
+//        dd($custom_user);
 
         return response()
-            ->view('directory_user.user', ['user' => $user, 'listings' => $listings], 200);
+            ->view('directory_user.user', ['user' => $custom_user], 200);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
         //
     }
@@ -73,10 +91,10 @@ class UsersController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
         //
     }
@@ -84,10 +102,10 @@ class UsersController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
         //
     }

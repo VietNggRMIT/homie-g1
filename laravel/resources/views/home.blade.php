@@ -80,26 +80,30 @@
         </div>
     </nav>
 
-    <div class="mt-0">
-        <button type="button"
+    <div class="container mx-auto">
+        <div class="flex flex-col align-middle">
+            <button
+                onclick="window.location.href='{{ route('listings.index') }}';"
+                type="button"
                 class="text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 shadow-lg shadow-lime-500/50 dark:shadow-lg dark:shadow-lime-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">
-            <a href="{{ route('listings.index') }}">Show all listings</a>
-        </button>
-
-        <div>There are <span data-purecounter-end="{{ $listings }}" class="purecounter">0</span> listings available.
+                Show all listings
+            </button>
+            <div>There are
+                <span data-purecounter-end="{{ $listings }}" class="text-3xl purecounter">0</span> listings available
+                (<span data-purecounter-end="{{ $listingimages }}" class="text-3xl purecounter">0</span> listing images,
+                <span data-purecounter-end="{{ $reviews }}" class="text-3xl purecounter">0</span> reviews,
+                <span data-purecounter-end="{{ $applications }}" class="text-3xl purecounter">0</span> applications)
+            </div>
+            <div>There are <span data-purecounter-end="{{ $users }}" class="text-3xl purecounter">0</span> users online.</div>
+            <div>There are <span data-purecounter-end="{{ $blogs }}" class="text-3xl purecounter">0</span> blogs to read.</div>
+            <div class="flex flex-col justify-center">
+                @for ($i = 0; $i < 50; $i++)
+                    <div>Empty line.</div>
+                @endfor
+            </div>
         </div>
-        <div class="ml-5">
-            <div> There are <span data-purecounter-end="{{ $listingimages }}" class="purecounter">0</span> listing images.</div>
-            <div> There are <span data-purecounter-end="{{ $reviews }}" class="purecounter">0</span> reviews.</div>
-            <div> There are <span data-purecounter-end="{{ $applications }}" class="purecounter">0</span> applications.</div>
-        </div>
-        <div>There are <span data-purecounter-end="{{ $users }}" class="purecounter">0</span> users online.</div>
-        <div>There are <span data-purecounter-end="{{ $blogs }}" class="purecounter">0</span> blogs to read.</div>
     </div>
 
-    @for ($i = 0; $i < 50; $i++)
-        <div>Empty line.</div>
-    @endfor
     @vite('resources/js/app.js')
     @vite('webfonts.css')
 </body>
