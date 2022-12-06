@@ -221,7 +221,7 @@ nav {
             .web-logo {
                 width: 150px;
 
-                &:hover {
+                &:hover{
                     
                 }
             }
@@ -404,6 +404,7 @@ nav {
     max-height: 200px;
     margin-top: 5px;
     align-items: center;
+    border-radius: 50%;
   }
   
   .quick-info{
@@ -419,6 +420,7 @@ nav {
     justify-content: center;
   }
   
+
 }
 
 //article styling

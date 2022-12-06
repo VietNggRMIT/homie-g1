@@ -315,6 +315,7 @@ nav .navbar-collapse ul.nav-icons li a.create-listing:hover .fa-plus {
   max-height: 200px;
   margin-top: 5px;
   align-items: center;
+  border-radius: 50%;
 }
 .banner-dashboard .quick-info ul {
   text-align: left;
