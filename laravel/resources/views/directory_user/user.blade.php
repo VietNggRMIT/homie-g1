@@ -5,8 +5,8 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    @vite('resources/css/app.css')
-    <title>Document</title>
+    @vite(['resources/css/app.css', 'resources/js/app.js', 'webfonts.css'])
+    <title>{{ config('app.name', 'Laravel') }}</title>
 </head>
 <body>
     <div>
@@ -78,38 +78,48 @@
         <div>
             <h1>Listings</h1>
             @foreach($user->listings as $listing)
-                <div>
-                    <div>$listing->id: {{ $listing->id }}</div>
+                <div {!! $listing->listing_available == 0 ? 'style="opacity: 0.4"' : 'style="opacity: 1"' !!}>
                     <div>
-                        $listing->listing_name:
-                        <button
-                            onclick="window.location.href='{{ route('listings.show', ['listing' => $listing]) }}'"
-                            type="button"
-                        >
-                            {{ $listing->listing_name }}
-                        </button>
+                        <h2>Listing</h2>
+                        <div>$listing->id: {{ $listing->id }}</div>
+                        <div>
+                            $listing->listing_name:
+                            <button
+                                onclick="window.location.href='{{ route('listings.show', ['listing' => $listing]) }}';"
+                                type="button"
+                            >
+                                {{ $listing->listing_name }}
+                            </button>
+                        </div>
+                        <div>
+                            $listing->listingimages:
+                            @if($listing->listingimages->isEmpty())
+                                <img
+                                    src="https://via.placeholder.com/300.png/"
+                                    width="100"
+                                    height="100%"
+                                >
+                            @else
+                                @foreach ($listing->listingimages as $listingimage)
+                                    <img
+                                        src="{{ asset('storage/images/').'/'.$listingimage->listing_image_path }}"
+                                        width="100"
+                                        height="100%"
+                                    >
+                                @endforeach
+                            @endif
+                        </div>
+                        <div>$listing->listing_price: {{ number_format( (int) $listing->listing_price) }}</div>
+                        <div>$listing->listing_available: {{ $listing->listing_available }}</div>
                     </div>
 
-                    <div>$listing->reviews_count: {{ $listing->reviews_count }}</div>
-                    <div>$listing->applications_count:  {{ $listing->applications_count }}</div>
-
                     <div>
-                        $listing->listingimages:
-                        @if($listing->listingimages->isEmpty())
-                            <img
-                                src="https://via.placeholder.com/300.png/"
-                                style="width:100px;height:100%;object-fit: contain;"
-                            >
-                        @else
-                            @foreach ($listing->listingimages as $listingimage)
-                                <img
-                                    src="{{ asset('storage/images/').'/'.$listingimage->listing_image_path }}"
-                                    style="width:100px;height:100%;object-fit: cover;"
-                                >
-                            @endforeach
-                        @endif
+                        <h2>Special</h2>
+                        <div>$listing->reviews_avg_review_rating: {{ (float) $listing->reviews_avg_review_rating }} stars from $listing->reviews_count: {{ (int) $listing->reviews_count }} reviews</div>
+                        <div>$listing->applications_count: {{ (int) $listing->applications_count }} applications</div>
                     </div>
                 </div>
+
                 <br>
             @endforeach
         </div>
@@ -120,24 +130,22 @@
             <h1>Blogs</h1>
             @foreach($user->blogs as $blog)
                 <div>
+                    <h2>Blog</h2>
                     <div>$blog->id: {{ $blog->id }}</div>
                     <div>
                         $blog->blog_name:
                         <button
-                            onclick="window.location.href='{{ route('blogs.show', ['blog' => $blog]) }}'"
+                            onclick="window.location.href='{{ route('blogs.show', ['blog' => $blog]) }}';"
                             type="button"
                         >
                             {{ $blog->blog_name }}
                         </button>
                     </div>
                 </div>
+
                 <br>
             @endforeach
         </div>
-
     </div>
-
-    @vite('resources/js/app.js')
-    @vite('webfonts.css')
 </body>
 </html>

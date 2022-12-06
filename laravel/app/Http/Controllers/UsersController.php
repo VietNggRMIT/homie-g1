@@ -63,14 +63,13 @@ class UsersController extends Controller
 //            ->with('listings.reviews') // Cannot query grandchildren
 //            ->with('listings.applications') // Cannot query grandchildren
             ->with(['listings' => function($query){
+                $query->withAvg('reviews', 'review_rating');
                 $query->withCount('reviews');
                 $query->withCount('applications');
             }])
-//            ->withCount(['listings', 'reviews'])
-//            ->withCount(['listings', 'applications'])
+//            ->withCount(['listings', 'reviews']) // Can't do this since it would AVG of all listings
+//            ->withCount(['listings', 'applications']) // Can't do this it would COUNT of all applications received
             ->find($user->id);
-
-//        dd($custom_user);
 
         return response()
             ->view('directory_user.user', ['user' => $custom_user], 200);

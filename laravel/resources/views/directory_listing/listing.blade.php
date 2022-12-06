@@ -5,8 +5,8 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    @vite('resources/css/app.css')
-    <title>Document</title>
+    @vite(['resources/css/app.css', 'resources/js/app.js', 'webfonts.css'])
+    <title>{{ config('app.name', 'Laravel') }}</title>
 </head>
 <body>
     <div>
@@ -46,10 +46,10 @@
 
         <hr>
 
-        <div>
-            <div {!! $listing->listing_available == 0 ? 'style="opacity: 0.4"' : 'style="opacity: 1"' !!}>
+        <div {!! $listing->listing_available == 0 ? 'style="opacity: 0.4"' : 'style="opacity: 1"' !!}>
+            <div>
+                <h2>Listing</h2>
                 <div>$listing->id: {{ $listing->id }}</div>
-{{--                <div>$custom_listing->id: {{ $custom_listing->id }}</div>--}}
                 <div>
                     $listing->listing_name:
                     <button
@@ -83,20 +83,7 @@
                 </div>
                 <div>$listing->listing_price: {{ number_format( (int) $listing->listing_price) }}</div>
                 <div>$listing->listing_available: {{ $listing->listing_available }}</div>
-                <div>$listing->listing_address_coordinate:
-                    {{ $x=$listing->listing_address_coordinate->latitude }},{{ $y=$listing->listing_address_coordinate->longitude }}
-                </div>
-                <div>
-                    <iframe
-                        width="400"
-                        height="300"
-                        style="border:0"
-                        allowfullscreen=""
-                        loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade"
-                        src="https://maps.google.com/maps?q={{$x.",".$y}}&amp;t=&amp;z=12&amp;iwloc=B&amp;output=embed">
-                    </iframe>
-                </div>
+                <div>$listing->listing_address_coordinate: {{ $listing->listing_address_coordinate->latitude.",".$listing->listing_address_coordinate->longitude }}</div>
                 <div>$listing->listing_specification_bedroom: {{ $listing->listing_specification_bedroom }}</div>
                 <div>$listing->listing_specification_bathroom: {{ $listing->listing_specification_bathroom }}</div>
                 <div>$listing->listing_specification_size: {{ $listing->listing_specification_size }}</div>
@@ -105,31 +92,28 @@
                 <div>$listing->user_id: {{ $listing->user_id }}</div>
                 <div>$listing->created_at: {{ $listing->created_at }}</div>
                 <div>$listing->updated_at: {{ $listing->updated_at }}</div>
+            </div>
 
-                <fieldset>
-                    <legend>Special:</legend>
-                    <div>$listing->reviews_avg_review_rating: {{ (float) $listing->reviews_avg_review_rating }} stars from $listing->reviews_count: {{ (int) $listing->reviews_count }} reviews</div>
-                    <div>$listing->applications_count: {{ (int) $listing->applications_count }} applications</div>
-                </fieldset>
+            <div>
+                <h2>Special</h2>
+                <div>$listing->reviews_avg_review_rating: {{ (float) $listing->reviews_avg_review_rating }} stars from $listing->reviews_count: {{ (int) $listing->reviews_count }} reviews</div>
+                <div>$listing->applications_count: {{ (int) $listing->applications_count }} applications</div>
+            </div>
 
-                <fieldset>
-                    <legend>Posted by:</legend>
-                    <div>$listing->user->id: {{ $listing->user->id }}</div>
-                    <div>
-                        $listing->user->user_real_name:
-                        <button
-                            onclick="window.location.href='{{ route('users.show', ['user' => $listing->user]) }}';"
-                            type="button"
-                        >
-                            {{ $listing->user->user_real_name }}
-                        </button>
-                    </div>
-                </fieldset>
+            <div>
+                <h2>Posted by</h2>
+                <div>$listing->user->id: {{ $listing->user->id }}</div>
+                <div>
+                    $listing->user->user_real_name:
+                    <button
+                        onclick="window.location.href='{{ route('users.show', ['user' => $listing->user]) }}';"
+                        type="button"
+                    >
+                        {{ $listing->user->user_real_name }}
+                    </button>
+                </div>
             </div>
         </div>
     </div>
-
-    @vite('resources/js/app.js')
-    @vite('webfonts.css')
 </body>
 </html>

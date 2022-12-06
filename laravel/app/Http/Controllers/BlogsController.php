@@ -18,7 +18,7 @@ class BlogsController extends Controller
             ->get();
 
         return response()
-            ->view('directory_blog.blogs', ['custom_blogs' => $custom_blogs], 200);
+            ->view('directory_blog.blogs', ['blogs' => $custom_blogs], 200);
     }
 
     /**
@@ -54,7 +54,7 @@ class BlogsController extends Controller
             ->find($blog->id);
 
         return response()
-            ->view('directory_blog.blog', ['custom_blog' => $custom_blog], 200);
+            ->view('directory_blog.blog', ['blog' => $custom_blog], 200);
     }
 
     /**

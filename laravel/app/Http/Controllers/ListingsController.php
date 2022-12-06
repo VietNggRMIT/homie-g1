@@ -89,9 +89,7 @@ class ListingsController extends Controller
             ->withAvg('reviews', 'review_rating')
             ->withCount('reviews')
             ->withCount('applications')
-//            ->find($listing->id);
-//                OR
-            ->first();
+            ->find($listing->id);
 
         return response()
             ->view('directory_listing.listing', ['listing' => $custom_listing], 200);

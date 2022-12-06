@@ -21,21 +21,43 @@ class HomeController extends Controller
      */
     public function __invoke(Request $request)
     {
-        $listings = Listing::count();
-        $users = User::count();
-        $blogs = Blog::count();
-        $reviews = Review::count();
-        $applications = Application::count();
-        $listingimages = ListingImage::count();
+        $listings = Listing::
+            inRandomOrder()
+            ->with('user')
+            ->with('listingimages:listing_image_path,listing_id')
+            ->withAvg('reviews', 'review_rating')
+            ->withCount('reviews')
+            ->withCount('applications')
+            ->limit(3) // here is yours limit
+            ->get();
+
+        $blogs = Blog::
+            inRandomOrder()
+            ->with('user')
+            ->limit(3) // here is yours limit
+            ->get();
+
+        $users = User::
+            inRandomOrder()
+            ->limit(3) // here is yours limit
+            ->get();
+
+        $custom_count = [
+            Listing::count(),
+            ListingImage::count(),
+            Review::count(),
+            Application::count(),
+            User::count(),
+            Blog::count(),
+        ];
+
 
         return response()
             ->view('home', [
+                'custom_count' => $custom_count,
                 'listings' => $listings,
-                'users' => $users,
                 'blogs' => $blogs,
-                'reviews' => $reviews,
-                'applications' => $applications,
-                'listingimages' => $listingimages
-                ], 200);
+                'users' => $users,
+            ], 200);
     }
 }
