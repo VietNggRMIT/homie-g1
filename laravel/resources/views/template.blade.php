@@ -11,8 +11,9 @@
 {{--    <title>@section('title','My Title')</title>--}}
 </head>
 <body>
+    <div class="container">
 
+    </div>
     @livewireScripts
-
 </body>
 </html>

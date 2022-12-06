@@ -18,7 +18,7 @@ export default defineConfig({
             // Google Fonts: Playfair Display, weight: 400, 700
             // Google Fonts: Montserrat, weight: 400, 700
             'https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap',
-            'https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap',
+            // 'https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap',
             'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap',
         ])
     ],

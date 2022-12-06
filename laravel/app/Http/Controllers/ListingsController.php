@@ -33,7 +33,7 @@ class ListingsController extends Controller
             ->get();
 
             return response()
-                ->view('directory_listing.listings', ['custom_listings' => $custom_listings], 200);
+                ->view('directory_listing.listings', ['listings' => $custom_listings], 200);
     }
 
     /**

@@ -9,35 +9,40 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 </head>
 <body>
-    <div>
+    <div class="container">
         <div>
             <button
                 onclick="window.location.href='{{ route('route_home') }}';"
                 type="button"
+                class="btn btn-primary"
             >
                 Home
             </button>
             <button
                 onclick="window.location.href='{{ route('listings.index') }}';"
                 type="button"
+                class="btn btn-primary"
             >
-                Show all listings
+                Listings
             </button>
             <button
                 onclick="window.location.href='{{ route('blogs.index') }}'"
                 type="button"
+                class="btn btn-primary"
             >
-                Show all blogs
+                Blogs
             </button>
             <button
                 onclick="window.location.href='{{ route('route_about') }}'"
                 type="button"
+                class="btn btn-primary"
             >
                 About
             </button>
             <button
                 onclick="window.location.href='{{ url()->previous() }}';"
                 type="button"
+                class="btn btn-primary"
             >
                 Back to previous page
             </button>
@@ -48,6 +53,8 @@
 
         <h1>About Page</h1>
         <h2>Write about the company</h2>
+        <div>Laravel version: {{ App::VERSION() }}</div>
+        <div>The time according to the system is: {{ now() }}</div>
     </div>
 </body>
 </html>

@@ -5,40 +5,45 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    @vite(['resources/css/app.css', 'resources/js/app.js', 'webfonts.css'])
     @livewireStyles
+    @vite(['resources/css/app.css', 'resources/js/app.js', 'webfonts.css'])
     <title>{{ config('app.name', 'Laravel') }}</title>
 </head>
 <body>
-    <div>
+    <div class="container">
         <div>
             <button
                 onclick="window.location.href='{{ route('route_home') }}';"
                 type="button"
+                class="btn btn-primary"
             >
                 Home
             </button>
             <button
                 onclick="window.location.href='{{ route('listings.index') }}';"
                 type="button"
+                class="btn btn-primary"
             >
-                Show all listings
+                Listings
             </button>
             <button
                 onclick="window.location.href='{{ route('blogs.index') }}'"
                 type="button"
+                class="btn btn-primary"
             >
-                Show all blogs
+                Blogs
             </button>
             <button
                 onclick="window.location.href='{{ route('route_about') }}'"
                 type="button"
+                class="btn btn-primary"
             >
                 About
             </button>
             <button
                 onclick="window.location.href='{{ url()->previous() }}';"
                 type="button"
+                class="btn btn-primary"
             >
                 Back to previous page
             </button>
@@ -51,7 +56,11 @@
 
         <hr>
 
-        @foreach ($custom_listings as $listing)
+        @livewire('live-search-listing')
+
+        <hr>
+
+        @foreach ($listings as $listing)
             <div {!! $listing->listing_available == 0 ? 'style="opacity: 0.4"' : 'style="opacity: 1"' !!}>
                 <div>
                     <h2>Listing</h2>

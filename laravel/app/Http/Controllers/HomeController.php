@@ -23,6 +23,7 @@ class HomeController extends Controller
     {
         $listings = Listing::
             inRandomOrder()
+            ->where('listing.listing_available', '1')
             ->with('user')
             ->with('listingimages:listing_image_path,listing_id')
             ->withAvg('reviews', 'review_rating')
