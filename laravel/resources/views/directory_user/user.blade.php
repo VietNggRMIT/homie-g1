@@ -41,7 +41,9 @@
             >
                 Back to previous page
             </button>
+            {{ Breadcrumbs::render('breadcrumb_user', $user) }}
         </div>
+
         <hr>
 
         <div>

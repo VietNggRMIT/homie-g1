@@ -41,6 +41,7 @@
             >
                 Back to previous page
             </button>
+            {{ Breadcrumbs::render('breadcrumb_listing', $listing) }}
         </div>
 
         <hr>
@@ -48,6 +49,7 @@
         <div>
             <div {!! $listing->listing_available == 0 ? 'style="opacity: 0.4"' : 'style="opacity: 1"' !!}>
                 <div>$listing->id: {{ $listing->id }}</div>
+{{--                <div>$custom_listing->id: {{ $custom_listing->id }}</div>--}}
                 <div>
                     $listing->listing_name:
                     <button

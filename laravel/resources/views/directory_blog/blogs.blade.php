@@ -41,6 +41,7 @@
             >
                 Back to previous page
             </button>
+            {{ Breadcrumbs::render('breadcrumb_blogs') }}
         </div>
 
         <hr>

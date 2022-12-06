@@ -18,15 +18,10 @@ class ListingsController extends Controller
     public function index()
     {
 //        ======================DO NOT DELETE======================
-//        $listings_true = DB::table('listing')
+//        $custom_listings = DB::table('listing')
 //            ->leftJoin('user', 'listing.user_id', '=', 'user.id')
 //            ->select('listing.*', 'user.user_real_name')
 //            ->where('listing_available', '1')
-//            ->get();
-//        $listings_false = DB::table('listing')
-//            ->leftJoin('user', 'listing.user_id', '=', 'user.id')
-//            ->select('listing.*', 'user.user_real_name')
-//            ->where('listing_available', '0')
 //            ->get();
 //        ======================DO NOT DELETE======================
 
@@ -35,7 +30,6 @@ class ListingsController extends Controller
             ->withAvg('reviews', 'review_rating')
             ->withCount('reviews')
             ->withCount('applications')
-//            ->where('listing.listing_available', '=', '1')
             ->get();
 
             return response()
@@ -95,9 +89,9 @@ class ListingsController extends Controller
             ->withAvg('reviews', 'review_rating')
             ->withCount('reviews')
             ->withCount('applications')
-            ->find($listing->id);
-//            ->where('listing.id', '=', $listing->id)
-//            ->first();
+//            ->find($listing->id);
+//                OR
+            ->first();
 
         return response()
             ->view('directory_listing.listing', ['listing' => $custom_listing], 200);
