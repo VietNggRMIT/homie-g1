@@ -269,9 +269,17 @@ nav {
   p {
     font-size: medium;
   }
+
   .container {
     padding-top: 50px;
     padding-bottom: 50px;
+  }
+
+  .img-fluid{
+    &.error-logo{
+      width: 50%;
+      height: 100%;
+    }
   }
 }
 
@@ -320,6 +328,7 @@ nav {
   }
 }  
 }
+
   #banner-box-2{
     background-image: url('..\\php1\\resources\\background\\hanoibackground.png');
     height: 600px;
@@ -335,6 +344,27 @@ nav {
     padding: 10px;
     text-align: center;
     }
+  }
+
+  #banner-box-3{
+    background-image: url('..\\php1\\resources\\background\\hcmc-background.jpg');
+    height: 600px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    #hero-box{
+      background-color: rgb(231, 231, 231);opacity: 10%;
+      margin-top: 150px;
+      margin-bottom: 20px;
+      opacity: 90%;
+      padding: 10px;
+      text-align: center;
+
+      h3{
+        font-size: 40px;
+      }
+      }
   }
 
 .mission {

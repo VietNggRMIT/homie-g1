@@ -201,6 +201,10 @@ nav .navbar-collapse ul.nav-icons li a.create-listing:hover .fa-plus {
   padding-top: 50px;
   padding-bottom: 50px;
 }
+.main-wrapper .img-fluid.error-logo {
+  width: 50%;
+  height: 100%;
+}
 
 .container-fluid.about-box {
   padding-left: 0;
@@ -258,6 +262,27 @@ nav .navbar-collapse ul.nav-icons li a.create-listing:hover .fa-plus {
   opacity: 90%;
   padding: 10px;
   text-align: center;
+}
+
+#banner-box-3 {
+  background-image: url("..\\php1\\resources\\background\\hcmc-background.jpg");
+  height: 600px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+#banner-box-3 #hero-box {
+  background-color: rgb(231, 231, 231);
+  opacity: 10%;
+  margin-top: 150px;
+  margin-bottom: 20px;
+  opacity: 90%;
+  padding: 10px;
+  text-align: center;
+}
+#banner-box-3 #hero-box h3 {
+  font-size: 40px;
 }
 
 .mission {
