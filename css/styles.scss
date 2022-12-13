@@ -48,7 +48,6 @@ h1{
 
 h2 {
   font-size: large;
-  font-style: italic;
   font-family: 'Roboto Condensed', sans-serif;
 }
 
@@ -292,11 +291,7 @@ nav {
     height: 650px;
   }
   #banner-box-1{
-    -webkit-animation: bgcolor 20s infinite;
-    animation: bgcolor 10s infinite;
-    -webkit-animation-direction: alternate;
-    animation-direction: alternate;
-    height: auto;
+    background-image: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
     h2{
       color: rgb(255, 255, 255);
       font-size: 70px;
@@ -309,7 +304,7 @@ nav {
       font-family: 'Roboto', sans-serif;
       text-shadow: -0.5px -0.5px 0 #000, 0.5px -0.5px 0 #000, -0.5px 0.5px 0 #000, 0.5px 0.5px 0 #000;
     }
-  
+
 
   @media only screen and (max-width: 768px) {
       #story-about{
@@ -328,6 +323,37 @@ nav {
   }
 }  
 }
+
+.filter-img{
+  margin-top: 100px ;
+  padding-left: 100px;
+  padding-right: 100px;
+  
+  h2{
+    font-size: 50px;
+  }
+
+  a{
+    text-decoration: none;
+  }
+  img{
+    width: 100%;
+    &:hover{
+      scale: (1.05);
+    }
+  }
+
+  .under-img-box{
+    padding-top: 15px;
+  }
+
+  .top-left {
+    position: absolute;
+    top: 8px;
+    left: 16px;
+  }
+
+} 
 
   #banner-box-2{
     background-image: url('..\\php1\\resources\\background\\hanoibackground.png');
@@ -361,7 +387,7 @@ nav {
       padding: 10px;
       text-align: center;
 
-      h3{
+      h2{
         font-size: 40px;
       }
       }
@@ -505,6 +531,16 @@ nav {
       font-size: 30px;
       &:hover {
         color: aquamarine;
+      }
+    }
+  }
+
+  .sidebar{
+    &.article{
+      padding-top: 100px;
+      img{
+        width: 300px;
+        padding-bottom: 20px;
       }
     }
   }
@@ -691,6 +727,16 @@ footer .social-icons {
   }
 
   
+}
+
+.filter-img{
+  h2{
+    font-size: large;
+  }
+
+  .top-img-box{
+    margin-top: 15px;
+  }
 }
 
     // Mobile footer styling 

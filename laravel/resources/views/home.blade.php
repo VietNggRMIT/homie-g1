@@ -55,6 +55,23 @@
         <hr>
 
         <div>
+        <div class="main-wrapper">
+        <div class="container-fluid" id="banner-box-3">
+                    <div class="row justify-content-center">
+                        <div class="col" id="hero-box">
+                            <p><h2>Welcome to Homie Rental</h2><br>
+                            Site has 
+                            <span data-purecounter-end="{{ $custom_count[0] }}" class="purecounter">0</span> listings available
+                            (<span data-purecounter-end="{{ $custom_count[1] }}" class="purecounter">0</span> listing images,
+                            <span data-purecounter-end="{{ $custom_count[2] }}" class="purecounter">0</span> reviews,
+                            <span data-purecounter-end="{{ $custom_count[3] }}" class="purecounter">0</span> applications)<br>
+                            Site has user online <br>
+                            Site has blog to read <br><br>
+                            <q class="quote"><i>Renting easy like your homie</i></q> - Founder                  
+                            </p>
+                        </div>
+                    </div>
+                </div>
             <div>There are
                 <span data-purecounter-end="{{ $custom_count[0] }}" class="purecounter">0</span> listings available
                 (<span data-purecounter-end="{{ $custom_count[1] }}" class="purecounter">0</span> listing images,
