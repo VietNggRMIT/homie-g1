@@ -4,7 +4,6 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
-        <script src="js/scripts.js" async></script>
         <script src="https://kit.fontawesome.com/8f1f885a37.js" crossorigin="anonymous"></script>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
         <link rel="stylesheet" href="css/styles.css">
@@ -24,7 +23,7 @@
                 <div class="row">
                     <div class="col-lg-4">
                         <div class="banner-dashboard">
-                            <div class="card" style="width: 300px;">
+                            <div class="card dashboard-account">
                                 <div class="box">
                                     <img class="card-img-top rounded-circle"  src="https://i.pinimg.com/originals/ea/cb/35/eacb35204ab50f96206bfe8013ccb7ec.jpg" alt="Card image cap">
                                 </div>
@@ -45,11 +44,222 @@
                                             <li><p><i class="fa-sharp fa-solid fa-cake-candles"></i> Birthday: 6/12/2000</p></li>
                                         </ul>
                                     </div>
+                                    <hr>
+                                    <div class="acc-options-btns d-grid gap-2 md-block">
+                                        <a class="btn btn-warning">Update info</a>
+                                        <a class="btn btn-warning">Change password</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-8">
+                        <div class="card">
+                            <h2>Mr. White's listings</h2>
+                            <h6>Mr. White very rich and handsome</h6>
+                            <hr>
+                            <div class="row">
+                                <div class="col">
+                                    <a class="card listing-card" href="#">
+                                        <div id="carouselControls" class="carousel slide" data-bs-ride="false">
+                                            <div class="carousel-inner">
+                                            <div class="carousel-item active">
+                                                <img src="php1\resources\listing_image\1.jpg" class="d-block" alt="listing-img">
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img src="php1\resources\listing_image\2.jpg" class="d-block" alt="listing-img">
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img src="php1\resources\listing_image\3.jpg" class="d-block" alt="listing-img">
+                                            </div>
+                                            </div>
+                                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselControls" data-bs-slide="prev">
+                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                            <span class="visually-hidden">Previous</span>
+                                            </button>
+                                            <button class="carousel-control-next" type="button" data-bs-target="#carouselControls" data-bs-slide="next">
+                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                            <span class="visually-hidden">Next</span>
+                                            </button>
+                                        </div>
+                                        <div class="card-body">
+                                            <h5 class="card-title">Nhà chất</h5>
+                                            <div class="card-listing-location d-flex mb-2">
+                                                <i class="fa-solid fa-location-dot"></i>
+                                                <p class="card-text">123 Mỹ... Đình</p>
+                                            </div>
+                                            <div class="card-description">
+                                                <p>
+                                                    First it marked out a race-course, in a sort of circle, 
+                                                    ('the exact shape doesn't matter,' it said,) and then all 
+                                                    the party were placed along the course, here and there. There 
+                                                    was no 'One, two, three, and away,' but they began running 
+                                                    when they liked, and left off when they liked, so that it 
+                                                    was not easy to know when the race was over. However, when they 
+                                                    had been running half an hour or so, and were quite dry again, 
+                                                    the Dodo suddenly called out 'The race is over!' and they all crowded round.
+                                                </p>
+                                            </div>
+                                            <div class="listing-amenities d-flex mb-3">
+                                                <div class="listing-feature">
+                                                    <i class="fa-solid fa-users-between-lines"></i>
+                                                    <span>2 person(s)</span>
+                                                </div>
+                                                <div class="listing-feature">
+                                                    <i class="fa-solid fa-user-shield"></i>
+                                                    <span>With owner</span>
+                                                </div>
+                                                <div class="listing-feature">
+                                                    <i class="fa-solid fa-ruler-combined"></i>
+                                                    <span>20 &#13217</span>
+                                                </div>
+                                            </div>
+                                            <hr>
+                                            <div class="card-price-rating d-flex">
+                                                <p class="card-text price">$420 <span class="light-gray">/mo</span></p>
+                                                <div class="listing-rating">
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <span>4.7</span>
+                                                    <span class="sum-review light-gray">(32)</span>
+                                                </div>
+                                            </div>  
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col">
+                                    <a class="card listing-card" href="#">
+                                        <div id="carouselControls" class="carousel slide card-slider" data-bs-ride="false">
+                                            <div class="carousel-inner">
+                                            <div class="carousel-item active">
+                                                <img src="php1\resources\listing_image\1.jpg" class="d-block" alt="listing-img">
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img src="php1\resources\listing_image\2.jpg" class="d-block" alt="listing-img">
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img src="php1\resources\listing_image\3.jpg" class="d-block" alt="listing-img">
+                                            </div>
+                                            </div>
+                                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselControls" data-bs-slide="prev">
+                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                            <span class="visually-hidden">Previous</span>
+                                            </button>
+                                            <button class="carousel-control-next" type="button" data-bs-target="#carouselControls" data-bs-slide="next">
+                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                            <span class="visually-hidden">Next</span>
+                                            </button>
+                                        </div>
+                                        <div class="card-body">
+                                            <h5 class="card-title">Nhà chất</h5>
+                                            <div class="card-listing-location d-flex mb-2">
+                                                <i class="fa-solid fa-location-dot"></i>
+                                                <p class="card-text">123 Mỹ... Đình</p>
+                                            </div>
+                                            <div class="card-description">
+                                                <p>
+                                                    First it marked out a race-course, in a sort of circle, 
+                                                    ('the exact shape doesn't matter,' it said,) and then all 
+                                                    the party were placed along the course, here and there. There 
+                                                    was no 'One, two, three, and away,' but they began running 
+                                                    when they liked, and left off when they liked, so that it 
+                                                    was not easy to know when the race was over. However, when they 
+                                                    had been running half an hour or so, and were quite dry again, 
+                                                    the Dodo suddenly called out 'The race is over!' and they all crowded round.
+                                                </p>
+                                            </div>
+                                            <div class="listing-amenities d-flex mb-3">
+                                                <div class="listing-feature">
+                                                    <i class="fa-solid fa-users-between-lines"></i>
+                                                    <span>2 person(s)</span>
+                                                </div>
+                                                <div class="listing-feature">
+                                                    <i class="fa-solid fa-user-shield"></i>
+                                                    <span>With owner</span>
+                                                </div>
+                                                <div class="listing-feature">
+                                                    <i class="fa-solid fa-ruler-combined"></i>
+                                                    <span>20 &#13217</span>
+                                                </div>
+                                            </div>
+                                            <hr>
+                                            <div class="card-price-rating d-flex">
+                                                <p class="card-text price">$420 <span class="light-gray">/mo</span></p>
+                                                <div class="listing-rating">
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <span>4.7</span>
+                                                    <span class="sum-review light-gray">(32)</span>
+                                                </div>
+                                            </div>  
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col">
+                                    <a class="card listing-card" href="#">
+                                        <div id="carouselControls" class="carousel slide card-slider" data-bs-ride="false">
+                                            <div class="carousel-inner">
+                                                <div class="carousel-item active">
+                                                <img src="php1\resources\listing_image\1.jpg" class="d-block" alt="listing-img">
+                                                </div>
+                                                <div class="carousel-item">
+                                                <img src="php1\resources\listing_image\2.jpg" class="d-block" alt="listing-img">
+                                                </div>
+                                                <div class="carousel-item">
+                                                <img src="php1\resources\listing_image\3.jpg" class="d-block" alt="listing-img">
+                                                </div>
+                                            </div>
+                                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselControls" data-bs-slide="prev">
+                                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                <span class="visually-hidden">Previous</span>
+                                            </button>
+                                            <button class="carousel-control-next" type="button" data-bs-target="#carouselControls" data-bs-slide="next">
+                                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                <span class="visually-hidden">Next</span>
+                                            </button>
+                                        </div>
+                                        <div class="card-body">
+                                            <h5 class="card-title">Nhà chất</h5>
+                                            <div class="card-listing-location d-flex mb-2">
+                                                <i class="fa-solid fa-location-dot"></i>
+                                                <p class="card-text">123 Mỹ... Đình</p>
+                                            </div>
+                                            <div class="card-description">
+                                                <p>
+                                                    Welcome to my crib, totally not a trap hau.
+                                                    Enjoy your stay at the finest trap hau.
+                                                    Set a text wrap limit here
+                                                </p>
+                                            </div>
+                                            <div class="listing-amenities d-flex mb-3">
+                                                <div class="listing-feature">
+                                                    <i class="fa-solid fa-users-between-lines"></i>
+                                                    <span>2 person(s)</span>
+                                                </div>
+                                                <div class="listing-feature">
+                                                    <i class="fa-solid fa-user-shield"></i>
+                                                    <span>With owner</span>
+                                                </div>
+                                                <div class="listing-feature">
+                                                    <i class="fa-solid fa-ruler-combined"></i>
+                                                    <span>20 &#13217</span>
+                                                </div>
+                                            </div>
+                                            <hr>
+                                            <div class="card-price-rating d-flex">
+                                                <p class="card-text price">$420 <span class="light-gray">/mo</span></p>
+                                                <div class="listing-rating">
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <span>4.7</span>
+                                                    <span class="sum-review light-gray">(32)</span>
+                                                </div>
+                                            </div>  
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="show-more d-flex justify-content-center">
+                                <button class="btn btn-lg btn-outline-primary">Show more</button>
+                            </div>
+                        </div>
                         <div class="card">
                             <div class="card-body">
                                 <div class="card accounts-info">
@@ -95,25 +305,24 @@
                                     </div>
                                 </div>
                                 <br>
-                                    <div class="card change-pass">
-                                        <div class="card-header">Change Password</div>
-                                            <div class="card-body">
-                                                <form>
-                                                    <div class="mb-3">
-                                                    <label class="small mb-1" for="currentPassword">Current Password</label>
-                                                    <input class="form-control" id="currentPassword" type="password" placeholder="Enter current password">
-                                                </div>
+                                <div class="card change-pass">
+                                    <div class="card-header">Change Password</div>
+                                        <div class="card-body">
+                                            <form>
                                                 <div class="mb-3">
-                                                    <label class="small mb-1" for="newPassword">New Password</label>
-                                                    <input class="form-control" id="newPassword" type="password" placeholder="Enter new password">
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label class="small mb-1" for="confirmPassword">Confirm Password</label>
-                                                    <input class="form-control" id="confirmPassword" type="password" placeholder="Confirm new password">
-                                                </div>
-                                                <button class="btn btn-primary" type="button">Save</button>
-                                            </form>
+                                                <label class="small mb-1" for="currentPassword">Current Password</label>
+                                                <input class="form-control" id="currentPassword" type="password" placeholder="Enter current password">
                                             </div>
+                                            <div class="mb-3">
+                                                <label class="small mb-1" for="newPassword">New Password</label>
+                                                <input class="form-control" id="newPassword" type="password" placeholder="Enter new password">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="small mb-1" for="confirmPassword">Confirm Password</label>
+                                                <input class="form-control" id="confirmPassword" type="password" placeholder="Confirm new password">
+                                            </div>
+                                            <button class="btn btn-primary" type="button">Save</button>
+                                        </form>
                                         </div>
                                     </div>
                                 </div>
@@ -123,7 +332,10 @@
                 </div>
             </div>
         </div>
+        <?php
+            require('footer.php');
+            require('bootstrapjs.php');
+        ?>
+        <script src="js/scripts.js" async></script>
     </body>
-    <?php
-        require('footer.php');
-    ?>
+</html>

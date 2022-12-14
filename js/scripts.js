@@ -1,4 +1,4 @@
-$(".slide").each(function(i) {
+$(".card-slider").each(function(i) {
     var carouselCard = $(this)
     //append number in ascending order to id of carousel
     carouselCard.attr('id', 'carouselControls' + i);

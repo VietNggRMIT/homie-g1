@@ -112,21 +112,38 @@ td {
 .card.account-card {
   border-color: #FFFFFF;
 }
+.card.dashboard-account {
+  width: 80%;
+}
 .card.listing-card {
+  margin: 0 auto;
   width: 23rem;
   text-decoration: none;
   color: #26272B;
   border-radius: 1rem;
   transition: all 0.25s ease-in-out;
+  margin-bottom: 2rem;
 }
 .card.listing-card .carousel .carousel-inner .carousel-item {
   width: 100%;
-  height: 300px;
+  height: 250px;
   overflow: hidden;
 }
 .card.listing-card .carousel .carousel-inner .carousel-item img {
   width: 100%;
-  height: 100%;
+  height: auto;
+}
+.card.listing-card .card-body .card-description {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* number of lines to show */
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  margin-bottom: 0.5rem;
+}
+.card.listing-card .card-body .card-description p {
+  margin-bottom: 0;
 }
 .card.listing-card .card-body .card-listing-location {
   color: #26272B;
@@ -173,11 +190,6 @@ form .input-group i {
 
 nav .container .navbar-brand .web-logo {
   width: 150px;
-}
-nav .navbar-collapse ul.nav-icons li a.nav-link.active {
-  border-radius: 50px;
-  background-color: #F0F1F3;
-  color: black;
 }
 nav .navbar-collapse ul.nav-icons li a.create-listing {
   border-radius: 10px;
@@ -666,6 +678,9 @@ footer .social-icons a {
   }
 }
 @media only screen and (min-width: 769px) and (max-width: 1024px) {
+  nav .navbar-collapse ul.nav-icons li a.create-listing {
+    border: none;
+  }
   .initial-post h1 {
     font-family: "Roboto", sans-serif;
     color: rgb(255, 85, 85);
