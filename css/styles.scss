@@ -42,7 +42,7 @@ body {
 }
 
 
-h1{
+h1 {
   font-family: 'Dancing Script', cursive;
 }
 
@@ -66,6 +66,42 @@ li {
 
 td {
   font-family: 'Roboto Condensed', sans-serif;
+}
+
+.dashboard-title {
+    padding-right: calc(var(--bs-gutter-x) * .5);
+    padding-left: calc(var(--bs-gutter-x) * .5);
+    margin-top: 30px;
+}
+
+.txt-wrap {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* number of lines to show */
+    line-clamp: 3; 
+    -webkit-box-orient: vertical;
+    margin-bottom: 0.5rem;
+}
+
+.profile-pic-container {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto;
+
+    img {
+        position: relative; 
+        top: 50%;
+        transform: translateY(-50%);
+    }
+}
+
+hr {
+    &.baby {
+        width: 3.5rem;
+    }
 }
 
 // Account card componenets
@@ -128,7 +164,8 @@ td {
 
   &.listing-card {
     margin: 0 auto;
-    width: 23rem;
+    max-width: 23rem;
+    min-width: 18rem;
     text-decoration: none;
     color: $dark-gray;
     border-radius: 1rem;
@@ -215,6 +252,38 @@ td {
 .light-gray {
     color: $light-gray;
 }
+
+// dashboard application listings styling
+.application-listings {
+    padding: 0 2rem 30px 2rem;
+
+    .column-labels {
+        margin-bottom: 1rem;
+    }
+
+    .applications {
+        a {
+            height: 80%;
+            transition: all 0.2s ease-in-out;
+            text-decoration: none;
+            color: #000;
+
+            &.app {
+                background-color: #f5f5f5;
+                padding: 3px 0 3px 0;
+                margin-bottom: 12px;
+                border-radius: 3px;
+                box-shadow: 0 0 5px 2px rgb(0 0 0 / 10%);
+
+            }
+
+            &:hover {
+                background-color: #E5EAF5;
+            }
+        }
+    }
+}
+
 //Listing card styling
 
 
@@ -303,8 +372,8 @@ nav {
   }
 }
 
-.container-fluid{
-  &.about-box{
+.container-fluid {
+  &.about-box {
     padding-left: 0;
     padding-right: 0;
   #story-about{
@@ -454,17 +523,13 @@ nav {
 }
 
 
-.table-about{
+.table-about {
   margin: 100px;
 }
 
-.banner-dashboard{
-  
-  .fa-solid{
-    color: orangered;
-  }
+.banner-dashboard {
 
-  .social-icons{
+  .social-icons {
     
     .icons{
       size: 2px;
@@ -472,31 +537,17 @@ nav {
     }
   }
   
-  p{
+  p {
     color: rgb(155, 155, 155);
   }
   
-  .card-img-top{
-    max-width: 200px;
-    max-height: 200px;
-    margin-top: 5px;
-    align-items: center;
-    border-radius: 50%;
-  }
   
   .quick-info{
     ul{
       text-align: left;
       list-style-type: none;
     }
-  }
-  
-  .box{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
+  } 
 
 }
 
