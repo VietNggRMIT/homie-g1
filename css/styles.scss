@@ -2,6 +2,8 @@
 $dark-gray: #26272B;
 $light-gray: #A9A9A9;
 $orange-star: #FFA500;
+$light-purple: #E5EAF5;
+$ice-cold: #A0D2EB;
 // Gont
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,100&display=swap');
 
@@ -101,6 +103,34 @@ td {
 hr {
     &.baby {
         width: 3.5rem;
+    }
+}
+
+.search-filter {
+    .form-control {
+        padding: 1rem;
+        padding-right: 65px;
+    }
+
+    .input-group-append {
+        z-index: 99;
+        transition: all 0.2s ease-in-out;
+
+        .ms-n5 {
+            // transform: translateX(-50px);
+            margin-left: -55px;
+            padding: 0.95rem 1.275rem;
+
+            i {
+                margin: 0;
+            }
+        }
+
+        &:hover {
+            .ms-n5 {
+                background-color: #a0d2eb;
+            }
+        }
     }
 }
 
@@ -232,7 +262,11 @@ hr {
 
         .card-price-rating {
             justify-content: space-between;
+            align-items: center;
             
+            p {
+                margin-bottom: 0;
+            }
         }
     }
 
@@ -870,14 +904,6 @@ footer .social-icons {
             .card-body {
                 .listing-amenities {
                     font-size: 0.8rem;
-                }
-
-                .card-price-rating {
-                    align-items: center;
-
-                    p {
-                        margin-bottom: 0;
-                    }
                 }
             }
         }

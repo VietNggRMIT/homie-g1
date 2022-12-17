@@ -23,7 +23,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-4">
-                            <div class="banner-dashboard">
+                            <div class="banner-dashboard mb-5">
                                 <div class="card dashboard-account">
                                     <div class="profile-pic-section mt-3">
                                         <div class="profile-pic-container">
@@ -89,6 +89,7 @@
                                             </div>
                                             <div class="card-body">
                                                 <h5 class="card-title">Nhà chất</h5>
+                                                <p class="mb-1">Posted by: Viet Dep Trai</p>
                                                 <div class="card-listing-location d-flex mb-2">
                                                     <i class="fa-solid fa-location-dot"></i>
                                                     <p class="card-text">123 Mỹ... Đình</p>
@@ -156,6 +157,7 @@
                                             </div>
                                             <div class="card-body">
                                                 <h5 class="card-title">Nhà chất</h5>
+                                                <p class="mb-1">Posted by: Viet Dep Trai</p>
                                                 <div class="card-listing-location d-flex mb-2">
                                                     <i class="fa-solid fa-location-dot"></i>
                                                     <p class="card-text">123 Mỹ... Đình</p>
@@ -223,6 +225,7 @@
                                             </div>
                                             <div class="card-body">
                                                 <h5 class="card-title">Nhà chất</h5>
+                                                <p class="mb-1">Posted by: Viet Dep Trai</p>
                                                 <div class="card-listing-location d-flex mb-2">
                                                     <i class="fa-solid fa-location-dot"></i>
                                                     <p class="card-text">123 Mỹ... Đình</p>
@@ -285,6 +288,7 @@
                                             </div>
                                             <div class="card-body">
                                                 <h5 class="card-title">Nhà chất</h5>
+                                                <p class="mb-1">Posted by: Viet Dep Trai</p>
                                                 <div class="card-listing-location d-flex mb-2">
                                                     <i class="fa-solid fa-location-dot"></i>
                                                     <p class="card-text">123 Mỹ... Đình</p>
@@ -411,31 +415,6 @@
                                             <div class="col-4 location txt-wrap">123hehe, Nhanh Chinh, Thanh Xuan, Ha Noi</div>
                                             <div class="col-2 date">21/01/2000</div>
                                         </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="card change-pass">
-                                        <div class="card-header">Change Password</div>
-                                            <div class="card-body">
-                                                <form>
-                                                    <div class="mb-3">
-                                                    <label class="small mb-1" for="currentPassword">Current Password</label>
-                                                    <input class="form-control" id="currentPassword" type="password" placeholder="Enter current password">
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label class="small mb-1" for="newPassword">New Password</label>
-                                                    <input class="form-control" id="newPassword" type="password" placeholder="Enter new password">
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label class="small mb-1" for="confirmPassword">Confirm Password</label>
-                                                    <input class="form-control" id="confirmPassword" type="password" placeholder="Confirm new password">
-                                                </div>
-                                                <button class="btn btn-primary" type="button">Save</button>
-                                            </form>
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
                             </div>

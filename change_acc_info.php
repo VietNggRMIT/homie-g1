@@ -21,29 +21,29 @@
         <main>
             <div class="main-wrapper">
                 <div class="container">
-                    <div class="title">
+                    <div class="title h1">
                         Account information
                     </div>
                     <hr class="baby">
-                    <div class="row">
-                        <div class="col-lg-3">
+                    <div class="row gx-5">
+                        <div class="col-lg-3 mb-5">
                             <div class="profile-pic-section mt-3 mb-4">
                                 <div class="profile-pic-container">
                                     <img class="card-img-top"  src="https://i.pinimg.com/originals/ea/cb/35/eacb35204ab50f96206bfe8013ccb7ec.jpg" alt="Card image cap">
                                 </div>
                             </div>
-                            <div class="">
+                            <div class="input-profile-pic">
                                 <label for="profilePic">Change profile picture</label>
                                 <input class="form-control" type="file" id="profilePic">
                             </div>
                         </div>
-                        <div class="col-lg-9">
+                        <div class="col-lg-7">
                             <div class="card accounts-info">
                                 <div class="card-header">Update user information</div>
                                 <div class="card-body">
                                     <form>
                                         <div class="row gx-3 mb-3">
-                                            <div class="col-md-6">
+                                            <div class="col-md-12">
                                                 <label class="small mb-1" for="inputName">Fullname</label>
                                                 <input class="form-control" id="inputName" type="text" placeholder="Fullname">
                                             </div>

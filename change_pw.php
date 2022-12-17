@@ -21,8 +21,12 @@
         <main>
             <div class="main-wrapper">
                 <div class="container">
-                    <div class="card">
-                        <div class="card-body">
+                    <div class="title h1">
+                        Change password
+                    </div>
+                    <hr class="baby">
+                    <div class="row">
+                        <div class="col-12 col-md-6">
                             <div class="card change-pass">
                                 <div class="card-header">Change Password</div>
                                     <div class="card-body">
