@@ -42,7 +42,7 @@ body {
 }
 
 
-h1{
+h1 {
   font-family: 'Dancing Script', cursive;
 }
 
@@ -56,9 +56,9 @@ h3 {
   font-size: 20px;
 }
 
-p {
-  font-family: 'Roboto Condensed', sans-serif;
-}
+// p {
+//   font-family: 'Roboto Condensed', sans-serif;
+// }
 
 li {
   font-family: 'Roboto Condensed', sans-serif;
@@ -66,6 +66,106 @@ li {
 
 td {
   font-family: 'Roboto Condensed', sans-serif;
+}
+
+.mr-1 {
+    margin-right: 1rem;
+}
+
+.listing-carousel {
+    margin-bottom: 75px;
+
+    .carousel-inner {
+
+        .carousel-item {
+            height: 70vh;
+            min-height: 300px;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+    }
+
+    .carousel-indicators {
+        transform: translateY(90px);
+
+        button {
+            width: 75px;
+            height: 60px;
+            overflow: hidden;
+
+            img {
+                width: 100%;
+            }
+        }
+    }
+}
+
+.dashboard-title {
+    padding-right: calc(var(--bs-gutter-x) * .5);
+    padding-left: calc(var(--bs-gutter-x) * .5);
+    margin-top: 30px;
+}
+
+.txt-wrap {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* number of lines to show */
+    line-clamp: 3; 
+    -webkit-box-orient: vertical;
+    margin-bottom: 0.5rem;
+}
+
+.profile-pic-container {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto;
+
+    img {
+        position: relative; 
+        top: 50%;
+        transform: translateY(-50%);
+    }
+}
+
+hr {
+    &.baby {
+        width: 3.5rem;
+    }
+}
+
+.search-filter {
+    .form-control {
+        padding: 1rem;
+        padding-right: 65px;
+    }
+
+    .input-group-append {
+        z-index: 99;
+        transition: all 0.2s ease-in-out;
+
+        .ms-n5 {
+            // transform: translateX(-50px);
+            margin-left: -55px;
+            padding: 0.95rem 1.275rem;
+
+            i {
+                margin: 0;
+            }
+        }
+
+        &:hover {
+            .ms-n5 {
+                background-color: #a0d2eb;
+            }
+        }
+    }
 }
 
 // Account card componenets
@@ -123,7 +223,30 @@ td {
   }
 
   &.dashboard-account {
-    width: 80%;
+    max-width: 500px;
+  }
+
+  &.listing-details {
+    max-height: 70vh;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+    
+    .card-body {
+        padding: 1.5rem;
+
+        .card-listing-location {
+            i, p {
+                font-size: 1.2rem;
+            }
+        }
+
+        .card-description {
+            min-height: 23vh;
+        }
+
+        .listing-amenities {
+            font-size: 1.1rem;
+        }
+    }
   }
 
   &.listing-card {
@@ -195,6 +318,9 @@ td {
         .card-price-rating {
             justify-content: space-between;
             
+            p {
+                margin-bottom: 0;
+            }
         }
     }
 
@@ -472,8 +598,8 @@ nav {
     }
   }
   
-  p{
-    color: rgb(155, 155, 155);
+  p {
+    color: $dark-gray;
   }
   
   .card-img-top{
@@ -484,19 +610,23 @@ nav {
     border-radius: 50%;
   }
   
-  .quick-info{
-    ul{
-      text-align: left;
-      list-style-type: none;
-    }
-  }
-  
-  .box{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
+  .quick-info {
+        ul {
+            text-align: left;
+            list-style-type: none;
+
+            li {
+                p {
+                    font-size: 1rem;
+
+                    i {
+                        color: #161748;
+                        margin-right: 10px;
+                    }
+                }
+            }
+        }
+    } 
 
 }
 

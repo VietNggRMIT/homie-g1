@@ -24,7 +24,7 @@
                     <div class="row">
                         <div class="col-lg-4">
                             <div class="banner-dashboard mb-5">
-                                <div class="card dashboard-account">
+                                <div class="card dashboard-account mx-auto">
                                     <div class="profile-pic-section mt-3">
                                         <div class="profile-pic-container">
                                             <img class="card-img-top"  src="https://i.pinimg.com/originals/ea/cb/35/eacb35204ab50f96206bfe8013ccb7ec.jpg" alt="Card image cap">
@@ -32,8 +32,8 @@
                                     </div>
                                     <div class="card-body text-center">
                                     <hr>
-                                    <h5 class="card-name">Mr white</h5><br>
-                                    <p><i class="fa-solid fa-star"></i><b>3.6</b> (69)</p>
+                                    <div class="card-name h3 mb-3">Mr White</div>
+                                    <p><i class="fa-solid fa-star"></i> <b>3.6</b> (69)</p>
                                     <p class="card-text">"Short user description that user can choose to write down, whatever text here display here"</p>
                                     <ul class="social-icons">
                                         <li><a class="icons" href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
@@ -41,10 +41,12 @@
                                     </ul>
                                     <br>
                                         <div class="quick-info">
-                                            <ul id="5">
-                                                <li><p><i class="fa-solid fa-house"></i> Thanh Hoa, Viet Nam</p></li>
-                                                <li><p><i class="fa-solid fa-user"></i> Member since 28/11/2022</p></li>
-                                                <li><p><i class="fa-sharp fa-solid fa-cake-candles"></i> Birthday: 6/12/2000</p></li>
+                                            <ul>
+                                                <li><p><i class="fa-regular fa-compass"></i> Thanh Hoa, Viet Nam</p></li>
+                                                <li><p><i class="fa-solid fa-mobile-screen"></i> Phone: 0123456789 </p></li>
+                                                <li><p><i class="fa-regular fa-envelope"></i> Email: email@email.com</p></li>
+                                                <li><p><i class="fa-regular fa-user"></i> Member since 28/11/2022</p></li>
+                                                <li><p><i class="fa-sharp fa-solid fa-cake-candles"></i> D.O.B: 6/12/2000</p></li>
                                             </ul>
                                         </div>
                                         <hr>
@@ -333,7 +335,7 @@
                             </div>
                             <div class="card mb-3">
                                 <div class="dashboard-title">
-                                    <h1>Your blogposts</h1>
+                                    <div class="h3">Your blogposts</div>
                                 </div>
                                 <hr>
                                 <div class="row row-cols-1 row-cols-md-2 g-4">
@@ -380,7 +382,7 @@
                             </div>
                             <div class="card mb-3">
                                 <div class="dashboard-title">
-                                    <div class="h5">Your applications</div>
+                                    <div class="h3">Your applications</div>
                                 </div>
                                 <hr>
                                 <div class="card-body application-listings">
