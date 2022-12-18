@@ -23,10 +23,12 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-4">
-                            <div class="banner-dashboard">
+                            <div class="banner-dashboard mb-5">
                                 <div class="card dashboard-account">
-                                    <div class="box">
-                                        <img class="card-img-top rounded-circle"  src="https://i.pinimg.com/originals/ea/cb/35/eacb35204ab50f96206bfe8013ccb7ec.jpg" alt="Card image cap">
+                                    <div class="profile-pic-section mt-3">
+                                        <div class="profile-pic-container">
+                                            <img class="card-img-top"  src="https://i.pinimg.com/originals/ea/cb/35/eacb35204ab50f96206bfe8013ccb7ec.jpg" alt="Card image cap">
+                                        </div>
                                     </div>
                                     <div class="card-body text-center">
                                     <hr>
@@ -55,9 +57,11 @@
                             </div>
                         </div>
                         <div class="col-lg-8">
-                            <div class="card">
-                                <h2>Mr. White's listings</h2>
-                                <h6>Mr. White very rich and handsome</h6>
+                            <div class="card mb-3">
+                                <div class="dashboard-title">
+                                    <div class="h2">Your property listings</div>
+                                    <div>Description field, maybe this is updateable?</div>
+                                </div>
                                 <hr>
                                 <div class="row">
                                     <div class="col">
@@ -85,6 +89,7 @@
                                             </div>
                                             <div class="card-body">
                                                 <h5 class="card-title">Nhà chất</h5>
+                                                <p class="mb-1">Posted by: Viet Dep Trai</p>
                                                 <div class="card-listing-location d-flex mb-2">
                                                     <i class="fa-solid fa-location-dot"></i>
                                                     <p class="card-text">123 Mỹ... Đình</p>
@@ -152,6 +157,7 @@
                                             </div>
                                             <div class="card-body">
                                                 <h5 class="card-title">Nhà chất</h5>
+                                                <p class="mb-1">Posted by: Viet Dep Trai</p>
                                                 <div class="card-listing-location d-flex mb-2">
                                                     <i class="fa-solid fa-location-dot"></i>
                                                     <p class="card-text">123 Mỹ... Đình</p>
@@ -219,6 +225,7 @@
                                             </div>
                                             <div class="card-body">
                                                 <h5 class="card-title">Nhà chất</h5>
+                                                <p class="mb-1">Posted by: Viet Dep Trai</p>
                                                 <div class="card-listing-location d-flex mb-2">
                                                     <i class="fa-solid fa-location-dot"></i>
                                                     <p class="card-text">123 Mỹ... Đình</p>
@@ -281,6 +288,7 @@
                                             </div>
                                             <div class="card-body">
                                                 <h5 class="card-title">Nhà chất</h5>
+                                                <p class="mb-1">Posted by: Viet Dep Trai</p>
                                                 <div class="card-listing-location d-flex mb-2">
                                                     <i class="fa-solid fa-location-dot"></i>
                                                     <p class="card-text">123 Mỹ... Đình</p>
@@ -323,15 +331,18 @@
                                     <button class="btn btn-outline-primary">Show more</button>
                                 </div>
                             </div>
-                            <div class="card">
-                                <h1>Mr White's blogposts</h1>
+                            <div class="card mb-3">
+                                <div class="dashboard-title">
+                                    <h1>Your blogposts</h1>
+                                </div>
+                                <hr>
                                 <div class="row row-cols-1 row-cols-md-2 g-4">
                                     <div class="col">
                                         <a class="card listing-card blog-card" href="#">
                                             <img src="php1\resources\background\tra-da-via-he-hanoi.jpg" class="card-img-top" alt="...">
                                             <div class="card-body">
-                                            <h5 class="card-title">Card title</h5>
-                                            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                                <h5 class="card-title">Card title</h5>
+                                                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                                             </div>
                                             <div class="card-footer">
                                                 <small class="text-muted">Last updated 3 day(s) ago</small>
@@ -342,8 +353,8 @@
                                         <a class="card listing-card blog-card" href="#">
                                             <img src="php1\resources\background\tra-da-via-he-hanoi.jpg" class="card-img-top" alt="...">
                                             <div class="card-body">
-                                            <h5 class="card-title">Card title</h5>
-                                            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                                <h5 class="card-title">Card title</h5>
+                                                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                                             </div>
                                             <div class="card-footer">
                                                 <small class="text-muted">Last updated 3 day(s) ago</small>
@@ -354,8 +365,8 @@
                                         <a class="card listing-card blog-card" href="#">
                                             <img src="php1\resources\background\tra-da-via-he-hanoi.jpg" class="card-img-top" alt="...">
                                             <div class="card-body">
-                                            <h5 class="card-title">Card title</h5>
-                                            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                                <h5 class="card-title">Card title</h5>
+                                                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                                             </div>
                                             <div class="card-footer">
                                                 <small class="text-muted">Last updated 3 day(s) ago</small>
@@ -367,71 +378,43 @@
                                     <button class="btn btn-outline-primary">Show more</button>
                                 </div>
                             </div>
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="card accounts-info">
-                                        <div class="card-header">User information changing</div>
-                                        <div class="card-body">
-                                            <form>
-                                                <div class="row gx-3 mb-3">
-                                                    <div class="col-md-6">
-                                                        <label class="small mb-1" for="inputFirstName">First name</label>
-                                                        <input class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name">
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <label class="small mb-1" for="inputLastName">Last name</label>
-                                                        <input class="form-control" id="inputLastName" type="text" placeholder="Enter your last name">
-                                                    </div>
-                                                </div>
-                                                <div class="row gx-3 mb-3">
-                                                    <div class="col-md-6">
-                                                        <label class="small mb-1" for="inputdecription">Description</label>
-                                                        <input class="form-control" id="inputdecription" type="text" placeholder="Enter your decription name">
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <label class="small mb-1" for="inputLocation">Location</label>
-                                                        <input class="form-control" id="inputLocation" type="text" placeholder="Enter your location">
-                                                    </div>
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label class="small mb-1" for="inputEmailAddress">Email address</label>
-                                                    <input class="form-control" id="inputEmailAddress" type="email" placeholder="Enter your email address">
-                                                </div>
-                                                <div class="row gx-3 mb-3">
-                                                    <div class="col-md-6">
-                                                        <label class="small mb-1" for="inputPhone">Phone number</label>
-                                                        <input class="form-control" id="inputPhone" type="tel" placeholder="Enter your phone number">
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <label class="small mb-1" for="inputBirthday">Birthday</label>
-                                                        <input class="form-control" id="inputBirthday" type="text" name="birthday" placeholder="Enter your birthday">
-                                                    </div>
-                                                </div>
-                                                <button class="btn btn-primary" type="button">Save changes</button>
-                                            </form>
-                                        </div>
+                            <div class="card mb-3">
+                                <div class="dashboard-title">
+                                    <div class="h5">Your applications</div>
+                                </div>
+                                <hr>
+                                <div class="card-body application-listings">
+                                    <div class="row column-labels">
+                                        <label class="col-4 property">Property</label>
+                                        <label class="col-2 applicant">Applicant</label>
+                                        <label class="col-4 location">Location</label>
+                                        <label class="col-2 date">Date</label>
                                     </div>
-                                    <br>
-                                    <div class="card change-pass">
-                                        <div class="card-header">Change Password</div>
-                                            <div class="card-body">
-                                                <form>
-                                                    <div class="mb-3">
-                                                    <label class="small mb-1" for="currentPassword">Current Password</label>
-                                                    <input class="form-control" id="currentPassword" type="password" placeholder="Enter current password">
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label class="small mb-1" for="newPassword">New Password</label>
-                                                    <input class="form-control" id="newPassword" type="password" placeholder="Enter new password">
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label class="small mb-1" for="confirmPassword">Confirm Password</label>
-                                                    <input class="form-control" id="confirmPassword" type="password" placeholder="Confirm new password">
-                                                </div>
-                                                <button class="btn btn-primary" type="button">Save</button>
-                                            </form>
-                                            </div>
-                                        </div>
+                                    <div class="applications">
+                                        <a class="row app" href="#">
+                                            <div class="col-4 property txt-wrap">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ac leo non diam egestas euismod ut ac mauris. Praesent rutrum velit eget massa viverra placerat. Proin nec condimentum magna.</div>
+                                            <div class="col-2 appicant">Handsome Viet</div>
+                                            <div class="col-4 location txt-wrap">123hehe, Nhanh Chinh, Thanh Xuan, Ha Noi</div>
+                                            <div class="col-2 date">21/01/2000</div>
+                                        </a>
+                                        <a class="row app" href="#">
+                                            <div class="col-4 property txt-wrap">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ac leo non diam egestas euismod ut ac mauris. Praesent rutrum velit eget massa viverra placerat. Proin nec condimentum magna.</div>
+                                            <div class="col-2 appicant">Handsome Viet</div>
+                                            <div class="col-4 location txt-wrap">123hehe, Nhanh Chinh, Thanh Xuan, Ha Noi</div>
+                                            <div class="col-2 date">21/01/2000</div>
+                                        </a>
+                                        <a class="row app" href="#">
+                                            <div class="col-4 property txt-wrap">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ac leo non diam egestas euismod ut ac mauris. Praesent rutrum velit eget massa viverra placerat. Proin nec condimentum magna.</div>
+                                            <div class="col-2 appicant">Handsome Viet</div>
+                                            <div class="col-4 location txt-wrap">123hehe, Nhanh Chinh, Thanh Xuan, Ha Noi</div>
+                                            <div class="col-2 date">21/01/2000</div>
+                                        </a>
+                                        <a class="row app" href="#">
+                                            <div class="col-4 property txt-wrap">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ac leo non diam egestas euismod ut ac mauris. Praesent rutrum velit eget massa viverra placerat. Proin nec condimentum magna.</div>
+                                            <div class="col-2 appicant">Handsome Viet</div>
+                                            <div class="col-4 location txt-wrap">123hehe, Nhanh Chinh, Thanh Xuan, Ha Noi</div>
+                                            <div class="col-2 date">21/01/2000</div>
+                                        </a>
                                     </div>
                                 </div>
                             </div>

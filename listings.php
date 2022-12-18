@@ -7,56 +7,26 @@
         <script src="https://kit.fontawesome.com/8f1f885a37.js" crossorigin="anonymous"></script>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
         <link rel="stylesheet" href="css/styles.css">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,100&display=swap" rel="stylesheet">
         <title>Index</title>
     </head>
 
     <body>
-        <header>
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-                <div class="container">
-                    <a class="navbar-brand me-auto" href="#">
-                        <img class="web-logo" src="\php1\resources\logo\Homie-rental.png" alt="brand logo">
-                    </a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav ms-auto nav-icons">
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="index.html"> <i class="fa-solid fa-house"></i> Home</a>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="fa-solid fa-circle-info"></i> Resources
-                                </a>
-                                <ul class="dropdown-menu dropdown-menu-dark">
-                                    <li><a class="dropdown-item" href="#">Helpful tips</a></li>
-                                    <li><hr class="dropdown-divider"></li>
-                                    <li><a class="dropdown-item" href="about.html">About us</a></li>
-                                    <li><a class="dropdown-item" href="privacy.html">Privacy</a></li>
-                                  </ul>                                                
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#"> <i class="fa-solid fa-user-gear"></i> User</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#"> <i class="fa-solid fa-arrow-right-to-bracket"></i> Signin</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#"> <i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link create-listing" href="#"> <i class="fa-solid fa-plus"></i> Create listing</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-        </header>
+        <?php
+            require('header.php');
+        ?>
 
         <main>
             <div class="main-wrapper">
                 <div class="container">
+                    <div class="title-section mb-3">
+                        <div class="title h1">
+                         Property listings
+                        </div>
+                        <hr class="baby">
+                    </div>
                     <div class="search-filter mb-5">
                         <form>
                             <div class="row">
@@ -64,7 +34,7 @@
                                     <div class="input-group">
                                         <input class="form-control border-end-0 border rounded-pill" type="search" placeholder="Search" id="search-input">
                                         <span class="input-group-append">
-                                            <button class="btn btn-outline-secondary bg-white border-bottom-0 border rounded-pill ms-n5" type="button">
+                                            <button class="btn btn-outline-secondary border-bottom-0 border rounded-pill ms-n5" type="button">
                                                 <i class="fa fa-search"></i>
                                             </button>
                                         </span>
@@ -99,7 +69,6 @@
                                 </div>
                                 <div class="card-body">
                                     <h5 class="card-title">Nhà chất</h5>
-                                    <p class="mb-1">Posted by: Viet Dep Trai</p>
                                     <div class="card-listing-location d-flex mb-2">
                                         <i class="fa-solid fa-location-dot"></i>
                                         <p class="card-text">123 Mỹ... Đình</p>
@@ -167,7 +136,6 @@
                                 </div>
                                 <div class="card-body">
                                     <h5 class="card-title">Nhà chất</h5>
-                                    <p class="mb-1">Posted by: Viet Dep Trai</p>
                                     <div class="card-listing-location d-flex mb-2">
                                         <i class="fa-solid fa-location-dot"></i>
                                         <p class="card-text">123 Mỹ... Đình</p>
@@ -230,7 +198,6 @@
                                 </div>
                                 <div class="card-body">
                                     <h5 class="card-title">Nhà chất</h5>
-                                    <p class="mb-1">Posted by: Viet Dep Trai</p>
                                     <div class="card-listing-location d-flex mb-2">
                                         <i class="fa-solid fa-location-dot"></i>
                                         <p class="card-text">123 Mỹ... Đình</p>
@@ -293,7 +260,6 @@
                                 </div>
                                 <div class="card-body">
                                     <h5 class="card-title">Nhà chất</h5>
-                                    <p class="mb-1">Posted by: Viet Dep Trai</p>
                                     <div class="card-listing-location d-flex mb-2">
                                         <i class="fa-solid fa-location-dot"></i>
                                         <p class="card-text">123 Mỹ... Đình</p>
@@ -356,7 +322,6 @@
                                 </div>
                                 <div class="card-body">
                                     <h5 class="card-title">Nhà chất</h5>
-                                    <p class="mb-1">Posted by: Viet Dep Trai</p>
                                     <div class="card-listing-location d-flex mb-2">
                                         <i class="fa-solid fa-location-dot"></i>
                                         <p class="card-text">123 Mỹ... Đình</p>
@@ -419,7 +384,6 @@
                                 </div>
                                 <div class="card-body">
                                     <h5 class="card-title">Nhà chất</h5>
-                                    <p class="mb-1">Posted by: Viet Dep Trai</p>
                                     <div class="card-listing-location d-flex mb-2">
                                         <i class="fa-solid fa-location-dot"></i>
                                         <p class="card-text">123 Mỹ... Đình</p>
@@ -454,44 +418,6 @@
                                             <span class="sum-review light-gray">(32)</span>
                                         </div>
                                     </div>  
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="row row-cols-1 row-cols-md-3 g-4">
-                        <div class="col">
-                            <a class="card listing-card blog-card" href="#">
-                                <img src="php1\resources\background\tra-da-via-he-hanoi.jpg" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                  <h5 class="card-title">Card title</h5>
-                                  <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                </div>
-                                <div class="card-footer">
-                                    <small class="text-muted">Last updated 3 day(s) ago</small>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col">
-                            <a class="card listing-card blog-card" href="#">
-                                <img src="php1\resources\background\tra-da-via-he-hanoi.jpg" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                  <h5 class="card-title">Card title</h5>
-                                  <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                </div>
-                                <div class="card-footer">
-                                    <small class="text-muted">Last updated 3 day(s) ago</small>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col">
-                            <a class="card listing-card blog-card" href="#">
-                                <img src="php1\resources\background\tra-da-via-he-hanoi.jpg" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                  <h5 class="card-title">Card title</h5>
-                                  <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                </div>
-                                <div class="card-footer">
-                                    <small class="text-muted">Last updated 3 day(s) ago</small>
                                 </div>
                             </a>
                         </div>
@@ -500,68 +426,12 @@
             </div>
         </main>
 
-        <footer class="footer">
-            <div class="footer-wrapper">
-                <div class="container">
+        <?php
+            require('footer.php');
+            require('bootstrapjs.php');
+        ?>
 
-                    <div class="row">
-
-                        <div class="col-sm-12 col-md-6 about-section">
-                            <h6>A few word</h6>
-                            <p class="text-justify">
-                            Our group HOMIE (House Ordering & Management Intelligence Enterprise) has decided to solve house rental 
-                            and room rental problems by creating a web app solution that works as a central ecommerce platform for 
-                            tenant and landlord to connect, advertise or buy service. We aimed to solve the transparency of renting 
-                            contracts, as well as pricing and provide a managing solution for landlords with multiple housing for 
-                            rent. This is our demo product but will not be our final product as we can expand it bigger in 
-                            the future should we pursue it.
-                            </p>
-                        </div>
-                
-                        <div class="col-xs-6 col-md-3">
-                            <h6>Categories</h6>
-                            <ul class="footer-links">
-                            <li><a href="#">Page</a></li>
-                            <li><a href="#">Page</a></li>
-                            <li><a href="#">Page</a></li>
-                            <li><a href="#">Page</a></li>
-                            <li><a href="#">Page</a></li>
-                            </ul>
-                        </div>
-                
-                        <div class="col-xs-6 col-md-3">
-                            <h6>Other</h6>
-                            <ul class="footer-links">
-                            <li><a href="#">About Us</a></li>
-                            <li><a href="#">Contact Us</a></li>
-                            <li><a href="#">Privacy Policy</a></li>
-                            </ul>
-                        </div>
-
-                    </div>
-                    <hr>
-                </div>
-
-            <div class="container">
-                <div class="row">
-                <div class="col-md-7 col-sm-6 col-xs-12">
-                    <p class="copyright-text">Copyright &copy; 2022 All Rights Reserved by 
-                    <a href="#">Homie (Group 1 Tutorial Hanoi)</a>.
-                    </p>
-                </div>
-        
-                <div class="col-md-5 col-sm-6 col-xs-12">
-                    <ul class="social-icons">
-                    <img class="footer-logo" src="\php1\resources\logo\Homie-rental.png" alt="logo">
-                    <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
-                    <li><a class="github" href="https://github.com/VietNggRMIT/homie-g1"><i class="fa fa-github"></i></a></li>  
-                    </ul>
-                </div>
-                </div>
-            </div>
-            </div>
-        </footer>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
         <script src="js/scripts.js" async></script>
     </body>
+
 </html>
