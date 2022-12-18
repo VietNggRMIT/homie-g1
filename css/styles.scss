@@ -3,7 +3,7 @@ $dark-gray: #26272B;
 $light-gray: #A9A9A9;
 $orange-star: #FFA500;
 // Gont
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,400&display=swap');
 
 * {
     margin: 0;
@@ -302,7 +302,7 @@ nav {
     }
   }
 }
-
+//about page styling
 .container-fluid{
   &.about-box{
     padding-left: 0;
@@ -344,7 +344,7 @@ nav {
   }
 }  
 }
-
+//landing page styling
 .filter-img{
   margin-top: 100px ;
   padding-left: 100px;
@@ -534,8 +534,27 @@ nav {
  } 
 
 .blog-container{
-  margin-left: 50px;
-  margin-right: 50px;
+  margin-left: 80px;
+  margin-right: 80px;
+
+  h5{
+    font-family: 'Roboto', sans-serif;
+    font-size: 40px;
+
+  }
+  
+  p{
+    font-size: 20px;
+  }
+
+  h6{
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+  }
+  
+  hr{
+    height: 10px;
+  }
 }
 
 //article styling
@@ -798,7 +817,14 @@ footer .social-icons {
   }
 }
 
-    // Mobile footer styling 
+//mobile blog page
+.blog-container{
+  margin-left: 0px;
+  margin-right: 0px;
+
+}
+
+// Mobile footer styling 
     footer {
         padding-bottom: 0;
     

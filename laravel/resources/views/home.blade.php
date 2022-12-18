@@ -47,15 +47,48 @@
                 Back to previous page
             </button>
         </div>
-
-        <hr>
-
-        <h1>Home Page</h1>
-
-        <hr>
-
+    </div>
+        <div class="container-fluid" id="banner-box-3">
+                    <div class="row justify-content-center">
+                        <div class="col" id="hero-box">
+                            <p><h2>Welcome to Homie Rental</h2><br>
+                            <span data-purecounter-end="{{ $custom_count[0] }}" class="purecounter">0</span> listings available
+                            (<span data-purecounter-end="{{ $custom_count[1] }}" class="purecounter">0</span> listing images,
+                            <span data-purecounter-end="{{ $custom_count[2] }}" class="purecounter">0</span> reviews,
+                            <span data-purecounter-end="{{ $custom_count[3] }}" class="purecounter">0</span> applications)<br>
+                            Site has <span data-purecounter-end="{{ $custom_count[4] }}" class="purecounter">0</span> users online.<br>
+                            There are <span data-purecounter-end="{{ $custom_count[5] }}" class="purecounter">0</span> blogs to read. <br><br>
+                            <q class="quote"><i>Renting easy like your homie</i></q> - Founder                  
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="filter-img text-center">
+                    <h2>Choose a city you want to start at</h2>
+                    <div class='row mb-5'> 
+                        <div class='col-sm-6'>
+                            <a href=""><img src="{{ asset('storage/images/filter-img/hcmc-listing.png')}}" alt="HCM"></a>
+                        </div>
+                        <div class='col-sm-3'>
+                            <div class="top-img-box">
+                                <a href=""><img src="{{ asset('storage/images/filter-img/hn-listing.png')}}" alt="HN"></a><br>
+                            </div>
+                            <div class="under-img-box">
+                                <a href=""><img src="{{ asset('storage/images/filter-img/BD-listing.png')}}" alt="BD"></a>        
+                            </div>
+                        </div>
+                        <div class='col-sm-3'>
+                            <div class="top-img-box">
+                                <a href=""><img src="{{ asset('storage/images/filter-img/DDN-listing.png')}}" alt="DDN"></a><br>
+                            </div>
+                            <div class="under-img-box">
+                                <a href=""><img src="{{ asset('storage/images/filter-img/DNA-listing.png')}}" alt="DNA"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
         <div>
-            <div>There are
+            <!-- <div>There are
                 <span data-purecounter-end="{{ $custom_count[0] }}" class="purecounter">0</span> listings available
                 (<span data-purecounter-end="{{ $custom_count[1] }}" class="purecounter">0</span> listing images,
                 <span data-purecounter-end="{{ $custom_count[2] }}" class="purecounter">0</span> reviews,
@@ -63,7 +96,7 @@
             </div>
             <div>There are <span data-purecounter-end="{{ $custom_count[4] }}" class="purecounter">0</span> users online.</div>
             <div>There are <span data-purecounter-end="{{ $custom_count[5] }}" class="purecounter">0</span> blogs to read.</div>
-        </div>
+        </div> -->
 
 
         <div class="row">

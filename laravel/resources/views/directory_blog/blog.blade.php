@@ -9,7 +9,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 </head>
 <body>
-    <div class="container">
+    <div class="container blog">
         <div>
             <button
                 onclick="window.location.href='{{ route('route_home') }}';"
@@ -46,12 +46,33 @@
             >
                 Back to previous page
             </button>
-            {{ Breadcrumbs::render('breadcrumb_blog', $blog) }}
+            
+        </div>
+    </div>
+        <div class="container blogpost">
+            <div class="row">
+                <div class="col-lg-12">
+                    <article>
+                        <header class="mb-4">
+                            <p>{{ Breadcrumbs::render('breadcrumb_blog', $blog) }}</p>
+                            <h1 class="fw-bolder mb-1">{{ $blog->blog_name }}</h1>
+                            <p>Blog ID: {{ $blog->id }}</p>
+                            <div class="text-muted fst-italic mb-2">Posted on {{ $blog->created_at }} by 
+                            <button onclick="window.location.href='{{ route('users.show', ['user' => $blog->user]) }}';" type="button">
+                            {{ $blog->user->user_real_name }} 
+                            </button>
+                            with ID: {{ $blog->user_id }}<br>
+                            Updated at {{ $blog->updated_at }}</div>
+                        </header>
+                        <section class="mb-5">
+                            <p class="fs-5 mb-4"> {!!  nl2br(e($blog->blog_description)) !!} </p>
+                        </section>
+                    </article>
+                </div>
+            </div>
         </div>
 
-        <hr>
-
-        <div>
+        <!-- <div>
             <h2>Blog</h2>
             <div>$blog->id: {{ $blog->id }}</div>
             <div>
@@ -81,7 +102,6 @@
                     {{ $blog->user->user_real_name }}
                 </button>
             </div>
-        </div>
-    </div>
+        </div> -->
 </body>
 </html>
