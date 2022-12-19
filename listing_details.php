@@ -22,7 +22,7 @@
             <div class="main-wrapper">
                 <div class="container">
                     <div class="row">
-                        <div class="col-lg-7">
+                        <div class="col-xl-7">
 
                             <div class="listing-img-carousel">
                                 <div id="carouselExampleIndicators" class="carousel slide listing-carousel" data-bs-ride="true">
@@ -60,7 +60,7 @@
                             </div>
 
                         </div>
-                        <div class="col-lg-5">
+                        <div class="col-xl-5">
                             <div class="card listing-details">
 
                                 <div class="card-body">
@@ -72,7 +72,7 @@
                                         <p class="card-text">123 Doi Can, Ba Dinh, Ha Noi</p>
                                     </div>
                                     <div class="h5">Listing description:</div>
-                                    <div class="card-description mb-3">
+                                    <div class="card-description">
                                         <p>
                                             First it marked out a race-course, in a sort of circle, 
                                             ('the exact shape doesn't matter,' it said,) and then all 
@@ -106,10 +106,14 @@
                                             <i class="fa-solid fa-shower"></i>
                                             <span>1 bathroom(s)</span>
                                         </div>
+                                        <div class="col-sm-4 listing-feature" id="spec_parking">
+                                            <i class="fa-solid fa-square-parking"></i>
+                                            <span>Paid parking</span>
+                                        </div>
                                     </div>
                                     <hr>
                                     <div class="card-price-rating d-flex justify-content-between">
-                                        <p class="card-text price mb-0"><strong>$420</strong> <span class="light-gray">/mo</span></p>
+                                        <div class="card-text price mb-0"><strong>$420</strong> <span class="light-gray">/mo</span></div>
                                         <div class="listing-rating">
                                             <i class="fa-solid fa-star"></i>
                                             <span>4.7</span>
@@ -126,43 +130,184 @@
                     </div>
 
                     <div class="row mt-5">
-                        <div class="card">
-                            <div class="title mt-3">
-                                <div class="h2">Owner information</div>
-                                <hr class="baby">
-                            </div>
-                            <div class="row gx-4">
-                                <div class="col col-lg-4">
-                                    <div class="col d-flex align-items-center">
-                                        <div class="profile-pic-section mr-1">
-                                            <div class="profile-pic-container">
-                                                <img class="card-img-top" src="https://i.pinimg.com/originals/ea/cb/35/eacb35204ab50f96206bfe8013ccb7ec.jpg" style="height: 50px;" alt="Card image cap">
+                        <div class="col-lg-7">
+                            <div class="card px-5 py-3">
+                                <div class="title mt-3">
+                                    <div class="h2">Owner information</div>
+                                    <hr class="baby">
+                                </div>
+                                <div class="row gx-4">
+                                    <div class="col col-lg-8">
+                                        <div class="col d-flex align-items-center mb-3">
+                                            <div class="profile-pic-section mr-1">
+                                                <div class="profile-pic-container listing-details">
+                                                    <img class="card-img-top" src="https://i.pinimg.com/originals/ea/cb/35/eacb35204ab50f96206bfe8013ccb7ec.jpg" alt="Card image cap">
+                                                </div>
+                                            </div>
+                                            <div class="owner-info">
+                                                <div class="h3">Viet Dep Trai</div>
+                                                <div class="listing-rating">
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <span>4.7</span>
+                                                    <span class="sum-review light-gray">(32)</span>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="owner-info">
-                                            <div class="h3">Viet Dep Trai</div>
-                                            <div class="listing-rating">
-                                                <i class="fa-solid fa-star"></i>
-                                                <span>4.7</span>
-                                                <span class="sum-review light-gray">(32)</span>
+                                        <div class="row">
+                                            <div class="user-description">
+                                                <p>
+                                                    "Short user description that user can choose to write down, whatever text here display here"
+                                                </p>
+                                            </div>
+                                            <div class="quick-info">
+                                                <ul class="d-flex icons-list ls-none align-items-center">
+                                                    <li><p><i class="fa-regular fa-compass"></i> Thanh Hoa, Viet Nam</p></li>
+                                                    <li><p><i class="fa-solid fa-mobile-screen"></i> Phone: 0123456789</p></li>
+                                                    <li><p><i class="fa-regular fa-envelope"></i> Email: email@email.com</p></li>
+                                                    <li><p><i class="fa-regular fa-user"></i> Member since: 28/11/2022</p></li>
+                                                    <li><p><i class="fa-sharp fa-solid fa-cake-candles"></i> D.O.B: 6/12/2000</p></li>
+                                                </ul>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <p>"Short user description that user can choose to write down, whatever text here display here"</p>
+                                    <div class="col col-lg-4">
+                                        <a class="btn btn-warning btn-lg d-block mb-3">Contact owner</a>
+                                        <a class="btn btn-warning btn-lg d-block mb-3">View profile</a>
                                     </div>
                                 </div>
-                                <div class="col col-lg-4">
-                                    <div class="quick-info">
-                                        <ul>
-                                            <li><p><i class="fa-regular fa-compass"></i> Thanh Hoa, Viet Nam</p></li>
-                                            <li><p><i class="fa-solid fa-mobile-screen"></i> Phone: 0123456789 </p></li>
-                                            <li><p><i class="fa-regular fa-envelope"></i> Email: email@email.com</p></li>
-                                            <li><p><i class="fa-regular fa-user"></i> Member since 28/11/2022</p></li>
-                                            <li><p><i class="fa-sharp fa-solid fa-cake-candles"></i> D.O.B: 6/12/2000</p></li>
-                                        </ul>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-5">
+                            <div class="card listing-map">
+                                <div class="h1">EMBED MAP HERE!</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mt-5">
+                        <div class="col col-lg-7">
+                            <div class="card px-3 py-3">
+                                <div class="title mt-3">
+                                    <div class="h3">Reviews (32 review(s))</div>
+                                    <hr class="baby">
+                                </div>
+                                <div class="row review-block mb-5">
+                                    <div class="col-lg-2">
+                                        <div class="profile-pic-section">
+                                            <div class="profile-pic-container listing-details">
+                                                <img class="card-img-top" src="https://i.pinimg.com/originals/ea/cb/35/eacb35204ab50f96206bfe8013ccb7ec.jpg" alt="Card image cap">
+                                            </div>
+                                        </div>
                                     </div>
-                                    <btn class="btn btn-primary">View profile</btn>
+                                    <div class="col-lg-10">
+                                        <div class="d-flex justify-content-between mb-1">
+                                            <div class="d-flex flex-column">
+                                                <div class="p">Viet Dep Trai</div>
+                                                <div class="text-muted">May 20, 2021</div>
+                                            </div>
+                                            <div class="d-flex">
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                            </div>
+                                        </div>
+                                        <div class="review-comments h6">
+                                            I told you this place is lit! Be sure to leave a review here to help others. Also should we set a word limit here?
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row review-block mb-5">
+                                    <div class="col-lg-2">
+                                        <div class="profile-pic-section">
+                                            <div class="profile-pic-container listing-details">
+                                                <img class="card-img-top" src="https://i.pinimg.com/originals/ea/cb/35/eacb35204ab50f96206bfe8013ccb7ec.jpg" alt="Card image cap">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-10">
+                                        <div class="d-flex justify-content-between mb-1">
+                                            <div class="d-flex flex-column">
+                                                <div class="p">Viet Dep Trai</div>
+                                                <div class="text-muted">May 20, 2021</div>
+                                            </div>
+                                            <div class="d-flex">
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                            </div>
+                                        </div>
+                                        <div class="review-comments h6">
+                                            I told you this place is lit! Be sure to leave a review here to help others. Also should we set a word limit here?
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row review-block mb-5">
+                                    <div class="col-lg-2">
+                                        <div class="profile-pic-section">
+                                            <div class="profile-pic-container listing-details">
+                                                <img class="card-img-top" src="https://i.pinimg.com/originals/ea/cb/35/eacb35204ab50f96206bfe8013ccb7ec.jpg" alt="Card image cap">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-10">
+                                        <div class="d-flex justify-content-between mb-1">
+                                            <div class="d-flex flex-column">
+                                                <div class="p">Viet Dep Trai</div>
+                                                <div class="text-muted">May 20, 2021</div>
+                                            </div>
+                                            <div class="d-flex">
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                            </div>
+                                        </div>
+                                        <div class="review-comments h6">
+                                            I told you this place is lit! Be sure to leave a review here to help others. Also should we set a word limit here?
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="btn btn-outline-primary">Load more reviews</button>
+                            </div>
+                        </div>
+                        <div class="col col-lg-5">
+                            <div class="card px-3 py-3">
+                                <div class="title mt-3">
+                                    <div class="h3">Leave a review</div>
+                                    <hr class="baby">
+                                </div>
+                                <div class="review-form">
+                                    <div class="h6">Ratings</div>
+                                    <form>
+                                        <div class="rating-stars text-center">
+                                            <ul class="ls-none px-0" id="stars">
+                                                <li class="star" data-value="1">
+                                                    <i class="fa fa-star fa-fw"></i>
+                                                </li>
+                                                <li class="star" data-value="2">
+                                                    <i class="fa fa-star fa-fw"></i>
+                                                </li>
+                                                <li class="star" data-value="3">
+                                                    <i class="fa fa-star fa-fw"></i>
+                                                </li>
+                                                <li class="star" data-value="4">
+                                                    <i class="fa fa-star fa-fw"></i>
+                                                </li>
+                                                <li class="star" data-value="5">
+                                                    <i class="fa fa-star fa-fw"></i>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="h6">Comments</div>
+                                        <textarea class="form-control mb-3" rows="4"></textarea>
+                                        <button class="btn btn-warning" type="submit" value="submit">Submit review</button>
+                                    </form>
                                 </div>
                             </div>
                         </div>

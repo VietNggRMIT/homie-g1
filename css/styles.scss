@@ -104,6 +104,47 @@ td {
     }
 }
 
+.ls-none {
+    list-style: none;
+}
+
+.rating-stars {
+    ul > li {
+        &.star {
+            display: inline-block;
+
+            i {
+                color: #CCC;
+            }
+
+            &.hover {
+                i {
+                    color: #FFCC36;
+                }
+            }
+
+            &.selected {
+                i {
+                    color: $orange-star;
+                }
+            }
+        }
+    }
+}
+
+.icons-list {
+    li {
+        p {
+            font-size: 1.075rem;
+            
+            i {
+                font-size: 1.2rem;
+                margin-right: 1rem;
+            }
+        }
+    }
+}
+
 .dashboard-title {
     padding-right: calc(var(--bs-gutter-x) * .5);
     padding-left: calc(var(--bs-gutter-x) * .5);
@@ -126,6 +167,11 @@ td {
     border-radius: 50%;
     overflow: hidden;
     margin: 0 auto;
+
+    &.listing-details {
+        width: 75px;
+        height: 75px;
+    }
 
     img {
         position: relative; 
@@ -227,7 +273,7 @@ hr {
   }
 
   &.listing-details {
-    max-height: 70vh;
+    max-height: 75vh;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
     
     .card-body {
@@ -245,6 +291,10 @@ hr {
 
         .listing-amenities {
             font-size: 1.1rem;
+        }
+
+        .card-price-rating {
+            font-size: 1.2rem;
         }
     }
   }
