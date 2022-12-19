@@ -46,11 +46,13 @@
             >
                 Back to previous page
             </button>
-            {{ Breadcrumbs::render('breadcrumb_listing', $listing) }}
+            
         </div>
 
         <hr>
-
+        <div class="breadcrumb justify-content-center">
+            <h2>{{ Breadcrumbs::render('breadcrumb_listing', $listing) }}</h2>
+        </div>
         <div {!! $listing->listing_available == 0 ? 'style="opacity: 0.4"' : 'style="opacity: 1"' !!}>
             <div>
                 <h2>Listing</h2>

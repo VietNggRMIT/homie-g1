@@ -54,7 +54,9 @@
                 <div class="col-lg-12">
                     <article>
                         <header class="mb-4">
-                            <p>{{ Breadcrumbs::render('breadcrumb_blog', $blog) }}</p>
+                        <div class="breadcrumb justify-content-center">
+                            <h2>{{ Breadcrumbs::render('breadcrumb_blog', $blog) }}</h2>
+                        </div>
                             <h1 class="fw-bolder mb-1">{{ $blog->blog_name }}</h1>
                             <p>Blog ID: {{ $blog->id }}</p>
                             <div class="text-muted fst-italic mb-2">Posted on {{ $blog->created_at }} by 
@@ -103,5 +105,11 @@
                 </button>
             </div>
         </div> -->
+        
 </body>
+<footer>
+<?php
+        require($_SERVER['DOCUMENT_ROOT'].'/storage/template/footer.blade.php');
+    ?>  
+</footer>
 </html>

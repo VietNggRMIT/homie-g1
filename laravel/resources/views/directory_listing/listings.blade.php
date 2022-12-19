@@ -47,11 +47,13 @@
             >
                 Back to previous page
             </button>
-            {{ Breadcrumbs::render('breadcrumb_listings') }}
+            
         </div>
 
         <hr>
-
+        <div class="breadcrumb justify-content-center">
+            <h2>{{ Breadcrumbs::render('breadcrumb_listings') }}</h2>
+        </div>
         <h1>Listings</h1>
 
         <hr>

@@ -9,6 +9,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 </head>
 <body>
+    
     <div class="container">
         <div>
             <button
@@ -180,5 +181,11 @@
             </div>
         @endforeach
     </div>
+    
 </body>
+<footer>
+<?php
+        require($_SERVER['DOCUMENT_ROOT'].'/storage/template/footer.blade.php');
+    ?>  
+</footer>
 </html>

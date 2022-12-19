@@ -1,3 +1,13 @@
+<!-- <!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    @vite(['resources/css/app.css', 'resources/js/app.js', 'webfonts.css'])
+    <title>{{ config('app.name', 'Laravel') }}</title>
+</head> -->
 <footer class="footer">
     <div class="footer-wrapper">
         <div class="container">
@@ -50,9 +60,9 @@
     
             <div class="col-md-5 col-sm-6 col-xs-12">
                 <ul class="social-icons">
-                <img class="footer-logo" src="\php1\resources\logo\Homie-rental.png" alt="logo">
-                <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
-                <li><a class="github" href="https://github.com/VietNggRMIT/homie-g1"><i class="fa fa-github"></i></a></li>  
+                <img class="footer-logo" src="{{ asset('storage/images/logo/logo.png')}}" alt="logo">
+                <li><a class="facebook" href="#"><i class="fa-brands fa-facebook"></i></a></li>
+                <li><a class="github" href="https://github.com/VietNggRMIT/homie-g1"><i class="fa-brands fa-github"></i></a></li>  
                 </ul>
             </div>
             </div>

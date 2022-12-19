@@ -71,14 +71,14 @@
             <div class="blog-container align-item-center">
                         <div class="card border" style="width: 100%;">
                             <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-8">
-                                    <h5 class="card-title"><b><button onclick="window.location.href='{{ route('blogs.show', ['blog' => $blog]) }}';"
-                                                type="button"><b>{{ $blog->blog_name }}</button></b></b></h5>
-                                    <p><i class="fa-solid fa-calendar-days"></i> {{ $blog->created_at }}  <i class="fa-solid fa-hashtag"></i>{{ $blog->id }}</p>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="blog-info">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <h5 class="card-title"><b><button onclick="window.location.href='{{ route('blogs.show', ['blog' => $blog]) }}';"
+                                                    type="button"><b>{{ $blog->blog_name }}</button></b></b></h5>
+                                        <p><i class="fa-solid fa-calendar-days"></i> {{ $blog->created_at }}  <i class="fa-solid fa-hashtag"></i>{{ $blog->id }}</p>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="blog-info">
                                             <p><i class="fa-regular fa-id-card"></i><button class="user-name"
                                                 onclick="window.location.href='{{ route('users.show', ['user' => $blog->user]) }}';"
                                                 type="button"
@@ -86,48 +86,19 @@
                                                 {{ $blog->user->user_real_name }}
                                             </button> <i class="fa-solid fa-hashtag"></i>{{ $blog->user->id }}</p>
                                             <p><b>Updated at:</b> {{ $blog->updated_at }}</p>
+                                        </div>
                                     </div>
                                 </div>
-</div>
                             </div>
                         </div>
-                    </div>
-                <div>
-                <!-- <h2>Blog</h2>
-                <div>$blog->id: {{ $blog->id }}</div>
-                <div>
-                    $blog->blog_name:
-                    <button
-                        onclick="window.location.href='{{ route('blogs.show', ['blog' => $blog]) }}';"
-                        type="button"
-                    >
-                        {{ $blog->blog_name }}
-                    </button>
                 </div>
-                <div>$blog->blog_description: {!!  nl2br(e($blog->blog_description)) !!}</div>
-                <div>$blog->user_id: {{ $blog->user_id }}</div>
-                <div>$blog->created_at: {{ $blog->created_at }}</div>
-                <div>$blog->updated_at: {{ $blog->updated_at }}</div>
-            </div>
-
-            <div>
-                <h2>Posted by</h2>
-                <div>$blog->user->id: {{ $blog->user->id }}</div>
-                <div>
-                    $blog->user->user_real_name:
-                    <button
-                        onclick="window.location.href='{{ route('users.show', ['user' => $blog->user]) }}';"
-                        type="button"
-                    >
-                        {{ $blog->user->user_real_name }}
-                    </button>
-                </div>
-            </div>
-            <hr> -->
-        @endforeach
+            @endforeach
         </div>
     </div>
 </body>
-
-
+<footer>
+<?php
+        require($_SERVER['DOCUMENT_ROOT'].'/storage/template/footer.blade.php');
+    ?>  
+</footer>
 </html>
