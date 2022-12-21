@@ -32,7 +32,17 @@ class Blog extends Model
 {
     use HasFactory;
     protected $table = 'blog'; // to bind 'Blog.php' with 'blog' MySQL table
-
+    /**
+     * The attributes that are mass assignable. 
+     * Need this when using "one line" statement in BlogsController::store
+     * @v ar array<int, string>
+     */
+    // protected $fillable = [
+    //     'blog_name',
+    //     'blog_description',
+    //     'user_id',
+    // ];
+    
     // Slug URL, part 3/3
     public function getRouteKeyName()
     {

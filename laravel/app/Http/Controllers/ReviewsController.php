@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Blog;
+use App\Models\Review;
 use Illuminate\Http\Request;
 
-class BlogsController extends Controller
+class ReviewsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,11 +14,7 @@ class BlogsController extends Controller
      */
     public function index()
     {
-        $custom_blogs = Blog::with('user')
-            ->get();
-
-        return response()
-            ->view('directory_blog.blogs', ['blogs' => $custom_blogs], 200);
+        //
     }
 
     /**
@@ -39,36 +35,33 @@ class BlogsController extends Controller
      */
     public function store(Request $request)
     {
-        $blog = new Blog;
-        $blog->blog_name = $request->blog_name;
-        $blog->blog_description = $request->blog_description;
-        $blog->user_id = $request->user_id;
-        $blog->save();
-        return redirect('blog_create')->with('status', 'Blog Created Successfully');
+        $review = new Review;
+        $review->review_name = $request->review_name;
+        $review->review_description = $request->review_description;
+        $review->review_rating = $request->review_rating;
+        $review->listing_id = $request->listing_id;
+        $review->save();
+        return redirect('review_create')->with('status', 'Review Created Successfully');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Blog  $blog
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Blog $blog)
+    public function show($id)
     {
-        $custom_blog = Blog::with('user')
-            ->find($blog->id);
-
-        return response()
-            ->view('directory_blog.blog', ['blog' => $custom_blog], 200);
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Blog  $blog
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Blog $blog)
+    public function edit($id)
     {
         //
     }
@@ -77,10 +70,10 @@ class BlogsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Blog  $blog
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Blog $blog)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -88,10 +81,10 @@ class BlogsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Blog  $blog
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Blog $blog)
+    public function destroy($id)
     {
         //
     }

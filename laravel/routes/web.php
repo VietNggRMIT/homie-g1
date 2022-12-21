@@ -4,6 +4,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ListingsController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\BlogsController;
+use App\Http\Controllers\ApplicationsController;
+use App\Http\Controllers\ReviewsController;
 use App\Http\Controllers\FallbackController;
 use Illuminate\Support\Facades\Route;
 
@@ -71,6 +73,20 @@ Route::resource('/users', UsersController::class);
 
 Route::resource('/blogs', BlogsController::class);
 
+//routes for forms
+Route::view('/blog_create', 'directory_blog.blog_create');
+Route::post('store-blog', [BlogsController::class, 'store']);
+
+Route::view('/review_create', 'directory_listing.review_create');
+Route::post('store-review', [ReviewsController::class, 'store']);
+
+Route::view('/application_create', 'directory_listing.application_create');
+Route::post('store-application', [ApplicationsController::class, 'store']);
+
+Route::view('/listing_create', 'directory_listing.listing_create');
+Route::post('store-listing', [ListingsController::class, 'store']);
+
+//View other pages
 Route::view('/about', 'directory_about.about')
     ->name('route_about');
 
