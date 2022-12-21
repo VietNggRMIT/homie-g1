@@ -1,13 +1,8 @@
 <!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    @vite(['resources/css/app.css', 'resources/js/customScript.js', 'resources/js/app.js', 'webfonts.css'])
-    <title>{{ config('app.name', 'Laravel') }}</title>
-</head>
+    @extends('layouts.app')
+    @section('title', 'Home')
+    @section('content')
 <body>
     
     <div class="container">
@@ -89,17 +84,6 @@
                     </div>
                 </div>
         <div>
-            <!-- <div>There are
-                <span data-purecounter-end="{{ $custom_count[0] }}" class="purecounter">0</span> listings available
-                (<span data-purecounter-end="{{ $custom_count[1] }}" class="purecounter">0</span> listing images,
-                <span data-purecounter-end="{{ $custom_count[2] }}" class="purecounter">0</span> reviews,
-                <span data-purecounter-end="{{ $custom_count[3] }}" class="purecounter">0</span> applications)
-            </div>
-            <div>There are <span data-purecounter-end="{{ $custom_count[4] }}" class="purecounter">0</span> users online.</div>
-            <div>There are <span data-purecounter-end="{{ $custom_count[5] }}" class="purecounter">0</span> blogs to read.</div>
-        </div> -->
-
-
         <div class="row">
             <hr>
             <div class="d-flex justify-content-between align-items-center">
@@ -183,9 +167,5 @@
     </div>
     
 </body>
-<footer>
-<?php
-        require($_SERVER['DOCUMENT_ROOT'].'/storage/template/footer.blade.php');
-    ?>  
-</footer>
 </html>
+@endsection

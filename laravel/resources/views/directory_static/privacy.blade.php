@@ -1,12 +1,7 @@
-@vite(['resources/css/app.css', 'resources/js/customScript.js', 'resources/js/app.js', 'webfonts.css'])
-        <title>Privacy policy</title>
-    </head>
-    <body>
-    <?php
-        require($_SERVER['DOCUMENT_ROOT'].'/storage/template/header.php');
-    ?>
-
-        <main>
+@extends('layouts.app')
+@section('title', 'Privacy')
+@section('content')
+<body>
             <div class="main-wrapper">
                 <div class="container">
                     <h1>Homie Privacy Policy</h1>
@@ -61,12 +56,7 @@
                     <p>Homie does not knowingly collect any Personal Identifiable Information from children under the age of 13. If you think that your child provided this kind of information on our website, we strongly encourage you to contact us immediately and we will do our best efforts to promptly remove such information from our records.</p>
                 </div>
             </div>
-        </main>
-
-    <?php
-        require($_SERVER['DOCUMENT_ROOT'].'/storage/template/footer.php');
-    ?>
-        
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
     </body>
 </html>
+@endsection

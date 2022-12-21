@@ -90,6 +90,9 @@ Route::post('store-listing', [ListingsController::class, 'store']);
 Route::view('/about', 'directory_about.about')
     ->name('route_about');
 
+Route::view('/privacy', 'directory_static.privacy')
+    ->name('route_privacy');
+
 // Fallback route placed at the end of the file to catch all unmatched paths
 Route::fallback(FallbackController::class)
     ->name('route_fallback');
