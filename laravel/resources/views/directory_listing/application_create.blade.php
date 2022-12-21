@@ -12,7 +12,7 @@
   @endif
   <div class="card">
     <div class="card-header text-center font-weight-bold">
-      Add Application Post Form
+      Add Application Form
     </div>
     <div class="card-body">
       <form name="add-application-post-form" id="add-application-post-form" method="post" action="{{url('store-application')}}">
