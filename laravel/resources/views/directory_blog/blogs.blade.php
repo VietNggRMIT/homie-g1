@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Privacy')
+@section('title', 'Blog listing')
 @section('content')
     <title>{{ config('app.name', 'Laravel') }}</title>
 </head>
