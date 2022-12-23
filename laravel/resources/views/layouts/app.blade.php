@@ -72,11 +72,11 @@
                     <div class="col-xs-6 col-md-3">
                         <h6>Categories</h6>
                         <ul class="footer-links">
-                        <li><a href="#">Page</a></li>
-                        <li><a href="#">Page</a></li>
-                        <li><a href="#">Page</a></li>
-                        <li><a href="#">Page</a></li>
-                        <li><a href="#">Page</a></li>
+                        <li><a href="{{ route('route_home') }}">Home</a></li>
+                        <li><a href="{{ route('listings.index') }}">Listings</a></li>
+                        <li><a href="{{ route('blogs.index') }}">Blogs</a></li>
+                        <li><a href="{{ route('route_article') }}">Articles</a></li>
+                        <li><a href="#">pages</a></li>
                         </ul>
                     </div>
             

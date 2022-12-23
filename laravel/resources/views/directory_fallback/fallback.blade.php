@@ -9,49 +9,16 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 </head>
 <body>
-    <div class="container">
-        <div>
-            <button
-                onclick="window.location.href='{{ route('route_home') }}';"
-                type="button"
-                class="btn btn-primary"
-            >
-                Home
-            </button>
-            <button
-                onclick="window.location.href='{{ route('listings.index') }}';"
-                type="button"
-                class="btn btn-primary"
-            >
-                Listings
-            </button>
-            <button
-                onclick="window.location.href='{{ route('blogs.index') }}'"
-                type="button"
-                class="btn btn-primary"
-            >
-                Blogs
-            </button>
-            <button
-                onclick="window.location.href='{{ route('route_about') }}'"
-                type="button"
-                class="btn btn-primary"
-            >
-                About
-            </button>
-            <button
-                onclick="window.location.href='{{ url()->previous() }}';"
-                type="button"
-                class="btn btn-primary"
-            >
-                Back to previous page
-            </button>
-        </div>
-
-        <hr>
-
-        <h1>Error 404</h1>
-        <h2>This is the fallback page when there are no matching routes.</h2>
-    </div>
+<div id="main">
+    	<div class="fof">
+        		<h1>Error 404</h1>
+                <br>
+            <div class="frame">
+                <button onclick="window.location.href='{{ route('route_home') }}';" type="button" class="custom-btn btn-1">
+                    Homepages
+                </button>
+            </div>
+    	</div>
+</div>
 </body>
 </html>

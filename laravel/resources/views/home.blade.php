@@ -48,7 +48,9 @@
             <hr>
             <div class="d-flex justify-content-between align-items-center">
                 <h1>Listings</h1>
-                <a href="{{ route('listings.index') }}" class="btn btn-lg btn-secondary">See more</a>
+                <button onclick="window.location.href='{{ route('listings.index') }}';" type="button" class="custom-btn btn-1">
+                    See more 
+                </button>
             </div>
         </div>
         @foreach ($listings as $listing)
@@ -101,7 +103,9 @@
             <hr>
             <div class="l-blogheader d-flex justify-content-between align-items-center">
                 <h1>Blogs</h1>
-                <a href="{{ route('blogs.index') }}" class="btn btn-primary btn-primary">See more <span class="glyphicon glyphicon-align-justify"></span></a>
+                <button onclick="window.location.href='{{ route('blogs.index') }}';" type="button" class="custom-btn btn-1">
+                    See more 
+                </button>
             </div>
         </div>
         <div class="l-blogcontainter">
@@ -112,7 +116,7 @@
                                     <div class="row">
                                         <div class="col-md-8">
                                             <h5 class="card-title"><b><button onclick="window.location.href='{{ route('blogs.show', ['blog' => $blog]) }}';"
-                                                        type="button"><b>{{ $blog->blog_name }}</button></b></b></h5>
+                                                        type="button" ><b>{{ $blog->blog_name }}</button></b></b></h5>
                                             <p><i class="fa-solid fa-calendar-days"></i> {{ date_diff(new \DateTime($listing->updated_at), new \DateTime(now()))->format("%m months, %d days, %h hours") }}
                         ago  <i class="fa-solid fa-hashtag"></i>{{ $blog->id }}</p>
                                         </div>
