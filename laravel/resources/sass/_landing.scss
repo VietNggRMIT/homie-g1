@@ -50,3 +50,18 @@
       }
       }
   }
+
+  .l-blogheader{
+    padding-left: 220px;
+    padding-right: 220px;
+  }
+
+  .l-blogcontainter{
+    padding-bottom: 50px;
+  }
+
+  .blog-container{
+    &.frontpage{
+      margin-bottom: 30px;
+    }
+  }

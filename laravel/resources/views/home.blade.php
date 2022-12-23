@@ -14,7 +14,7 @@
                             <span data-purecounter-end="{{ $custom_count[3] }}" class="purecounter">0</span> applications)<br>
                             Site has <span data-purecounter-end="{{ $custom_count[4] }}" class="purecounter">0</span> users online.<br>
                             There are <span data-purecounter-end="{{ $custom_count[5] }}" class="purecounter">0</span> blogs to read. <br><br>
-                            <q class="quote"><i>Renting easy like your homie</i></q> - Founder                  
+                            <q class="quote"><i>Renting easy like renting from your homie</i></q> - Founder                  
                             </p>
                         </div>
                     </div>
@@ -99,13 +99,39 @@
 
         <div class="row">
             <hr>
-            <div class="d-flex justify-content-between align-items-center">
+            <div class="l-blogheader d-flex justify-content-between align-items-center">
                 <h1>Blogs</h1>
-                <a href="{{ route('blogs.index') }}" class="btn btn-lg btn-secondary">See more</a>
+                <a href="{{ route('blogs.index') }}" class="btn btn-primary btn-primary">See more <span class="glyphicon glyphicon-align-justify"></span></a>
             </div>
         </div>
-        @foreach ($blogs as $blog)
-            <div class="card mb-2">
+        <div class="l-blogcontainter">
+            @foreach ($blogs as $blog)
+            <div class="blog-container frontpage align-item-center">
+                            <div class="card border" style="width: 100%;">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <h5 class="card-title"><b><button onclick="window.location.href='{{ route('blogs.show', ['blog' => $blog]) }}';"
+                                                        type="button"><b>{{ $blog->blog_name }}</button></b></b></h5>
+                                            <p><i class="fa-solid fa-calendar-days"></i> {{ date_diff(new \DateTime($listing->updated_at), new \DateTime(now()))->format("%m months, %d days, %h hours") }}
+                        ago  <i class="fa-solid fa-hashtag"></i>{{ $blog->id }}</p>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="blog-info">
+                                                <p><i class="fa-regular fa-id-card"></i><button class="user-name"
+                                                    onclick="window.location.href='{{ route('users.show', ['user' => $blog->user]) }}';"
+                                                    type="button"
+                                                >
+                                                    {{ $blog->user->user_real_name }}
+                                                </button> <i class="fa-solid fa-hashtag"></i>{{ $blog->user->id }}</p>
+                                                <p><b>Updated at:</b> {{ $blog->updated_at }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+            <!-- <div class="card mb-2">
 {{--                <div class="card-header">--}}
 
 {{--                </div>--}}
@@ -119,11 +145,11 @@
                      data-placement="top"
                      title="{{ $listing->updated_at }}"
                 >
-                    {{ date_diff(new \DateTime($listing->updated_at), new \DateTime(now()))->format("%m months, %d days, %h hours") }}
-                    ago
+                    
                 </div>
-            </div>
+            </div> -->
         @endforeach
+        </div>
     </div>
     
 </body>

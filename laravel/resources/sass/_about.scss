@@ -1,0 +1,98 @@
+//about page
+.container-fluid{
+    &.about-box{
+      padding-left: 0;
+      padding-right: 0;
+    #story-about{
+      margin-top: 400px;
+      height: 650px;
+    }
+    #banner-box-1{
+      background-image: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
+      h2{
+        color: rgb(255, 255, 255);
+        font-size: 70px;
+        font-family: 'Lobster', cursive;
+        text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+      }
+      p{
+        color: rgb(255, 255, 255);
+        font-size: 30px;
+        font-family: 'Roboto', sans-serif;
+        text-shadow: -0.5px -0.5px 0 #000, 0.5px -0.5px 0 #000, -0.5px 0.5px 0 #000, 0.5px 0.5px 0 #000;
+      }
+    }
+  }
+  }
+  
+  #banner-box-2{
+    background-image: url('..\\..\\storage\\app\\public\\images\\background\\hanoibackground.png');
+    height: 600px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+  #why-box{
+    background-color: rgb(231, 231, 231);opacity: 10%;
+    margin-top: 150px;
+    margin-bottom: 20px;
+    opacity: 90%;
+    padding: 10px;
+    text-align: center;
+    }
+  }
+  
+  .mission {
+    margin-top: 100px;
+    margin-bottom: 50px;
+    background-color: rgb(231, 231, 231);
+    padding: 80px, 30px;
+    height: 300px;
+    
+    i {
+      font-size: 45px;
+      margin: auto;
+      margin-top: 15px;
+    }
+  
+    p {
+      font: 100;
+      padding: 12px;
+    }
+  
+    hr {
+      height: 2px;
+      background-color: black;
+    }
+    &:hover {
+      background-color: #26272b;
+      p {
+        color: white;
+      }
+      hr {
+        color: white;
+      }
+      h3 {
+        color: white;
+      }
+      i {
+        color: white;
+      }
+    }
+  }
+
+//mobile about page
+@media only screen and (max-width: 768px) {
+    #story-about{
+      margin-top: 400px;
+      height: 550px;
+
+      p {
+        font-size: 20px;
+      }
+      
+      h2 {
+        font-size: 50px;
+      }
+    }
+}

@@ -1,6 +1,7 @@
 // Fonts
 //@import url('https://fonts.bunny.net/css?family=Nunito');
 @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,400&display=swap');
 // Variables
 @import 'variables';
 
@@ -31,10 +32,11 @@
 //about page
 @import 'about';
 
+//dashboard
+@import 'dashboard';
 
+//card styling
+@import 'cardstyling';
 
-
-
-
-
-
+//article
+@import 'article';

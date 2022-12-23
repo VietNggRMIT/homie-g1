@@ -4,45 +4,6 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 </head>
 <body>
-    <div class="container">
-        <div>
-            <button
-                onclick="window.location.href='{{ route('route_home') }}';"
-                type="button"
-                class="btn btn-primary"
-            >
-                Home
-            </button>
-            <button
-                onclick="window.location.href='{{ route('listings.index') }}';"
-                type="button"
-                class="btn btn-primary"
-            >
-                Listings
-            </button>
-            <button
-                onclick="window.location.href='{{ route('blogs.index') }}'"
-                type="button"
-                class="btn btn-primary"
-            >
-                Blogs
-            </button>
-            <button
-                onclick="window.location.href='{{ route('route_about') }}'"
-                type="button"
-                class="btn btn-primary"
-            >
-                About
-            </button>
-            <button
-                onclick="window.location.href='{{ url()->previous() }}';"
-                type="button"
-                class="btn btn-primary"
-            >
-                Back to previous page
-            </button>
-        </div>
-    </div>
         <div class="main-wrapper">
                 <div class="hero-top">
                     <div class="container-fluid">

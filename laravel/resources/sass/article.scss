@@ -1,0 +1,65 @@
+//article styling
+
+  
+.initial-post{
+    padding-bottom: 100px;
+    text-align: center;
+    h1 {
+     font-family: 'Roboto', sans-serif;
+     color: red;
+     font-size: 60px;
+    }
+ 
+    p {
+     font-size: 25px;
+     text-shadow: -0.5px -0.5px 0 #000, 0.5px -0.5px 0 #000, -0.5px 0.5px 0 #000, 0.5px 0.5px 0 #000;  
+     color: white;
+    }
+ 
+   .container-fluid{
+     background-image: url('..\\..\\storage\\app\\public\\images\\article_image\\hanoicity.jpg');
+     background-color: #33353d;
+     height: 1000px;
+     background-position: center;
+     background-repeat: no-repeat;
+     background-size: cover;
+     position: relative;
+     background-position: 50% 0;
+     
+         #first-box{
+         margin-top: 200px;
+         }
+     } 
+   } 
+ 
+   .news-art {
+     
+     .card {
+       margin-top: 50px;
+     }
+     
+     a {
+       text-decoration: none;
+     }
+ 
+     img {
+       height: 200px;
+     }
+     
+     h3 {
+       font-size: 30px;
+       &:hover {
+         color: aquamarine;
+       }
+     }
+   }
+ 
+   .sidebar{
+     &.article{
+       padding-top: 100px;
+       img{
+         width: 300px;
+         padding-bottom: 20px;
+       }
+     }
+   }
