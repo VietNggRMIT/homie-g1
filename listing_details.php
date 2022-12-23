@@ -22,7 +22,7 @@
             <div class="main-wrapper">
                 <div class="container">
                     <div class="row">
-                        <div class="col-xl-7">
+                        <div class="col-xl">
 
                             <div class="listing-img-carousel">
                                 <div id="carouselExampleIndicators" class="carousel slide listing-carousel" data-bs-ride="true">
@@ -60,7 +60,11 @@
                             </div>
 
                         </div>
-                        <div class="col-xl-5">
+                    </div>
+
+                    <div class="row listing-description mt-5">
+                        <div class="col col-xl-7">
+
                             <div class="card listing-details">
 
                                 <div class="card-body">
@@ -84,7 +88,19 @@
                                             the Dodo suddenly called out 'The race is over!' and they all crowded round.
                                         </p>
                                     </div>
-                                    <div class="h5">Listing amenities:</div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="col col-xl-5">
+
+                            <div class="card listing-amenities-ratings">
+
+                                <div class="card-body">
+                                    <div class="title mb-3">
+                                        <div class="h3">Listing amenities</div>
+                                    </div>
                                     <div class="row listing-amenities align-items-center justify-content-around text-center gy-3 mb-3">
                                         <div class="col-sm-4 listing-feature" id="spec_tenant">
                                             <i class="fa-solid fa-users-between-lines"></i>
@@ -122,22 +138,26 @@
                                     </div>  
                                 </div>
                                 <div class="card-footer">
-                                    <a class="btn btn-warning btn-lg d-block" href="#">Apply now!</a>
+                                    <div class="btn-container my-3">
+                                        <a class="btn btn-warning btn-lg px-5" href="#">Apply now!</a>
+                                    </div>
                                 </div>
 
                             </div>
+
                         </div>
+
                     </div>
 
-                    <div class="row mt-5">
-                        <div class="col-lg-7">
-                            <div class="card px-5 py-3">
+                    <div class="row listing-owner-map mt-5">
+                        <div class="col col-lg-7">
+                            <div class="card px-3 py-3">
                                 <div class="title mt-3">
                                     <div class="h2">Owner information</div>
                                     <hr class="baby">
                                 </div>
                                 <div class="row gx-4">
-                                    <div class="col col-lg-8">
+                                    <div class="col col-lg-7 gy-2">
                                         <div class="col d-flex align-items-center mb-3">
                                             <div class="profile-pic-section mr-1">
                                                 <div class="profile-pic-container listing-details">
@@ -157,35 +177,43 @@
                                             <div class="user-description">
                                                 <p>
                                                     "Short user description that user can choose to write down, whatever text here display here"
+                                                    "Short user description that user can choose to write down, whatever text here display here"
+                                                    "Short user description that user can choose to write down, whatever text here display here"
                                                 </p>
-                                            </div>
-                                            <div class="quick-info">
-                                                <ul class="d-flex icons-list ls-none align-items-center">
-                                                    <li><p><i class="fa-regular fa-compass"></i> Thanh Hoa, Viet Nam</p></li>
-                                                    <li><p><i class="fa-solid fa-mobile-screen"></i> Phone: 0123456789</p></li>
-                                                    <li><p><i class="fa-regular fa-envelope"></i> Email: email@email.com</p></li>
-                                                    <li><p><i class="fa-regular fa-user"></i> Member since: 28/11/2022</p></li>
-                                                    <li><p><i class="fa-sharp fa-solid fa-cake-candles"></i> D.O.B: 6/12/2000</p></li>
-                                                </ul>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col col-lg-4">
-                                        <a class="btn btn-warning btn-lg d-block mb-3">Contact owner</a>
-                                        <a class="btn btn-warning btn-lg d-block mb-3">View profile</a>
+                                    <div class="col col-lg-5">
+                                        <div class="quick-info my-auto">
+                                            <ul class="icons-list ls-none align-items-center px-0">
+                                                <li><p><i class="fa-regular fa-compass"></i> Thanh Hoa, Viet Nam</p></li>
+                                                <li><p><i class="fa-solid fa-mobile-screen"></i> Phone: 0123456789</p></li>
+                                                <li><p><i class="fa-regular fa-envelope"></i> Email: email@email.com</p></li>
+                                                <li><p><i class="fa-regular fa-user"></i> Member since: 28/11/2022</p></li>
+                                                <li><p><i class="fa-sharp fa-solid fa-cake-candles"></i> D.O.B: 6/12/2000</p></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-3 mx-auto">
+                                        <a class="btn btn-warning mb-3">Contact owner</a>
+                                        <a class="btn btn-warning mb-3">View profile</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="col-lg-5">
-                            <div class="card listing-map">
+                        <div class="col col-lg-5 embed-map">
+                            <div class="card listing-map px-3 py-3">
+                                <div class="title mt-3">
+                                    <div class="h2">Listing location</div>
+                                    <hr class="baby">
+                                </div>
                                 <div class="h1">EMBED MAP HERE!</div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="row mt-5">
+                    <div class="row listing-reviews mt-5">
                         <div class="col col-lg-7">
                             <div class="card px-3 py-3">
                                 <div class="title mt-3">
@@ -276,7 +304,7 @@
                                 <button class="btn btn-outline-primary">Load more reviews</button>
                             </div>
                         </div>
-                        <div class="col col-lg-5">
+                        <div class="col col-lg-5 review-form">
                             <div class="card px-3 py-3">
                                 <div class="title mt-3">
                                     <div class="h3">Leave a review</div>

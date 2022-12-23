@@ -385,33 +385,33 @@
                                     <div class="h3">Your applications</div>
                                 </div>
                                 <hr>
-                                <div class="card-body application-listings">
-                                    <div class="row column-labels">
+                                <div class="card-body application-listings mx-3">
+                                    <div class="row column-labels mb-3">
                                         <label class="col-4 property">Property</label>
                                         <label class="col-2 applicant">Applicant</label>
                                         <label class="col-4 location">Location</label>
                                         <label class="col-2 date">Date</label>
                                     </div>
                                     <div class="applications">
-                                        <a class="row app" href="#">
+                                        <a class="row app mb-3" href="#">
                                             <div class="col-4 property txt-wrap">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ac leo non diam egestas euismod ut ac mauris. Praesent rutrum velit eget massa viverra placerat. Proin nec condimentum magna.</div>
                                             <div class="col-2 appicant">Handsome Viet</div>
                                             <div class="col-4 location txt-wrap">123hehe, Nhanh Chinh, Thanh Xuan, Ha Noi</div>
                                             <div class="col-2 date">21/01/2000</div>
                                         </a>
-                                        <a class="row app" href="#">
+                                        <a class="row app mb-3" href="#">
                                             <div class="col-4 property txt-wrap">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ac leo non diam egestas euismod ut ac mauris. Praesent rutrum velit eget massa viverra placerat. Proin nec condimentum magna.</div>
                                             <div class="col-2 appicant">Handsome Viet</div>
                                             <div class="col-4 location txt-wrap">123hehe, Nhanh Chinh, Thanh Xuan, Ha Noi</div>
                                             <div class="col-2 date">21/01/2000</div>
                                         </a>
-                                        <a class="row app" href="#">
+                                        <a class="row app mb-3" href="#">
                                             <div class="col-4 property txt-wrap">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ac leo non diam egestas euismod ut ac mauris. Praesent rutrum velit eget massa viverra placerat. Proin nec condimentum magna.</div>
                                             <div class="col-2 appicant">Handsome Viet</div>
                                             <div class="col-4 location txt-wrap">123hehe, Nhanh Chinh, Thanh Xuan, Ha Noi</div>
                                             <div class="col-2 date">21/01/2000</div>
                                         </a>
-                                        <a class="row app" href="#">
+                                        <a class="row app mb-3" href="#">
                                             <div class="col-4 property txt-wrap">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ac leo non diam egestas euismod ut ac mauris. Praesent rutrum velit eget massa viverra placerat. Proin nec condimentum magna.</div>
                                             <div class="col-2 appicant">Handsome Viet</div>
                                             <div class="col-4 location txt-wrap">123hehe, Nhanh Chinh, Thanh Xuan, Ha Noi</div>

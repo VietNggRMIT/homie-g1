@@ -214,6 +214,28 @@ hr {
     }
 }
 
+.application-listings {
+  .applications {
+    a {
+      transition: all 0.2s ease-in-out;
+      text-decoration: none;
+      color: #000;
+      
+      &.app {
+        background-color: #f5f5f5;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 3px;
+        box-shadow: 0 0 5px 2px rgb(0 0 0 / 10%);
+
+        &:hover {
+          background-color: #a0d2eb;
+        }
+      }
+    }
+  }
+}
+
 // Account card componenets
 .account-bg {
   box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
@@ -273,7 +295,7 @@ hr {
   }
 
   &.listing-details {
-    max-height: 75vh;
+    // max-height: 75vh;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
     
     .card-body {
@@ -286,16 +308,28 @@ hr {
         }
 
         .card-description {
-            min-height: 23vh;
+            // min-height: 23vh;
         }
 
         .listing-amenities {
+            height: 100%;
             font-size: 1.1rem;
         }
 
         .card-price-rating {
             font-size: 1.2rem;
         }
+    }
+  }
+
+  &.listing-amenities-ratings {
+    .card-body {
+      font-size: 1.2rem;
+    }
+    .card-footer {
+      .btn {
+        display: block;
+      }
     }
   }
 
@@ -957,53 +991,104 @@ footer .social-icons {
 
   
   //mobile article page
-.initial-post{
-  h1 {
-    font-family: 'Roboto', sans-serif;
-    color: red;
-    font-size: 30px;
-   }
+    .initial-post{
+      h1 {
+        font-family: 'Roboto', sans-serif;
+        color: red;
+        font-size: 30px;
+      }
 
-   p {
-    font-size: 15px;
-    text-shadow: -0.5px -0.5px 0 #000, 0.5px -0.5px 0 #000, -0.5px 0.5px 0 #000, 0.5px 0.5px 0 #000;  
-    color: white;
-   }
-}
+      p {
+        font-size: 15px;
+        text-shadow: -0.5px -0.5px 0 #000, 0.5px -0.5px 0 #000, -0.5px 0.5px 0 #000, 0.5px 0.5px 0 #000;  
+        color: white;
+      }
+    }
 
-.news-art{
-  img {
-    height: auto;
-    width: 100%;
-  }
+    .news-art{
+      img {
+        height: auto;
+        width: 100%;
+      }
 
-  p {
-    font-size: 30px;
-  }
+      p {
+        font-size: 30px;
+      }
 
-  h3 {
-    font-size: 35px;
-  }
+      h3 {
+        font-size: 35px;
+      }
 
-  
-}
+      
+    }
 
-.filter-img{
-  h2{
-    font-size: large;
-  }
+    .filter-img{
+      h2{
+        font-size: large;
+      }
 
-  .top-img-box{
-    margin-top: 15px;
-  }
-}
+      .top-img-box{
+        margin-top: 15px;
+      }
+    }
 
-//mobile blog page
-.blog-container{
-  margin-left: 0px;
-  margin-right: 0px;
+    //mobile blog page
+    .blog-container{
+      margin-left: 0px;
+      margin-right: 0px;
 
-}
+    }
+
+    //mobile listing description
+    .row {
+      &.listing-description {
+        display: block;
+
+        .col {
+          .card {
+            &.listing-amenities-ratings {
+              margin-top: 1.5rem;
+
+              .card-body {
+                .title {
+                  text-align: center;
+                }
+              }
+              
+              .card-footer {
+                .btn-container {
+                  text-align: center;
+
+                  .btn {
+                    display: initial;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+
+      &.listing-owner-map {
+        display: block;
+
+        .col {
+          &.embed-map {
+            margin-top: 1.5rem;
+          }
+        }
+      }
+
+      &.listing-reviews {
+        display: block;
+
+        .col {
+          &.review-form {
+            margin-top: 1.5rem;
+          }
+        }
+      }
+    }
 
 // Mobile footer styling 
     footer {
@@ -1113,5 +1198,56 @@ footer .social-icons {
             text-shadow: -0.5px -0.5px 0 #000, 0.5px -0.5px 0 #000, -0.5px 0.5px 0 #000, 0.5px 0.5px 0 #000;  
             color: white;
         }
+    }
+
+    //tablet listing details
+    .row {
+      &.listing-description {
+        display: block;
+
+        .col {
+          .card {
+            &.listing-amenities-ratings {
+              margin-top: 1.5rem;
+
+              .card-body {
+                .title {
+                  text-align: center;
+                }
+              }
+              
+              .card-footer {
+                .btn-container {
+                  text-align: center;
+
+                  .btn {
+                    display: initial;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+
+      &.listing-owner-map {
+        display: block;
+
+        .col {
+          &.embed-map {
+            margin-top: 1.5rem;
+          }
+        }
+      }
+
+      &.listing-reviews {
+        display: block;
+
+        .col {
+          &.review-form {
+            margin-top: 1.5rem;
+          }
+        }
+      }
     }
 }

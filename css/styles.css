@@ -179,6 +179,22 @@ hr.baby {
   background-color: #a0d2eb;
 }
 
+.application-listings .applications a {
+  transition: all 0.2s ease-in-out;
+  text-decoration: none;
+  color: #000;
+}
+.application-listings .applications a.app {
+  background-color: #f5f5f5;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 3px;
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.1);
+}
+.application-listings .applications a.app:hover {
+  background-color: #a0d2eb;
+}
+
 .account-bg {
   box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
   border-radius: 0.25rem;
@@ -222,7 +238,6 @@ hr.baby {
   max-width: 500px;
 }
 .card.listing-details {
-  max-height: 75vh;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
 }
 .card.listing-details .card-body {
@@ -231,14 +246,18 @@ hr.baby {
 .card.listing-details .card-body .card-listing-location i, .card.listing-details .card-body .card-listing-location p {
   font-size: 1.2rem;
 }
-.card.listing-details .card-body .card-description {
-  min-height: 23vh;
-}
 .card.listing-details .card-body .listing-amenities {
+  height: 100%;
   font-size: 1.1rem;
 }
 .card.listing-details .card-body .card-price-rating {
   font-size: 1.2rem;
+}
+.card.listing-amenities-ratings .card-body {
+  font-size: 1.2rem;
+}
+.card.listing-amenities-ratings .card-footer .btn {
+  display: block;
 }
 .card.listing-card {
   margin: 0 auto;
@@ -774,6 +793,33 @@ footer .social-icons a {
     margin-left: 0px;
     margin-right: 0px;
   }
+  .row.listing-description {
+    display: block;
+  }
+  .row.listing-description .col .card.listing-amenities-ratings {
+    margin-top: 1.5rem;
+  }
+  .row.listing-description .col .card.listing-amenities-ratings .card-body .title {
+    text-align: center;
+  }
+  .row.listing-description .col .card.listing-amenities-ratings .card-footer .btn-container {
+    text-align: center;
+  }
+  .row.listing-description .col .card.listing-amenities-ratings .card-footer .btn-container .btn {
+    display: initial;
+  }
+  .row.listing-owner-map {
+    display: block;
+  }
+  .row.listing-owner-map .col.embed-map {
+    margin-top: 1.5rem;
+  }
+  .row.listing-reviews {
+    display: block;
+  }
+  .row.listing-reviews .col.review-form {
+    margin-top: 1.5rem;
+  }
   footer {
     padding-bottom: 0;
   }
@@ -842,5 +888,32 @@ footer .social-icons a {
     font-size: 22.5px;
     text-shadow: -0.5px -0.5px 0 #000, 0.5px -0.5px 0 #000, -0.5px 0.5px 0 #000, 0.5px 0.5px 0 #000;
     color: white;
+  }
+  .row.listing-description {
+    display: block;
+  }
+  .row.listing-description .col .card.listing-amenities-ratings {
+    margin-top: 1.5rem;
+  }
+  .row.listing-description .col .card.listing-amenities-ratings .card-body .title {
+    text-align: center;
+  }
+  .row.listing-description .col .card.listing-amenities-ratings .card-footer .btn-container {
+    text-align: center;
+  }
+  .row.listing-description .col .card.listing-amenities-ratings .card-footer .btn-container .btn {
+    display: initial;
+  }
+  .row.listing-owner-map {
+    display: block;
+  }
+  .row.listing-owner-map .col.embed-map {
+    margin-top: 1.5rem;
+  }
+  .row.listing-reviews {
+    display: block;
+  }
+  .row.listing-reviews .col.review-form {
+    margin-top: 1.5rem;
   }
 }/*# sourceMappingURL=styles.css.map */
