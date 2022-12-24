@@ -2,7 +2,9 @@
 @section('title', 'User info')
 @section('content')
 <body>
-            {{ Breadcrumbs::render('breadcrumb_user', $user) }}
+<div class="breadcrumb justify-content-center">
+    <h2>{{ Breadcrumbs::render('breadcrumb_user', $user) }}</h2>
+</div>
         <!-- <div>
             <h1>User</h1>
             <div>$user->id: {{ $user->id }}</div>
@@ -111,7 +113,7 @@
                                 <div class="card dashboard-account mx-auto">
                                     <div class="profile-pic-section mt-3">
                                         <div class="profile-pic-container">
-                                            <img src="{{ asset('storage/images/').'/'.$user->user_image_path }}" style="width:100px;height:100%;object-fit: cover;">    
+                                            <img src="{{ asset('storage/images/').'/'.$user->user_image_path }}" style="height:100%;object-fit: cover;">    
                                         </div>
                                     </div>
                                     <div class="card-body text-center">
@@ -119,11 +121,11 @@
                                     <div class="card-name h3 mb-3">{{ $user->user_real_name }}</div>
                                     <p><i class="fa-solid fa-star"></i> <b>3.6</b> (69)</p>
                                     <p class="card-text">"{!!  nl2br(e($user->user_description)) !!}"</p>
+                                    <br>
                                     <ul class="social-icons">
-                                        <li><a class="icons" href="#"><i class="fa-brands fa-facebook"></i></a></li>
+                                        <li><a class="icons" href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
                                         <li><a class="icons" href="https://github.com/VietNggRMIT/homie-g1"><i class="fa-brands fa-youtube"></i></a></li>  
                                     </ul>
-                                    <br>
                                         <div class="quick-info">
                                             <ul>
                                                 <li><p><i class="fa-solid fa-address-card"></i> ID: {{ $user->id }}</p></li>
@@ -133,11 +135,6 @@
                                                 <li><p><i class="fa-regular fa-user"></i> Member since {{ $user->created_at }}</p></li>
                                                 <li><p><i class="fa-sharp fa-solid fa-cake-candles"></i> D.O.B: 6/12/2000</p></li>
                                             </ul>
-                                        </div>
-                                        <hr>
-                                        <div class="acc-options-btns d-grid gap-2 md-block">
-                                            <a class="btn btn-warning">Update info</a>
-                                            <a class="btn btn-warning">Change password</a>
                                         </div>
                                     </div>
                                 </div>

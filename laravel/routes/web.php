@@ -94,7 +94,7 @@ Route::view('/privacy', 'directory_static.privacy')
     ->name('route_privacy');
 
 Route::view('/article', 'directory_static.article')
-    ->name('route_article');
+    ->name('route_article');    
 
 // Fallback route placed at the end of the file to catch all unmatched paths
 Route::fallback(FallbackController::class)

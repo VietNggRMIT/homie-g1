@@ -1,7 +1,3 @@
-// Color variables
-$dark-gray: #26272B;
-$light-gray: #A9A9A9;
-$orange-star: #FFA500;
 
 // Card styling specifics
 .rating-stars {
@@ -32,13 +28,6 @@ $orange-star: #FFA500;
   
     .fa-solid{
       color: orangered;
-    }
-  
-    .social-icons{
-      .icons{
-        size: 10px;
-        color: #26272b;
-      }
     }
     
     p {
@@ -201,3 +190,28 @@ $orange-star: #FFA500;
   .light-gray {
       color: $light-gray;
   }
+//profile picture
+  .profile-pic-container {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto;
+
+    &.listing-details {
+        width: 75px;
+        height: 75px;
+    }
+
+    img {
+        position: relative; 
+        top: 50%;
+        transform: translateY(-50%);
+    }
+}
+
+hr {
+    &.baby {
+        width: 3.5rem;
+    }
+}

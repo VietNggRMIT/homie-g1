@@ -161,12 +161,6 @@
                 </table>
             </div>
         </main>
-<!-- 
-        <h1>About Page</h1>
-        <h2>Write about the company</h2>
-        <div>Laravel version: {{ App::VERSION() }}</div>
-        <div>The time according to the system is: {{ now() }}</div> -->
-    
 </body>
 </html>
 @endsection

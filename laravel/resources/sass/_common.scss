@@ -1,4 +1,34 @@
+
+// Color variables
+$dark-gray: #26272B;
+$light-gray: #A9A9A9;
+$orange-star: #FFA500;
+
 //common component styling 
+.main-wrapper{
+  p {
+    font-size: medium;
+  }
+
+  .container {
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+
+  .img-fluid{
+    &.error-logo{
+      width: 50%;
+      height: 100%;
+    }
+  }
+}
+
+//logo
+.fa-brands{
+  line-height: 40px;
+}
+
+//breadcrumb
 .breadcrumb{
     padding-top: 50px;
     h2{
