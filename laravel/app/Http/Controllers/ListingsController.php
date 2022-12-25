@@ -114,12 +114,28 @@ class ListingsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Listing  $listing
+     * @param  \App\Models\Listing  $listing, \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function edit(Listing $listing)
+    public function edit(int $listing_id, Request $request)
     {
-        //
+        $listing = Listing::first(['id' => $listing_id]);
+        $listing->listing_name = $request->listing_name;
+        $listing->listing_description = $request->listing_description;
+        $listing->listing_address_subdivision_1 = $request->listing_address_subdivision_1;
+        $listing->listing_address_subdivision_2 = $request->listing_address_subdivision_2;
+        $listing->listing_address_subdivision_3 = $request->listing_address_subdivision_3;
+        $listing->listing_address_coordinate = $request->listing_address_coordinate;
+        $listing->price = $request->price;
+        $listing->available = $request->available;
+        $listing->listing_specification_bathroom = $request->listing_specification_bathroom;
+        $listing->listing_specification_bedroom  = $request->listing_specification_bedroom;
+        $listing->listing_specification_size = $request->listing_specification_size;
+        $listing->listing_specification_owner = $request->listing_specification_owner;
+        $listing->listing_specification_tenant = $request->listing_specification_tenant;
+        $listing->user_id = $request->user_id;
+        $listing->save();
+        return redirect()->route('listing', ['listing_name' => $listing->listing_name]);
     }
 
     /**

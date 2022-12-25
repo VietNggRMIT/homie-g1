@@ -3,7 +3,7 @@
     use Carbon\Carbon;
 @endphp
 <head>
-    <title>Add Blog</title>
+    <title>Add or Edit Blog</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
@@ -16,10 +16,18 @@
   @endif
   <div class="card">
     <div class="card-header text-center font-weight-bold">
-      Add Blog Post Form
+      Add or Edit Blog Post Form
     </div>
     <div class="card-body">
-      <form name="add-blog-post-form" id="add-blog-post-form" method="post" action="{{url('store-blog')}}">
+      @if($from)
+        @if($from == 'edit')  
+          <form name="add-blog-post-form" id="add-blog-post-form" method="post" action="{{ url("edit-blog/{$blog_id}") }}">
+          <h1>{{ 'edit' }}</h1>
+        @else
+          <form name="add-blog-post-form" id="add-blog-post-form" method="post" action="{{ url('store-blog') }}">
+          <h1>{{ 'create' }}</h1>
+        @endif
+      @endif
        @csrf
         <div class="form-group">
           <label for="blog_name">Blog name</label>
@@ -33,6 +41,7 @@
             <label for="user_id">User ID - will be removed, here to test</label>
             <input type="number" name="user_id" class="form-control" required="">
         </div>
+        <input hidden="true" name="blog_id" value="{{ $blog_id }}">
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>
     </div>

@@ -68,9 +68,16 @@ class BlogsController extends Controller
      * @param  \App\Models\Blog  $blog
      * @return \Illuminate\Http\Response
      */
-    public function edit(Blog $blog)
+    public function edit(Request $request, $blog_id)
     {
-        //
+
+        $blog = Blog::find($blog_id);
+        
+        $blog->blog_name = $request->blog_name;
+        $blog->blog_description = $request->blog_description;
+        $blog->user_id = $request->user_id;
+        $blog->save();
+        return redirect()->route('blogs.show', ['blog' => $blog]);
     }
 
     /**

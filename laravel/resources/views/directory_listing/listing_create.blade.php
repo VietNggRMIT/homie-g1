@@ -18,7 +18,7 @@
       Add Or Edit Listing Form
     </div>
     <div class="card-body">
-      <form name="add-listing-post-form" id="add-listing-post-form" method="post" action="{{url('store-listing')}}">
+      <form name="add-listing-post-form" id="add-listing-post-form" method="post" action="{{$url}}">
         @csrf
         <div class="form-group">
           <label for="listing_name">Listing name</label>
