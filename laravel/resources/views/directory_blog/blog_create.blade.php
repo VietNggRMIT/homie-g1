@@ -1,4 +1,5 @@
-{{-- assume that we have full right to delete --}}
+{{-- assume that we have full right to edit all blog posts --}}
+{{-- to do: check if the blog editor is the same as the blog owner --}}
 @php
     use Carbon\Carbon;
 @endphp
@@ -20,28 +21,40 @@
     </div>
     <div class="card-body">
       @if($from)
-        @if($from == 'edit')  
-          <form name="add-blog-post-form" id="add-blog-post-form" method="post" action="{{ url("edit-blog/{$blog_id}") }}">
-          <h1>{{ 'edit' }}</h1>
+        @if($from == 'update')
+          @if(isset($blog))
+            <form name="add-blog-post-form" id="add-blog-post-form" method="post" action="{{ url("update-blog/{$blog->id}") }}">
+            <h1>debug message - update</h1>
+          @endif
         @else
           <form name="add-blog-post-form" id="add-blog-post-form" method="post" action="{{ url('store-blog') }}">
-          <h1>{{ 'create' }}</h1>
+          <h1>debug message - create</h1>
         @endif
       @endif
        @csrf
         <div class="form-group">
           <label for="blog_name">Blog name</label>
-          <input type="text" id="blog_name" name="blog_name" class="form-control" required="true">
+          @if(isset($blog))
+            <input type="text" id="blog_name" name="blog_name" class="form-control" required="true" value="{{ $blog->blog_name }}">
+          @else
+            <input type="text" id="blog_name" name="blog_name" class="form-control" required="true">
+          @endif
         </div>
         <div class="form-group">
           <label for="blog_description">Blog Description</label>
-          <textarea name="blog_description" class="form-control" required="true"></textarea>
+          @if(isset($blog))
+            <textarea name="blog_description" id="blog_description" class="form-control" required="true" >{{ $blog->blog_description }}</textarea>
+          @else
+            <textarea name="blog_description" class="form-control" required="true"></textarea>
+          @endif
         </div>
         <div class="form-group">
             <label for="user_id">User ID - will be removed, here to test</label>
-            <input type="number" name="user_id" class="form-control" required="">
+            <input type="number" name="user_id" class="form-control" required="" value="{{ $blog->user_id }}">
         </div>
-        <input hidden="true" name="blog_id" value="{{ $blog_id }}">
+        @if (isset($blog_id))
+          <input hidden="true" name="blog_id" value="{{ $blog_id }}">
+        @endif
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>
     </div>

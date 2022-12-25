@@ -77,9 +77,9 @@ Route::resource('/blogs', BlogsController::class);
 //1. Create blog
 Route::view('/blog_create', 'directory_blog.blog_create', ['from' => 'create']);
 Route::post('store-blog/', [BlogsController::class, 'store']);
-//2. Edit blog -- will add with('blog_id' = $blog_id) on viewing blog
-Route::view('/blog_edit/{blog_id}', 'directory_blog.blog_create', ['from' => 'edit']);
-Route::post('edit-blog/{blog_id}', [BlogsController::class, 'edit']);
+//2. Update blog -- will add with('blog_id' = $blog_id) on viewing blog
+Route::view('/blog_update/{blog}', 'directory_blog.blog_create', ['from' => 'update']);
+Route::post('update-blog/{blog_id}', [BlogsController::class, 'update']);
 //3. Create review
 Route::view('/review_create', 'directory_listing.review_create');
 Route::post('store-review', [ReviewsController::class, 'store']);
@@ -89,9 +89,9 @@ Route::post('store-application', [ApplicationsController::class, 'store']);
 //5. Create listing
 Route::view('/listing_create', 'directory_listing.listing_create');
 Route::post('store-listing/{id}', [ListingsController::class, 'store']);
-//6. Edit listing
-Route::view('/listing_edit', 'directory_listing.listing_create');
-Route::post('edit-listing/{id}', [ListingsController::class, 'edit']);
+//6. Update listing
+Route::view('/listing_update', 'directory_listing.listing_create');
+Route::post('update-listing/{id}', [ListingsController::class, 'update']);
 
 //View other pages
 Route::view('/about', 'directory_about.about')

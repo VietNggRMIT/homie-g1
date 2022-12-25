@@ -68,28 +68,31 @@ class BlogsController extends Controller
      * @param  \App\Models\Blog  $blog
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request, $blog_id)
+    public function edit(Blog $blog)
     {
+        $custom_blog = Blog::with('user')
+        ->find($blog->id);
 
-        $blog = Blog::find($blog_id);
-        
-        $blog->blog_name = $request->blog_name;
-        $blog->blog_description = $request->blog_description;
-        $blog->user_id = $request->user_id;
-        $blog->save();
-        return redirect()->route('blogs.show', ['blog' => $blog]);
+        return response()
+            ->view('directory_blog.blog_create', ['blog' => $custom_blog, 'from' => 'update'], 200);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Blog  $blog
+     * @param  $blog_id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Blog $blog)
+    public function update(Request $request, $blog_id)
     {
-        //
+        $new_blog = Blog::find($blog_id);
+        
+        $new_blog->blog_name = $request->blog_name;
+        $new_blog->blog_description = $request->blog_description;
+        $new_blog->user_id = $request->user_id;
+        $new_blog->save();
+        return redirect()->route('blogs.show', ['blog' => $new_blog]);
     }
 
     /**

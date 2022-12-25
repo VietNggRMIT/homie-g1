@@ -5,9 +5,10 @@
         <div class="container blogpost">
             <div class="row">
                 <div class="col-lg-12">
-                    <button onclick="window.location.href='/blog_edit/{{ $blog->id }}';" type="button">
+                    {{-- <button onclick="window.location.href='{{ '/blog_update/' . $blog->id }}';" type="button"> --}}
+                    <button onclick="window.location.href='{{ route('blogs.edit', ['blog' => $blog]) }}';" type="button">
                         Edit blog
-                        </button>
+                    </button>
                     <article>
                         <header class="mb-4">
                         <div class="breadcrumb justify-content-center">
