@@ -50,7 +50,9 @@
         </div>
         <div class="form-group">
             <label for="user_id">User ID - will be removed, here to test</label>
-            <input type="number" name="user_id" class="form-control" required="" value="{{ $blog->user_id }}">
+            @if(isset($blog))
+              <input type="number" name="user_id" class="form-control" required="" value="{{ $blog->user_id }}">
+            @endif
         </div>
         @if (isset($blog_id))
           <input hidden="true" name="blog_id" value="{{ $blog_id }}">

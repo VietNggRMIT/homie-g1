@@ -78,7 +78,7 @@ Route::resource('/blogs', BlogsController::class);
 Route::view('/blog_create', 'directory_blog.blog_create', ['from' => 'create']);
 Route::post('store-blog/', [BlogsController::class, 'store']);
 //2. Update blog -- will add with('blog_id' = $blog_id) on viewing blog
-Route::view('/blog_update/{blog}', 'directory_blog.blog_create', ['from' => 'update']);
+//Route::view('/blog_update/{blog}', 'directory_blog.blog_create', ['from' => 'update']);
 Route::post('update-blog/{blog_id}', [BlogsController::class, 'update']);
 //3. Create review
 Route::view('/review_create', 'directory_listing.review_create');

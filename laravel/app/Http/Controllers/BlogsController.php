@@ -28,7 +28,8 @@ class BlogsController extends Controller
      */
     public function create()
     {
-        //
+        return response()
+            ->view('directory_blog.blog_create', ['from' => 'create'], 200);
     }
 
     /**
