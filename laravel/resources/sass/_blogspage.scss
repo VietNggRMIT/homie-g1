@@ -1,6 +1,7 @@
 //blog styling
-.hero-top{
+.hero-top {
     text-align: center;
+
     h1 {
      font-family: 'Roboto', sans-serif;
      color: #41dfff;
@@ -30,58 +31,84 @@
      } 
    } 
   
-  .blog-container{
-    margin-left: 200px;
-    margin-right: 200px;
+  // .blog-container{
     
-    .blog-info{
-        padding-left: 30px;
-    }
+  //   .blog-info{
+  //       padding-left: 30px;
+  //   }
 
-    i{
-      color: #004d7a;
-    }
+  //   i{
+  //     color: #004d7a;
+  //   }
 
-    button{
-        background-color: white;
-        border: none;
-        color: rgb(0, 0, 0);
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 20px;
+  //   button{
+  //       background-color: white;
+  //       border: none;
+  //       color: rgb(0, 0, 0);
+  //       text-align: center;
+  //       text-decoration: none;
+  //       display: inline-block;
+  //       font-size: 20px;
         
-        &.user-name{
-            font-size: 15px;
-        }
+  //       &.user-name{
+  //           font-size: 15px;
+  //       }
 
-        &:hover{
-            color: blue;
-        }
-    }
+  //       &:hover{
+  //           color: blue;
+  //       }
+  //   }
 
-    h5{
-      font-family: 'Roboto', sans-serif;
-      font-size: 20px;
+  //   h5{
+  //     font-family: 'Roboto', sans-serif;
+  //     font-size: 20px;
   
-    }
+  //   }
     
-    p{
-      font-size: 15px;
-    }
+  //   p{
+  //     font-size: 15px;
+  //   }
   
-    h6{
-      font-family: 'Roboto', sans-serif;
-      font-size: 20px;
-    }
+  //   h6{
+  //     font-family: 'Roboto', sans-serif;
+  //     font-size: 20px;
+  //   }
     
-    hr{
-      height: 10px;
-    }
-  }
+  //   hr{
+  //     height: 10px;
+  //   }
+  // }
 
 .blogs-wrapper{
   margin-bottom: 100px;
+}
+
+.blog-card {
+  a {
+    text-decoration: none;
+    color: #000;
+
+    &.card-title {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      line-clamp: 1;
+      -webkit-box-orient: vertical;
+    }
+
+    &:hover {
+      color: #a28089;
+    }
+  }
+
+  i {
+    color: #8b96fa;
+  }
+
+  &:hover {
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+  }
 }
 
 //mobile blog page
