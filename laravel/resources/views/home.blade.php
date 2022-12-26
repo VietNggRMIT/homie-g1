@@ -111,11 +111,13 @@
                                 <span>{{ (int) $listing->listing_specification_tenant }} person(s)</span>
                             </div>
                             @if ($listing->listing_specification_owner == 1)
-                                {{-- <div>$listing->listing_specification_owner: {{ $listing->listing_specification_owner }}</div> --}}
+                                {{-- code for listing where owner lives with u --}}
                                 <div class="listing-feature">
                                     <i class="fa-solid fa-user-shield"></i>
                                     <span>With owner</span>
                                 </div>
+                            @else
+                                {{-- ur code here bro --}}
                             @endif
                             <div class="listing-feature">
                                 <i class="fa-solid fa-ruler-combined"></i>

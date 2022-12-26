@@ -107,6 +107,8 @@
                     @if ($listing->listing_specification_owner == 1)
                         {{-- <div>$listing->listing_specification_owner: {{ $listing->listing_specification_owner }}</div> --}}
                         <div>Lives with owner</div>
+                    @else
+                        <div>Doesnt live with owner</div>
                     @endif
                     <div>$listing->listing_specification_tenant: {{ $listing->listing_specification_tenant }}</div>
                     <div>$listing->user_id: {{ $listing->user_id }}</div>
