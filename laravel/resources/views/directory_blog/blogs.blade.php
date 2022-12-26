@@ -4,7 +4,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 </head>
 <body>
-    <div class="container">
+    
         <div class="hero-top">
             <div class="container-fluid">
                 <div class="row justify-content-center">
@@ -23,7 +23,7 @@
             <div class="breadcrumb justify-content-center">
                 <h2>{{ Breadcrumbs::render('breadcrumb_blogs') }}</h2>
             </div>
-
+        <div class="container">
             <div class="blog-listing-section">
                 @foreach ($blogs as $blog)
 
