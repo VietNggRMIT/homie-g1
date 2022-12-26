@@ -20,10 +20,10 @@
 
 <div class="container">
 
-    <div class="filter-img-section">
+    <div class="filter-img-section mt-5">
         <div class="filter-img text-center">
             <h2>Choose a city you want to start at</h2>
-            <div class='row mb-5'> 
+            <div class='row mb-5 mt-3'> 
                 <div class='col-sm-6'>
                     <a href=""><img src="{{ asset('storage/images/filter-img/hcmc-listing.png')}}" alt="HCM"></a>
                 </div>
@@ -47,7 +47,7 @@
         </div>
     </div>
 
-    <div class="row">
+    <div class="mb-3">
         <hr>
         <div class="d-flex justify-content-between align-items-center">
             <h1>Listings</h1>
@@ -55,6 +55,7 @@
                 See more 
             </button>
         </div>
+        <hr class="baby">
     </div>
 
     <div class="row row-cols-lg-3">
@@ -117,7 +118,10 @@
                                     <span>With owner</span>
                                 </div>
                             @else
-                                {{-- ur code here bro --}}
+                                <div class="listing-feature">
+                                    <i class="fa-solid fa-user-slash"></i>
+                                    <span>Without owner</span>
+                                </div>
                             @endif
                             <div class="listing-feature">
                                 <i class="fa-solid fa-ruler-combined"></i>
@@ -146,17 +150,18 @@
 
     </div>
 
-    <div class="row">
+    <div class="mb-3">
         <hr>
-        <div class="l-blogheader d-flex justify-content-between align-items-center mb-3">
+        <div class="l-blogheader d-flex justify-content-between align-items-center">
             <h1>Blogs</h1>
             <button onclick="window.location.href='{{ route('blogs.index') }}';" type="button" class="custom-btn btn-1">
                 See more 
             </button>
         </div>
+        <hr class="baby">
     </div>
 
-    <div class="blog-listing-section">
+    <div class="blog-listing-section mb-5">
         @foreach ($blogs as $blog)
 
             <div class="card blog-card gy-3 px-3 py-2 mb-1 smooth-transition">
