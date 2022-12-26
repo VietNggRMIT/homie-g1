@@ -75,7 +75,7 @@ Route::resource('/blogs', BlogsController::class);
 
 //routes for forms
 //1. Create blog
-// Route::view('/blog_create', 'directory_blog.blog_create', ['from' => 'create']);
+// Route::view('/blog_create', 'directory_blog.blog_create', ['from' => 'create']); <- old test route
 Route::post('store-blog/', [BlogsController::class, 'store']);
 //2. Update blog -- will add with('blog_id' = $blog_id) on viewing blog
 //Route::view('/blog_update/{blog}', 'directory_blog.blog_create', ['from' => 'update']);

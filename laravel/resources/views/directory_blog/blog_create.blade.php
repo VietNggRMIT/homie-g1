@@ -50,12 +50,17 @@
         </div>
         <div class="form-group">
             @if(isset($blog))
+            {{-- edit the blog --}}
               <input type="number" name="user_id" hidden="true" class="form-control" required="" value="{{ $blog->user_id }}">
+              <input hidden="true" name="blog_id" value="{{ $blog->id }}">
+              <h1> edit </h1>
+            @endif
+            @if (isset($user))
+            {{-- create a blog --}}
+              <h1> User id: {{ $user }} </h1>
+              <input type="number" name="user_id" hidden="true" class="form-control" required="" value="{{ $user }}">
             @endif
         </div>
-        @if (isset($blog_id))
-          <input hidden="true" name="blog_id" value="{{ $blog_id }}">
-        @endif
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>
     </div>

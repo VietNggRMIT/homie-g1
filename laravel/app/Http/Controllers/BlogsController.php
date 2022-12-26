@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class BlogsController extends Controller
@@ -23,13 +24,13 @@ class BlogsController extends Controller
 
     /**
      * Show the form for creating a new resource.
-     * @param $user_id the user that creates this blog
+     * @param $user the user that creates this blog
      * @return \Illuminate\Http\Response
      */
-    public function create($user_id)
+    public function create(Request $request)
     {
         return response()
-            ->view('directory_blog.blog_create', ['from' => 'create', 'user_id' => $user_id], 200);
+            ->view('directory_blog.blog_create', ['from' => 'create', 'user' => $request->user], 200);
     }
 
     /**
@@ -45,7 +46,7 @@ class BlogsController extends Controller
         $blog->blog_description = $request->blog_description;
         $blog->user_id = $request->user_id;
         $blog->save();
-        return redirect('blog_create')->with('status', 'Blog Created Successfully');
+        return redirect()->action([BlogsController::class, 'show'],['blog' => $blog]);
     }
 
     /**
