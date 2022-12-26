@@ -110,10 +110,13 @@
                                 <i class="fa-solid fa-users-between-lines"></i>
                                 <span>{{ (int) $listing->listing_specification_tenant }} person(s)</span>
                             </div>
-                            <div class="listing-feature">
-                                <i class="fa-solid fa-user-shield"></i>
-                                <span>With owner</span>
-                            </div>
+                            @if ($listing->listing_specification_owner == 1)
+                                {{-- <div>$listing->listing_specification_owner: {{ $listing->listing_specification_owner }}</div> --}}
+                                <div class="listing-feature">
+                                    <i class="fa-solid fa-user-shield"></i>
+                                    <span>With owner</span>
+                                </div>
+                            @endif
                             <div class="listing-feature">
                                 <i class="fa-solid fa-ruler-combined"></i>
                                 <span>{{ (int) $listing->listing_specification_size }} &#13217</span>

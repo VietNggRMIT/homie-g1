@@ -94,7 +94,10 @@
                 <div>$listing->listing_specification_bedroom: {{ $listing->listing_specification_bedroom }}</div>
                 <div>$listing->listing_specification_bathroom: {{ $listing->listing_specification_bathroom }}</div>
                 <div>$listing->listing_specification_size: {{ $listing->listing_specification_size }}</div>
-                <div>$listing->listing_specification_owner: {{ $listing->listing_specification_owner }}</div>
+                @if ($listing->listing_specification_owner == 1)
+                    {{-- <div>$listing->listing_specification_owner: {{ $listing->listing_specification_owner }}</div> --}}
+                    <div>Lives with owner</div>
+                @endif
                 <div>$listing->listing_specification_tenant: {{ $listing->listing_specification_tenant }}</div>
                 <div>$listing->user_id: {{ $listing->user_id }}</div>
                 <div>$listing->created_at: {{ $listing->created_at }}</div>
