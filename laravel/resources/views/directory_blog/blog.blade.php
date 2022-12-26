@@ -7,6 +7,12 @@
         <div class="col-lg-12">
             <article>
                 <header class="mb-4">
+                <button
+                    onclick="window.location.href='{{ route('blogs.edit', ['blog' => $blog]) }}';"
+                    type="button"
+                >
+                    Edit this blog
+                </button>
                 <div class="breadcrumb justify-content-center">
                     <h2>{{ Breadcrumbs::render('breadcrumb_blog', $blog) }}</h2>
                 </div>

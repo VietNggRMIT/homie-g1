@@ -75,7 +75,7 @@ Route::resource('/blogs', BlogsController::class);
 
 //routes for forms
 //1. Create blog
-Route::view('/blog_create', 'directory_blog.blog_create', ['from' => 'create']);
+// Route::view('/blog_create', 'directory_blog.blog_create', ['from' => 'create']);
 Route::post('store-blog/', [BlogsController::class, 'store']);
 //2. Update blog -- will add with('blog_id' = $blog_id) on viewing blog
 //Route::view('/blog_update/{blog}', 'directory_blog.blog_create', ['from' => 'update']);
@@ -91,7 +91,7 @@ Route::view('/listing_create', 'directory_listing.listing_create', ['from' => 'c
 Route::post('store-listing/{id}', [ListingsController::class, 'store']);
 //6. Update listing
 Route::view('/listing_update', 'directory_listing.listing_create', ['from' => 'update']);
-Route::post('update-listing/{id}', [ListingsController::class, 'update']);
+Route::post('update-listing/{listing_id}', [ListingsController::class, 'update']);
 
 //View other pages
 Route::view('/about', 'directory_about.about')

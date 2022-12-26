@@ -236,6 +236,12 @@
                                     </div>
                                     <div class="show-more d-flex justify-content-center mb-3">
                                         <button class="btn btn-outline-primary">Show more</button>
+                                        <button
+                                            onclick="window.location.href='{{ route('blogs.create', ['user_id' => $user->id]) }}';"
+                                            type="button"
+                                        >
+                                            Add a blog post
+                                        </button>
                                     </div>
                                 </div>
                             </div>

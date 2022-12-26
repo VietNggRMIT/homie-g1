@@ -41,9 +41,10 @@ class ListingsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($user_id)
     {
-        //
+        return response()
+            ->view('directory_listing.listings', ['from' => 'create', 'user_id' => $user_id], 200);
     }
 
     /**
@@ -117,7 +118,7 @@ class ListingsController extends Controller
      * @param  \App\Models\Listing  $listing, \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function edit(int $listing_id, Request $request)
+    public function edit($listing_id, Request $request)
     {
         $listing = Listing::first(['id' => $listing_id]);
         $listing->listing_name = $request->listing_name;

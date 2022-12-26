@@ -18,7 +18,7 @@
       <form name="add-review-post-form" id="add-review-post-form" method="post" action="{{url('store-review')}}">
        @csrf
         <div class="form-group">
-          <label for="review_name">Review name</label>
+          <label for="review_name">Review Name</label>
           <input type="text" id="review_name" name="review_name" class="form-control" required="true">
         </div>
         <div class="form-group">

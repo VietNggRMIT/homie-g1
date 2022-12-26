@@ -23,13 +23,13 @@ class BlogsController extends Controller
 
     /**
      * Show the form for creating a new resource.
-     *
+     * @param $user_id the user that creates this blog
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($user_id)
     {
         return response()
-            ->view('directory_blog.blog_create', ['from' => 'create'], 200);
+            ->view('directory_blog.blog_create', ['from' => 'create', 'user_id' => $user_id], 200);
     }
 
     /**
