@@ -20,7 +20,7 @@ class ReviewsController extends Controller
 
     /**
      * Show the form for creating a new resource.
-     *
+     * @param $request containing the listing id
      * @return \Illuminate\Http\Response
      */
     public function create(Request $request)

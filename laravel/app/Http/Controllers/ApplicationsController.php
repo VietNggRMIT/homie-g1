@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Application;
+use App\Models\Listing;
 use Illuminate\Http\Request;
 
 class ApplicationsController extends Controller
@@ -19,12 +20,13 @@ class ApplicationsController extends Controller
 
     /**
      * Show the form for creating a new resource.
-     *
+     * @param $request storing the listing id
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        return response()
+            ->view('directory_listing.application_create', ['listing' => $request->listing], 200);
     }
 
     /**
@@ -52,7 +54,8 @@ class ApplicationsController extends Controller
         $application->application_description = $content;
         $application->listing_id = $request->listing_id;
         $application->save();
-        return redirect('application_create')->with('status', 'Application Created Successfully');
+        $listing = Listing::find($request->listing_id);
+        return redirect()->action([ListingsController::class, 'show'], ['listing' => $listing]);
     }
 
     /**

@@ -72,12 +72,6 @@
         >
             Edit this listing
         </button>
-        {{-- <button
-            onclick="window.location.href='{{ route('listings.destroy', ['listing' => $listing->id]) }}';"
-            type="button"
-        >
-            Delete this listing
-        </button> --}}
         <form method="POST" action="{{ url("delete-listing/{$listing->id}") }}">
             @csrf
             <button type="submit">Delete this listing</button>
@@ -87,6 +81,12 @@
             type="button"
         >
             Add a review to this listing
+        </button>
+        <button
+            onclick="window.location.href='{{ route('applications.create', ['listing' => $listing->id]) }}';"
+            type="button"
+        >
+            Submit an application to this listing
         </button>
         <div class="breadcrumb justify-content-center">
             <h2>{{ Breadcrumbs::render('breadcrumb_listing', $listing) }}</h2>
@@ -187,7 +187,7 @@
                             <i class="fa-solid fa-paper-plane purple-ice mr-1"></i>{{ (int) $listing->applications_count }} application(s) sent
                         </div>
                         <div class="btn-container my-3">
-                            <a class="btn btn-warning btn-lg px-5" href="#">Apply now!</a>
+                            <a class="btn btn-warning btn-lg px-5" href="{{ route('applications.create', ['listing' => $listing->id]) }}">Apply now!</a>
                         </div>
                     </div>
 

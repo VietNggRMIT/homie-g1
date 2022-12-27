@@ -73,6 +73,7 @@ Route::resource('/users', UsersController::class);
 
 Route::resource('/blogs', BlogsController::class);
 Route::resource('/reviews', ReviewsController::class);
+Route::resource('/applications', ApplicationsController::class);
 
 //routes for forms
 //1.1 Create blog
@@ -87,17 +88,18 @@ Route::post('/delete-blog/{blog_id}', [BlogsController::class, 'destroy']);
 //2.1 Create review
 // Route::view('/review_create', 'directory_listing.review_create');
 Route::post('store-review/', [ReviewsController::class, 'store']);
-//2.2 Create application
+
+//3.1 Create application
 Route::view('/application_create', 'directory_listing.application_create');
 Route::post('store-application', [ApplicationsController::class, 'store']);
 
-//3.1 Create listing
+//4.1 Create listing
 Route::view('/listing_create', 'directory_listing.listing_create', ['from' => 'create']);
 Route::post('store-listing/', [ListingsController::class, 'store']);
-//3.2 Update listing
+//4.2 Update listing
 Route::view('/listing_update', 'directory_listing.listing_create', ['from' => 'update']);
 Route::post('update-listing/{listing_id}', [ListingsController::class, 'update']);
-//3.3 Delete listing
+//4.3 Delete listing
 Route::post('/delete-listing/{listing_id}', [ListingsController::class, 'destroy']);
 
 //View other pages
