@@ -16,7 +16,7 @@
         {{ session('status') }}
     </div>
   @endif
-  <div class="card blog-form">
+  <div class="card edit-form">
     <!-- <div class="card-header text-center font-weight-bold">
       Add or Edit Blog Post Form
     </div> -->

@@ -2,6 +2,7 @@
     <title>Add Review</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    @vite(['resources/css/app.css', 'resources/js/customScript.js', 'resources/js/app.js', 'webfonts.css'])
 </head>
 <body>
   <div class="container mt-4">
@@ -10,7 +11,7 @@
         {{ session('status') }}
     </div>
   @endif
-  <div class="card">
+  <div class="card edit-form">
     <div class="card-header text-center font-weight-bold">
       Add Review For This Listing
     </div>

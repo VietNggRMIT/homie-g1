@@ -12,8 +12,16 @@
 }
 
 .card{
-    &.blog-form{
+    &.edit-form{
         background-color: transparent;
         border-color: transparent;
+    }
+
+    input{
+        background-color: white;
+    }
+
+    textarea{
+        background-color:white;
     }
 }
