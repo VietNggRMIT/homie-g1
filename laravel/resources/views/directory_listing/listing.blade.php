@@ -72,12 +72,16 @@
         >
             Edit this listing
         </button>
-        <button
-            onclick="window.location.href='{{ route('listings.destroy', ['listing' => $listing]) }}';"
+        {{-- <button
+            onclick="window.location.href='{{ route('listings.destroy', ['listing' => $listing->id]) }}';"
             type="button"
         >
             Delete this listing
-        </button>
+        </button> --}}
+        <form method="POST" action="{{ url("delete-listing/{$listing->id}") }}">
+            @csrf
+            <button type="submit">Delete this listing</button>
+        </form>
         <button
             onclick="window.location.href='{{ route('reviews.create', ['listing' => $listing->id]) }}';"
             type="button"

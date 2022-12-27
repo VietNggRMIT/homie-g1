@@ -13,12 +13,10 @@
                 >
                     Edit this blog
                 </button>
-                <button
-                    onclick="window.location.href='{{ route('blogs.delete', ['blog' => $blog]) }}';"
-                    type="button"
-                >
-                    Delete this blog
-                </button>
+                <form method="POST" action="{{ url("delete-blog/{$blog->id}") }}">
+                    @csrf
+                    <button type="submit">Delete this blog</button>
+                </form>
                 <div class="breadcrumb justify-content-center">
                     <h2>{{ Breadcrumbs::render('breadcrumb_blog', $blog) }}</h2>
                 </div>

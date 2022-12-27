@@ -160,14 +160,12 @@ class ListingsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Listing  $listing
+     * @param  $listing the listing id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Listing $listing)
+    public function destroy($listing_id)
     {
-        $custom_listing = Listing::find($listing->id);
-        $custom_listing->delete();
-        // Listing::destroy($listing->id);
-        return redirect()->action([ListingsController::class, 'index']);
+        $success = Listing::destroy($listing_id);
+        return redirect()->action([ListingsController::class, 'index'], ['delete' => 'success']);
     }
 }

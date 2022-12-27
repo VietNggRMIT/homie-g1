@@ -75,24 +75,30 @@ Route::resource('/blogs', BlogsController::class);
 Route::resource('/reviews', ReviewsController::class);
 
 //routes for forms
-//1. Create blog
+//1.1 Create blog
 // Route::view('/blog_create', 'directory_blog.blog_create', ['from' => 'create']); <- old test route
 Route::post('store-blog/', [BlogsController::class, 'store']);
-//2. Update blog -- will add with('blog_id' = $blog_id) on viewing blog
+//1.2 Update blog -- will add with('blog_id' = $blog_id) on viewing blog
 //Route::view('/blog_update/{blog}', 'directory_blog.blog_create', ['from' => 'update']);
 Route::post('update-blog/{blog_id}', [BlogsController::class, 'update']);
-//3. Create review
+//1.3 Delete blog
+Route::post('/delete-blog/{blog_id}', [BlogsController::class, 'destroy']);
+
+//2.1 Create review
 // Route::view('/review_create', 'directory_listing.review_create');
 Route::post('store-review/', [ReviewsController::class, 'store']);
-//4. Create application
+//2.2 Create application
 Route::view('/application_create', 'directory_listing.application_create');
 Route::post('store-application', [ApplicationsController::class, 'store']);
-//5. Create listing
+
+//3.1 Create listing
 Route::view('/listing_create', 'directory_listing.listing_create', ['from' => 'create']);
 Route::post('store-listing/', [ListingsController::class, 'store']);
-//6. Update listing
+//3.2 Update listing
 Route::view('/listing_update', 'directory_listing.listing_create', ['from' => 'update']);
 Route::post('update-listing/{listing_id}', [ListingsController::class, 'update']);
+//3.3 Delete listing
+Route::post('/delete-listing/{listing_id}', [ListingsController::class, 'destroy']);
 
 //View other pages
 Route::view('/about', 'directory_about.about')

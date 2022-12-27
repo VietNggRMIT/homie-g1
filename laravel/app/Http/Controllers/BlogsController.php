@@ -100,13 +100,12 @@ class BlogsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Blog  $blog
+     * @param  $blog_id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Blog $blog)
+    public function destroy($blog_id)
     {
-        $custom_blog = Blog::find($blog->id);
-        $custom_blog->delete();
-        return redirect()->route('blogs.index');
+        $success = Blog::destroy($blog_id);
+        return redirect()->action([BlogsController::class, 'index'], ['delete' => 'success']);
     }
 }

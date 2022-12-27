@@ -15,7 +15,7 @@
         @livewire('live-search-listing')
 
         <hr>
-
+        
         <div class="row row-cols-lg-3">
 
         @foreach ($listings as $listing)
