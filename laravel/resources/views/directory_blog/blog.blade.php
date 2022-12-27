@@ -13,6 +13,12 @@
                 >
                     Edit this blog
                 </button>
+                <button
+                    onclick="window.location.href='{{ route('blogs.delete', ['blog' => $blog]) }}';"
+                    type="button"
+                >
+                    Delete this blog
+                </button>
                 <div class="breadcrumb justify-content-center">
                     <h2>{{ Breadcrumbs::render('breadcrumb_blog', $blog) }}</h2>
                 </div>

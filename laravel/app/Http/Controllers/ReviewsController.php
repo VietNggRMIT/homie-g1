@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Review;
+use App\Models\Listing;
 use Illuminate\Http\Request;
 
 class ReviewsController extends Controller
@@ -22,9 +23,10 @@ class ReviewsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        return response()
+            ->view('directory_listing.review_create', ['from' => 'create', 'listing' => $request->listing], 200);
     }
 
     /**
@@ -40,8 +42,9 @@ class ReviewsController extends Controller
         $review->review_description = $request->review_description;
         $review->review_rating = $request->review_rating;
         $review->listing_id = $request->listing_id;
+        $listing = Listing::find($request->listing_id);
         $review->save();
-        return redirect('review_create')->with('status', 'Review Created Successfully');
+        return redirect()->action([ListingsController::class, 'show'], ['listing' => $listing]);
     }
 
     /**

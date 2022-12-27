@@ -165,6 +165,9 @@ class ListingsController extends Controller
      */
     public function destroy(Listing $listing)
     {
-        //
+        $custom_listing = Listing::find($listing->id);
+        $custom_listing->delete();
+        // Listing::destroy($listing->id);
+        return redirect()->action([ListingsController::class, 'index']);
     }
 }

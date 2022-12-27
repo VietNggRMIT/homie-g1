@@ -12,10 +12,10 @@
   @endif
   <div class="card">
     <div class="card-header text-center font-weight-bold">
-      Add Review Form
+      Add Review For This Listing
     </div>
     <div class="card-body">
-      <form name="add-review-post-form" id="add-review-post-form" method="post" action="{{url('store-review')}}">
+      <form name="add-review-post-form" id="add-review-post-form" method="post" action="{{ url('store-review') }}">
        @csrf
         <div class="form-group">
           <label for="review_name">Review Name</label>
@@ -30,8 +30,10 @@
             <input type="number" name="review_rating" class="form-control" required="">
         </div>
         <div class="form-group">
-            <label for="listing_id">Listing ID - will be removed, here to test</label>
-            <input type="number" name="listing_id" class="form-control" required="">
+            @if ($listing)
+            {{-- listing id --}}
+              <input type="number" name="listing_id" hidden="true" class="form-control" value={{ $listing }}>
+            @endif
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>

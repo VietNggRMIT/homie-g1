@@ -72,6 +72,7 @@ Route::resource('/users', UsersController::class);
 //});
 
 Route::resource('/blogs', BlogsController::class);
+Route::resource('/reviews', ReviewsController::class);
 
 //routes for forms
 //1. Create blog
@@ -81,8 +82,8 @@ Route::post('store-blog/', [BlogsController::class, 'store']);
 //Route::view('/blog_update/{blog}', 'directory_blog.blog_create', ['from' => 'update']);
 Route::post('update-blog/{blog_id}', [BlogsController::class, 'update']);
 //3. Create review
-Route::view('/review_create', 'directory_listing.review_create');
-Route::post('store-review', [ReviewsController::class, 'store']);
+// Route::view('/review_create', 'directory_listing.review_create');
+Route::post('store-review/', [ReviewsController::class, 'store']);
 //4. Create application
 Route::view('/application_create', 'directory_listing.application_create');
 Route::post('store-application', [ApplicationsController::class, 'store']);

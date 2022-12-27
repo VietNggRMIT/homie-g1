@@ -105,6 +105,8 @@ class BlogsController extends Controller
      */
     public function destroy(Blog $blog)
     {
-        //
+        $custom_blog = Blog::find($blog->id);
+        $custom_blog->delete();
+        return redirect()->route('blogs.index');
     }
 }

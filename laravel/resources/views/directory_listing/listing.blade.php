@@ -56,6 +56,18 @@
         >
             Edit this listing
         </button>
+        <button
+            onclick="window.location.href='{{ route('listings.destroy', ['listing' => $listing]) }}';"
+            type="button"
+        >
+            Delete this listing
+        </button>
+        <button
+            onclick="window.location.href='{{ route('reviews.create', ['listing' => $listing->id]) }}';"
+            type="button"
+        >
+            Add a review to this listing
+        </button>
         <div class="breadcrumb justify-content-center">
             <h2>{{ Breadcrumbs::render('breadcrumb_listing', $listing) }}</h2>
         </div>
@@ -130,6 +142,17 @@
                         {{ $listing->user->user_real_name }}
                     </button>
                 </div>
+            </div>
+            <div>
+                $listing->reviews:
+                @if($listing->reviews->isEmpty())
+
+                @else
+                    @foreach ($listing->reviews as $review)
+                        <h2>{{ $review->review_name }} --- {{ $review->review_rating }} stars</h2>
+                        <h3>{{ $review->review_description }}
+                    @endforeach
+                @endif
             </div>
         </div>
     </div>
