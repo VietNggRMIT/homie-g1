@@ -211,6 +211,12 @@
                         @endforeach    
                                 <div class="show-more d-flex justify-content-center mb-3">
                                     <button class="btn btn-outline-primary">Show more</button>
+                                    <button
+                                        onclick="window.location.href='{{ route('listings.create', ['user' => $user->id]) }}';"
+                                        type="button" class="btn btn-outline-primary"
+                                    >
+                                        Add a listing
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -228,7 +234,7 @@
                                                     <p class="card-text">{{ $blog->blog_name }}</p>
                                                 </div>
                                                 <div class="card-footer">
-                                                    <small class="text-muted">Last updated {{ date_diff(new \DateTime($listing->updated_at), new \DateTime(now()))->format("%m months, %d days, %h hours") }} ago</small>
+                                                    <small class="text-muted">Last updated {{ date_diff(new \DateTime($blog->updated_at), new \DateTime(now()))->format("%m months, %d days, %h hours") }} ago</small>
                                                 </div>
                                             </a>
                                         </div>
@@ -237,8 +243,8 @@
                                     <div class="show-more d-flex justify-content-center mb-3">
                                         <button class="btn btn-outline-primary">Show more</button>
                                         <button
-                                            onclick="window.location.href='{{ route('blogs.create', ['user_id' => $user->id]) }}';"
-                                            type="button"
+                                            onclick="window.location.href='{{ route('blogs.create', ['user' => $user->id]) }}';"
+                                            type="button" class="btn btn-outline-primary"
                                         >
                                             Add a blog post
                                         </button>

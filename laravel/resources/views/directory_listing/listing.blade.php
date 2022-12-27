@@ -50,6 +50,12 @@
         </div>
 
         <hr>
+        <button
+            onclick="window.location.href='{{ route('listings.edit', ['listing' => $listing]) }}';"
+            type="button"
+        >
+            Edit this listing
+        </button>
         <div class="breadcrumb justify-content-center">
             <h2>{{ Breadcrumbs::render('breadcrumb_listing', $listing) }}</h2>
         </div>

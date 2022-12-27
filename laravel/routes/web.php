@@ -88,7 +88,7 @@ Route::view('/application_create', 'directory_listing.application_create');
 Route::post('store-application', [ApplicationsController::class, 'store']);
 //5. Create listing
 Route::view('/listing_create', 'directory_listing.listing_create', ['from' => 'create']);
-Route::post('store-listing/{id}', [ListingsController::class, 'store']);
+Route::post('store-listing/', [ListingsController::class, 'store']);
 //6. Update listing
 Route::view('/listing_update', 'directory_listing.listing_create', ['from' => 'update']);
 Route::post('update-listing/{listing_id}', [ListingsController::class, 'update']);

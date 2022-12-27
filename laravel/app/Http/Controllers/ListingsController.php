@@ -41,10 +41,10 @@ class ListingsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($user_id)
+    public function create(Request $request)
     {
         return response()
-            ->view('directory_listing.listings', ['from' => 'create', 'user_id' => $user_id], 200);
+            ->view('directory_listing.listing_create', ['from' => 'create', 'user' => $request->user], 200);
     }
 
     /**
@@ -62,8 +62,8 @@ class ListingsController extends Controller
         $listing->listing_address_subdivision_2 = $request->listing_address_subdivision_2;
         $listing->listing_address_subdivision_3 = $request->listing_address_subdivision_3;
         $listing->listing_address_coordinate = $request->listing_address_coordinate;
-        $listing->price = $request->price;
-        $listing->available = $request->available;
+        $listing->listing_price = $request->listing_price;
+        $listing->listing_available = $request->listing_available;
         $listing->listing_specification_bathroom = $request->listing_specification_bathroom;
         $listing->listing_specification_bedroom  = $request->listing_specification_bedroom;
         $listing->listing_specification_size = $request->listing_specification_size;
@@ -71,7 +71,7 @@ class ListingsController extends Controller
         $listing->listing_specification_tenant = $request->listing_specification_tenant;
         $listing->user_id = $request->user_id;
         $listing->save();
-        return redirect('listing_create')->with('status', 'Listing Created Successfully');
+        return redirect()->action([ListingsController::class, 'show'],['listing' => $listing]);
     }
 
     /**
@@ -118,25 +118,13 @@ class ListingsController extends Controller
      * @param  \App\Models\Listing  $listing, \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function edit($listing_id, Request $request)
+    public function edit(Listing $listing)
     {
-        $listing = Listing::first(['id' => $listing_id]);
-        $listing->listing_name = $request->listing_name;
-        $listing->listing_description = $request->listing_description;
-        $listing->listing_address_subdivision_1 = $request->listing_address_subdivision_1;
-        $listing->listing_address_subdivision_2 = $request->listing_address_subdivision_2;
-        $listing->listing_address_subdivision_3 = $request->listing_address_subdivision_3;
-        $listing->listing_address_coordinate = $request->listing_address_coordinate;
-        $listing->price = $request->price;
-        $listing->available = $request->available;
-        $listing->listing_specification_bathroom = $request->listing_specification_bathroom;
-        $listing->listing_specification_bedroom  = $request->listing_specification_bedroom;
-        $listing->listing_specification_size = $request->listing_specification_size;
-        $listing->listing_specification_owner = $request->listing_specification_owner;
-        $listing->listing_specification_tenant = $request->listing_specification_tenant;
-        $listing->user_id = $request->user_id;
-        $listing->save();
-        return redirect()->route('listing', ['listing_name' => $listing->listing_name]);
+        $custom_listing = Listing::with('user')
+        ->find($listing->id);
+
+        return response()
+            ->view('directory_listing.listing_create', ['listing' => $custom_listing, 'from' => 'update'], 200);
     }
 
     /**
@@ -146,9 +134,27 @@ class ListingsController extends Controller
      * @param  \App\Models\Listing  $listing
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Listing $listing)
+    public function update(Request $request, $listing_id)
     {
-        //
+        $listing = Listing::find($listing_id);
+
+        $listing->listing_name = $request->listing_name;
+        $listing->listing_description = $request->listing_description;
+        $listing->listing_address_subdivision_1 = $request->listing_address_subdivision_1;
+        $listing->listing_address_subdivision_2 = $request->listing_address_subdivision_2;
+        $listing->listing_address_subdivision_3 = $request->listing_address_subdivision_3;
+        $listing->listing_address_coordinate = $request->listing_address_coordinate;
+        $listing->listing_price = $request->listing_price;
+        $listing->listing_available = $request->listing_available;
+        $listing->listing_specification_bathroom = $request->listing_specification_bathroom;
+        $listing->listing_specification_bedroom  = $request->listing_specification_bedroom;
+        $listing->listing_specification_size = $request->listing_specification_size;
+        $listing->listing_specification_owner = $request->listing_specification_owner;
+        $listing->listing_specification_tenant = $request->listing_specification_tenant;
+        $listing->user_id = $request->user_id;
+        $listing->save();
+        
+        return redirect()->action([ListingsController::class, 'show'],['listing' => $listing]);
     }
 
     /**

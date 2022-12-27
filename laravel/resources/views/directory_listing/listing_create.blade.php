@@ -18,61 +18,136 @@
       Add Or Edit Listing Form
     </div>
     <div class="card-body">
-      <form name="add-listing-post-form" id="add-listing-post-form" method="post" action="{{$url}}">
+      @if($from)
+        @if($from == 'update')
+          @if(isset($listing))
+            <h1>debug message - update</h1>
+            <h2>debug:  {{ $listing->listing_name }} </h2>
+            <form name="add-listing-post-form" id="add-listing-post-form" method="post" action="{{ url("update-listing/{$listing->id}") }}">
+          @endif
+        @else
+          <h1>debug message - create</h1>
+          <form name="add-listing-post-form" id="add-listing-post-form" method="post" action="{{ url('store-listing') }}">
+        @endif
+      @endif
         @csrf
         <div class="form-group">
           <label for="listing_name">Listing name</label>
-          <input type="text" id="listing_name" name="listing_name" class="form-control" required="true">
+          @if (isset($listing))
+            <input type="text" id="listing_name" name="listing_name" class="form-control" required="true" value="{{ $listing->listing_name}}">
+          @else
+            <input type="text" id="listing_name" name="listing_name" class="form-control" required="true">
+          @endif
+
         </div>
         <div class="form-group">
           <label for="listing_description">Listing Description</label>
-          <textarea name="listing_description" class="form-control" required="true"></textarea>
+          @if (isset($listing))
+            <textarea name="listing_description" class="form-control" required="true" value="{{ $listing->listing_description}}"></textarea>
+          @else
+            <textarea name="listing_description" class="form-control" required="true"></textarea>
+          @endif
+          
         </div>
         <div class="form-group dropdown">
             <label for="listing_address_subdivision1">Listing Address subdivision 1 - province or equivalence</label><br>
-            {{-- <input type="text" id="listing_address_subdivision_1" name="listing_address_subdivision_1" class="form-control" required="true"> --}}
             <select name="listing_address_subdivision_1">
-              @foreach ($province as $province)
+              @foreach ($provinces as $province)
                 <option value="{{ $province }}"> {{ $province }}</option>
               @endforeach
             </select>
         </div>
+
         <div class="form-group">
             <label for="listing_address_subdivision2">Listing Address subdivision 2 - street address</label>
-            <input type="text" id="listing_address_subdivision_2" name="listing_address_subdivision_2" class="form-control" required="true">
+            @if (isset($listing))
+              <input type="text" id="listing_address_subdivision_2" name="listing_address_subdivision_2" class="form-control" value="{{ $listing->listing_address_subdivision_2}}">
+            @else
+              <input type="text" id="listing_address_subdivision_2" name="listing_address_subdivision_2" class="form-control">
+            @endif
         </div>
+
         <div class="form-group">
             <label for="listing_address_subdivision_3">Listing Address subdivision 3 - district or equivalence</label>
-            <input type="text" id="listing_address_subdivision_3" name="listing_address_subdivision_3" class="form-control" required="true">
+            @if (isset($listing))
+              <input type="text" id="listing_address_subdivision_3" name="listing_address_subdivision_3" class="form-control" value="{{ $listing->listing_address_subdivision_3 }}">
+            @else
+              <input type="text" id="listing_address_subdivision_3" name="listing_address_subdivision_3" class="form-control">
+            @endif
         </div>
+
         <div class="form-group aaaaaaaaaaaaaaaaa">
-            <label for="user_id">Coordinates - hard -> later</label>
-            <input type="number" name="user_id" class="form-control" required="">
+            <label for="listing_address_coordinate">Coordinates - hard -> later</label>
+            <input type="number" name="listing_address_coordinate" class="form-control" required="">
         </div>
+
         <div class="form-group">
-            <label for="listing_specification_bathroom">Listing specification bathroom</label>
-            <input type="number" name="listing_specification_bathroom" class="form-control" required="">
+          <label for="listing_price">Listing price -- rent per month, in VND</label>
+          @if (isset($listing))
+            <input type="number" name="listing_price" class="form-control" value="{{ $listing->listing_price }}">
+          @else
+            <input type="number" name="listing_price" class="form-control">
+          @endif
+      </div>
+
+        <div class="form-group">
+            <label for="listing_specification_bathroom">Listing specification - bathroom</label>
+            @if (isset($listing))
+              <input type="number" name="listing_specification_bathroom" class="form-control" value="{{ $listing->listing_specification_bathroom }}">
+            @else
+              <input type="number" name="listing_specification_bathroom" class="form-control">
+            @endif
         </div>
+
         <div class="form-group">
             <label for="listing_specification_bedroom">Listing specification bedroom</label>
-            <input type="number" name="listing_specification_bedroom" class="form-control" required="">
+            @if (isset($listing))
+              <input type="number" name="listing_specification_bedroom" class="form-control" value="{{ $listing->listing_specification_bedroom }}">
+            @else
+              <input type="number" name="listing_specification_bedroom" class="form-control">
+            @endif
+        </div>
+
+        <div class="form-group">
+            <label for="listing_specification_size">Listing specification - size (in m2)</label>
+            @if (isset($listing))
+              <input type="number" name="listing_specification_size" class="form-control" value="{{ $listing->listing_specification_size }}">
+            @else
+              <input type="number" name="listing_specification_size" class="form-control">
+            @endif
         </div>
         <div class="form-group">
-            <label for="listing_specification_size">Listing specification size</label>
-            <input type="number" name="listing_specification_size" class="form-control" required="">
+            <label for="listing_specification_owner">Listing specification - lives with owner: 1 for yes, 0 for no</label>
+            @if (isset($listing))
+              <input type="number" name="listing_specification_owner" class="form-control" value="{{ $listing->listing_specification_owner }}">
+            @else
+              <input type="number" name="listing_specification_owner" class="form-control">
+            @endif
         </div>
         <div class="form-group">
-            <label for="listing_specification_owner">Listing specification owner</label>
-            <input type="number" name="listing_specification_owner" class="form-control" required="">
+            <label for="listing_specification_tenant">Listing specification - number of tenants per listing</label>
+            @if (isset($listing))
+              <input type="number" name="listing_specification_tenant" class="form-control" value="{{ $listing->listing_specification_tenant }}">
+            @else
+              <input type="number" name="listing_specification_tenant" class="form-control">
+            @endif
         </div>
-        <div class="form-group">
-            <label for="listing_specification_tenant">Listing specification tenant</label>
-            <input type="number" name="listing_specification_tenant" class="form-control" required="">
-        </div>
+
         <div class="form-group aaaaaaaaaaaaaaaaaaaa">
-            <label for="user_id">User ID - will be removed, here to test</label>
-            <input type="number" name="user_id" class="form-control" required="">
+          @if(isset($listing))
+          {{-- edit the listing --}}
+            <input type="number" name="user_id" hidden="true" class="form-control" value="{{ $listing->user_id }}">
+            <input hidden="true" name="listing_id" value="{{ $listing->id }}">
+            <h1> edit </h1>
+          @endif
+
+          @if (isset($user))
+          {{-- create a listing --}}
+            <h1> User id: {{ $user }} </h1>
+            <input type="number" name="user_id" hidden="true" class="form-control" value="{{ $user }}">
+          @endif
         </div>
+
         <input type="text" id="listing_available" name="listing_available" hidden="true" value="1">
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>
