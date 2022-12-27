@@ -2,6 +2,7 @@
     <title>Add or Edit Listing</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    @vite(['resources/css/app.css', 'resources/js/customScript.js', 'resources/js/app.js', 'webfonts.css'])
     @php
       $provinces = ['Ha Noi','Ha Giang','Cao Bang','Bac Kan','Tuyen Quang','Lao Cai','Dien Bien','Lai Chau','Son La','Yen Bai','Hoa Binh','Thai Nguyen','Lang Son','Quang Ninh','Bac Giang','Phu Tho','Vinh Phuc','Bac Ninh','Hai Duong','Hai Phong','Hung Yen','Thai Binh','Ha Nam','Nam Dinh','Ninh Binh','Thanh Hoa','Nghe An','Ha Tinh','Quang Binh','Quang Tri','Thua Thien Hue','Da Nang','Quang Nam','Quang Ngai','Binh Dinh','Phu Yen','Khanh Hoa','Ninh Thuan','Binh Thuan','Kon Tum','Gia Lai','Dak Lak','Dak Nong','Lam Dong','Binh Phuoc','Tay Ninh','Binh Duong','Dong Nai','Ba Ria - Vung Tau','Ho Chi Minh','Long An','Tien Giang','Ben Tre','Tra Vinh','Vinh Long','Dong Thap','An Giang','Kien Giang','Can Tho','Hau Giang','Soc Trang','Bac Lieu','Ca Mau'];
     @endphp
@@ -13,20 +14,22 @@
         {{ session('status') }}
     </div>
   @endif
-  <div class="card">
-    <div class="card-header text-center font-weight-bold">
+  <div class="card edit-form">
+    <!-- <div class="card-header text-center font-weight-bold">
       Add Or Edit Listing Form
-    </div>
+    </div> -->
     <div class="card-body">
       @if($from)
         @if($from == 'update')
           @if(isset($listing))
-            <h1>debug message - update</h1>
-            <h2>debug:  {{ $listing->listing_name }} </h2>
+          <div class="text-center">
+            <h1>Update listing</h1>
+          </div>
+          <!-- <h2>Updating:  {{ $listing->listing_name }} </h2> -->
             <form name="add-listing-post-form" id="add-listing-post-form" method="post" action="{{ url("update-listing/{$listing->id}") }}">
           @endif
         @else
-          <h1>debug message - create</h1>
+          <!-- <h1>debug message - create</h1> -->
           <form name="add-listing-post-form" id="add-listing-post-form" method="post" action="{{ url('store-listing') }}">
         @endif
       @endif
@@ -138,18 +141,20 @@
           {{-- edit the listing --}}
             <input type="number" name="user_id" hidden="true" class="form-control" value="{{ $listing->user_id }}">
             <input hidden="true" name="listing_id" value="{{ $listing->id }}">
-            <h1> edit </h1>
+            <!-- <h1> edit </h1> -->
           @endif
 
           @if (isset($user))
           {{-- create a listing --}}
-            <h1> User id: {{ $user }} </h1>
+            <!-- <h1> User id: {{ $user }} </h1> -->
             <input type="number" name="user_id" hidden="true" class="form-control" value="{{ $user }}">
           @endif
         </div>
 
         <input type="text" id="listing_available" name="listing_available" hidden="true" value="1">
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <div class="text-center">
+          <button type="submit" class="custom-btn btn-1">Submit</button>
+        </div>
       </form>
     </div>
   </div>

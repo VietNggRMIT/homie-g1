@@ -1,0 +1,27 @@
+.form-blog-name{
+    input{
+        background-color: white;
+    }
+}
+
+.form-blog-description{
+    textarea{
+        height: 500px;
+        background-color:white;
+    }
+}
+
+.card{
+    &.edit-form{
+        background-color: transparent;
+        border-color: transparent;
+    }
+
+    input{
+        background-color: white;
+    }
+
+    textarea{
+        background-color:white;
+    }
+}
