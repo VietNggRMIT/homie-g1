@@ -15,10 +15,10 @@
      color: white;
     }
   
-   .container-fluid{
+   .container-fluid {
      background-image: url('..\\..\\storage\\app\\public\\images\\background\\tranphu-street.jpg');
      background-color: #33353d;
-     height: 1000px;
+     height: 700px;
      background-position: center;
      background-repeat: no-repeat;
      background-size: cover;
@@ -26,62 +26,11 @@
      background-position: 50% 0;
      
          #first-box{
-         margin-top: 200px;
+         margin-top: 150px;
          }
-     } 
-   } 
-  
-  // .blog-container{
-    
-  //   .blog-info{
-  //       padding-left: 30px;
-  //   }
+    } 
+} 
 
-  //   i{
-  //     color: #004d7a;
-  //   }
-
-  //   button{
-  //       background-color: white;
-  //       border: none;
-  //       color: rgb(0, 0, 0);
-  //       text-align: center;
-  //       text-decoration: none;
-  //       display: inline-block;
-  //       font-size: 20px;
-        
-  //       &.user-name{
-  //           font-size: 15px;
-  //       }
-
-  //       &:hover{
-  //           color: blue;
-  //       }
-  //   }
-
-  //   h5{
-  //     font-family: 'Roboto', sans-serif;
-  //     font-size: 20px;
-  
-  //   }
-    
-  //   p{
-  //     font-size: 15px;
-  //   }
-  
-  //   h6{
-  //     font-family: 'Roboto', sans-serif;
-  //     font-size: 20px;
-  //   }
-    
-  //   hr{
-  //     height: 10px;
-  //   }
-  // }
-
-.blogs-wrapper{
-  margin-bottom: 100px;
-}
 
 .blog-card {
   a {

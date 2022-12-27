@@ -2,8 +2,6 @@
 @section('title', 'About us')
 @section('content')
 <body>
-    <div class="container">
-    </div>
         <main>
             <div class="main-wrapper">
                 <div class="container-fluid about-box">
