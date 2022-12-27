@@ -19,7 +19,7 @@
         <div class="row row-cols-lg-3">
 
         @foreach ($listings as $listing)
-            <div class="col">
+            <div class="col" {!! $listing->listing_available == 0 ? 'style="opacity: 0.4"' : 'style="opacity: 1"' !!}>
                 <a class="card listing-card" onclick ="window.location='{{ route('listings.show', ['listing' => $listing]) }}';">
                     <div id="carouselControls" class="carousel slide card-slider" data-bs-ride="false">
                         <div class="carousel-inner">

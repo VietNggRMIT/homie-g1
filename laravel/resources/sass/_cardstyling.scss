@@ -24,6 +24,10 @@
   
           .card-description {
               min-height: 23vh;
+
+              &.specific {
+                min-height: auto;
+              }
           }
   
           .listing-amenities {
@@ -124,6 +128,26 @@
           box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
       }
     }
+
+    &.listing-amenities-ratings {
+        .card-body {
+          font-size: 1.1rem;
+
+            .listing-amenities {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .card-price-rating {
+                font-size: 1.3rem;
+            }
+        }
+        .card-footer {
+          .btn {
+            display: block;
+          }
+        }
+    }
   }
   
   .card-content {
@@ -153,5 +177,112 @@
             margin-right: 15px;
         }
     }
+  }
+
+  //mobile card styling
+  @media only screen and (max-width: 768px) {
+    .row {
+        &.listing-description {
+          display: block;
+  
+          .col {
+            .card {
+              &.listing-amenities-ratings {
+                margin-top: 1.5rem;
+  
+                .card-body {
+                  .title {
+                    text-align: center;
+                  }
+                }
+                
+                .card-footer {
+                  .btn-container {
+                    text-align: center;
+  
+                    .btn {
+                      display: initial;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+  
+        &.listing-owner-map {
+          display: block;
+  
+          .col {
+            &.embed-map {
+              margin-top: 1.5rem;
+            }
+          }
+        }
+  
+        &.listing-reviews {
+          display: block;
+  
+          .col {
+            &.review-form {
+              margin-top: 1.5rem;
+            }
+          }
+        }
+      }
+  
+  }
+
+  //tablet card styling
+  @media only screen and (min-width: 769px) and (max-width: 1024px) {
+    .row {
+        &.listing-description {
+          display: block;
+  
+          .col {
+            .card {
+              &.listing-amenities-ratings {
+                margin-top: 1.5rem;
+  
+                .card-body {
+                  .title {
+                    text-align: center;
+                  }
+                }
+                
+                .card-footer {
+                  .btn-container {
+                    text-align: center;
+  
+                    .btn {
+                      display: initial;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+  
+        &.listing-owner-map {
+          display: block;
+  
+          .col {
+            &.embed-map {
+              margin-top: 1.5rem;
+            }
+          }
+        }
+  
+        &.listing-reviews {
+          display: block;
+  
+          .col {
+            &.review-form {
+              margin-top: 1.5rem;
+            }
+          }
+        }
+      }
   }
   
