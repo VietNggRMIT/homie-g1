@@ -4,26 +4,28 @@
 
     <div class="container">
 
-        <hr>
-        <div class="breadcrumb justify-content-center">
-            <h2>{{ Breadcrumbs::render('breadcrumb_listings') }}</h2>
-        </div>
-        
-        <div class="text-center">
-            Showing {{ $listings->firstItem() }} - {{ $listings->lastItem() }} listings from the total of {{ $listings->total() }} listings.
+        <div class="title-section mt-5">
+            <div class="title h1">
+                Property listings
+            </div>
+            <hr class="baby">
         </div>
 
-        <hr>
+        <div class="breadcrumb justify-content-center mt-5">
+            <h2>{{ Breadcrumbs::render('breadcrumb_listings') }}</h2>
+        </div>
 
         @livewire('live-search-listing')
 
-        <hr>
+        <div class="text-center my-5">
+            Showing {{ $listings->firstItem() }} - {{ $listings->lastItem() }} listings from the total of {{ $listings->total() }} listings.
+        </div>
         
         <div class="row row-cols-lg-3">
 
         @foreach ($listings as $listing)
             <div class="col" {!! $listing->listing_available == 0 ? 'style="opacity: 0.4"' : 'style="opacity: 1"' !!}>
-                <a class="card listing-card" onclick ="window.location='{{ route('listings.show', ['listing' => $listing]) }}';">
+                <a class="card listing-card" href="{{ route('listings.show', ['listing' => $listing]) }}">
                     <div id="carouselControls" class="carousel slide card-slider" data-bs-ride="false">
                         <div class="carousel-inner">
                             @if($listing->listingimages->isEmpty())
@@ -189,7 +191,7 @@
 
             <hr>
         @endforeach --}}
-        <div class="pagination">
+        <div class="pagination justify-content-center my-3">
             {{-- below is the box containing links to different page. get it to center? --}}
             <br><div>{{ $listings->links() }}</div>
         </div>

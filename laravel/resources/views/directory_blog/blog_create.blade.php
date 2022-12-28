@@ -16,11 +16,11 @@
         {{ session('status') }}
     </div>
   @endif
-  <div class="card edit-form">
+  <div class="card edit-form p-3">
     <!-- <div class="card-header text-center font-weight-bold">
       Add or Edit Blog Post Form
     </div> -->
-    <div class="card-body">
+    <div class="card-body form-bg p-5">
       @if($from)
         @if($from == 'update')
           @if(isset($blog))

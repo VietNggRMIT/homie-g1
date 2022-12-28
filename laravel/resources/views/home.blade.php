@@ -62,7 +62,7 @@
 
         @foreach ($listings as $listing)
             <div class="col">
-                <a class="card listing-card" onclick ="window.location='{{ route('listings.show', ['listing' => $listing]) }}';">
+                <a class="card listing-card" href="{{ route('listings.show', ['listing' => $listing]) }}">
                     <div id="carouselControls" class="carousel slide card-slider" data-bs-ride="false">
                         <div class="carousel-inner">
                             @if($listing->listingimages->isEmpty())
@@ -177,7 +177,7 @@
                             <p>
                                 <i class="fa-solid fa-calendar-days"></i>
                                 {{ date_diff(new \DateTime($listing->updated_at), new \DateTime(now()))->format("%m months, %d days, %h hours") }} ago
-                                <i class="fa-solid fa-hashtag"></i>
+                                <i class="fa-solid fa-hashtag purple-ice"></i>
                                 {{ $blog->id }}
                             </p>
                         </div>
@@ -187,7 +187,7 @@
                             <p>
                                 <i class="fa-regular fa-id-card"></i>
                                 <a class="user-name smooth-transition" href="{{ route('users.show', ['user' => $blog->user]) }}">{{ $blog->user->user_real_name }}</a>
-                                <i class="fa-solid fa-hashtag"></i>
+                                <i class="fa-solid fa-hashtag purple-ice"></i>
                                 {{ $blog->user->id }}
                             </p>
                         </div>

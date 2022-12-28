@@ -11,11 +11,22 @@
                     <div id="carouselExampleIndicators" class="carousel slide listing-carousel" data-bs-ride="true">
                         <div class="carousel-indicators">
                             <!-- $listing->listingimages: -->
-                            @foreach ($listing->listingimages as $listingimage)
+                            @if($listing->listingimages->isEmpty())
+                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1">
+                                    <img src="https://via.placeholder.com/300.png/" class="d-block w-100 img-fluid">
+                                </button>
+                            @else
+                                @foreach ($listing->listingimages as $listingimage)
+                                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1">
+                                        <img src="{{ asset('storage/images/').'/'.$listingimage->listing_image_path }}" class="d-block w-100 img-fluid">
+                                    </button>
+                                @endforeach
+                            @endif
+                            <!-- @foreach ($listing->listingimages as $listingimage)
                                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1">
                                     <img src="{{ asset('storage/images/').'/'.$listingimage->listing_image_path }}" class="d-block w-100 img-fluid">
                                 </button>
-                            @endforeach
+                            @endforeach -->
                             <!-- <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1">
                                 <img src="php1\resources\listing_image\1.jpg" class="d-block w-100 img-fluid">
                             </button>
@@ -62,32 +73,38 @@
             </div>
         </div>
 
-        <div class="edit-listing text-end mt-3">
-            <a class="btn btn-outline-primary" href="{{ route('listings.edit', ['listing' => $listing]) }}">Edit this listing</a>
+        <div class="listing-modifications d-flex justify-content-end mt-3">
+            <form class="" method="POST" action="{{ url("delete-listing/{$listing->id}") }}">
+                @csrf
+                <button class="btn btn-outline-danger" type="submit">Delete this listing</button>
+            </form>
+            <div class="ms-3">
+                <a class="btn btn-outline-primary" href="{{ route('listings.edit', ['listing' => $listing]) }}">Edit this listing</a>
+            </div>
         </div>
 
-        <button
+        <!-- <button
             onclick="window.location.href='{{ route('listings.edit', ['listing' => $listing]) }}';"
             type="button"
         >
             Edit this listing
-        </button>
-        <form method="POST" action="{{ url("delete-listing/{$listing->id}") }}">
+        </button> -->
+        <!-- <form method="POST" action="{{ url("delete-listing/{$listing->id}") }}">
             @csrf
             <button type="submit">Delete this listing</button>
-        </form>
+        </form> -->
         <button
             onclick="window.location.href='{{ route('reviews.create', ['listing' => $listing->id]) }}';"
             type="button"
         >
             Add a review to this listing
         </button>
-        <button
+        <!-- <button
             onclick="window.location.href='{{ route('applications.create', ['listing' => $listing->id]) }}';"
             type="button"
         >
             Submit an application to this listing
-        </button>
+        </button> -->
         <div class="breadcrumb justify-content-center">
             <h2>{{ Breadcrumbs::render('breadcrumb_listing', $listing) }}</h2>
         </div>
@@ -103,7 +120,7 @@
                         <div class="h6 mb-2">Posted by: <a href="{{ route('users.show', ['user' => $listing->user]) }}">{{ $listing->user->user_real_name }}</a> on {{ $listing->created_at }}</div>
                         <hr class="baby">
                         <div class="card-listing-location d-flex align-items-center mb-3">
-                            <i class="fa-solid fa-location-dot mr-1"></i>
+                            <i class="fa-solid fa-location-dot me-3"></i>
                             <p class="card-text">
                                 {{ $listing->listing_address_subdivision_1 }}&nbsp
                                 {{ $listing->listing_address_subdivision_2 }}&nbsp
@@ -184,7 +201,7 @@
                     </div>
                     <div class="card-footer">
                         <div class="h5 text-center mt-1">
-                            <i class="fa-solid fa-paper-plane purple-ice mr-1"></i>{{ (int) $listing->applications_count }} application(s) sent
+                            <i class="fa-solid fa-paper-plane purple-ice me-3"></i>{{ (int) $listing->applications_count }} application(s) submitted
                         </div>
                         <div class="btn-container my-3">
                             <a class="btn btn-warning btn-lg px-5" href="{{ route('applications.create', ['listing' => $listing->id]) }}">Apply now!</a>
@@ -207,7 +224,7 @@
                     <div class="row gx-4">
                         <div class="col col-lg-7 gy-2">
                             <div class="col d-flex align-items-center mb-3">
-                                <div class="profile-pic-section mr-1">
+                                <div class="profile-pic-section me-3">
                                     <div class="profile-pic-container listing-details">
                                         <img class="card-img-top" src="{{ asset('storage/images/').'/'.$listing->user->user_image_path }}" alt="Card image cap">
                                     </div>
@@ -242,8 +259,8 @@
                             </div>
                         </div>
                         <div class="mt-3 mx-auto">
-                            <a class="btn btn-warning mb-3">Contact owner</a>
-                            <a class="btn btn-warning mb-3">View profile</a>
+                            <a href="mailto:{{ $listing->user->user_email_address }}" class="btn btn-warning mb-3">Contact owner</a>
+                            <a href="{{ route('users.show', ['user' => $listing->user]) }}" class="btn btn-warning mb-3">View profile</a>
                         </div>
                     </div>
                 </div>
@@ -260,7 +277,7 @@
             </div>
         </div>
 
-        <div class="row listing-reviews mt-5">
+        <div class="row listing-reviews my-5">
             <div class="col col-lg-7">
                 <div class="card px-3 py-3">
                     <div class="title mt-3">
@@ -273,30 +290,31 @@
         
                         @else
                             @foreach ($listing->reviews as $review)
-                                    <div class="row review-block mb-5">
-                                        <div class="col-lg-2">
-                                            <div class="profile-pic-section">
-                                                <div class="profile-pic-container listing-details">
-                                                    <img class="card-img-top" src="https://i.pinimg.com/originals/ea/cb/35/eacb35204ab50f96206bfe8013ccb7ec.jpg" alt="Card image cap">
-                                                </div>
+                                <div class="row review-block mb-5">
+                                    <div class="col-lg-2">
+                                        <div class="profile-pic-section">
+                                            <div class="profile-pic-container listing-details">
+                                                <img class="card-img-top" src="https://i.pinimg.com/originals/ea/cb/35/eacb35204ab50f96206bfe8013ccb7ec.jpg" alt="Card image cap">
                                             </div>
                                         </div>
-                                        <div class="col-lg-10">
-                                            <div class="d-flex justify-content-between mb-1">
-                                                <div class="d-flex flex-column">
-                                                    <div class="p">Review name: {{ $review->review_name }}</div>
-                                                    <div class="text-muted">{{ $review->created_at }}</div>
-                                                </div>
-                                                <div class="d-flex">
-                                                    @for ($i = 0; $i < $review->review_rating; $i++)
-                                                        <i class="fa-solid fa-star"></i>
-                                                    @endfor
-                                                </div>
+                                    </div>
+                                    <div class="col-lg-10">
+                                        <div class="d-flex justify-content-between mb-1">
+                                            <div class="d-flex flex-column">
+                                                <div class="p">Review name: {{ $review->review_name }}</div>
+                                                <div class="text-muted">{{ $review->created_at }}</div>
                                             </div>
-                                            <div class="review-comments h6">
-                                                {{ $review->review_description }}
+                                            <div class="d-flex">
+                                                @for ($i = 0; $i < $review->review_rating; $i++)
+                                                    <i class="fa-solid fa-star"></i>
+                                                @endfor
                                             </div>
                                         </div>
+                                        <div class="review-comments h6">
+                                            {{ $review->review_description }}
+                                        </div>
+                                    </div>
+                                </div>
                             @endforeach
                         @endif
                     </div>

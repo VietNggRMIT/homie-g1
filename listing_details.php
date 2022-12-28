@@ -72,7 +72,7 @@
                                     <div class="h6 mb-2">Posted by: <a href="#">Viet Dep Trai</a></div>
                                     <hr class="baby">
                                     <div class="card-listing-location d-flex align-items-center mb-3">
-                                        <i class="fa-solid fa-location-dot mr-1"></i>
+                                        <i class="fa-solid fa-location-dot me-3"></i>
                                         <p class="card-text">123 Doi Can, Ba Dinh, Ha Noi</p>
                                     </div>
                                     <div class="h5">Listing description:</div>
@@ -159,7 +159,7 @@
                                 <div class="row gx-4">
                                     <div class="col col-lg-7 gy-2">
                                         <div class="col d-flex align-items-center mb-3">
-                                            <div class="profile-pic-section mr-1">
+                                            <div class="profile-pic-section me-3">
                                                 <div class="profile-pic-container listing-details">
                                                     <img class="card-img-top" src="https://i.pinimg.com/originals/ea/cb/35/eacb35204ab50f96206bfe8013ccb7ec.jpg" alt="Card image cap">
                                                 </div>

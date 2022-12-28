@@ -119,7 +119,7 @@
                                     <div class="card-body text-center">
                                     <hr>
                                     <div class="card-name h3 mb-3">{{ $user->user_real_name }}</div>
-                                    <p><i class="fa-solid fa-star"></i> <b>3.6</b> (69)</p>
+                                    <p><i class="fa-solid fa-star"></i> <b>4.7</b> (32)</p>
                                     <p class="card-text">"{!!  nl2br(e($user->user_description)) !!}"</p>
                                     <br>
                                     <ul class="social-icons">

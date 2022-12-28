@@ -1,31 +1,41 @@
 //seperate-blog styling
 
-.container{
-    &.blogpost{
+.container {
+
+    .blogpost {
       background-color: white;
-      margin-top: 50px;
+      // margin-top: 50px;
       margin-bottom: 50px;
-      
-      button{
-        margin: 0px;
-        padding: 0px;
-        background-color: transparent;
-        border: none;
-        color: rgb(0, 0, 0);
-        text-align: center;
+
+      a {
         text-decoration: none;
-        font-style: italic;
-        display: inline-block;
-        font-size: 15px;
-        
-        &.user-name{
-            font-size: 15px;
-        }
-  
-        &:hover{
-            color: blue;
+        color: #000000;
+
+        &:hover {
+          color: $purple-ice;
         }
       }
+      
+      // button {
+      //   margin: 0px;
+      //   padding: 0px;
+      //   background-color: transparent;
+      //   border: none;
+      //   color: rgb(0, 0, 0);
+      //   text-align: center;
+      //   text-decoration: none;
+      //   font-style: italic;
+      //   display: inline-block;
+      //   font-size: 15px;
+        
+      //   &.user-name {
+      //       font-size: 15px;
+      //   }
+  
+      //   &:hover {
+      //       color: blue;
+      //   }
+      // }
   
       .row{
         padding-left: 30px;

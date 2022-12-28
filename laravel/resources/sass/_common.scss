@@ -42,12 +42,42 @@ body {
   color: $purple-ice;
 }
 
-.mr-1 {
-  margin-right: 1rem;
-}
-
 .ls-none {
   list-style: none;
+}
+
+.search-filter {
+  .form-control {
+      padding: 1rem;
+      padding-right: 65px;
+  }
+
+  .input-group-append {
+      z-index: 99;
+      transition: all 0.2s ease-in-out;
+
+      .ms-n5 {
+          // transform: translateX(-50px);
+          margin-left: -65px;
+          padding: 1.3rem 1.275rem;
+          background-color: #a0d2eb;
+
+          i {
+              margin: 0;
+              color: #FFFFFF;
+          }
+      }
+
+      &:hover {
+          .ms-n5 {
+              background-color: #a0d2eb;
+          }
+      }
+  }
+}
+
+.search-listing-reviews > * {
+  margin-right: 0.25rem;
 }
 
 // .account-bg {
@@ -142,31 +172,58 @@ body {
 .btn-1 {
   border: none;
   color: #000;
+
+  &.purple-ice {
+    color: #FFF;
+    background-color: $purple-ice;
+
+    &:hover {
+      color: #FFF;
+    }
+  }
+
+  &.active {
+    top: 2px;
+  }
+
+  &:hover {
+    color: #000;
+
+    &::after {
+      left: auto;
+      right: 0;
+      width: 100%;
+    }
+  }
+
+  &::after {
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 100%;
+    top: 0;
+    left: 0;
+    direction: rtl;
+    z-index: -1;
+    box-shadow:
+     -7px -7px 20px 0px #fff9,
+     -4px -4px 5px 0px #fff9,
+     7px 7px 20px 0px #0002,
+     4px 4px 5px 0px #0001;
+    transition: all 0.3s ease;
+  }
 }
-.btn-1:after {
-  position: absolute;
-  content: "";
-  width: 0;
-  height: 100%;
-  top: 0;
-  left: 0;
-  direction: rtl;
-  z-index: -1;
-  box-shadow:
-   -7px -7px 20px 0px #fff9,
-   -4px -4px 5px 0px #fff9,
-   7px 7px 20px 0px #0002,
-   4px 4px 5px 0px #0001;
-  transition: all 0.3s ease;
-}
-.btn-1:hover {
-  color: #000;
-}
-.btn-1:hover:after {
-  left: auto;
-  right: 0;
-  width: 100%;
-}
-.btn-1:active {
-  top: 2px;
-}
+// .btn-1:after {
+
+// }
+// .btn-1:hover {
+  
+// }
+// .btn-1:hover:after {
+//   left: auto;
+//   right: 0;
+//   width: 100%;
+// }
+// .btn-1:active {
+//   top: 2px;
+// }

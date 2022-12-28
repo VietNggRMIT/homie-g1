@@ -21,7 +21,7 @@
             <div class="breadcrumb justify-content-center">
                 <h2>{{ Breadcrumbs::render('breadcrumb_blogs') }}</h2>
             </div>
-            <div class="text-center">
+            <div class="text-center mb-5">
                 Showing {{ $blogs->firstItem() }} - {{ $blogs->lastItem() }} blogs from the total of {{ $blogs->total() }} blogs.
             </div>
         <div class="container">
@@ -40,7 +40,7 @@
                                     <p>
                                         <i class="fa-solid fa-calendar-days"></i>
                                         {{ $blog->created_at }}
-                                        <i class="fa-solid fa-hashtag"></i>
+                                        <i class="fa-solid fa-hashtag purple-ice"></i>
                                         {{ $blog->id }}
                                     </p>
                                 </div>
@@ -50,7 +50,7 @@
                                     <p>
                                         <i class="fa-regular fa-id-card"></i>
                                         <a class="user-name smooth-transition" href="{{ route('users.show', ['user' => $blog->user]) }}">{{ $blog->user->user_real_name }}</a>
-                                        <i class="fa-solid fa-hashtag"></i>
+                                        <i class="fa-solid fa-hashtag purple-ice"></i>
                                         {{ $blog->user->id }}
                                     </p>
                                 </div>
@@ -64,7 +64,7 @@
 
                 @endforeach
             </div>
-            <div class="pagination justify-content-center">
+            <div class="pagination justify-content-center mt-5">
                 {{-- below is the box containing links to different page. get it to center? --}}
                 <br><div>{{ $blogs->links() }}</div>
             </div>
