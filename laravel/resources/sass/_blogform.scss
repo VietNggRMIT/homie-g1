@@ -15,6 +15,10 @@
     &.edit-form{
         background-color: transparent;
         border-color: transparent;
+        h1{
+            color: #17A589;
+            font-family: 'Fredoka One', cursive;
+        }
     }
 
     input{
@@ -24,4 +28,6 @@
     textarea{
         background-color:white;
     }
+
+    
 }

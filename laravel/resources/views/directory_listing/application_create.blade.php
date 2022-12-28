@@ -2,13 +2,14 @@
     <title>Add Application</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    @vite(['resources/css/app.css', 'resources/js/customScript.js', 'resources/js/app.js', 'webfonts.css'])
 </head>
 <body>
   <div class="container mt-4">
   @if($listing)
-    <div class="card">
-      <div class="card-header text-center font-weight-bold">
-        Add Application Form
+    <div class="card edit-form">
+      <div class="text-center">
+        <h1>Application form</h1>
       </div>
       <div class="card-body">
         <form name="add-application-post-form" id="add-application-post-form" method="post" action="{{url('store-application')}}">
@@ -70,7 +71,9 @@
               {{-- <br><label for="listing_id">Listing ID - will be removed, here to test</label> --}}
               <input type="number" name="listing_id" hidden="true" value="{{ $listing }}">
           </div>
-          <button type="submit" class="btn btn-primary">Submit</button>
+          <div class="text-center">
+            <button type="submit" class="custom-btn btn-1">Submit</button>
+          </div>
         </form>
       </div>
     </div>

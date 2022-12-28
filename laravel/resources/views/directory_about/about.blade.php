@@ -39,6 +39,7 @@
                     </div>
                 </div>
             </div>
+            <br>
             <div class="breadcrumb justify-content-center">
                 <h2>{{ Breadcrumbs::render('breadcrumb_about') }}</h2>
             </div>
