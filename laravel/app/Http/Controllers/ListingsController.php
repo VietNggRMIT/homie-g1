@@ -29,8 +29,7 @@ class ListingsController extends Controller
             ->with('listingimages:listing_image_path,listing_id')
             ->withAvg('reviews', 'review_rating')
             ->withCount('reviews')
-            ->withCount('applications')
-            ->get();
+            ->withCount('applications')->paginate(30); //replace get() with paginate()
 
             return response()
                 ->view('directory_listing.listings', ['listings' => $custom_listings], 200);
@@ -131,7 +130,7 @@ class ListingsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Listing  $listing
+     * @param  $listing_id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $listing_id)
@@ -160,7 +159,7 @@ class ListingsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  $listing the listing id
+     * @param  $listing_id the listing id
      * @return \Illuminate\Http\Response
      */
     public function destroy($listing_id)

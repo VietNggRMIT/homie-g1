@@ -9,6 +9,7 @@
             <h2>{{ Breadcrumbs::render('breadcrumb_listings') }}</h2>
         </div>
         <h1>Listings</h1>
+        <div>Showing {{ $listings->firstItem() }} - {{ $listings->lastItem() }} listings from the total of {{ $listings->total() }} listings.</div>
 
         <hr>
 
@@ -108,7 +109,8 @@
 
         </div>
 
-        @foreach ($listings as $listing)
+        {{-- show all listings to debug --}}
+        {{-- @foreach ($listings as $listing)
             <div {!! $listing->listing_available == 0 ? 'style="opacity: 0.4"' : 'style="opacity: 1"' !!}>
                 <div>
                     <h2>Listing</h2>
@@ -151,7 +153,7 @@
                     <div>$listing->listing_specification_bathroom: {{ $listing->listing_specification_bathroom }}</div>
                     <div>$listing->listing_specification_size: {{ $listing->listing_specification_size }}</div>
                     @if ($listing->listing_specification_owner == 1)
-                        {{-- <div>$listing->listing_specification_owner: {{ $listing->listing_specification_owner }}</div> --}}
+                        {{-- <div>$listing->listing_specification_owner: {{ $listing->listing_specification_owner }}</div>
                         <div>Lives with owner</div>
                     @else
                         <div>Doesnt live with owner</div>
@@ -184,7 +186,11 @@
             </div>
 
             <hr>
-        @endforeach
+        @endforeach --}}
+        <div class="pagination">
+            {{-- below is the box containing links to different page. get it to center? --}}
+            <br><div>{{ $listings->links() }}</div>
+        </div>
     </div>
     @livewireScripts
 @endsection

@@ -16,7 +16,7 @@ class BlogsController extends Controller
     public function index()
     {
         $custom_blogs = Blog::with('user')
-            ->get();
+            ->paginate(15);
 
         return response()
             ->view('directory_blog.blogs', ['blogs' => $custom_blogs], 200);
