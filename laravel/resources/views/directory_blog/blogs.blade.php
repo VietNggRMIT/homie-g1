@@ -21,7 +21,9 @@
             <div class="breadcrumb justify-content-center">
                 <h2>{{ Breadcrumbs::render('breadcrumb_blogs') }}</h2>
             </div>
-            <div>Showing {{ $blogs->firstItem() }} - {{ $blogs->lastItem() }} blogs from the total of {{ $blogs->total() }} blogs.</div>
+            <div class="text-center">
+                Showing {{ $blogs->firstItem() }} - {{ $blogs->lastItem() }} blogs from the total of {{ $blogs->total() }} blogs.
+            </div>
         <div class="container">
             <div class="blog-listing-section">
                 @foreach ($blogs as $blog)
@@ -62,7 +64,7 @@
 
                 @endforeach
             </div>
-            <div class="pagination">
+            <div class="pagination justify-content-center">
                 {{-- below is the box containing links to different page. get it to center? --}}
                 <br><div>{{ $blogs->links() }}</div>
             </div>

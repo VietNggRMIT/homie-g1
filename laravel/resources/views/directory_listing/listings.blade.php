@@ -8,8 +8,10 @@
         <div class="breadcrumb justify-content-center">
             <h2>{{ Breadcrumbs::render('breadcrumb_listings') }}</h2>
         </div>
-        <h1>Listings</h1>
-        <div>Showing {{ $listings->firstItem() }} - {{ $listings->lastItem() }} listings from the total of {{ $listings->total() }} listings.</div>
+        
+        <div class="text-center">
+            Showing {{ $listings->firstItem() }} - {{ $listings->lastItem() }} listings from the total of {{ $listings->total() }} listings.
+        </div>
 
         <hr>
 
