@@ -33,7 +33,7 @@ Route::get('/home', HomeController::class)
     ->name('route_home');
 
 Route::resource('/listings', ListingsController::class);
-
+Route::view('/test-listings', 'directory_listing.test-listings');
 //Route::prefix('listings')->group(function () {
 //
 ////     Handles the path /listings/
