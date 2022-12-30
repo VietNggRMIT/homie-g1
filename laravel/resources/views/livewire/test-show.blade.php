@@ -1,6 +1,5 @@
 <div>
     <div class="d-flex search-filter" role="search">
-        {{-- <input wire:model="searchName" wire:change="filter" class="form-control border-end-0 border rounded-pill me-2" type="text" placeholder="Search listing name..." aria-label="Search"> --}}
         <input wire:model="searchName" wire:change="filter" class="form-control border-end-0 border rounded-pill me-2" type="text" placeholder="Search by name" aria-label="Search">
         <!-- <button disabled class="btn btn-outline-success" type="submit">Search</button> -->
         <input wire:model="searchAddress" wire:change="filter" class="form-control border-end-0 border rounded-pill me-2" type="text" placeholder="Search by address e.g. 'Ha Noi' or 'Ba Dinh'" aria-label="Search">
@@ -9,11 +8,11 @@
         <label for="filterRating">Filter listings by rating</label>
         <select wire:model="filterRating" id="filterRating">
             <option value="allRatings">Show listings of all ratings</option>
-            <option value="5">5 star listings</option>
-            <option value="4">4 star listings</option>
-            <option value="3">3 star listings</option>
-            <option value="2">2 star listings</option>
-            <option value="1">1 star listings</option>
+            <option value="5star">5 star listings</option>
+            <option value="4star">4 star listings</option>
+            <option value="3star">3 star listings</option>
+            <option value="2star">2 star listings</option>
+            <option value="1star">1 star listings</option>
             <option value="unrated">Unrated listings</option>
         </select>
     </div>
@@ -31,27 +30,33 @@
     <div class="d-flex">
         Choose your desired rent per month:
         <div>
-            <input type="checkbox" id="rentOver9" name="rentOver9" checked>
+            <input wire:model="filterPrice" type="checkbox" value="rentOver9" name="rentOver9" checked>
             <label for="rentOver9">Over 9m VND</label>
         </div>
         <div>
-            <input type="checkbox" id="rent69" name="rent69">
+            <input wire:model="filterPrice" type="checkbox" value="rent69" name="rent69">
             <label for="rent69">From 6m to 9m VND</label>
         </div>
         <div>
-            <input type="checkbox" id="rent36" name="rent36">
+            <input wire:model="filterPrice" type="checkbox" value="rent36" name="rent36">
             <label for="rent36">From 3m to 6m VND</label>
         </div>
         <div>
-            <input type="checkbox" id="rent03" name="rent03">
+            <input wire:model="filterPrice" type="checkbox" value="rent03" name="rent03">
             <label for="rent03">Under 3m VND</label>
         </div>
+        <div>
+            <button>Reset button</button>
+        </div>
     </div>
+    <h3>Debug - Price ranges: {{ var_export($filterPrice) }}</h3>
+    <h4>{{ $debug }}</h4>
     <div class="text-center my-5">
         Showing {{ $listings->firstItem() }} - {{ $listings->lastItem() }} listings from the total of {{ $listings->total() }} listings.
     </div>
     <div class="row row-cols-lg-3">
         @foreach ($listings as $listing)
+            {{-- <h1>{{ dd($listings) }}</h1> --}}
             <div class="col" {!! $listing->listing_available == 0 ? 'style="opacity: 0.4"' : 'style="opacity: 1"' !!}>
                 <a class="card listing-card" href="{{ route('listings.show', ['listing' => $listing]) }}">
                     <div id="carouselControls" class="carousel slide card-slider" data-bs-ride="false">
