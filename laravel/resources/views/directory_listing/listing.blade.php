@@ -250,7 +250,7 @@
                             <div class="quick-info my-auto">
                                 <ul class="icons-list ls-none align-items-center text-end px-0">
                                     <li><p>ID: {{ $listing->user->id }} <i class="fa-solid fa-address-card"></i></p></li>
-                                    <li><p>Binh Duong, Viet Nam <i class="fa-regular fa-compass"></i></p></li>
+                                    <li><p>Viet Nam <i class="fa-regular fa-compass"></i></p></li>
                                     <li><p>{{ $listing->user->user_phone_number }} <i class="fa-solid fa-mobile-screen"></i></p></li>
                                     <li><p>{{ $listing->user->user_email_address }} <i class="fa-regular fa-envelope"></i></p></li>
                                     <li><p>Since: {{ $listing->user->created_at }} <i class="fa-regular fa-user"></i></p></li>
@@ -329,28 +329,27 @@
                     </div>
                     <div class="review-form">
                         <div class="h6">Ratings</div>
-                        <form>
+                        <form name="add-review-post-form" id="add-review-post-form" method="post" action="{{ url('store-review') }}">
+                            @csrf
                             <div class="rating-stars text-center">
-                                <ul class="ls-none px-0" id="stars">
-                                    <li class="star" data-value="1">
-                                        <i class="fa fa-star fa-fw"></i>
-                                    </li>
-                                    <li class="star" data-value="2">
-                                        <i class="fa fa-star fa-fw"></i>
-                                    </li>
-                                    <li class="star" data-value="3">
-                                        <i class="fa fa-star fa-fw"></i>
-                                    </li>
-                                    <li class="star" data-value="4">
-                                        <i class="fa fa-star fa-fw"></i>
-                                    </li>
-                                    <li class="star" data-value="5">
-                                        <i class="fa fa-star fa-fw"></i>
-                                    </li>
-                                </ul>
+                                <div class="review_rating">
+                                    <input type="radio" id="star5" name="review_rating" value="5" required/>
+                                    <label for="star5" title="text">5 stars</label>
+                                    <input type="radio" id="star4" name="review_rating" value="4" />
+                                    <label for="star4" title="text">4 stars</label>
+                                    <input type="radio" id="star3" name="review_rating" value="3" />
+                                    <label for="star3" title="text">3 stars</label>
+                                    <input type="radio" id="star2" name="review_rating" value="2" />
+                                    <label for="star2" title="text">2 stars</label>
+                                    <input type="radio" id="star1" name="review_rating" value="1" />
+                                    <label for="star1" title="text">1 star</label>
+                                  </div>
                             </div>
+                            <div class="h6">Review Name</div>
+                            <input type="text" name="review_name" class="form-control" required="true" placeholder="Your name, your contact, or a summary...">
                             <div class="h6">Comments</div>
-                            <textarea class="form-control mb-3" rows="4"></textarea>
+                            <textarea name="review_description" class="form-control mb-3" rows="4"></textarea>
+                            <input type="number" name="listing_id" hidden="true" class="form-control" value={{ $listing->id }}>
                             <button class="btn btn-warning" type="submit" value="submit">Submit review</button>
                         </form>
                     </div>
