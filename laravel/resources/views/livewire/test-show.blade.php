@@ -19,7 +19,7 @@
     <div class="d-flex">
         <label for="order">Order listings by</label>
         <select wire:model="order" id="order">
-            <option disabled selected value="byID">ID</option>
+            <option selected value="byID">Listing ID</option>
             <option value="priceAscending">Price, from low to high</option>
             <option value="priceDescending">Price, from high to low</option>
             <option value="created">Most recently created</option>
@@ -30,26 +30,22 @@
     <div class="d-flex">
         Choose your desired rent per month:
         <div>
-            <input wire:model="filterPrice" type="checkbox" value="rentOver9" name="rentOver9" checked>
-            <label for="rentOver9">Over 9m VND</label>
+            <label for="minPrice">Minimum price: 
+                <h4 id="minPriceDisplay">{{ $minPrice * 1000000 }} VND</h4>
+            </label>
+            <input wire:model="minPrice" type="range" id="minPrice" name="minPrice" min="0" max="10" value="0"> 
         </div>
         <div>
-            <input wire:model="filterPrice" type="checkbox" value="rent69" name="rent69">
-            <label for="rent69">From 6m to 9m VND</label>
+            <label for="maxPrice">Maximum price: 
+                <h4 id="maxPriceDisplay">{{ $maxPrice * 1000000 }} VND</h4>
+            </label>
+            <input wire:model="maxPrice" type="range" id="maxPrice" name="maxPrice" min="3" max="20" value="20"> 
         </div>
         <div>
-            <input wire:model="filterPrice" type="checkbox" value="rent36" name="rent36">
-            <label for="rent36">From 3m to 6m VND</label>
-        </div>
-        <div>
-            <input wire:model="filterPrice" type="checkbox" value="rent03" name="rent03">
-            <label for="rent03">Under 3m VND</label>
-        </div>
-        <div>
-            <button>Reset button</button>
+            <button wire:click="resetPrice">Reset price range</button>
+            <button wire:click="resetAll">Reset all queries</button>
         </div>
     </div>
-    <h3>Debug - Price ranges: {{ var_export($filterPrice) }}</h3>
     <h4>{{ $debug }}</h4>
     <div class="text-center my-5">
         Showing {{ $listings->firstItem() }} - {{ $listings->lastItem() }} listings from the total of {{ $listings->total() }} listings.

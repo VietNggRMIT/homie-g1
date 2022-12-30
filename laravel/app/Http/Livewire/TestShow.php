@@ -15,7 +15,9 @@ class TestShow extends Component
     public $searchName = '';
     public $searchAddress = '';
     public $filterRating = '';
-    public $filterPrice = [];
+    public $minPrice = 0;
+    public $maxPrice = 20;
+    public $order = 'byID';
     public $debug = '';
 
     // public $listings;
@@ -71,45 +73,58 @@ class TestShow extends Component
                     ->having('reviews_avg_review_rating', '>', '0');
                     break;
                 case 'unrated':
-                    $listings = $listings->having('reviews_avg_review_rating', '=', '0');
+                    $listings = $listings->havingRaw('reviews_avg_review_rating is NULL');
                     break;
                 default:
                     
             }
         }
-        if(!empty($this->filterPrice)){ //filter by price, not working, dont test
-            $listingsOver9 = $listings->where('listing_price', '>=', '9000000');
-            $listings69 = $listings->where('listing_price', '<', '9000000')
-                ->where('listing_price', '>=', '6000000');
-            $listings36 = $listings->where('listing_price', '<', '6000000')
-                ->where('listing_price', '>=', '3000000');
-            $listings03 = $listings->where('listing_price', '<', '3000000');
-
-            $custom_listings = new $listings;
-
-            if(in_array('rentOver9', $this->filterPrice)){ //first element is in
-                $custom_listings->union($listingsOver9);
-            }
-
-            if(in_array('rent69', $this->filterPrice)){
-                $custom_listings->union($listings69);
-            }
-            if(in_array('rent36', $this->filterPrice)){
-                $custom_listings->union($listings36);
-            }
-            if(in_array('rent03', $this->filterPrice)){
-                $custom_listings->union($listings03);
-            }
-
-            $listings = $custom_listings;
+        if($this->minPrice == $this->maxPrice){
+            $lower = $this->minPrice * 1000000; //something like 3m
+            $upper = $lower + 1000000;
+            $listings = $listings->whereBetween('listing_price', [$lower, $upper]);
         }
+        elseif($this->minPrice < $this->maxPrice){
+            $lower = $this->minPrice * 1000000;
+            $upper = $this->maxPrice * 1000000;
+            $listings = $listings->whereBetween('listing_price', [$lower, $upper]);
+        }   
+        else{ //ok now the user is just messing with us
 
+        }
+        
+        switch($this->order){ //order search results
+            case 'priceAscending':
+                $listings = $listings->orderBy('listing_price', 'asc');
+                break;
+            case 'priceDescending':
+                $listings = $listings->orderBy('listing_price', 'desc');
+                break;
+            case 'created':
+                $listings = $listings->orderBy('created_at', 'desc');
+                break;
+            case 'updated':
+                $listings = $listings->orderBy('updated_at', 'desc');
+                break;
+            case 'mostApp':
+                $listings = $listings->orderBy('applications_count', 'desc');
+                break;
+            default:
+                $listings = $listings->orderBy('id', 'desc');
+        }
         return view('livewire.test-show', [
             'listings' => $listings->paginate(30),
-            'filterPrice' => $this->filterPrice,
-            'debug' => $this->debug
+            'debug' => $this->debug,
+            'minPrice' => $this->minPrice,
+            'maxPrice' => $this->maxPrice
         ]);
 
+    }
+    public function resetPrice(){
+        $this->reset(['minPrice', 'maxPrice']);
+    }
+    public function resetAll(){
+        $this->reset(['searchName', 'searchAddress', 'filterRating', 'order', 'minPrice', 'maxPrice']);
     }
 
     // public function reloadListings($searchName, $searchAddress){ 
