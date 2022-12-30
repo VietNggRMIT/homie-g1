@@ -25,22 +25,22 @@
             <h2>Choose a city you want to start at</h2>
             <div class='row mb-5 mt-3'> 
                 <div class='col-sm-6'>
-                    <a href=""><img src="{{ asset('storage/images/filter-img/hcmc-listing.png')}}" alt="HCM"></a>
+                    <a href="{{ route('listings.index', ['homeLocation' => 'Ho Chi Minh']) }}"><img src="{{ asset('storage/images/filter-img/hcmc-listing.png')}}" alt="HCM"></a>
                 </div>
                 <div class='col-sm-3'>
                     <div class="top-img-box">
-                        <a href=""><img src="{{ asset('storage/images/filter-img/hn-listing.png')}}" alt="HN"></a><br>
+                        <a href="{{ route('listings.index', ['homeLocation' => 'Ha Noi']) }}"><img src="{{ asset('storage/images/filter-img/hn-listing.png')}}" alt="HN"></a><br>
                     </div>
                     <div class="under-img-box">
-                        <a href=""><img src="{{ asset('storage/images/filter-img/BD-listing.png')}}" alt="BD"></a>        
+                        <a href="{{ route('listings.index', ['homeLocation' => 'Binh Duong']) }}"><img src="{{ asset('storage/images/filter-img/BD-listing.png')}}" alt="BD"></a>        
                     </div>
                 </div>
                 <div class='col-sm-3'>
                     <div class="top-img-box">
-                        <a class="smooth-transition" href=""><img src="{{ asset('storage/images/filter-img/DDN-listing.png')}}" alt="DDN"></a><br>
+                        <a class="smooth-transition" href="{{ route('listings.index', ['homeLocation' => 'Dong Nai']) }}"><img src="{{ asset('storage/images/filter-img/DDN-listing.png')}}" alt="DDN"></a><br>
                     </div>
                     <div class="under-img-box">
-                        <a href=""><img src="{{ asset('storage/images/filter-img/DNA-listing.png')}}" alt="DNA"></a>
+                        <a href="{{ route('listings.index', ['homeLocation' => 'Da Nang']) }}"><img src="{{ asset('storage/images/filter-img/DNA-listing.png')}}" alt="DNA"></a>
                     </div>
                 </div>
             </div>

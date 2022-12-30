@@ -19,7 +19,9 @@ class TestShow extends Component
     public $maxPrice = 20;
     public $order = 'byID';
     public $debug = '';
-
+    public $homeLocation = '';
+    protected $queryString = ['homeLocation'];
+    public $isChanged = false; //check if the searchAddress term has been changed (backspace)
     // public $listings;
     // protected $listeners = ['reloadListings'];
 
@@ -32,11 +34,21 @@ class TestShow extends Component
     // }
     public function filter()
     {
+        $this->homeLocation = null;
         $this->resetPage();
+    }
+    public function addressChanged(){
+        $this->isChanged = true;
     }
     
     public function render()
     {
+        if(!$this->searchAddress){
+            if($this->homeLocation && !$this->isChanged){ //no backspace has been pressed
+                $this->searchAddress = $this->homeLocation;
+            }
+        }
+        
         // return view('livewire.test-show');
         $listings = Listing::with('user')
         ->with('listingimages:listing_image_path,listing_id')
@@ -89,7 +101,7 @@ class TestShow extends Component
             $upper = $this->maxPrice * 1000000;
             $listings = $listings->whereBetween('listing_price', [$lower, $upper]);
         }   
-        else{ //ok now the user is just messing with us
+        else{ //min > max? ok now the user is just messing with us
 
         }
         
@@ -116,7 +128,7 @@ class TestShow extends Component
             'listings' => $listings->paginate(30),
             'debug' => $this->debug,
             'minPrice' => $this->minPrice,
-            'maxPrice' => $this->maxPrice
+            'maxPrice' => $this->maxPrice,
         ]);
 
     }
