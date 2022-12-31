@@ -6,7 +6,7 @@ use App\Models\Listing;
 use App\Models\User;
 use Livewire\WithPagination;
 use Livewire\Component;
-
+//create a new livewire called 'listing-results' and move this there
 class TestShow extends Component
 {
     use WithPagination;
@@ -122,7 +122,7 @@ class TestShow extends Component
                 $listings = $listings->orderBy('applications_count', 'desc');
                 break;
             default:
-                $listings = $listings->orderBy('id', 'desc');
+                $listings = $listings->orderBy('id', 'asc');
         }
         return view('livewire.test-show', [
             'listings' => $listings->paginate(30),
