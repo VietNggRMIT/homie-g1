@@ -1,26 +1,35 @@
 <div>
-    <div class="d-flex search-filter" role="search">
-        <input wire:model="searchName" wire:change="filter" class="form-control border-end-0 border rounded-pill me-2" type="text" placeholder="Enter your search..." aria-label="Search">
-        <!-- <button disabled class="btn btn-outline-success" type="submit">Search</button> -->
-    </div>
-    <div class="d-flex">
-        <label for="order">Order blogs by</label>
-        <select wire:model="order" id="order">
-            <option selected value="byID">Blog ID</option>
-            <option value="created">Most recently created</option>
-            <option value="updated">Most recently updated</option>
-        </select>
-    </div>
-    <div class="d-flex">
-        <div>
-            <button wire:click="resetAll">Reset all queries</button>
+    <div class="row blog-filter-group filter-section align-items-center mb-5 p-4">
+        <div class="col col-lg-6 search-filter" role="search">
+            <label class="h5" for="blog-search">Search by keywords</label>
+            <input wire:model="searchName" wire:change="filter" class="form-control border-end-0 border rounded-pill p-2 search-name" type="text" placeholder="Enter your search..." aria-label="Search" id="blog-search">
+            <!-- <button disabled class="btn btn-outline-success" type="submit">Search</button> -->
+
         </div>
+
+        <div class="col col-lg-4">
+            <label class="h5 for="order">Order blogs by</label>
+            <select class="form-control" wire:model="order" id="order">
+                <option selected value="byID">Blog ID</option>
+                <option value="created">Most recently created</option>
+                <option value="updated">Most recently updated</option>
+            </select>
+        </div>
+
+        <div class="col">
+            <div>
+                <button class="btn btn-warning mt-4" wire:click="resetAll">Reset all queries</button>
+            </div>
+        </div>
+
+
     </div>
+
 </div>
 
 <div>
     <div class="container">
-        <div class="text-center mb-5">
+        <div class="text-center mb-3">
             Showing {{ $blogs->firstItem() }} - {{ $blogs->lastItem() }} blogs from the total of {{ $blogs->total() }} blogs.
         </div>
         <div class="blog-listing-section">
