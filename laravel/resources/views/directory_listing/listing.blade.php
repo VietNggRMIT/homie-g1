@@ -93,12 +93,12 @@
             @csrf
             <button type="submit">Delete this listing</button>
         </form> -->
-        <button
+        <!-- <button
             onclick="window.location.href='{{ route('reviews.create', ['listing' => $listing->id]) }}';"
             type="button"
         >
             Add a review to this listing
-        </button>
+        </button> -->
         <!-- <button
             onclick="window.location.href='{{ route('applications.create', ['listing' => $listing->id]) }}';"
             type="button"

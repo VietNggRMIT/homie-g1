@@ -53,7 +53,7 @@
           border-radius: .5rem;
       }
 
-      .card-title {
+      .card-title, .card-landlord {
         overflow: hidden;
         text-overflow: ellipsis;
         display: -webkit-box;
@@ -122,6 +122,41 @@
                   margin-bottom: 0;
               }
           }
+      }
+
+      &.responsive-listings {
+        width: 20rem;
+
+        .carousel {
+          .carousel-inner {
+            .carousel-item {
+              height: 200px;
+
+            }
+          }
+        }
+
+        .card-body {
+
+          hr {
+            margin: 0.7rem 0;
+          }
+          
+          .listing-amenities {
+            justify-content: space-around;
+
+            .listing-feature {
+                text-align: center;
+
+                i {
+                    font-size: 1.2rem;
+                    display: block;
+                }
+            }
+          }
+
+        }
+        
       }
   
       &:hover {

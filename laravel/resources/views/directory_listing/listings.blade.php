@@ -2,7 +2,7 @@
 @section('title', 'Property listings')
 @section('content')
 
-    <div class="container">
+    <div class="container show-listings">
 
         <div class="title-section mt-5">
             <div class="title h1">
