@@ -147,7 +147,7 @@ body {
 // }
 
 //logo
-.fa-brands{
+.fa-brands {
   line-height: 40px;
 }
 
@@ -187,6 +187,126 @@ body {
     background-image: linear-gradient(to right top, #5c8fdc, #678ee1, #738ce6, #8189e9, #8f86eb);
   }
 }
+
+// .review_rating {
+//   float: left;
+//   height: 46px;
+//   padding: 0 10px;
+
+//   &:not(:checked) > input {
+//     position:absolute;
+//     top:-9999px;
+//   }
+
+//   &:not(:checked) > label {
+//     float:right;
+//     width:1em;
+//     overflow:hidden;
+//     white-space:nowrap;
+//     cursor:pointer;
+//     font-size:30px;
+//     color:#ccc;
+
+//     &::before {
+//       content: '★ ';
+//     }
+
+//     &:hover, :hover ~ label {
+//       color: $orange-star; 
+//     }
+//   }
+
+//   >input:checked + label:hover,
+//   >input:checked + label:hover ~ label,
+//   >input:checked ~ label:hover,
+//   >input:checked ~ label.hover ~ label,
+//   >label:hover ~ input:checked ~ label {
+//     color: $orange-star;
+//   }
+
+// }
+
+.review_rating {
+	display: flex;
+  flex-direction: row-reverse;
+	height: 46px;
+	padding: 0 10px;
+
+	&:not(:checked) {
+		>input {
+			position: absolute;
+      opacity: 0;
+			top: -10px;
+		}
+		>label {
+			float: right;
+			width: 1em;
+			overflow: hidden;
+			white-space: nowrap;
+			cursor: pointer;
+			font-size: 30px;
+			color: #ccc;
+
+			&:before {
+				content: '★ ';
+			}
+      
+			&:hover {
+				color: $orange-star;
+				~ {
+					label {
+						color: $orange-star;
+					}
+				}
+			}
+		}
+	}
+	>input {
+		&:checked {
+			~ {
+				label {
+					color: #ffc700;
+					&:hover {
+						color: $orange-star;
+						~ {
+							label {
+								color: $orange-star;
+							}
+						}
+					}
+				}
+			}
+			+ {
+				label {
+					&:hover {
+						color: $orange-star;
+						~ {
+							label {
+								color: $orange-star;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	>label {
+		&:hover {
+			~ {
+				input {
+					&:checked {
+						~ {
+							label {
+								color: $orange-star;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
 
 //button
 .frame {

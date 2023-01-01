@@ -331,8 +331,8 @@
                         <div class="h6">Ratings</div>
                         <form name="add-review-post-form" id="add-review-post-form" method="post" action="{{ url('store-review') }}">
                             @csrf
-                            <div class="rating-stars text-center">
-                                <div class="review_rating">
+                            <div class="rating-stars text-center mb-3">
+                                <div class="review_rating justify-content-center">
                                     <input type="radio" id="star5" name="review_rating" value="5" required/>
                                     <label for="star5" title="text">5 stars</label>
                                     <input type="radio" id="star4" name="review_rating" value="4" />
@@ -343,12 +343,17 @@
                                     <label for="star2" title="text">2 stars</label>
                                     <input type="radio" id="star1" name="review_rating" value="1" />
                                     <label for="star1" title="text">1 star</label>
-                                  </div>
+                                </div>
                             </div>
-                            <div class="h6">Review Name</div>
-                            <input type="text" name="review_name" class="form-control" required="true" placeholder="Your name, your contact, or a summary...">
-                            <div class="h6">Comments</div>
-                            <textarea name="review_description" class="form-control mb-3" rows="4"></textarea>
+                            <div class="mb-3">
+                                <div class="h6">Review Name</div>
+                                <input type="text" name="review_name" class="form-control" required="true" placeholder="Your name, your contact, or a summary...">
+                            </div>
+                            <div class="mb-3">
+                                <div class="h6">Comments</div>
+                                <textarea name="review_description" class="form-control mb-3" rows="4"></textarea>
+                            </div>
+                            
                             <input type="number" name="listing_id" hidden="true" class="form-control" value={{ $listing->id }}>
                             <button class="btn btn-warning" type="submit" value="submit">Submit review</button>
                         </form>
