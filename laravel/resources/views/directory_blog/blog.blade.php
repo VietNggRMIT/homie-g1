@@ -12,21 +12,13 @@
             <div class="col-lg-12">
                 <article>
                     <header class="mb-4">
-                        <div class="blog-modifications d-flex justify-content-end mt-3">
-                            <a class="btn btn-outline-primary" href="{{ route('blogs.edit', ['blog' => $blog]) }}">Edit this blog</a>
-                            <!-- <button onclick="window.location.href='{{ route('blogs.edit', ['blog' => $blog]) }}';" type="button"> Edit this blog </button> -->
-                            <form method="POST" action="{{ url("delete-blog/{$blog->id}") }}">
-                                @csrf
-                                <button class="btn btn-outline-danger ms-3" type="submit">Delete this blog</button>
-                            </form>
-                        </div>
 
                         <div class="header-content">
                         
-                            <h1 class="fw-bolder mb-1">{{ $blog->blog_name }}</h1>
-                            <p>Blog ID: <i class="fa-solid fa-hashtag purple-ice"></i> {{ $blog->id }}</p>
+                            <h1 class="fw-bolder mb-1 mt-3">{{ $blog->blog_name }}</h1>
+                            <p class="mb-1">Blog ID: <i class="fa-solid fa-hashtag purple-ice"></i> {{ $blog->id }}</p>
                             <span class="h6">
-                                by <a class="" href="{{ route('users.show', ['user' => $blog->user]) }}">{{ $blog->user->user_real_name }}</a>
+                                by <a class="author smooth-transition" href="{{ route('users.show', ['user' => $blog->user]) }}">{{ $blog->user->user_real_name }}</a>
                                 <i class="fa-solid fa-hashtag purple-ice"></i> {{ $blog->user_id }}
                             </span>
                             <div class="text-muted fst-italic my-2">
@@ -38,10 +30,20 @@
                         </div>
 
                     </header>
-                    <section class="mb-5">
+                    <section class="mb-3">
                         <p class="fs-5 mb-4"> {!!  nl2br(e($blog->blog_description)) !!} </p>
                     </section>
                 </article>
+
+                <div class="blog-modifications d-flex justify-content-end mb-3">
+                    <a class="btn btn-outline-primary" href="{{ route('blogs.edit', ['blog' => $blog]) }}">Edit this blog</a>
+                    <!-- <button onclick="window.location.href='{{ route('blogs.edit', ['blog' => $blog]) }}';" type="button"> Edit this blog </button> -->
+                    <form method="POST" action="{{ url("delete-blog/{$blog->id}") }}">
+                        @csrf
+                        <button class="btn btn-outline-danger ms-3" type="submit">Delete this blog</button>
+                    </form>
+                </div>
+
             </div>
         </div>
     </div>

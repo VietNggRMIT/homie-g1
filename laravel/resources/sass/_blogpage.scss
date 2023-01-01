@@ -8,11 +8,13 @@
       margin-bottom: 50px;
 
       a {
-        text-decoration: none;
-        color: #000000;
+        &.author {
+          text-decoration: none;
+          color: #000000;
 
-        &:hover {
-          color: $purple-ice;
+          &:hover {
+            color: $purple-ice;
+          }
         }
       }
       

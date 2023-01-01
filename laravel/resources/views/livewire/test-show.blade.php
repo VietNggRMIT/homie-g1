@@ -6,7 +6,7 @@
             Showing {{ $listings->firstItem() }} - {{ $listings->lastItem() }} listings from the total of {{ $listings->total() }} listings.
     </div>
 
-    <div class="row gy-3 listings-filter-group">
+    <div class="row gy-3 mt-3 listings-filter-group">
 
         <div class="col col-lg-3">
             <div class="filter-section p-3">
