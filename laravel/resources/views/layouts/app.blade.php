@@ -19,7 +19,7 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ms-auto nav-icons">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="{{ route('route_home') }}"> <i class="fa-solid fa-house"></i> Home</a>
+                                <a class="nav-link" href="{{ route('route_home') }}"> <i class="fa-solid fa-house"></i> Home</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -30,7 +30,7 @@
                                     <li><hr class="dropdown-divider"></li>
                                     <li><a class="dropdown-item" href="{{ route('route_about') }}">About us</a></li>
                                     <li><a class="dropdown-item" href="{{ route('route_privacy') }}">Privacy</a></li>
-                                    </ul>                                                
+                                </ul>                                                
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#"> <i class="fa-solid fa-user-gear"></i> User</a>
@@ -41,9 +41,9 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="#"> <i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</a>
                             </li>
-                            <li class="nav-item">
+                            <!-- <li class="nav-item">
                                 <a class="nav-link create-listing" href="#"> <i class="fa-solid fa-plus"></i> Create listing</a>
-                            </li>
+                            </li> -->
                         </ul>
                     </div>
                 </div>
@@ -55,7 +55,9 @@
             </div>
         </main>
         <footer class="footer">
+
             <div class="footer-wrapper">
+                
                 <div class="container">
 
                     <div class="row">
@@ -111,9 +113,11 @@
                         <li><a class="github" href="https://github.com/VietNggRMIT/homie-g1"><i class="fa-brands fa-github"></i></a></li>  
                         </ul>
                     </div>
-                    </div>
+                    
                 </div>
+                
             </div>
+
         </footer>
     </body>
 </html>

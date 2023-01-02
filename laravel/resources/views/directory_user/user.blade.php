@@ -160,7 +160,7 @@
                     @endforeach
 
                 </div>
-                <div class="show-more d-flex justify-content-center mb-3">
+                <div class="show-more d-flex justify-content-center my-3">
                     <button class="btn btn-outline-primary me-3">Show more</button>
                     <a class="btn btn-outline-primary" href="{{ route('blogs.create', ['user' => $user->id]) }}">Add a blog post</a>
                 </div>
