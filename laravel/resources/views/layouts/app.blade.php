@@ -32,18 +32,25 @@
                                     <li><a class="dropdown-item" href="{{ route('route_privacy') }}">Privacy</a></li>
                                 </ul>                                                
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#"> <i class="fa-solid fa-user-gear"></i> User</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#"> <i class="fa-solid fa-arrow-right-to-bracket"></i> Signin</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#"> <i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</a>
-                            </li>
-                            <!-- <li class="nav-item">
-                                <a class="nav-link create-listing" href="#"> <i class="fa-solid fa-plus"></i> Create listing</a>
-                            </li> -->
+                            @if(session('user'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('users.show', ['user' => session('user')]) }}"> <i class="fa-solid fa-user-gear"></i> User</a>
+                                </li>
+                                <form class="nav-item" method="POST" action="{{ url("logout/{session('user')}") }}">
+                                    @csrf
+                                    <button class="btn btn-outline-danger" type="submit">Log out</button>
+                                </form>
+                                <li class="nav-item">
+                                    <a class="nav-link create-listing" href="#"> <i class="fa-solid fa-plus"></i> Create listing</a>
+                                </li>
+                            @else
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('login.create')}}"> <i class="fa-solid fa-arrow-right-to-bracket"></i> Log in</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('users.create')}}"> <i class="fa-solid fa-arrow-right-to-bracket"></i> Sign up</a>
+                                </li>
+                            @endif
                         </ul>
                     </div>
                 </div>

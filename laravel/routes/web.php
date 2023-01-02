@@ -6,6 +6,7 @@ use App\Http\Controllers\UsersController;
 use App\Http\Controllers\BlogsController;
 use App\Http\Controllers\ApplicationsController;
 use App\Http\Controllers\ReviewsController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\FallbackController;
 use Illuminate\Support\Facades\Route;
 
@@ -33,7 +34,7 @@ Route::get('/home', HomeController::class)
     ->name('route_home');
 
 Route::resource('/listings', ListingsController::class);
-Route::view('/test-listings', 'directory_listing.test-listings');
+
 //Route::prefix('listings')->group(function () {
 //
 ////     Handles the path /listings/
@@ -59,6 +60,7 @@ Route::view('/test-listings', 'directory_listing.test-listings');
 //});
 
 Route::resource('/users', UsersController::class);
+Route::get('/login', 'UsersController@login');
 
 //Route::prefix('users')->group(function () {
 //
@@ -74,6 +76,7 @@ Route::resource('/users', UsersController::class);
 Route::resource('/blogs', BlogsController::class);
 Route::resource('/reviews', ReviewsController::class);
 Route::resource('/applications', ApplicationsController::class);
+Route::resource('/login', LoginController::class);
 
 //routes for forms
 //1.1 Create blog
@@ -111,6 +114,9 @@ Route::view('/privacy', 'directory_static.privacy')
 
 Route::view('/article', 'directory_static.article')
     ->name('route_article');    
+Route::view('/login', 'auth.login')->name('login');
+Route::view('/register', 'auth.register')->name('register');
+Route::post('/logout/{user}', [LoginController::class, 'destroy']);
 
 // Fallback route placed at the end of the file to catch all unmatched paths
 Route::fallback(FallbackController::class)

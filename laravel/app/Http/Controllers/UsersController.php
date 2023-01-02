@@ -24,7 +24,7 @@ class UsersController extends Controller
      */
     public function create()
     {
-        //
+        return response()->view('auth.register');
     }
 
     /**
