@@ -18,7 +18,7 @@
                             $homeLocation = request()->homeLocation;
                         @endphp
                     @endif
-                    <input wire:model="searchAddress" wire:change="filter" wire:keydown.backspace="addressChanged" class="form-control border-end-0 border rounded-pill me-2" type="text" placeholder="Search by address e.g. 'Ha Noi' or 'Ba Dinh'" aria-label="Search">
+                    <input wire:model="searchAddress" wire:change="filter" wire:keydown.backspace="addressChanged" wire:keydown.delete="addressChanged" class="form-control border-end-0 border rounded-pill me-2" type="text" placeholder="Search by address e.g. 'Ha Noi' or 'Ba Dinh'" aria-label="Search">
                 </div>
 
                 <hr class="baby">
