@@ -16,7 +16,7 @@
         </div>
         
         <div>
-            @livewire('test-show')
+            @livewire('listing-results')
         </div>
 
     </div>
