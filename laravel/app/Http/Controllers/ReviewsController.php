@@ -41,6 +41,7 @@ class ReviewsController extends Controller
         $review->review_name = $request->review_name;
         $review->review_description = $request->review_description;
         $review->review_rating = $request->review_rating;
+        $review->review_image_path = ['richard-stallman.png', 'linus-torvalds.webp'][array_rand([0, 1])];
         $review->listing_id = $request->listing_id;
         $listing = Listing::find($request->listing_id);
         $review->save();

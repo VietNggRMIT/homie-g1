@@ -80,14 +80,15 @@
                         <div class="col-md">
                             <div class="form-floating">
                                 <select class="form-select" id="floatingSelectGrid1" name="listing_address_subdivision_1">
+
                                     @if (isset($listing))
-                                        <option selected>{{ $listing->listing_address_subdivision_1 }}</option>
-                                    @else
-                                        <option value={{ $provinces[0] }} selected>{{ $provinces[0] }}</option>
+                                        <option value="{{ $listing->listing_address_subdivision_1 }}" selected>{{ $listing->listing_address_subdivision_1 }}</option>
                                     @endif
+
                                     @foreach ($provinces as $province)
                                         <option value="{{ $province }}"> {{ $province }}</option>
                                     @endforeach
+
                                 </select>
                                 <label for="floatingSelectGrid1">Listing Address Subdivision 1 (Provincial Level)</label>
                             </div>

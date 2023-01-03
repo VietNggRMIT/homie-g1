@@ -313,7 +313,10 @@
                                     <div class="col-lg-2">
                                         <div class="profile-pic-section">
                                             <div class="profile-pic-container listing-details">
-                                                <img class="card-img-top" src="https://i.pinimg.com/originals/ea/cb/35/eacb35204ab50f96206bfe8013ccb7ec.jpg" alt="Card image cap">
+                                                <img
+                                                    class="card-img-top"
+                                                    alt="person"
+                                                    src="{{asset('storage/images').'/'.$review->review_image_path}}">
                                             </div>
                                         </div>
                                     </div>
@@ -342,14 +345,20 @@
             </div>
             <div class="col col-lg-5 review-form">
                 <div class="card px-3 py-3">
+
+                    {{-- Review Title --}}
                     <div class="title mt-3">
                         <div class="h3">Leave a Review</div>
                         <hr class="baby">
                     </div>
+
+                    {{-- Review Form, 1, 2, 3, 4, 5 --}}
                     <div class="review-form">
-                        <div class="h6">Ratings</div>
                         <form name="add-review-post-form" id="add-review-post-form" method="post" action="{{ url('store-review') }}">
                             @csrf
+
+                            {{-- Review Form, Part 1 Stars --}}
+                            <div>Ratings</div>
                             <div class="rating-stars text-center mb-3">
                                 <div class="review_rating justify-content-center">
                                     <input type="radio" id="star5" name="review_rating" value="5" required/>
@@ -364,18 +373,25 @@
                                     <label for="star1" title="text">1 star</label>
                                 </div>
                             </div>
-                            <div class="mb-3">
-                                <div class="h6">Review Name</div>
-                                <input type="text" name="review_name" class="form-control" required="true" placeholder="Your name, your contact, or a summary...">
-                            </div>
-                            <div class="mb-3">
-                                <div class="h6">Comments</div>
-                                <textarea name="review_description" class="form-control mb-3" rows="4"></textarea>
+
+                            {{-- Review Form, Part 2 Name--}}
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" name="review_name" placeholder="Your name, your contact, or a summary...">
+                                <label for="review_name">Review Name</label>
                             </div>
 
-                            <input type="number" name="listing_id" hidden="true" class="form-control" value={{ $listing->id }}>
+                            {{-- Review Form, Part 3 Comments--}}
+                            <div class="form-floating mb-3">
+                                <textarea class="form-control" placeholder="Leave a comment here" name="review_description" style="height: 100px"></textarea>
+                                <label for="review_description">Comments</label>
+                            </div>
+
+                            {{-- Review Form, Part 4 Listing ID (Hidden) --}}
+                            <input type="number" name="listing_id" hidden class="form-control" value={{ $listing->id }}>
+
+                            {{-- Review Form, Part 5 Submit Button --}}
                             <button class="btn btn-warning" type="submit" value="submit">Submit review</button>
-                        </form>
+                        </form> <!-- End Review Form -->
                     </div>
                 </div>
             </div>

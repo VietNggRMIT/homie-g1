@@ -41,11 +41,11 @@ class DatabaseSeeder extends Seeder
 //        =============================================================================================
 
         $users = User::factory()
-            ->count(1000)
+            ->count(10)
             ->create();
 
         $listings = Listing::factory()
-            ->count(1400)
+            ->count(50)
             ->recycle($users)
 //            ->has(Review::factory()->times(2))
 //            ->has(Application::factory()->times(2))
@@ -53,22 +53,22 @@ class DatabaseSeeder extends Seeder
             ->create();
 
         Review::factory()
-            ->count(1600)
+            ->count(300)
             ->recycle($listings)
             ->create();
 
         Blog::factory()
-            ->count(2300)
+            ->count(50)
             ->recycle($users)
             ->create();
 
         Application::factory()
-            ->count(1400)
+            ->count(300)
             ->recycle($listings)
             ->create();
 
         ListingImage::factory()
-            ->count(3000)
+            ->count(300)
             ->recycle($listings)
             ->create();
 
