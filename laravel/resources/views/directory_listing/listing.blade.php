@@ -186,6 +186,8 @@
                         </div>
                         <hr class="baby">
                         <div class="row listing-amenities align-items-center justify-content-around text-center gy-3 mb-3">
+
+                            {{-- 1. Tenant --}}
                             <div class="col listing-feature" id="spec_tenant">
                                 <i class="fa-solid fa-users-between-lines"></i>
                                 @if ($listing->listing_specification_tenant == 1)
@@ -194,8 +196,8 @@
                                     <span>{{ $listing->listing_specification_tenant }} people</span>
                                 @endif
                             </div>
-                                {{-- <div>$listing->listing_specification_owner: {{ $listing->listing_specification_owner }}</div> --}}
-                                <div class="listing-feature">
+
+                            {{-- 2. Live with Owner --}}
                             <div class="listing-feature" id="spec_owner">
                                 @if ($listing->listing_specification_owner == 1)
                                     <i class="fa-solid fa-user-shield"></i>
@@ -205,10 +207,14 @@
                                     <span>Without owner</span>
                                 @endif
                             </div>
+
+                            {{-- 3. Size --}}
                             <div class="col listing-feature" id="spec_size">
                                 <i class="fa-solid fa-ruler-combined"></i>
                                 <span>{{ $listing->listing_specification_size }} m<sup>2</sup></span>
                             </div>
+
+                            {{-- 4. Bedroom --}}
                             <div class="col listing-feature" id="spec_bed">
                                 <i class="fa-solid fa-bed"></i>
                                 @if ($listing->listing_specification_bedroom == 1)
@@ -217,6 +223,8 @@
                                     <span>{{ $listing->listing_specification_bedroom }} beds</span>
                                 @endif
                             </div>
+
+                            {{-- 5. Bathroom --}}
                             <div class="col listing-feature" id="spec_bath">
                                 <i class="fa-solid fa-shower"></i>
                                 @if ($listing->listing_specification_bathroom == 1)
@@ -225,6 +233,8 @@
                                     <span>{{ $listing->listing_specification_bathroom }} bathrooms</span>
                                 @endif
                             </div>
+
+                            {{-- 6. Avilable --}}
                             <div class="col listing-feature" id="spec_available">
                                 @if ($listing->listing_avilable == 1)
                                     <i class="fa-solid fa-handshake"></i>
@@ -234,7 +244,8 @@
                                     <span>Not for Rent</span>
                                 @endif
                             </div>
-                        </div>
+
+                        </div> {{-- close 6 amenities div tag --}}
                         <hr>
                         <div class="card-price-rating d-flex justify-content-between">
                             <div class="card-text price mb-0"><strong>{{ number_format( (int) $listing->listing_price) }} VND</strong><span class="light-gray"> /month</span></div>
@@ -426,18 +437,18 @@
 
                             {{-- Review Form, Part 2 Name--}}
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" name="review_name" placeholder="Your name, your contact, or a summary...">
+                                <input type="text" class="form-control" id="review_name" name="review_name" placeholder="Your name, your contact, or a summary...">
                                 <label for="review_name">Review Name</label>
                             </div>
 
                             {{-- Review Form, Part 3 Comments--}}
                             <div class="form-floating mb-3">
-                                <textarea class="form-control" placeholder="Leave a comment here" name="review_description" style="height: 100px"></textarea>
+                                <textarea class="form-control" placeholder="Leave a comment here" id="review_description" name="review_description" style="height: 100px"></textarea>
                                 <label for="review_description">Comments</label>
                             </div>
 
                             {{-- Review Form, Part 4 Listing ID (Hidden) --}}
-                            <input type="number" name="listing_id" hidden class="form-control" value={{ $listing->id }}>
+                            <input type="number" id="listing_id" name="listing_id" hidden class="form-control" value={{ $listing->id }}>
 
                             {{-- Review Form, Part 5 Submit Button --}}
                             <button class="btn btn-warning" type="submit" value="submit">Submit review</button>
