@@ -21,12 +21,16 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('route_home') }}"> <i class="fa-solid fa-house"></i> Home</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('listings.index') }}"> <i class="fa-solid fa-user-gear"></i> All listings</a>
+                            </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     <i class="fa-solid fa-circle-info"></i> Resources
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-dark">
                                     <li><a class="dropdown-item" href="{{ route('route_article')}}">Articles</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('blogs.index') }}">All blogs</a></li>
                                     <li><hr class="dropdown-divider"></li>
                                     <li><a class="dropdown-item" href="{{ route('route_about') }}">About us</a></li>
                                     <li><a class="dropdown-item" href="{{ route('route_privacy') }}">Privacy</a></li>

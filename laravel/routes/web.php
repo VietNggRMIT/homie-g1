@@ -60,7 +60,7 @@ Route::resource('/listings', ListingsController::class);
 //});
 
 Route::resource('/users', UsersController::class);
-Route::get('/login', 'UsersController@login');
+// Route::post('user-store/', [UsersController::class, 'store']);
 
 //Route::prefix('users')->group(function () {
 //

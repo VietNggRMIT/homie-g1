@@ -26,7 +26,6 @@
               <div class="text-center">
                 <h1>Update listing</h1>
               </div>
-              <!-- <h2>Updating:  {{ $listing->listing_name }} </h2> -->
               <form name="add-listing-post-form" id="add-listing-post-form" method="post" action="{{ url("update-listing/{$listing->id}") }}">
               @endif
             @else

@@ -35,7 +35,40 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = new User;
+        $user->user_email_address = $request->user_email_address;
+        //check if email exist too
+        if(true){
+
+        }
+
+        if($request->password_confirm != $request->user_password){
+            return response()->view('auth.register', ['message' => 'Password does not match.']);
+        }
+        else{
+            $user->user_password = $request->user_password;
+        }
+        $user->user_real_name = $request->user_real_name;
+        //match 098... and +849282...
+        if(preg_match('/[+]?([0-9])*/', $request->user_phone_number, $match)){
+            $user->user_phone_number = $request->user_phone_number;
+        }
+        else{
+            return response()->view('auth.register', ['message' => 'Wrong input format.']);
+        }
+        $user->user_description = $request->user_description;
+        if($request->hasFile(('image_upload'))){
+            $file = $request->file('image_upload');
+            $filename = str_replace(' ', '', $user->user_real_name) . '.' . $file->extension();
+            $path = $file->storeAs('public/images', $filename);
+            $user->user_image_path = basename($path);
+        }
+        else{
+            $user->user_image_path = 'user_image_path_1.jpg';
+        }
+        $user->save();
+        session(['user' => $user]);
+        return redirect()->action([UsersController::class, 'show'], ['user' => $user]);
     }
 
     /**
