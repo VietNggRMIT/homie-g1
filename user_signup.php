@@ -19,7 +19,9 @@
         <main>
             <div class="main-wrapper">
                 <div class="container account-container">
+
                     <div class="row account-bg">
+
                         <div class="col-lg-7 d-lg-flex d-none position-relative account-bgi bgi-signup">
                             <div class="overlay overlay-signup">
                                 <div class="hero-item slogan">
@@ -29,10 +31,12 @@
                                 <div class="hero-item"></div>
                             </div>
                         </div>
+
                         <div class="col-lg-5">
                             <div class="card account-card">
                                 <div class="card-content">
                                     <h2>Start renting and listing easily on our platform</h1>
+                                    
                                     <form>
                                         <div class="form-group mb-3">
                                             <label for="username">Username</label>
@@ -73,11 +77,14 @@
                                             <button class="btn btn-primary" type="submit" name="signup">Sign up</button>
                                         </div>
                                         <p class="text-center">Already a member? <a href="user_login.php">Sign in</a></p>
+                                    
                                     </form>
                                 </div>
                             </div>
                         </div>
+
                     </div>
+                    
                 </div>
             </div>
         </main>
