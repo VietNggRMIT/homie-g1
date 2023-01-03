@@ -8,7 +8,6 @@
 @endif
 
 <meta name="csrf-token" content="{{ csrf_token() }}">
-{{--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">--}}
 
 @section('content')
 
@@ -24,7 +23,13 @@
                 @else
                     <div class="text-center"><h1>Create Listing</h1></div>
                 @endif
-                <button onclick="window.location.href='{{ route('listings.show', ['listing' => $listing]) }}';" type="button" class="btn btn-danger mb-3">Cancel</button>
+
+                {{-- 0. Buttons --}}
+                @if(isset($listing))
+                    <button onclick="window.location.href='{{ route('listings.show', ['listing' => $listing]) }}';" type="button" class="btn btn-danger mb-3">Cancel</button>
+                @else
+                    <button onclick="window.location.href='{{ route('users.show', ['user' => session('user')]) }}';" type="button" class="btn btn-danger mb-3">Cancel</button>
+                @endif
                 <button onclick="window.location.href='{{ route('listings.index') }}';" type="button" class="btn btn-secondary mb-3">Back to all listings</button>
 
                 {{-- 0. Form Begins --}}

@@ -1,83 +1,220 @@
-<head>
-    <title>Add Application</title>
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-{{--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">--}}
-    @vite(['resources/css/app.css', 'resources/js/customScript.js', 'resources/js/app.js', 'webfonts.css'])
-</head>
-<body>
-  <div class="container mt-4">
-  @if($listing)
-    <div class="card edit-form">
-      <div class="text-center">
-        <h1>Application form</h1>
-      </div>
-      <div class="card-body">
-        <form name="add-application-post-form" id="add-application-post-form" method="post" action="{{url('store-application')}}">
-        @csrf
-          {{-- <label for="application_description">Application Description</label>
-          <textarea name="application_description" class="form-control" required="true"></textarea> --}}
-          <label for="applicant">Applicant name</label>
-          <input type="text" id="applicant" name="applicant" class="form-control" required="true">
-          <label for="phone">Contact phone number</label>
-          <input type="text" id="phone" name="phone" class="form-control" required="true">
-          <label for="email">Contact email</label>
-          <input type="text" id="email" name="email" class="form-control" required="true">
-          <label for="dateofbirth">Date of birth (dd/mm/yyyy)</label>
-          <input type="text" id="dateofbirth" name="dateofbirth" class="form-control" required="true">
-          <hr>
-          <label for="occupancy">Expected duration of occupancy (e.g. 6 months)</label>
-          <input type="text" id="occupancy" name="occupancy" class="form-control" required="true">
-          <label for="movein">Expected move in date (dd/mm/yyyy)</label>
-          <input type="text" id="movein" name="movein" class="form-control" required="true">
-          <label for="payment">Expected monthly payment method (e.g. cash, card, check)</label>
-          <input type="text" id="payment" name="payment" class="form-control" required="true">
+@extends('layouts.app')
+@section('title', 'Create Application')
 
-          <label>Do you have a vehicle?</label>
-          <input type="radio" id="y_vehicle" name="vehicle" required="true" value="Yes">
-          <label for="y_vehicle">Yes</label>
-          <input type="radio" id="n_vehicle" name="vehicle" required="true" value="No">
-          <label for="n_vehicle">No</label><br>
+<meta name="csrf-token" content="{{ csrf_token() }}">
 
-          <label>Do you have pets?</label>
-          <input type="radio" id="y_pet" name="pet" required="true" value="Yes">
-          <label for="y_pet">Yes</label>
-          <input type="radio" id="n_pet" name="pet" required="true" value="No">
-          <label for="n_pet">No</label><br>
-          <hr>
-          <label for="job">Current job title and employer</label>
-          <input type="text" id="job" name="job" class="form-control" required="true">
-          <label for="income">Current annual gross income (in VND)</label>
-          <input type="number" id="income" name="income" class="form-control" required="true">
-          <label for="address">Current address</label>
-          <input type="text" id="address" name="address" class="form-control" required="true">
-          <label for="reason">Reason of leaving</label>
-          <input type="text" id="reason" name="reason" class="form-control" required="true">
-          <label for="landlord">Previous landlord phone number</label>
-          <input type="text" id="landlord" name="landlord" class="form-control" required="true">
+@section('content')
+    <div class="container mt-4">
+        @if($listing)
+            <div class="card edit-form">
+                <div class="text-center">
+                    <h1>Application Form</h1>
+                </div>
 
-          <label for="evicted">Have you ever been evicted before?</label>
-          <input type="radio" id="y_evicted" name="evicted" required="true" value="Yes">
-          <label for="y_evicted">Yes</label>
-          <input type="radio" id="n_evicted" name="evicted" required="true" value="No">
-          <label for="n_evicted">No</label><br>
+                <div class="card-body">
 
-          <label>Have you ever been convicted of a crime or felony?</label>
-          <input type="radio" id="y_convicted" name="convicted" required="true" value="Yes">
-          <label for="y_convicted">Yes</label>
-          <input type="radio" id="n_convicted" name="convicted" required="true" value="No">
-          <label for="n_convicted">No</label><br>
-          <hr>
-          <div class="form-group">
-              {{-- <br><label for="listing_id">Listing ID - will be removed, here to test</label> --}}
-              <input type="number" name="listing_id" hidden="true" value="{{ $listing }}">
-          </div>
-          <div class="text-center">
-            <button type="submit" class="custom-btn btn-1">Submit</button>
-          </div>
-        </form>
-      </div>
+                    {{-- NUT NAY BI LAM SAO Y, SUA LAI SAU (2023 Jan 04) --}}
+                    <button onclick="window.location.href='{{ route('listings.show', ['listing' => \App\Models\Listing::where(['id' => $listing])->pluck('listing_name')->first()]) }}';" type="button" class="btn btn-danger mb-3">Cancel</button>
+                    <button onclick="window.location.href='{{ route('listings.index') }}';" type="button" class="btn btn-secondary mb-3">Back to all listings</button>
+
+                    <form name="add-application-post-form" id="add-application-post-form" method="post" action="{{url('store-application')}}">
+                        @csrf
+
+                        {{-- Row 1 --}}
+                        <div class="row g-2 mb-3 d-flex justify-content-center">
+                            {{-- 0. Read Only --}}
+                            <div class="col-md">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text">You Are Applying To</span>
+                                    <input type="text" class="form-control" disabled value="{{ \App\Models\Listing::where(['id' => $listing])->pluck('listing_name')->first() }}">
+                                </div>
+                            </div>
+                            <div class="col-md">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text">At</span>
+                                    <input type="text" class="form-control" disabled value="{{
+                                \App\Models\Listing::where(['id' => $listing])->pluck('listing_address_subdivision_1')->first() . ' ' .
+                                \App\Models\Listing::where(['id' => $listing])->pluck('listing_address_subdivision_2')->first() . ' ' .
+                                \App\Models\Listing::where(['id' => $listing])->pluck('listing_address_subdivision_3')->first()
+                            }}">
+                                </div>
+                            </div>
+                            <div class="col-md">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text">Owned by</span>
+                                    <input type="text" class="form-control" disabled value="{{ \App\Models\User::where(['id' => \App\Models\Listing::where(['id' => $listing])->pluck('user_id')->first()])->pluck('user_real_name')->first() }}">
+                                </div>
+                            </div>
+                        </div>
+
+                        {{-- Row 2 --}}
+                        <div class="row g-2 mb-3">
+                            {{-- 1. Name --}}
+                            <div class="col-md">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="applicant" name="applicant" required placeholder="Linus Torvalds">
+                                    <label for="applicant">Name</label>
+                                </div>
+                            </div>
+                            {{-- 2. Phone Number --}}
+                            <div class="col-md">
+                                <div class="form-floating">
+                                    <input type="number" class="form-control" id="phone" name="phone" required placeholder="0982354123">
+                                    <label for="phone">Phone Number</label>
+                                </div>
+                            </div>
+
+                            {{-- 3. Email Address --}}
+                            <div class="col-md">
+                                <div class="form-floating">
+                                    <input type="email" class="form-control" id="email" name="email" required placeholder="name@gmail.com">
+                                    <label for="email">Email Address</label>
+                                </div>
+                            </div>
+
+                            {{-- 4. Date of Birth (dd/mm/yyyy) --}}
+                            {{-- !IMPORTANT: type is "date" instead of "text" --}}
+                            <div class="col-md">
+                                <div class="form-floating">
+                                    <input type="date" class="form-control" id="dateofbirth" name="dateofbirth" required placeholder="????">
+                                    <label for="dateofbirth">Date of Birth (dd/mm/yyyy)</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr class="border border-secondary border-0 opacity-00 my-3">
+
+                        {{-- Row 3 --}}
+                        <div class="row g-2 mb-3">
+
+                            {{-- 5. Occupancy Duration (days, months, years) --}}
+                            <div class="col-md">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="occupancy" name="occupancy" required placeholder="6 days">
+                                    <label for="occupancy">Occupancy Duration (days, months, years)</label>
+                                </div>
+                            </div>
+
+                            {{-- 6. Move in Date (dd/mm/yyyy) --}}
+                            {{-- !IMPORTANT: type is "date" instead of "text" --}}
+                            <div class="col-md">
+                                <div class="form-floating">
+                                    <input type="date" class="form-control" id="movein" name="movein" required placeholder="????">
+                                    <label for="movein">Move in Date (dd/mm/yyyy)</label>
+                                </div>
+                            </div>
+
+                            {{-- 7. Rent Payment Method --}}
+                            <div class="col-md">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="payment" name="payment" required placeholder="credit card">
+                                    <label for="payment">Rent Payment Method (e.g. cash, credit card)</label>
+                                </div>
+                            </div>
+
+                            <div class="col-md">
+                                {{-- 8. Car? --}}
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" role="switch" id="vehicle" checked name="vehicle">
+                                    <label class="form-check-label" for="vehicle">Own a vehicle?</label>
+                                </div>
+{{--                                <label>Do you have a vehicle?</label>--}}
+{{--                                <input type="radio" id="y_vehicle" name="vehicle" required value="Yes">--}}
+{{--                                <label for="y_vehicle">Yes</label>--}}
+{{--                                <input type="radio" id="n_vehicle" name="vehicle" required value="No">--}}
+{{--                                <label for="n_vehicle">No</label><br>--}}
+                                {{-- 9. Pet? --}}
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" role="switch" id="pet" checked name="pet">
+                                    <label class="form-check-label" for="pet">Have pets?</label>
+                                </div>
+{{--                                <label>Do you have pets?</label>--}}
+{{--                                <input type="radio" id="y_pet" name="pet" required="true" value="Yes">--}}
+{{--                                <label for="y_pet">Yes</label>--}}
+{{--                                <input type="radio" id="n_pet" name="pet" required="true" value="No">--}}
+{{--                                <label for="n_pet">No</label><br>--}}
+                            </div>
+                        </div>
+
+                        <hr class="border border-secondary border-0 opacity-00 my-3">
+
+                        {{-- Row 4 --}}
+                        <div class="row g-2 mb-3">
+                            {{-- 10. Job --}}
+                            <div class="col-md">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="job" name="job" required placeholder="Software at Microsoft">
+                                    <label for="job">Company and Job Title</label>
+                                </div>
+                            </div>
+                            {{-- 11. Income --}}
+                            <div class="col-md">
+                                <div class="form-floating">
+                                    <input type="number" class="form-control" id="income" name="income" required placeholder="90 000 000">
+                                    <label for="income">Annual Income (VND)</label>
+                                </div>
+                            </div>
+                            {{-- 12. Address --}}
+                            <div class="col-md">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="address" name="address" required placeholder="credit card">
+                                    <label for="address">Current Address</label>
+                                </div>
+                            </div>
+                            {{-- 13. Leaving Reason --}}
+                            <div class="col-md">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="reason" name="reason" required placeholder="credit card">
+                                    <label for="reason">Leaving Reason</label>
+                                </div>
+                            </div>
+                            {{-- 14. Previous Landlord Info --}}
+                            <div class="col-md">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="landlord" name="landlord" required placeholder="credit card">
+                                    <label for="landlord">Previous Landlord Info</label>
+                                </div>
+                            </div>
+
+                            <div class="col-md">
+                                {{-- 15. Evited? --}}
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" role="switch" id="evicted" checked name="evicted">
+                                    <label class="form-check-label" for="evicted">Have you ever been evicted before?</label>
+                                </div>
+{{--                                <label for="evicted">Have you ever been evicted before?</label>--}}
+{{--                                <input type="radio" id="y_evicted" name="evicted" required="true" value="Yes">--}}
+{{--                                <label for="y_evicted">Yes</label>--}}
+{{--                                <input type="radio" id="n_evicted" name="evicted" required="true" value="No">--}}
+{{--                                <label for="n_evicted">No</label><br>--}}
+                                {{-- 16. Crime & felony? --}}
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" role="switch" id="convicted" checked name="convicted">
+                                    <label class="form-check-label" for="convicted">Have you ever been convicted of a crime or felony?</label>
+                                </div>
+{{--                                <label>Have you ever been convicted of a crime or felony?</label>--}}
+{{--                                <input type="radio" id="y_convicted" name="convicted" required="true" value="Yes">--}}
+{{--                                <label for="y_convicted">Yes</label>--}}
+{{--                                <input type="radio" id="n_convicted" name="convicted" required="true" value="No">--}}
+{{--                                <label for="n_convicted">No</label><br>--}}
+                            </div>
+
+                        </div>
+
+                        {{-- 17. Associated Listing ID (Hidden) --}}
+                        <div class="form-group">
+                            {{-- <label for="listing_id">Associated Listing ID</label> --}}
+                            <input type="number" name="listing_id" hidden value="{{ $listing }}">
+                        </div>
+
+                        {{-- 18. Final --}}
+                        <div class="text-center">
+                            <button type="submit" class="custom-btn btn-1">Submit</button>
+                        </div>
+
+                    </form> {{-- end form --}}
+                </div>
+            </div>
+        @endif
     </div>
-  @endif
-</div>
-</body>
-</html>
+@endsection

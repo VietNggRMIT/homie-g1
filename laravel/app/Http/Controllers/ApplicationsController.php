@@ -38,7 +38,45 @@ class ApplicationsController extends Controller
     public function store(Request $request)
     {
         $application = new Application;
-        //$application->application_description = $request->application_description;
+
+//        "applicant" => "name"
+//        "phone" => "12"
+//        "email" => "asd@gfasd"
+//        "dateofbirth" => "2023-01-19"
+//        "occupancy" => "213123"
+//        "movein" => "132112-03-12"
+//        "payment" => "123123"
+//        "vehicle" => "on"
+//        "pet" => "on"
+//        "job" => "123213"
+//        "income" => "13123"
+//        "address" => "2132"
+//        "reason" => "123"
+//        "landlord" => "123123"
+//        "evicted" => "on"
+//        "convicted" => "on"
+
+        if ($request->vehicle == "on") {
+            $request->vehicle = "yes vehicle";
+        } else {
+            $request->vehicle = "no vehicle";
+        }
+        if ($request->pet == "on") {
+            $request->pet = "yes pet";
+        } else {
+            $request->pet = "no pet";
+        }
+        if ($request->evicted == "on") {
+            $request->evicted = "yes evicted";
+        } else {
+            $request->evicted = "no evicted";
+        }
+        if ($request->convicted == "on") {
+            $request->convicted = "yes convicted";
+        } else {
+            $request->convicted = "no convicted";
+        }
+
         $content = sprintf('Applicant: %s; Phone: %s; Email: %s; Date of birth: %s
                     Expected duration: %s; Expected move in date: %s;
                     Expected payment via %s; Vehicle: %s; Pet: %s;
@@ -46,16 +84,18 @@ class ApplicationsController extends Controller
                     Current address: %s;
                     Reason for leaving: %s;
                     Previous landlord phone: %s;
-                    Evicted: %s; Convicted: %s', 
+                    Evicted: %s; Convicted: %s',
                     $request->applicant, $request->phone, $request->email, $request->dateofbirth,
                     $request->occupancy, $request->movein, $request->payment, $request->vehicle, $request->pet,
                     $request->job, $request->income, $request->address, $request->reason, $request->landlord,
                     $request->evicted, $request->convicted);
+
         $application->application_description = $content;
         $application->listing_id = $request->listing_id;
         $application->save();
         $listing = Listing::find($request->listing_id);
-        return redirect()->action([ListingsController::class, 'show'], ['listing' => $listing]);
+
+        return redirect()->action([ListingsController::class, 'show'], ['listing' => $listing])->with('application_success_store', 'store');
     }
 
     /**

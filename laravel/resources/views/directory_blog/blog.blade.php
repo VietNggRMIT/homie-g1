@@ -3,6 +3,20 @@
 @section('content')
 
 <div class="container">
+
+    @if(session('blog_success_store'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <span>Saved blog ID: {{ $blog->id }} to the database!</span>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @elseif(session('blog_success_update'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <span>Updated blog ID: {{ $blog->id }} to the database!</span>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
+
+
     <div class="breadcrumb justify-content-center mt-5">
         <h2>{{ Breadcrumbs::render('breadcrumb_blog', $blog) }}</h2>
     </div>

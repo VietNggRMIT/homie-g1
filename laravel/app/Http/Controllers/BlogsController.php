@@ -46,7 +46,7 @@ class BlogsController extends Controller
         $blog->blog_description = $request->blog_description;
         $blog->user_id = $request->user_id;
         $blog->save();
-        return redirect()->action([BlogsController::class, 'show'],['blog' => $blog]);
+        return redirect()->action([BlogsController::class, 'show'],['blog' => $blog])->with('blog_success_store', 'create');
     }
 
     /**
@@ -89,12 +89,12 @@ class BlogsController extends Controller
     public function update(Request $request, $blog_id)
     {
         $new_blog = Blog::find($blog_id);
-        
+
         $new_blog->blog_name = $request->blog_name;
         $new_blog->blog_description = $request->blog_description;
         $new_blog->user_id = $request->user_id;
         $new_blog->save();
-        return redirect()->route('blogs.show', ['blog' => $new_blog]);
+        return redirect()->route('blogs.show', ['blog' => $new_blog])->with('blog_success_update', 'update');
     }
 
     /**
@@ -106,6 +106,6 @@ class BlogsController extends Controller
     public function destroy($blog_id)
     {
         $success = Blog::destroy($blog_id);
-        return redirect()->action([BlogsController::class, 'index'], ['delete' => 'success']);
+        return redirect()->action([BlogsController::class, 'index'], ['delete' => 'success'])->with('blog_success_destroy', 'destroy');
     }
 }

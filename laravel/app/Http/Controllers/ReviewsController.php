@@ -45,7 +45,7 @@ class ReviewsController extends Controller
         $review->listing_id = $request->listing_id;
         $listing = Listing::find($request->listing_id);
         $review->save();
-        return redirect()->action([ListingsController::class, 'show'], ['listing' => $listing]);
+        return redirect()->action([ListingsController::class, 'show'], ['listing' => $listing])->with('review_success_store', 'store');
     }
 
     /**

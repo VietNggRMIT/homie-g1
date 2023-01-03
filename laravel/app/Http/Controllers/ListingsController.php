@@ -94,7 +94,7 @@ class ListingsController extends Controller
             }
         }
 
-        return redirect()->action([ListingsController::class, 'show'],['listing' => $listing])->with('success', 'Added');
+        return redirect()->action([ListingsController::class, 'show'],['listing' => $listing])->with('listing_success_store', 'store');
     }
 
     /**
@@ -204,7 +204,7 @@ class ListingsController extends Controller
             }
         }
 
-        return redirect()->action([ListingsController::class, 'show'],['listing' => $listing])->with('success', 'Added');
+        return redirect()->action([ListingsController::class, 'show'],['listing' => $listing])->with('listing_success_update', 'update');
     }
 
     /**
@@ -216,6 +216,6 @@ class ListingsController extends Controller
     public function destroy($listing_id)
     {
         $success = Listing::destroy($listing_id);
-        return redirect()->action([ListingsController::class, 'index'], ['delete' => 'success']);
+        return redirect()->action([ListingsController::class, 'index'], ['delete' => 'success'])->with('listing_success_destroy', 'destroy');
     }
 }

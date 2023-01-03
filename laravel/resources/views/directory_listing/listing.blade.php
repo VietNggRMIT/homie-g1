@@ -4,9 +4,27 @@
 
     <div class="container">
 
-        @if(session('success'))
+        @if(session('listing_success_store'))
             <div class="alert alert-success alert-dismissible fade show" role="alert">
-                <span>Listing ID: {{ $listing->id }} is saved to the database!</span>
+                <span>Saved listing ID: {{ $listing->id }} to the database!</span>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
+        @if(session('listing_success_update'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <span>Updated listing ID: {{ $listing->id }} to the database!</span>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
+        @if(session('application_success_store'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <span>You successfully applied to the listing ID: {{ $listing->id }}!</span>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
+        @if(session('review_success_store'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <span>You successfully reviewed to the listing ID: {{ $listing->id }}!</span>
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         @endif
@@ -198,7 +216,7 @@
                             </div>
 
                             {{-- 2. Live with Owner --}}
-                            <div class="listing-feature" id="spec_owner">
+                            <div class="col listing-feature" id="spec_owner">
                                 @if ($listing->listing_specification_owner == 1)
                                     <i class="fa-solid fa-user-shield"></i>
                                     <span>With owner</span>
@@ -236,12 +254,13 @@
 
                             {{-- 6. Avilable --}}
                             <div class="col listing-feature" id="spec_available">
-                                @if ($listing->listing_avilable == 1)
+                                @if ($listing->listing_available == 1)
                                     <i class="fa-solid fa-handshake"></i>
                                     <span>Available for Rent</span>
                                 @else
                                     <i class="fa-solid fa-handshake-slash"></i>
                                     <span>Not for Rent</span>
+                                    DEBUG: {{ $listing->listing_available }}
                                 @endif
                             </div>
 
@@ -266,7 +285,7 @@
                             @endif
                         </div>
                         <div class="btn-container my-3">
-                            @if ($listing->listing_available == 0)
+                            @if ($listing->listing_available == 1)
                                 <a class="btn btn-warning btn-lg px-5" href="{{ route('applications.create', ['listing' => $listing->id]) }}">Apply Now! 🔥</a>
                             @else
                                 <a class="btn btn-secondary btn-lg px-5 disabled text-decoration-line-through" href="{{ route('applications.create', ['listing' => $listing->id]) }}">Not Available 🥶</a>

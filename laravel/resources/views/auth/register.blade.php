@@ -25,7 +25,7 @@
                     @endif
 
                     <form method="POST" action="{{ route('users.store') }}" enctype="multipart/form-data">
-                        @csrf    
+                        @csrf
 
                         <div class="form-group mb-3">
                             <label for="user_email_address" class="mb-1">{{ __('Email Address') }}</label>
@@ -38,7 +38,7 @@
                                     </span>
                                 @enderror
                             </div>
-                        </div>    
+                        </div>
 
                         <div class="form-group mb-3">
                             <label for="user_password" class="mb-1">{{ __('Password') }}</label>
@@ -89,10 +89,10 @@
                             <label for="user_description" class="mb-1">{{ __('Short description about you') }}</label>
                             <div class="input-group">
                                 <i class="fa-regular fa-comments"></i>
-                                <textarea id="user_description" class="form-control" name="user_description"></textarea>
+                                <textarea id="user_description" class="form-control" name="user_description" required></textarea>
                             </div>
                         </div>
-                        
+
 
                         <div class="form-group mb-4">
                         <label for="image_upload" class="mb-1">{{ __('Upload profile picture') }}</label>
@@ -106,7 +106,7 @@
                             <button class="btn btn-primary" type="submit" name="signup">Sign up</button>
                         </div>
                         <p class="text-center">Already a member? <a href="{{ route('login.create')}}">Sign in</a></p>
-                    
+
                     </form>
 
                 </div>
