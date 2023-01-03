@@ -44,7 +44,7 @@
                         @if(isset($listing))
                             <input type="text" class="form-control" disabled value="{{ \App\Models\User::where(['id' => $listing->user_id])->pluck('user_real_name')->first() }}">
                         @else
-                            <input type="text" class="form-control" disabled value="{{ \App\Models\User::where(['id' => $user->id])->pluck('user_real_name')->first() }}">
+                            <input type="text" class="form-control" disabled value="{{ \App\Models\User::where(['id' => $user])->pluck('user_real_name')->first() }}">
                         @endif
                     </div>
 
@@ -297,7 +297,7 @@
 
                         {{-- When create a listing --}}
                         @if (isset($user))
-                            <input type="number" name="user_id" hidden class="form-control" value="{{ $user->id }}">
+                            <input type="number" name="user_id" hidden class="form-control" value="{{ $user }}">
                         @endif
 
                     </div>

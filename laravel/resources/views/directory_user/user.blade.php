@@ -142,7 +142,7 @@
                 </div>
                 <div class="show-more d-flex justify-content-center mb-3">
                     <button class="btn btn-outline-primary me-3">Show more</button>
-                    <a class="btn btn-outline-primary" href="{{ route('listings.create', ['user' => $user]) }}">Create a listing</a>
+                    <a class="btn btn-outline-primary" href="{{ route('listings.create', ['user' => $user->id]) }}">Create a listing</a>
                 </div>
             </div>
             <div class="card mb-3">
