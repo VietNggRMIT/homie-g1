@@ -1,4 +1,4 @@
-<div>
+<div class="container">
     <div class="search-filter" role="search">
         <input wire:model="searchName" wire:change="filter" class="form-control border-end-0 border rounded-pill me-2 search-name" type="text" placeholder="Search by name" aria-label="Search">
     </div>
@@ -163,8 +163,8 @@
 
 
     <div class="pagination justify-content-center my-3">
-        {{-- below is the box containing links to different page --}}
-        @if(!$searched)
+        {{-- below is the box containing links to different page. only show on first landing --}}
+        @if(!$everChanged)
             <br><div>{{ $listings->links('pagination::bootstrap-4') }}</div>
         @endif
     </div>

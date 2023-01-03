@@ -20,6 +20,7 @@ class ListingResults extends Component
     public $order = 'byID';
     public $debug = '';
     public $searched = false;
+    public $everChanged = false;
     // public $homeLocation = '';
     protected $queryString = [
         'searchAddress' => ['except' => ''],
@@ -41,6 +42,7 @@ class ListingResults extends Component
         $this->setPage(1);
         if($this->searchName || $this->searchAddress || $this->filterRating || $this->minPrice != 0 || $this->maxPrice != 20 ||$this->order != 'byID'){
             $this->searched = true;
+            $this->everChanged = true;
         }
         else{
             $this->searched = false;
@@ -48,12 +50,14 @@ class ListingResults extends Component
     }
     public function addressChanged(){
         $this->isChanged = true;
+        $this->everChanged = true;
     }
     public function updated(){
         $this->resetPage();
         $this->setPage(1);
         if($this->searchName || $this->searchAddress || $this->filterRating || $this->minPrice != 0 || $this->maxPrice != 20 ||$this->order != 'byID'){
             $this->searched = true;
+            $this->everChanged = true;
         }
         else{
             $this->searched = false;
@@ -62,6 +66,7 @@ class ListingResults extends Component
     public function render()
     {   if($this->searchName || $this->searchAddress || $this->filterRating || $this->minPrice != 0 || $this->maxPrice != 20 ||$this->order != 'byID'){
             $this->searched = true;
+            $this->everChanged = true;
         }
         else{
             $this->searched = false;
@@ -145,12 +150,14 @@ class ListingResults extends Component
                 'listings' => $listings->get(),
                 'searched' => $this->searched,
                 'total' => $listings->count(),
+                'everChanged' => $this->everChanged,
             ]);
         }
         else{ //no search terms
             return view('livewire.listing-results', [
                 'listings' => $listings->paginate(30),
                 'searched' => $this->searched,
+                'everChanged' => $this->everChanged,
             ]);
         }
     }

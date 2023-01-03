@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('title', 'Blog listing')
 @section('content')
-
+@livewireStyles
     <div class="hero-top">
         <div class="container-fluid">
             <div class="row justify-content-center">
@@ -22,6 +22,8 @@
                 <h2>{{ Breadcrumbs::render('breadcrumb_blogs') }}</h2>
             </div>
         @livewire('blog-results')
+
+        @livewireScripts
     </div>
 
 @endsection
