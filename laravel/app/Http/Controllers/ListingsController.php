@@ -131,8 +131,13 @@ class ListingsController extends Controller
             ->withCount('applications')
             ->find($listing->id);
 
+        $custom_user = User::
+            withCount(['reviews', 'applications']) // Get COUNT of these two
+            ->withAvg('reviews','review_rating') // Get AVG COUNT of this column
+            ->find($listing->user_id);
+
         return response()
-            ->view('directory_listing.listing', ['listing' => $custom_listing], 200);
+            ->view('directory_listing.listing', ['listing' => $custom_listing, 'custom_user' => $custom_user], 200);
     }
 
     /**

@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Blog post')
+@section('title', 'Blog'.' '.$blog->blog_name)
 @section('content')
 
 <div class="container">
@@ -14,7 +14,7 @@
                     <header class="mb-4">
 
                         <div class="header-content">
-                        
+
                             <h1 class="fw-bolder mb-1 mt-3">{{ $blog->blog_name }}</h1>
                             <p class="mb-1">Blog ID: <i class="fa-solid fa-hashtag purple-ice"></i> {{ $blog->id }}</p>
                             <span class="h6">
@@ -23,7 +23,7 @@
                             </span>
                             <div class="text-muted fst-italic my-2">
                                 Posted on {{ $blog->created_at }}
-                                <br> 
+                                <br>
                                 Updated at {{ $blog->updated_at }}
                             </div>
 
@@ -49,6 +49,6 @@
         </div>
     </div>
 
-</div>  
+</div>
 
 @endsection

@@ -27,14 +27,14 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        $this->call([
-            UserTableSeeder::class,
-            ListingTableSeeder::class,
-            ReviewTableSeeder::class,
-            BlogTableSeeder::class,
-            ApplicationTableSeeder::class,
-            ListingImageTableSeeder::class,
-        ]);
+//        $this->call([
+//            UserTableSeeder::class,
+//            ListingTableSeeder::class,
+//            ReviewTableSeeder::class,
+//            BlogTableSeeder::class,
+//            ApplicationTableSeeder::class,
+//            ListingImageTableSeeder::class,
+//        ]);
 
 //        =============================================================================================
 //        !IMPORTANT: DO NOT DELETE BELOW

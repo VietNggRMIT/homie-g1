@@ -104,8 +104,8 @@ class UsersController extends Controller
             }])
 //            ->withCount(['listings', 'reviews']) // Can't do this since it would AVG of all listings
 //            ->withCount(['listings', 'applications']) // Can't do this it would COUNT of all applications received
-            ->withCount(['listings', 'reviews', 'applications', 'blogs']) // Get AVG COUNT of these four
-            ->withAvg('reviews','review_rating')
+            ->withCount(['listings', 'reviews', 'applications', 'blogs']) // Get COUNT of these four
+            ->withAvg('reviews','review_rating') // Get AVG COUNT of this column
             ->with('blogs')
             ->find($user->id);
 

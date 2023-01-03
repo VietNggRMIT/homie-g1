@@ -24,7 +24,7 @@
                 @else
                     <div class="text-center"><h1>Create Listing</h1></div>
                 @endif
-                <button onclick="window.location.href='{{ url()->previous() }}';" type="button" class="btn btn-secondary mb-3">Back to previous page</button>
+                <button onclick="window.location.href='{{ route('listings.show', ['listing' => $listing]) }}';" type="button" class="btn btn-danger mb-3">Cancel</button>
                 <button onclick="window.location.href='{{ route('listings.index') }}';" type="button" class="btn btn-secondary mb-3">Back to all listings</button>
 
                 {{-- 0. Form Begins --}}
@@ -60,13 +60,12 @@
 
                     {{-- 2 Listing Description --}}
                     <div class="form-floating mb-3">
-                        <textarea class="form-control" placeholder="Very nice house with 2 windows and a yard" name="listing_description" style="height: 100px">
-                            @if (isset($listing))
-                                {{ $listing->listing_description }}
-                            @else
 
-                            @endif
-                        </textarea>
+                        @if (isset($listing))
+                            <textarea class="form-control" placeholder="Very nice house with 2 windows and a yard" name="listing_description" style="height: 150px">{{ $listing->listing_description }}</textarea>
+                        @else
+                            <textarea class="form-control" placeholder="Very nice house with 2 windows and a yard" name="listing_description" style="height: 100px"></textarea>
+                        @endif
                         <label for="listing_description">Description</label>
                     </div>
 
@@ -154,20 +153,24 @@
                     </div>
 
                     {{-- 7 Listing Price (Vietnamese Dong) --}}
-                    <div class="input-group my-3">
-                        <span class="input-group-text">Listing Price</span>
-                        <input type="text"
-{{--                               step="1000" min="0" max="990000000"--}}
-                               name="listing_price"
-                               class="form-control"
-                               placeholder="3,000,000"
-                               required
-                        @if (isset($listing))
-                            value="{{ number_format((int) $listing->listing_price) }}">
-                        @else
-                            value="">
-                        @endif
-                        <span class="input-group-text">(VND)</span>
+                    <div class="row g-2 my-3 d-flex justify-content-center">
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <span class="input-group-text">Listing Price</span>
+                                <input type="text"
+                                    {{-- step="1000" min="0" max="990000000" --}}
+                                    name="listing_price"
+                                    class="form-control"
+                                    placeholder="3,450,000"
+                                    required
+                                    @if (isset($listing))
+                                        value="{{ number_format((int) $listing->listing_price) }}">
+                                    @else
+                                        value="">
+                                    @endif
+                                <span class="input-group-text">(VND)</span>
+                            </div>
+                        </div>
                     </div>
 
                     {{-- 8, 9, 10, 12 --}}
@@ -226,7 +229,7 @@
                         </div>
 
                         {{-- 13 Listing Available --}}
-                        <div class="col-md align-self-end">
+                        <div class="col-md">
                             <div class="form-check form-switch">
                                 <input class="form-check-input" type="checkbox" role="switch" name="listing_specification_owner"
 
@@ -243,7 +246,7 @@
                         </div>
 
                         {{-- 14 Listing Available --}}
-                        <div class="col-md align-self-end">
+                        <div class="col-md">
                             <div class="form-check form-switch">
                                 <input class="form-check-input" type="checkbox" role="switch" name="listing_available"
 

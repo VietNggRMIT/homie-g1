@@ -5,15 +5,29 @@
 <div class="container-fluid" id="banner-box-3">
     <div class="row justify-content-center">
         <div class="col" id="hero-box">
-            <p><h2>Welcome to Homie Rental</h2><br>
-            <span data-purecounter-end="{{ $custom_count[0] }}" class="purecounter">0</span> listings available
-            (<span data-purecounter-end="{{ $custom_count[1] }}" class="purecounter">0</span> listing images,
-            <span data-purecounter-end="{{ $custom_count[2] }}" class="purecounter">0</span> reviews,
-            <span data-purecounter-end="{{ $custom_count[3] }}" class="purecounter">0</span> applications)<br>
-            Site has <span data-purecounter-end="{{ $custom_count[4] }}" class="purecounter">0</span> users online.<br>
-            There are <span data-purecounter-end="{{ $custom_count[5] }}" class="purecounter">0</span> blogs to read. <br><br>
-            <q class="quote"><i>Renting easy like renting from your homie</i></q> - Founder                  
-            </p>
+            {{-- OPTION 1 --}}
+            <div>
+                <h2>Welcome to Homie Rental</h2><br>
+                There are <span data-purecounter-end="{{ $custom_count[0] }}" class="purecounter">0</span> listings available
+                (<span data-purecounter-end="{{ $custom_count[1] }}" class="purecounter">0</span> listing images,
+                <span data-purecounter-end="{{ $custom_count[2] }}" class="purecounter">0</span> reviews,
+                <span data-purecounter-end="{{ $custom_count[3] }}" class="purecounter">0</span> applications)<br>
+                <span data-purecounter-end="{{ $custom_count[4] }}" class="purecounter">0</span> users to meet<br>
+                <span data-purecounter-end="{{ $custom_count[5] }}" class="purecounter">0</span> blogs to read <br><br>
+                <q class="quote"><i>Renting easy like renting from your homie</i></q> - Founder
+            </div>
+
+            {{-- OPTION 2 --}}
+{{--            <h1>Welcome to Homie Rental</h1>--}}
+{{--            <h4><span data-purecounter-end="{{ $custom_count[0] }}" class="purecounter">0</span><span class="text-secondary text-opacity-50"> listings available</span></h4>--}}
+{{--            <div class="d-flex justify-content-center">--}}
+{{--                (<h5><span data-purecounter-end="{{ $custom_count[1] }}" class="purecounter">0</span><span class="text-secondary text-opacity-50"> listings images</span></h5>--}}
+{{--                <h5 class="mx-3"><span data-purecounter-end="{{ $custom_count[2] }}" class="purecounter">0</span><span class="text-secondary text-opacity-50"> reviews</span></h5>--}}
+{{--                <h5><span data-purecounter-end="{{ $custom_count[3] }}" class="purecounter">0</span><span class="text-secondary text-opacity-50"> applications</span></h5>)--}}
+{{--            </div>--}}
+{{--            <h4><span data-purecounter-end="{{ $custom_count[4] }}" class="purecounter">0</span><span class="text-secondary text-opacity-50"> users to meet</span></h4>--}}
+{{--            <h4><span data-purecounter-end="{{ $custom_count[5] }}" class="purecounter">0</span><span class="text-secondary text-opacity-50"> blogs to read</span></h4>--}}
+{{--            <q><i>Renting easy like renting from your homie</i></q><span>- Founder</span>--}}
         </div>
     </div>
 </div>
@@ -23,7 +37,7 @@
     <div class="filter-img-section mt-5">
         <div class="filter-img text-center">
             <h2>Choose a city you want to start at</h2>
-            <div class='row mb-5 mt-3'> 
+            <div class='row mb-5 mt-3'>
                 <div class='col-sm-6'>
                     <a href="/listings?searchAddress=Ho Chi Minh"><img src="{{ asset('storage/images/filter-img/hcmc-listing.png')}}" alt="HCM"></a>
                 </div>
@@ -32,7 +46,7 @@
                         <a href="/listings?searchAddress=Ha Noi"><img src="{{ asset('storage/images/filter-img/hn-listing.png')}}" alt="HN"></a><br>
                     </div>
                     <div class="under-img-box">
-                        <a href="/listings?searchAddress=Binh Duong"><img src="{{ asset('storage/images/filter-img/BD-listing.png')}}" alt="BD"></a>        
+                        <a href="/listings?searchAddress=Binh Duong"><img src="{{ asset('storage/images/filter-img/BD-listing.png')}}" alt="BD"></a>
                     </div>
                 </div>
                 <div class='col-sm-3'>
@@ -52,7 +66,7 @@
         <div class="d-flex justify-content-between align-items-center">
             <h1>Listings</h1>
             <button onclick="window.location.href='{{ route('listings.index') }}';" type="button" class="custom-btn btn-1">
-                See more 
+                See more
             </button>
         </div>
         <hr class="baby">
@@ -69,7 +83,7 @@
                                 <div class="carousel-item active">
                                     <img src="https://via.placeholder.com/300.png/" class="d-block" alt="listing-img">
                                 </div>
-                                
+
                             @else
                                 <div class="carousel-item active">
                                     <img src="{{ asset('storage/images/').'/'.$listing->listingimages->first()->listing_image_path }}" class="d-block" alt="listing-img">
@@ -97,47 +111,44 @@
                     <div class="card-body">
                         <h5 class="card-title">{{ $listing->listing_name }}</h5>
                         <p class="mb-1">Posted by: {{ $listing->user->user_real_name }}</p>
+{{--                        <p class="mb-1" onclick="window.location.href='{{ route('users.show', ['user' => $listing->user]) }}';">Posted by: {{ $listing->user->user_real_name }}</p>--}}
                         <div class="card-listing-location d-flex mb-2">
                             <i class="fa-solid fa-location-dot"></i>
                             <p class="card-text">{{ $listing->listing_address_subdivision_1 }}</p>
                         </div>
-                        <!-- <div class="card-description" style="min-height: 4rem;">
-                            <p>
-                                {{ $listing->listing_description }}
-                            </p>
-                        </div> -->
                         <div class="listing-amenities d-flex my-3">
                             <div class="listing-feature">
                                 <i class="fa-solid fa-users-between-lines"></i>
-                                <span>{{ (int) $listing->listing_specification_tenant }} person(s)</span>
+                                @if ($listing->listing_specification_tenant == 1)
+                                    <span>{{ $listing->listing_specification_tenant }} person</span>
+                                @else
+                                    <span>{{ $listing->listing_specification_tenant }} people</span>
+                                @endif
                             </div>
-                            @if ($listing->listing_specification_owner == 1)
-                                {{-- code for listing where owner lives with u --}}
-                                <div class="listing-feature">
+                            <div class="listing-feature">
+                                @if ($listing->listing_specification_owner == 1)
                                     <i class="fa-solid fa-user-shield"></i>
                                     <span>With owner</span>
-                                </div>
-                            @else
-                                <div class="listing-feature">
+                                @else
                                     <i class="fa-solid fa-user-slash"></i>
                                     <span>Without owner</span>
-                                </div>
-                            @endif
+                                @endif
+                            </div>
                             <div class="listing-feature">
                                 <i class="fa-solid fa-ruler-combined"></i>
-                                <span>{{ (int) $listing->listing_specification_size }} &#13217</span>
+                                <span>{{ (int) $listing->listing_specification_size }} m<sup>2</sup></span>
                             </div>
                         </div>
                         <hr>
                         <div class="card-price-rating d-flex">
                             <p class="card-text price">{{ number_format( (int) $listing->listing_price) }} VND<span class="light-gray">/mo</span></p>
-                            <!-- <div><i class="fa-solid fa-paper-plane"></i> {{ (int) $listing->applications_count }}</div> -->
+{{--                            <div><i class="fa-solid fa-paper-plane purple-ice"></i> {{ (int) $listing->applications_count }}</div>--}}
                             <div class="listing-rating">
                                 <i class="fa-solid fa-star"></i>
-                                <span>{{ (float) $listing->reviews_avg_review_rating }}</span>
+                                <span>{{ round( (float) $listing->reviews_avg_review_rating, 2) }}</span>
                                 <span class="sum-review light-gray">({{ (int) $listing->reviews_count }})</span>
                             </div>
-                        </div>  
+                        </div>
                     </div>
                     <div class="card-footer">
                         <small class="text-muted" data-toggle="tooltip" data-placement="top" title="{{ $listing->updated_at }}">
@@ -155,7 +166,7 @@
         <div class="l-blogheader d-flex justify-content-between align-items-center">
             <h1>Blogs</h1>
             <button onclick="window.location.href='{{ route('blogs.index') }}';" type="button" class="custom-btn btn-1">
-                See more 
+                See more
             </button>
         </div>
         <hr class="baby">
@@ -195,11 +206,11 @@
                             <p><b>Updated at:</b> {{ $blog->updated_at }}</p>
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
 
-        @endforeach    
+        @endforeach
     </div>
 
 </div>

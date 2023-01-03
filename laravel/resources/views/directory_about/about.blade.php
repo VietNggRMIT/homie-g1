@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'About us')
+@section('title', 'About Us')
 @section('content')
 <body>
         <main>
@@ -33,7 +33,7 @@
                             with no dedicated solutions. We want to take <br>
                             matter into our hand, knowing how problematic <br>
                             this has become in recent year. <br><br>
-                            <q class="quote">If not us, then who?</q>                  
+                            <q class="quote">If not us, then who?</q>
                             </p>
                         </div>
                     </div>

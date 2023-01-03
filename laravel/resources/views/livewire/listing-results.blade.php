@@ -22,7 +22,7 @@
                 </div>
 
                 <hr class="baby">
-                
+
                 <div class="filter-queries">
 
                     <div class="mb-3">
@@ -54,13 +54,13 @@
                             <label class="d-block" for="minPrice">Minimum price: {{ $minPrice * 1000000 }} VND
                                 <!-- <h4 id="minPriceDisplay">{{ $minPrice * 1000000 }} VND</h4> -->
                             </label>
-                            <input class="slider" wire:model="minPrice" type="range" id="minPrice" name="minPrice" min="0" max="10" value="0"> 
+                            <input class="slider" wire:model="minPrice" type="range" id="minPrice" name="minPrice" min="0" max="10" value="0">
                         </div>
                         <div>
                             <label class="d-block" for="maxPrice">Maximum price: {{ $maxPrice * 1000000 }} VND
                                 <!-- <h4 id="maxPriceDisplay">{{ $maxPrice * 1000000 }} VND</h4> -->
                             </label>
-                            <input class="slider" wire:model="maxPrice" type="range" id="maxPrice" name="maxPrice" min="3" max="20" value="20"> 
+                            <input class="slider" wire:model="maxPrice" type="range" id="maxPrice" name="maxPrice" min="3" max="20" value="20">
                         </div>
                         <div class="mt-3">
                             <button class="btn btn-warning d-block mb-2" wire:click="resetPrice">Reset price range</button>
@@ -89,7 +89,7 @@
                                         @if($listing->listingimages->isEmpty())
                                             <div class="carousel-item active">
                                                 <img src="https://via.placeholder.com/300.png/" class="d-block" alt="listing-img">
-                                            </div>                                
+                                            </div>
                                         @else
                                             <div class="carousel-item active">
                                                 <img src="{{ asset('storage/images/').'/'.$listing->listingimages->first()->listing_image_path }}" class="d-block" alt="listing-img">
@@ -115,23 +115,24 @@
                                     <div class="listing-amenities d-flex my-2">
                                         <div class="listing-feature">
                                             <i class="fa-solid fa-users-between-lines"></i>
-                                            <span>{{ (int) $listing->listing_specification_tenant }} person(s)</span>
+                                            @if ($listing->listing_specification_tenant == 1)
+                                                <span>{{ $listing->listing_specification_tenant }} person</span>
+                                            @else
+                                                <span>{{ $listing->listing_specification_tenant }} people</span>
+                                            @endif
                                         </div>
-                                        @if ($listing->listing_specification_owner == 1)
-                                            {{-- code for listing where owner lives with u --}}
-                                            <div class="listing-feature">
+                                        <div class="listing-feature">
+                                            @if ($listing->listing_specification_owner == 1)
                                                 <i class="fa-solid fa-user-shield"></i>
                                                 <span>With owner</span>
-                                            </div>
-                                        @else
-                                            <div class="listing-feature">
+                                            @else
                                                 <i class="fa-solid fa-user-slash"></i>
                                                 <span>Without owner</span>
-                                            </div>
-                                        @endif
+                                            @endif
+                                        </div>
                                         <div class="listing-feature">
                                             <i class="fa-solid fa-ruler-combined"></i>
-                                            <span>{{ (int) $listing->listing_specification_size }} &#13217</span>
+                                            <span>{{ (int) $listing->listing_specification_size }} m<sup>2</sup></span>
                                         </div>
                                     </div>
                                     <hr>
@@ -140,10 +141,10 @@
                                         <!-- <div><i class="fa-solid fa-paper-plane"></i> {{ (int) $listing->applications_count }}</div> -->
                                         <div class="listing-rating">
                                             <i class="fa-solid fa-star"></i>
-                                            <span>{{ (float) $listing->reviews_avg_review_rating }}</span>
+                                            <span>{{ round( (float) $listing->reviews_avg_review_rating, 2) }}</span>
                                             <span class="sum-review light-gray">({{ (int) $listing->reviews_count }})</span>
                                         </div>
-                                    </div>  
+                                    </div>
                                 </div>
                                 <div class="card-footer">
                                     <small class="text-muted" data-toggle="tooltip" data-placement="top" title="{{ $listing->updated_at }}">

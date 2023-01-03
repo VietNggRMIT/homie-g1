@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'User info')
+@section('title', 'User'.' '.$user->user_real_name)
 @section('content')
 
 <div class="container">
@@ -24,7 +24,7 @@
                         <span class="text-muted">{{ count($user->listings) }} listings |</span>
                         <span class="text-muted">{{ count($user->blogs) }} blogs |</span>
                         <i class="fa-solid fa-star"></i>
-                        <b>{{ round($user->reviews_avg_review_rating, 2) }}</b>
+                        <b>{{ round( (float) $user->reviews_avg_review_rating, 2) }}</b>
                         <span class="text-muted">({{ $user->reviews_count }}) |</span>
                         <i class="fa-solid fa-paper-plane purple-ice"></i>
                         <b>{{ $user->applications_count }}</b>
@@ -62,7 +62,7 @@
         <div class="col-lg-8">
             <div class="card mb-3">
                 <div class="dashboard-title">
-                    <div class="h2 m-3 ms-4">Property Listings ({{ $user->listings_count }})</div>
+                    <div class="h3 m-3 ms-4">Property Listings ({{ $user->listings_count }})</div>
                 </div>
                 <hr>
                 <div class="row">
@@ -107,25 +107,24 @@
                                     <div class="listing-amenities d-flex mb-3">
                                         <div class="listing-feature">
                                             <i class="fa-solid fa-users-between-lines"></i>
-                                            <span>{{ $listing->listing_specification_tenant }} person(s)</span>
+                                            @if ($listing->listing_specification_tenant == 1)
+                                                <span>{{ $listing->listing_specification_tenant }} person</span>
+                                            @else
+                                                <span>{{ $listing->listing_specification_tenant }} people</span>
+                                            @endif
                                         </div>
-
-                                        @if ($listing->listing_specification_owner == 1)
-                                            {{-- code for listing where owner lives with u --}}
-                                            <div class="listing-feature">
+                                        <div class="listing-feature">
+                                            @if ($listing->listing_specification_owner == 1)
                                                 <i class="fa-solid fa-user-shield"></i>
                                                 <span>With owner</span>
-                                            </div>
-                                        @else
-                                            <div class="listing-feature">
+                                            @else
                                                 <i class="fa-solid fa-user-slash"></i>
                                                 <span>Without owner</span>
-                                            </div>
-                                        @endif
-
+                                            @endif
+                                        </div>
                                         <div class="listing-feature">
                                             <i class="fa-solid fa-ruler-combined"></i>
-                                            <span>{{ $listing->listing_specification_size }} &#13217</span>
+                                            <span>{{ $listing->listing_specification_size }} m<sup>2</sup></span>
                                         </div>
                                     </div>
                                     <hr>
@@ -133,7 +132,7 @@
                                         <p class="card-text price">{{ number_format( (int) $listing->listing_price) }} VND <span class="light-gray">/mo</span></p>
                                         <div class="listing-rating">
                                             <i class="fa-solid fa-star"></i>
-                                            <span>{{ (float) $listing->reviews_avg_review_rating }}</span>
+                                            <span>{{ round( (float) $listing->reviews_avg_review_rating, 2) }}</span>
                                             <span class="sum-review light-gray">({{ (int) $listing->reviews_count }})</span>
                                         </div>
                                     </div>

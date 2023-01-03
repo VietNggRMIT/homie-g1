@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Blog listing')
+@section('title', 'Blogs')
 @section('content')
 @livewireStyles
     <div class="hero-top">
@@ -10,7 +10,7 @@
                     <p><br>
                     Old-bie and local love to share their experience.<br>
                     Discover what they share and broaden your knowledge<br>
-                    through these blog posts.<br><br>              
+                    through these blog posts.<br><br>
                     </p>
                 </div>
             </div>

@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Property listing')
+@section('title', 'Listing'.' '.$listing->listing_name)
 @section('content')
 
     <div class="container">
@@ -124,29 +124,53 @@
                 <div class="card listing-details">
 
                     <div class="card-body">
+                        {{-- 1. Listing Name --}}
                         <div class="card-title h1">{{ $listing->listing_name }}</div>
-                        <p><i class="fa-solid fa-hashtag purple-ice"></i>{{ $listing->id }}</p>
-                        <div class="h6 mb-2">Posted by: <a href="{{ route('users.show', ['user' => $listing->user]) }}">{{ $listing->user->user_real_name }}</a> on {{ $listing->created_at }}</div>
+                        {{-- 2. Listing ID, and Created Date --}}
+{{--                        <div>--}}
+{{--                            <i class="fa-solid fa-hashtag purple-ice"></i>--}}
+{{--                            <span class="text-secondary text-opacity-25">{{ $listing->id }}</span>--}}
+{{--                            <span class="h6 mb-2 text-secondary text-opacity-25">--}}
+{{--                                <a href="{{ route('users.show', ['user' => $listing->user]) }}">{{ $listing->user->user_real_name }}</a>--}}
+{{--                                <span>on</span>--}}
+{{--                                <span>{{ $listing->created_at }}</span>--}}
+{{--                            </span>--}}
+{{--                        </div>--}}
                         <hr class="baby">
+                        {{-- 3. Listing Location --}}
                         <div class="card-listing-location d-flex align-items-center mb-3">
-                            <i class="fa-solid fa-location-dot me-3"></i>
+                            <i class="fa-solid fa-location-dot me-2"></i>
                             <p class="card-text">
-                                {{ $listing->listing_address_subdivision_1 }}&nbsp
-                                {{ $listing->listing_address_subdivision_2 }}&nbsp
-                                {{ $listing->listing_address_subdivision_3 }}&nbsp
+                                {{ $listing->listing_address_subdivision_1.' '.$listing->listing_address_subdivision_2.' '.$listing->listing_address_subdivision_3 }}
                             </p>
                         </div>
-                        <div class="h5">Listing description:</div>
+
+                        {{-- 4. Listing Description --}}
+                        <div class="h5">Description</div>
                         <div class="card-description specific">
-                            <p>
-                                {!!  nl2br(e($listing->listing_description)) !!}
-                            </p>
+                            @if (empty($listing->listing_description))
+                                <p class="pb-5">
+                                    <span class="text-secondary text-opacity-25">Empty</span>
+                                    {!!  nl2br(e($listing->listing_description)) !!}
+                                </p>
+                            @else
+                                <p>
+                                    {!!  nl2br(e($listing->listing_description)) !!}
+                                </p>
+                            @endif
                         </div>
+
                     </div>
+                    {{-- 5. Updated Date --}}
                     <div class="card-footer">
-                        <small class="text-muted" data-toggle="tooltip" data-placement="top" title="{{ $listing->updated_at }}">
-                            Last updated: {{ date_diff(new \DateTime($listing->updated_at), new \DateTime(now()))->format("%m months, %d days, %h hours") }} ago
-                        </small>
+                        <div class="d-flex justify-content-between">
+                            <small class="text-muted" data-toggle="tooltip" data-placement="top" title="{{ $listing->updated_at }}">
+                                Posted: {{ date_diff(new DateTime($listing->created_at), new DateTime(now()))->format("%m months, %d days, %h hours") }} ago
+                            </small>
+                            <small class="text-muted" data-toggle="tooltip" data-placement="top" title="{{ $listing->updated_at }}">
+                                Last updated: {{ date_diff(new DateTime($listing->updated_at), new DateTime(now()))->format("%m months, %d days, %h hours") }} ago
+                            </small>
+                        </div>
                     </div>
                 </div>
 
@@ -164,56 +188,78 @@
                         <div class="row listing-amenities align-items-center justify-content-around text-center gy-3 mb-3">
                             <div class="col listing-feature" id="spec_tenant">
                                 <i class="fa-solid fa-users-between-lines"></i>
-                                <span>{{ $listing->listing_specification_tenant }} person(s)</span>
+                                @if ($listing->listing_specification_tenant == 1)
+                                    <span>{{ $listing->listing_specification_tenant }} person</span>
+                                @else
+                                    <span>{{ $listing->listing_specification_tenant }} people</span>
+                                @endif
                             </div>
-                            <div class="col listing-feature" id="spec_owner">
-                            @if ($listing->listing_specification_owner == 1)
                                 {{-- <div>$listing->listing_specification_owner: {{ $listing->listing_specification_owner }}</div> --}}
                                 <div class="listing-feature">
+                            <div class="listing-feature" id="spec_owner">
+                                @if ($listing->listing_specification_owner == 1)
                                     <i class="fa-solid fa-user-shield"></i>
                                     <span>With owner</span>
-                                </div>
-                            @else
-                                <div class="listing-feature">
+                                @else
                                     <i class="fa-solid fa-user-slash"></i>
                                     <span>Without owner</span>
-                                </div>
-                            @endif
-
+                                @endif
                             </div>
                             <div class="col listing-feature" id="spec_size">
                                 <i class="fa-solid fa-ruler-combined"></i>
-                                <span>{{ $listing->listing_specification_size }} &#13217</span>
+                                <span>{{ $listing->listing_specification_size }} m<sup>2</sup></span>
                             </div>
                             <div class="col listing-feature" id="spec_bed">
                                 <i class="fa-solid fa-bed"></i>
-                                <span>{{ $listing->listing_specification_bedroom }} bed(s)</span>
+                                @if ($listing->listing_specification_bedroom == 1)
+                                    <span>{{ $listing->listing_specification_bedroom }} bed</span>
+                                @else
+                                    <span>{{ $listing->listing_specification_bedroom }} beds</span>
+                                @endif
                             </div>
                             <div class="col listing-feature" id="spec_bath">
                                 <i class="fa-solid fa-shower"></i>
-                                <span>{{ $listing->listing_specification_bathroom }} bath(s)</span>
+                                @if ($listing->listing_specification_bathroom == 1)
+                                    <span>{{ $listing->listing_specification_bathroom }} bathroom</span>
+                                @else
+                                    <span>{{ $listing->listing_specification_bathroom }} bathrooms</span>
+                                @endif
                             </div>
-                            <div class="col listing-feature" id="spec_parking">
-                                <i class="fa-solid fa-square-parking"></i>
-                                <span>Paid parking</span>
+                            <div class="col listing-feature" id="spec_available">
+                                @if ($listing->listing_avilable == 1)
+                                    <i class="fa-solid fa-handshake"></i>
+                                    <span>Available for Rent</span>
+                                @else
+                                    <i class="fa-solid fa-handshake-slash"></i>
+                                    <span>Not for Rent</span>
+                                @endif
                             </div>
                         </div>
                         <hr>
                         <div class="card-price-rating d-flex justify-content-between">
-                            <div class="card-text price mb-0"><strong>{{ number_format( (int) $listing->listing_price) }} VND</strong> <span class="light-gray">/mo</span></div>
+                            <div class="card-text price mb-0"><strong>{{ number_format( (int) $listing->listing_price) }} VND</strong><span class="light-gray"> /month</span></div>
                             <div class="listing-rating">
                                 <i class="fa-solid fa-star"></i>
-                                <span>{{ (float) $listing->reviews_avg_review_rating }}</span>
+                                <span>{{ round( (float) $listing->reviews_avg_review_rating, 2) }}</span>
                                 <span class="sum-review light-gray">({{ (int) $listing->reviews_count }})</span>
                             </div>
                         </div>
                     </div>
                     <div class="card-footer">
                         <div class="h5 text-center mt-1">
-                            <i class="fa-solid fa-paper-plane purple-ice me-3"></i>{{ (int) $listing->applications_count }} application(s) submitted
+                            <i class="fa-solid fa-paper-plane purple-ice me-3"></i>{{ (int) $listing->applications_count }}
+                            @if($listing->applications_count == 1)
+                                application submitted
+                            @else
+                                applications submitted
+                            @endif
                         </div>
                         <div class="btn-container my-3">
-                            <a class="btn btn-warning btn-lg px-5" href="{{ route('applications.create', ['listing' => $listing->id]) }}">Apply now!</a>
+                            @if ($listing->listing_available == 0)
+                                <a class="btn btn-warning btn-lg px-5" href="{{ route('applications.create', ['listing' => $listing->id]) }}">Apply Now! 🔥</a>
+                            @else
+                                <a class="btn btn-secondary btn-lg px-5 disabled text-decoration-line-through" href="{{ route('applications.create', ['listing' => $listing->id]) }}">Not Available 🥶</a>
+                            @endif
                         </div>
                     </div>
 
@@ -239,15 +285,15 @@
                                     </div>
                                 </div>
                                 <div class="owner-info">
-                                    <a href="{{ route('users.show', ['user' => $listing->user]) }}">
+                                    <a href="{{ route('users.show', ['user' => $listing->user]) }}" class="text-decoration-none text-dark">
                                         <div class="h3">{{ $listing->user->user_real_name }}</div>
                                     </a>
                                     <div class="listing-rating">
-                                        <i class="fa-solid fa-star"></i>
-                                        <span>{{ round($listing->reviews_avg_review_rating, 2) }}</span>
-                                        <span class="sum-review light-gray">({{ $listing->reviews_count }}) and</span>
-                                        <i class="fa-solid fa-paper-plane purple-ice"></i>
-                                        <b>{{ $listing->applications_count }}</b>
+                                        {{-- Star --}} <i class="fa-solid fa-star"></i>
+                                        {{-- AVG --}} <span>{{ round( (float) $custom_user->reviews_avg_review_rating, 2) }}</span>
+                                        {{-- COUNT --}} <span class="sum-review light-gray">({{ $custom_user->reviews_count }}) |</span>
+                                        {{-- Paper Plane --}} <i class="fa-solid fa-paper-plane purple-ice"></i>
+                                        {{-- COUNT --}} <b>{{ $custom_user->applications_count }}</b>
                                     </div>
                                 </div>
                             </div>
@@ -267,7 +313,7 @@
                                     <li><p>{{ $listing->user->user_phone_number }} <i class="fa-solid fa-mobile-screen"></i></p></li>
                                     <li><p>{{ $listing->user->user_email_address }} <i class="fa-regular fa-envelope"></i></p></li>
                                     <li><p>Since: {{ $listing->user->created_at }} <i class="fa-regular fa-user"></i></p></li>
-                                    <li><p>D.O.B: 6/12/2000 <i class="fa-sharp fa-solid fa-cake-candles"></i></p></li>
+                                    <li><p>Date of Birth: 6/12/2000 <i class="fa-sharp fa-solid fa-cake-candles"></i></p></li>
                                 </ul>
                             </div>
                         </div>

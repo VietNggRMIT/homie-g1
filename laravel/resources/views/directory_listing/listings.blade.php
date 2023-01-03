@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Property listings')
+@section('title', 'Listings')
 @section('content')
 
     <div class="container show-listings">
@@ -14,7 +14,7 @@
         <div class="breadcrumb justify-content-center mt-5">
             <h2>{{ Breadcrumbs::render('breadcrumb_listings') }}</h2>
         </div>
-        
+
         <div>
             @livewire('listing-results')
         </div>
