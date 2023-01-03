@@ -37,8 +37,8 @@ class UsersController extends Controller
     {
         $user = new User;
         //check if email exist too
-        if(User::where('user_email_address', $request->user_email_address)){
-            return response()->view('auth.register', ['message' => 'Existing email.']);
+        if(User::where('user_email_address', $request->user_email_address)->count() != 0){
+            return response()->view('auth.register', ['message' => 'Existing email']);
         }
         else{
             $user->user_email_address = $request->user_email_address;
@@ -137,7 +137,7 @@ class UsersController extends Controller
         $user = User::find($user_id);
         if($request->user_email_address != $user->user_email_address) //change email to an existing one
         {
-            if(User::where('user_email_address', $request->user_email_address)->count() > 0){
+            if(User::where('user_email_address', $request->user_email_address)->count() != 0){
                 return response()->view('directory_user.user_update', ['user' => $user, 'message' => 'Existing email.']);
             }
         }
