@@ -105,6 +105,11 @@ Route::post('update-listing/{listing_id}', [ListingsController::class, 'update']
 //4.3 Delete listing
 Route::post('/delete-listing/{listing_id}', [ListingsController::class, 'destroy']);
 
+//5.1. Edit user info
+Route::post('update-user/{user_id}', [UsersController::class, 'update']);
+//5.2. Edit user password
+Route::post('update-login/{user_id}', [LoginController::class, 'update']);
+
 //View other pages
 Route::view('/about', 'directory_about.about')
     ->name('route_about');

@@ -36,10 +36,12 @@ class UsersController extends Controller
     public function store(Request $request)
     {
         $user = new User;
-        $user->user_email_address = $request->user_email_address;
         //check if email exist too
-        if(true){
-
+        if(User::where('user_email_address', $request->user_email_address)){
+            return response()->view('auth.register', ['message' => 'Existing email.']);
+        }
+        else{
+            $user->user_email_address = $request->user_email_address;
         }
 
         if($request->password_confirm != $request->user_password){
@@ -119,19 +121,57 @@ class UsersController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        $custom_user = User::find($user->id);
+        return response()->view('directory_user.user_update', ['user' => $custom_user], 200);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\User  $user
+     * @param  $user_id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, $user_id)
     {
-        //
+        $user = User::find($user_id);
+        if($request->user_email_address != $user->user_email_address) //change email to an existing one
+        {
+            if(User::where('user_email_address', $request->user_email_address)->count() > 0){
+                return response()->view('directory_user.user_update', ['user' => $user, 'message' => 'Existing email.']);
+            }
+        }
+        $user->user_email_address = $request->user_email_address;
+
+
+        // if($request->password_confirm != $request->user_password){
+        //     return response()->view('directory_user.user_update', ['user' => $user, 'message' => 'Password does not match.']);
+        // }
+        // else{
+        //     $user->user_password = $request->user_password;
+        // }
+        $user->user_real_name = $request->user_real_name;
+        //match 098... and +849282...
+        if(preg_match('/[+]?([0-9])*/', $request->user_phone_number, $match)){
+            $user->user_phone_number = $request->user_phone_number;
+        }
+        else{
+            return response()->view('directory_user.user_update', ['user' => $user,'message' => 'Wrong input format.']);
+        }
+        $user->user_description = $request->user_description;
+
+        if($request->hasFile(('image_upload'))){
+            $file = $request->file('image_upload');
+            $filename = str_replace(' ', '', $user->user_real_name) . '.' . $file->extension();
+            $path = $file->storeAs('public/images', $filename);
+            $user->user_image_path = basename($path);
+        }
+        else{
+            $user->user_image_path = 'user_image_path_1.jpg';
+        }
+        $user->id = $request->user_id;
+        $user->save();
+        return redirect()->action([UsersController::class, 'show'],['user' => $user])->with('success', 'Updated');
     }
 
     /**

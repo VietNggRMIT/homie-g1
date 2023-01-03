@@ -79,17 +79,19 @@
 
             </div>
         </div>
-
-        <div class="listing-modifications d-flex justify-content-end mt-3">
-            <form class="" method="POST" action="{{ url("delete-listing/{$listing->id}") }}">
-                @csrf
-                <button class="btn btn-outline-danger" type="submit">Delete this listing</button>
-            </form>
-            <div class="ms-3">
-                <a class="btn btn-outline-primary" href="{{ route('listings.edit', ['listing' => $listing]) }}">Edit this listing</a>
-            </div>
-        </div>
-
+        @if(session('user'))
+            @if (session('user')->id == $listing->user->id)
+                <div class="listing-modifications d-flex justify-content-end mt-3">
+                    <form class="" method="POST" action="{{ url("delete-listing/{$listing->id}") }}">
+                        @csrf
+                        <button class="btn btn-outline-danger" type="submit">Delete this listing</button>
+                    </form>
+                    <div class="ms-3">
+                        <a class="btn btn-outline-primary" href="{{ route('listings.edit', ['listing' => $listing]) }}">Edit this listing</a>
+                    </div>
+                </div>
+            @endif
+        @endif
         <!-- <button
             onclick="window.location.href='{{ route('listings.edit', ['listing' => $listing]) }}';"
             type="button"
@@ -237,7 +239,9 @@
                                     </div>
                                 </div>
                                 <div class="owner-info">
-                                    <div class="h3">{{ $listing->user->user_real_name }}</div>
+                                    <a href="{{ route('users.show', ['user' => $listing->user]) }}">
+                                        <div class="h3">{{ $listing->user->user_real_name }}</div>
+                                    </a>
                                     <div class="listing-rating">
                                         <i class="fa-solid fa-star"></i>
                                         <span>{{ round($listing->reviews_avg_review_rating, 2) }}</span>

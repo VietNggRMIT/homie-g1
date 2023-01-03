@@ -58,26 +58,35 @@ class LoginController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Show the form for editing user password
      *
-     * @param  int  $id
+     * @param  User $login; cant name it $user bc laravel is not happy
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $login)
     {
-        //
+        $custom_user = User::find($login->id);
+        return response()->view('directory_user.user_change_password', ['user' => $custom_user]);
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the user's password
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  int  $user_id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $user_id)
     {
-        //
+        $user = User::find($user_id);
+        $current = $request->user_password;
+        $changed = $request->new_password;
+        if($user->user_password != $current){
+            return response()->view('directory_user.user_change_password', ['user' => $user, 'message' => 'Wrong password.']);
+        }
+        $user->user_password = $changed;
+        $user->save();
+        return redirect()->action([UsersController::class, 'show'], ['user' => $user]);
     }
 
     /**

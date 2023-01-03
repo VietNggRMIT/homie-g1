@@ -46,10 +46,14 @@
                             </ul>
                         </div>
                         <hr>
-                        <div class="acc-options-btns d-grid gap-2 md-block">
-                            <a class="btn btn-warning">Update info</a>
-                            <a class="btn btn-warning">Change password</a>
-                        </div>
+                        @if(session('user'))
+                            @if (session('user')->id == $user->id)
+                                <div class="acc-options-btns d-grid gap-2 md-block">
+                                    <a class="btn btn-warning" href="{{ route('users.edit', ['user' => $user]) }}">Update info</a>
+                                    <a class="btn btn-warning" href="{{ route('login.edit', ['login' => $user]) }}">Change password</a>
+                                </div>
+                            @endif
+                        @endif
                     </div>
                 </div>
             </div>
@@ -141,8 +145,12 @@
 
                 </div>
                 <div class="show-more d-flex justify-content-center mb-3">
-                    <button class="btn btn-outline-primary me-3">Show more</button>
-                    <a class="btn btn-outline-primary" href="{{ route('listings.create', ['user' => $user->id]) }}">Create a listing</a>
+                    {{-- <button class="btn btn-outline-primary me-3">Show more</button> --}}
+                    @if(session('user'))
+                        @if (session('user')->id == $user->id)
+                            <a class="btn btn-outline-primary" href="{{ route('listings.create', ['user' => $user->id]) }}">Create a listing</a>
+                        @endif
+                    @endif
                 </div>
             </div>
             <div class="card mb-3">
@@ -169,8 +177,12 @@
 
                 </div>
                 <div class="show-more d-flex justify-content-center my-3">
-                    <button class="btn btn-outline-primary me-3">Show more</button>
-                    <a class="btn btn-outline-primary" href="{{ route('blogs.create', ['user' => $user->id]) }}">Add a blog post</a>
+                    {{-- <button class="btn btn-outline-primary me-3">Show more</button> --}}
+                    @if(session('user'))
+                        @if (session('user')->id == $user->id)
+                            <a class="btn btn-outline-primary" href="{{ route('blogs.create', ['user' => $user->id]) }}">Add a blog post</a>
+                        @endif
+                    @endif
                 </div>
             </div>
 

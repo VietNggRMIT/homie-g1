@@ -34,16 +34,17 @@
                         <p class="fs-5 mb-4"> {!!  nl2br(e($blog->blog_description)) !!} </p>
                     </section>
                 </article>
-
-                <div class="blog-modifications d-flex justify-content-end mb-3">
-                    <a class="btn btn-outline-primary" href="{{ route('blogs.edit', ['blog' => $blog]) }}">Edit this blog</a>
-                    <!-- <button onclick="window.location.href='{{ route('blogs.edit', ['blog' => $blog]) }}';" type="button"> Edit this blog </button> -->
-                    <form method="POST" action="{{ url("delete-blog/{$blog->id}") }}">
-                        @csrf
-                        <button class="btn btn-outline-danger ms-3" type="submit">Delete this blog</button>
-                    </form>
-                </div>
-
+                @if(session('user'))
+                    @if (session('user')->id == $blog->user->id)
+                        <div class="blog-modifications d-flex justify-content-end mb-3">
+                            <a class="btn btn-outline-primary" href="{{ route('blogs.edit', ['blog' => $blog]) }}">Edit this blog</a>
+                            <form method="POST" action="{{ url("delete-blog/{$blog->id}") }}">
+                                @csrf
+                                <button class="btn btn-outline-danger ms-3" type="submit">Delete this blog</button>
+                            </form>
+                        </div>
+                    @endif
+                @endif
             </div>
         </div>
     </div>
