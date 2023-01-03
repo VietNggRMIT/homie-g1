@@ -19,8 +19,11 @@ class ListingResults extends Component
     public $maxPrice = 20;
     public $order = 'byID';
     public $debug = '';
-    public $homeLocation = '';
-    protected $queryString = ['homeLocation'];
+    public $searched = false;
+    // public $homeLocation = '';
+    protected $queryString = [
+        'searchAddress' => ['except' => ''],
+    ];
     public $isChanged = false; //check if the searchAddress term has been changed (backspace)
     // public $listings;
     // protected $listeners = ['reloadListings'];
@@ -34,22 +37,35 @@ class ListingResults extends Component
     // }
     public function filter()
     {
-        $this->homeLocation = null;
         $this->resetPage();
+        $this->setPage(1);
+        if($this->searchName || $this->searchAddress || $this->filterRating || $this->minPrice != 0 || $this->maxPrice != 20 ||$this->order != 'byID'){
+            $this->searched = true;
+        }
+        else{
+            $this->searched = false;
+        }
     }
     public function addressChanged(){
         $this->isChanged = true;
     }
-    
-    public function render()
-    {
-        if(!$this->searchAddress){
-            if($this->homeLocation && !$this->isChanged){ //no backspace has been pressed
-                $this->searchAddress = $this->homeLocation;
-            }
+    public function updated(){
+        $this->resetPage();
+        $this->setPage(1);
+        if($this->searchName || $this->searchAddress || $this->filterRating || $this->minPrice != 0 || $this->maxPrice != 20 ||$this->order != 'byID'){
+            $this->searched = true;
         }
-        
-        // return view('livewire.test-show');
+        else{
+            $this->searched = false;
+        }
+    }
+    public function render()
+    {   if($this->searchName || $this->searchAddress || $this->filterRating || $this->minPrice != 0 || $this->maxPrice != 20 ||$this->order != 'byID'){
+            $this->searched = true;
+        }
+        else{
+            $this->searched = false;
+        }
         $listings = Listing::with('user')
         ->with('listingimages:listing_image_path,listing_id')
         ->withAvg('reviews', 'review_rating')
@@ -124,34 +140,30 @@ class ListingResults extends Component
             default:
                 $listings = $listings->orderBy('id', 'asc');
         }
-        return view('livewire.listing-results', [
-            'listings' => $listings->paginate(30),
-            'debug' => $this->debug,
-            'minPrice' => $this->minPrice,
-            'maxPrice' => $this->maxPrice,
-        ]);
-
+        if($this->searchName || $this->searchAddress || $this->filterRating || $this->minPrice != 0 || $this->maxPrice != 20 ||$this->order != 'byID'){
+            return view('livewire.listing-results', [
+                'listings' => $listings->get(),
+                'searched' => $this->searched,
+                'total' => $listings->count(),
+            ]);
+        }
+        else{ //no search terms
+            return view('livewire.listing-results', [
+                'listings' => $listings->paginate(30),
+                'searched' => $this->searched,
+            ]);
+        }
     }
     public function resetPrice(){
-        $this->reset(['minPrice', 'maxPrice']);
+        if($this->searchName || $this->searchAddress || $this->filterRating ||$this->order != 'byID'){
+            $this->reset(['minPrice', 'maxPrice']); //some searches are still there
+        }
+        else{
+            return redirect('/listings'); //no searches or filters in place
+        }
     }
     public function resetAll(){
-        $this->reset(['searchName', 'searchAddress', 'filterRating', 'order', 'minPrice', 'maxPrice']);
+        // $this->reset(['searchName', 'searchAddress', 'filterRating', 'order', 'minPrice', 'maxPrice', 'searched']);
+        return redirect('/listings');
     }
-
-    // public function reloadListings($searchName, $searchAddress){ 
-    //     $this->listings = Listing::query(); //prep
-    //     $this->searchName = $searchName;
-    //     $this->searchAddress = $searchAddress;
-    //     if($searchName){
-    //         $this->listings = $this->listings->where('listing_name', 'like', '%'.$searchName.'%')
-    //         ->orWhere('listing_description', 'like', '%'.$searchName.'%');
-    //     }
-    //     if($searchAddress){
-    //         $this->listings = $this->listings->where('listing_address_subdivision_1', 'like', '%'.$searchAddress.'%')
-    //         ->orWhere('listing_address_subdivision_2', 'like', '%'.$searchAddress.'%')
-    //         ->orWhere('listing_address_subdivision_3', 'like', '%'.$searchAddress.'%');
-    //     }
-    //     $this->listings = $this->listings->get();
-    // }
 }

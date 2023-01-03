@@ -3,7 +3,13 @@
         <input wire:model="searchName" wire:change="filter" class="form-control border-end-0 border rounded-pill me-2 search-name" type="text" placeholder="Search by name" aria-label="Search">
     </div>
     <div class="text-center my-3">
+        @if (!$searched)
             Showing {{ $listings->firstItem() }} - {{ $listings->lastItem() }} listings from the total of {{ $listings->total() }} listings.
+        @else
+            @isset($total)
+                Showing {{ $total }} results matching your search.
+            @endisset
+        @endif
     </div>
 
     <div class="row gy-3 mt-3 listings-filter-group">
@@ -12,12 +18,6 @@
             <div class="filter-section p-3">
 
                 <div class="search-filter mb-3">
-                    @php $initialHome = null; @endphp
-                    @if (request()->has('homeLocation'))
-                        @php
-                            $homeLocation = request()->homeLocation;
-                        @endphp
-                    @endif
                     <input wire:model="searchAddress" wire:change="filter" wire:keydown.backspace="addressChanged" wire:keydown.delete="addressChanged" class="form-control border-end-0 border rounded-pill me-2" type="text" placeholder="Search by address e.g. 'Ha Noi' or 'Ba Dinh'" aria-label="Search">
                 </div>
 
@@ -164,6 +164,8 @@
 
     <div class="pagination justify-content-center my-3">
         {{-- below is the box containing links to different page --}}
-        <br><div>{{ $listings->links('pagination::bootstrap-4') }}</div>
+        @if(!$searched)
+            <br><div>{{ $listings->links('pagination::bootstrap-4') }}</div>
+        @endif
     </div>
 </div>
