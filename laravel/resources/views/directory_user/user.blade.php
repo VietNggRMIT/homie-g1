@@ -20,21 +20,29 @@
                     <div class="card-body text-center">
                     <hr>
                     <div class="card-name h3 mb-3">{{ $user->user_real_name }}</div>
-                    <p><i class="fa-solid fa-star"></i> {{ count($user->listings) }} listings {{ count($user->blogs) }} blogs</p>
+                    <p>
+                        <span class="text-muted">{{ count($user->listings) }} listings |</span>
+                        <span class="text-muted">{{ count($user->blogs) }} blogs |</span>
+                        <i class="fa-solid fa-star"></i>
+                        <b>{{ round($user->reviews_avg_review_rating, 2) }}</b>
+                        <span class="text-muted">({{ $user->reviews_count }}) |</span>
+                        <i class="fa-solid fa-paper-plane purple-ice"></i>
+                        <b>{{ $user->applications_count }}</b>
+                    </p>
                     <p class="card-text">"{!!  nl2br(e($user->user_description)) !!}"</p>
                     <ul class="social-icons">
                         <li><a class="icons" href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
-                        <li><a class="icons" href="https://github.com/VietNggRMIT/homie-g1"><i class="fa-brands fa-youtube"></i></a></li>  
+                        <li><a class="icons" href="https://github.com/VietNggRMIT/homie-g1"><i class="fa-brands fa-youtube"></i></a></li>
                     </ul>
                     <br>
                         <div class="quick-info">
                             <ul>
-                                <li><p><i class="fa-solid fa-address-card"></i> ID: {{ $user->id }}</p></li>
-                                <li><p><i class="fa-regular fa-compass"></i> Binh Duong, Viet Nam</p></li>
-                                <li><p><i class="fa-solid fa-mobile-screen"></i> Phone: {{ $user->user_phone_number }}</p></li>
-                                <li><p><i class="fa-regular fa-envelope"></i> Email: {{ $user->user_email_address }}</p></li>
-                                <li><p><i class="fa-regular fa-user"></i> Member since {{ $user->created_at }}</p></li>
-                                <li><p><i class="fa-sharp fa-solid fa-cake-candles"></i> D.O.B: 6/12/2000</p></li>
+                                <li><p><i class="fa-solid fa-address-card"></i>ID: {{ $user->id }}</p></li>
+                                <li><p><i class="fa-regular fa-compass"></i>Location: Binh Duong, Viet Nam</p></li>
+                                <li><p><i class="fa-solid fa-mobile-screen"></i>Phone: {{ $user->user_phone_number }}</p></li>
+                                <li><p><i class="fa-regular fa-envelope"></i>Email: {{ $user->user_email_address }}</p></li>
+                                <li><p><i class="fa-regular fa-user"></i>Member since: {{ $user->created_at }}</p></li>
+                                <li><p><i class="fa-solid fa-cake-candles"></i>Date of Birth: 6/12/2000</p></li>
                             </ul>
                         </div>
                         <hr>
@@ -50,7 +58,7 @@
         <div class="col-lg-8">
             <div class="card mb-3">
                 <div class="dashboard-title">
-                    <div class="h2 m-3 ms-4">Your property listings</div>
+                    <div class="h2 m-3 ms-4">Property Listings ({{ $user->listings_count }})</div>
                 </div>
                 <hr>
                 <div class="row">
@@ -64,7 +72,7 @@
                                         @if($listing->listingimages->isEmpty())
                                             <div class="carousel-item active">
                                                 <img src="https://via.placeholder.com/300.png/" class="d-block" alt="listing-img">
-                                            </div>   
+                                            </div>
                                         @else
                                             <div class="carousel-item active">
                                                 <img src="{{ asset('storage/images/').'/'.$listing->listingimages->first()->listing_image_path }}" class="d-block" alt="listing-img">
@@ -124,22 +132,22 @@
                                             <span>{{ (float) $listing->reviews_avg_review_rating }}</span>
                                             <span class="sum-review light-gray">({{ (int) $listing->reviews_count }})</span>
                                         </div>
-                                    </div>  
+                                    </div>
                                 </div>
                             </a>
                         </div>
 
-                    @endforeach 
+                    @endforeach
 
                 </div>
                 <div class="show-more d-flex justify-content-center mb-3">
                     <button class="btn btn-outline-primary me-3">Show more</button>
-                    <a class="btn btn-outline-primary" href="{{ route('listings.create', ['user' => $user->id]) }}">Create a listing</a>
+                    <a class="btn btn-outline-primary" href="{{ route('listings.create', ['user' => $user]) }}">Create a listing</a>
                 </div>
             </div>
             <div class="card mb-3">
                 <div class="dashboard-title">
-                    <div class="h3 m-3 ms-4">Your blogposts</div>
+                    <div class="h3 m-3 ms-4">Blogs ({{ $user->blogs_count }})</div>
                 </div>
                 <hr>
                 <div class="row row-cols-1 row-cols-md-2 g-4">

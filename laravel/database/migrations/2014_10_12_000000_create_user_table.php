@@ -50,7 +50,7 @@ return new class extends Migration {
     {
         Schema::create('user', function (Blueprint $table) {
             $table->id();
-            $table->string('user_email_address')->unique()->nullable()->default("");
+            $table->string('user_email_address')->unique();
             $table->string('user_phone_number')->unique();
             $table->string('user_password');
             $table->string('user_real_name');

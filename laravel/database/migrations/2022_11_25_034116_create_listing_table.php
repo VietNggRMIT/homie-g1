@@ -22,7 +22,8 @@ return new class extends Migration
             $table->enum('listing_address_subdivision_1', $vietnam_provinces);
             $table->string('listing_address_subdivision_2')->nullable();
             $table->string('listing_address_subdivision_3')->nullable();
-            $table->point('listing_address_coordinate');
+            $table->integer('listing_address_latitude');
+            $table->integer('listing_address_longitude');
 //            $table->string('listing_image')->nullable(); // formerly binary('listing_image')->nullable();
             $table->integer('listing_price');
 //            $table->integer('listing_rating')->nullable();
@@ -44,7 +45,7 @@ return new class extends Migration
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();
         });
-        DB::statement('ALTER TABLE listing ADD SPATIAL INDEX(listing_address_coordinate);');
+//        DB::statement('ALTER TABLE listing ADD SPATIAL INDEX(listing_address_coordinate);');
     }
 
     /**

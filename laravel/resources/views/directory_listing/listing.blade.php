@@ -4,6 +4,13 @@
 
     <div class="container">
 
+        @if(session('success'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <span>Listing ID: {{ $listing->id }} is saved to the database!</span>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
+
         <div class="row mt-5">
             <div class="col-xl">
 
@@ -67,7 +74,7 @@
                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
                             <span class="visually-hidden">Next</span>
                         </button>
-                    </div>                       
+                    </div>
                 </div>
 
             </div>
@@ -149,7 +156,7 @@
 
                     <div class="card-body">
                         <div class="title mb-3">
-                            <div class="h3">Listing amenities</div>
+                            <div class="h3">Listing Amenities</div>
                         </div>
                         <hr class="baby">
                         <div class="row listing-amenities align-items-center justify-content-around text-center gy-3 mb-3">
@@ -164,13 +171,13 @@
                                     <i class="fa-solid fa-user-shield"></i>
                                     <span>With owner</span>
                                 </div>
-                            @else   
+                            @else
                                 <div class="listing-feature">
                                     <i class="fa-solid fa-user-slash"></i>
                                     <span>Without owner</span>
                                 </div>
                             @endif
-                                
+
                             </div>
                             <div class="col listing-feature" id="spec_size">
                                 <i class="fa-solid fa-ruler-combined"></i>
@@ -197,7 +204,7 @@
                                 <span>{{ (float) $listing->reviews_avg_review_rating }}</span>
                                 <span class="sum-review light-gray">({{ (int) $listing->reviews_count }})</span>
                             </div>
-                        </div>  
+                        </div>
                     </div>
                     <div class="card-footer">
                         <div class="h5 text-center mt-1">
@@ -218,7 +225,7 @@
             <div class="col col-lg-7">
                 <div class="card p-3">
                     <div class="title mt-3">
-                        <div class="h2">Owner information</div>
+                        <div class="h2">Owner</div>
                         <hr class="baby">
                     </div>
                     <div class="row gx-4">
@@ -233,8 +240,10 @@
                                     <div class="h3">{{ $listing->user->user_real_name }}</div>
                                     <div class="listing-rating">
                                         <i class="fa-solid fa-star"></i>
-                                        <span>4.7</span>
-                                        <span class="sum-review light-gray">(32)</span>
+                                        <span>{{ round($listing->reviews_avg_review_rating, 2) }}</span>
+                                        <span class="sum-review light-gray">({{ $listing->reviews_count }}) and</span>
+                                        <i class="fa-solid fa-paper-plane purple-ice"></i>
+                                        <b>{{ $listing->applications_count }}</b>
                                     </div>
                                 </div>
                             </div>
@@ -269,10 +278,20 @@
             <div class="col col-lg-5 embed-map">
                 <div class="card listing-map px-3 py-3">
                     <div class="title mt-3">
-                        <div class="h2">Listing location</div>
+                        <div class="h2">Google Maps Location</div>
                         <hr class="baby">
                     </div>
-                    <div class="h1">EMBED MAP HERE!</div>
+                    <div>
+                        <iframe
+                            width="100%"
+                            height="400"
+                            style="border:0"
+                            allowfullscreen=""
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"
+                            src="https://maps.google.com/maps?q={{$listing->listing_address_latitude.",".$listing->listing_address_longitude}}&amp;t=&amp;z=12&amp;iwloc=B&amp;output=embed">
+                        </iframe>
+                    </div>
                 </div>
             </div>
         </div>
@@ -281,13 +300,13 @@
             <div class="col col-lg-7">
                 <div class="card px-3 py-3">
                     <div class="title mt-3">
-                        <div class="h3">Reviews ({{ (int) $listing->reviews_count }} review(s))</div>
+                        <div class="h3">Reviews ({{ (int) $listing->reviews_count }})</div>
                         <hr class="baby">
                     </div>
-                    
+
                     <div>
                         @if($listing->reviews->isEmpty())
-        
+
                         @else
                             @foreach ($listing->reviews as $review)
                                 <div class="row review-block mb-5">
@@ -324,7 +343,7 @@
             <div class="col col-lg-5 review-form">
                 <div class="card px-3 py-3">
                     <div class="title mt-3">
-                        <div class="h3">Leave a review</div>
+                        <div class="h3">Leave a Review</div>
                         <hr class="baby">
                     </div>
                     <div class="review-form">
@@ -353,7 +372,7 @@
                                 <div class="h6">Comments</div>
                                 <textarea name="review_description" class="form-control mb-3" rows="4"></textarea>
                             </div>
-                            
+
                             <input type="number" name="listing_id" hidden="true" class="form-control" value={{ $listing->id }}>
                             <button class="btn btn-warning" type="submit" value="submit">Submit review</button>
                         </form>
@@ -406,7 +425,7 @@
                 @if ($listing->listing_specification_owner == 1)
                     {{-- <div>$listing->listing_specification_owner: {{ $listing->listing_specification_owner }}</div>
                     <div>Lives with owner</div>
-                @else   
+                @else
                     <div>Doesnt live with owner</div>
                 @endif
                 <div>$listing->listing_specification_tenant: {{ $listing->listing_specification_tenant }}</div>
