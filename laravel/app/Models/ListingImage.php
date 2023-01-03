@@ -9,6 +9,7 @@ class ListingImage extends Model
 {
     use HasFactory;
     protected $table = 'listing_image'; // to bind 'ListingImage.php' with 'image' MySQL table
+    protected $guarded = []; // Related to upload files/images
 
     public function listing()
     {

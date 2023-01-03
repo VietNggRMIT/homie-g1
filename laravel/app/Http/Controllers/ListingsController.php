@@ -43,7 +43,7 @@ class ListingsController extends Controller
     public function create(Request $request)
     {
         return response()
-            ->view('directory_listing.listing_create', ['from' => 'create', 'user' => $request->user], 200);
+            ->view('directory_listing.listing_create', ['user' => $request->user], 200);
     }
 
     /**
@@ -54,23 +54,47 @@ class ListingsController extends Controller
      */
     public function store(Request $request)
     {
+        // First Part
         $listing = new Listing;
+
         $listing->listing_name = $request->listing_name;
         $listing->listing_description = $request->listing_description;
         $listing->listing_address_subdivision_1 = $request->listing_address_subdivision_1;
         $listing->listing_address_subdivision_2 = $request->listing_address_subdivision_2;
         $listing->listing_address_subdivision_3 = $request->listing_address_subdivision_3;
-        $listing->listing_address_coordinate = $request->listing_address_coordinate;
-        $listing->listing_price = $request->listing_price;
-        $listing->listing_available = $request->listing_available;
+        $listing->listing_address_latitude = $request->listing_address_latitude;
+        $listing->listing_address_longitude = $request->listing_address_longitude;
+        $listing->listing_price = str_replace(',', '', $request->listing_price);
+        if ($request->listing_available == "on") {
+            $listing->listing_available = 1;
+        } else {
+            $listing->listing_available = 0;
+        }
         $listing->listing_specification_bathroom = $request->listing_specification_bathroom;
         $listing->listing_specification_bedroom  = $request->listing_specification_bedroom;
         $listing->listing_specification_size = $request->listing_specification_size;
-        $listing->listing_specification_owner = $request->listing_specification_owner;
+        if ($request->listing_specification_owner == "on") {
+            $listing->listing_specification_owner = 1;
+        } else {
+            $listing->listing_specification_owner = 0;
+        }
         $listing->listing_specification_tenant = $request->listing_specification_tenant;
         $listing->user_id = $request->user_id;
         $listing->save();
-        return redirect()->action([ListingsController::class, 'show'],['listing' => $listing]);
+
+        // Second Part, save all image(s) to the listing_images table
+        if($request->has('listingimages')) {
+            foreach ($request->file('listingimages') as $image) {
+                $imageName = 'image-'.time().rand(1,100000000).'.'.$image->extension();
+                $image->move(storage_path('app\public\images'), $imageName);
+                ListingImage::create([
+                    'listing_image_path' => $imageName,
+                    'listing_id' => $listing->id,
+                ]);
+            }
+        }
+
+        return redirect()->action([ListingsController::class, 'show'],['listing' => $listing])->with('success', 'Added');
     }
 
     /**
@@ -120,10 +144,10 @@ class ListingsController extends Controller
     public function edit(Listing $listing)
     {
         $custom_listing = Listing::with('user')
-        ->find($listing->id);
+            ->find($listing->id);
 
         return response()
-            ->view('directory_listing.listing_create', ['listing' => $custom_listing, 'from' => 'update'], 200);
+            ->view('directory_listing.listing_create', ['listing' => $custom_listing], 200);
     }
 
     /**
@@ -135,6 +159,7 @@ class ListingsController extends Controller
      */
     public function update(Request $request, $listing_id)
     {
+        // First Part
         $listing = Listing::find($listing_id);
 
         $listing->listing_name = $request->listing_name;
@@ -142,18 +167,39 @@ class ListingsController extends Controller
         $listing->listing_address_subdivision_1 = $request->listing_address_subdivision_1;
         $listing->listing_address_subdivision_2 = $request->listing_address_subdivision_2;
         $listing->listing_address_subdivision_3 = $request->listing_address_subdivision_3;
-        $listing->listing_address_coordinate = $request->listing_address_coordinate;
-        $listing->listing_price = $request->listing_price;
-        $listing->listing_available = $request->listing_available;
+        $listing->listing_address_latitude = $request->listing_address_latitude;
+        $listing->listing_address_longitude = $request->listing_address_longitude;
+        $listing->listing_price = str_replace(',', '', $request->listing_price);
+        if ($request->listing_available == "on") {
+            $listing->listing_available = 1;
+        } else {
+            $listing->listing_available = 0;
+        }
         $listing->listing_specification_bathroom = $request->listing_specification_bathroom;
         $listing->listing_specification_bedroom  = $request->listing_specification_bedroom;
         $listing->listing_specification_size = $request->listing_specification_size;
-        $listing->listing_specification_owner = $request->listing_specification_owner;
+        if ($request->listing_specification_owner == "on") {
+            $listing->listing_specification_owner = 1;
+        } else {
+            $listing->listing_specification_owner = 0;
+        }
         $listing->listing_specification_tenant = $request->listing_specification_tenant;
         $listing->user_id = $request->user_id;
         $listing->save();
-        
-        return redirect()->action([ListingsController::class, 'show'],['listing' => $listing]);
+
+        // Second Part, save all image(s) to the listing_images table
+        if($request->has('listingimages')) {
+            foreach ($request->file('listingimages') as $image) {
+                $imageName = 'image-'.time().rand(1,100000000).'.'.$image->extension();
+                $image->move(storage_path('app\public\images'), $imageName);
+                ListingImage::create([
+                    'listing_image_path' => $imageName,
+                    'listing_id' => $listing->id,
+                ]);
+            }
+        }
+
+        return redirect()->action([ListingsController::class, 'show'],['listing' => $listing])->with('success', 'Added');
     }
 
     /**

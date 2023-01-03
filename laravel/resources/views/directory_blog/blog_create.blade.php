@@ -6,7 +6,7 @@
 <head>
     <title>Add or Edit Blog</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+{{--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">--}}
     @vite(['resources/css/app.css', 'resources/js/customScript.js', 'resources/js/app.js', 'webfonts.css'])
 </head>
 <body>
@@ -72,6 +72,6 @@
       </form>
     </div>
   </div>
-</div>  
+</div>
 </body>
 </html>
