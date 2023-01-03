@@ -45,7 +45,7 @@
                                     <button class="btn btn-outline-danger" type="submit">Log out</button>
                                 </form>
                                 <li class="nav-item">
-                                    <a class="nav-link create-listing" href="#"> <i class="fa-solid fa-plus"></i> Create listing</a>
+                                    <a class="nav-link create-listing" href="{{ route('listings.create', ['user' => session('user')->id]) }}"> <i class="fa-solid fa-plus"></i> Create listing</a>
                                 </li>
                             @else
                                 <li class="nav-item">

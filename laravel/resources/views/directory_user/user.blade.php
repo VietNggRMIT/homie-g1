@@ -20,7 +20,7 @@
                     <div class="card-body text-center">
                     <hr>
                     <div class="card-name h3 mb-3">{{ $user->user_real_name }}</div>
-                    <p><i class="fa-solid fa-star"></i> <b>4.7</b> (32)</p>
+                    <p><i class="fa-solid fa-star"></i> <b>{{ count($user->listings) }} listings</b> {{ count($user->blogs) }} blogs</p>
                     <p class="card-text">"{!!  nl2br(e($user->user_description)) !!}"</p>
                     <ul class="social-icons">
                         <li><a class="icons" href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
