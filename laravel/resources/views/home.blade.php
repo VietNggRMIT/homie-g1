@@ -203,7 +203,9 @@
                             </p>
                         </div>
                         <div class="row">
-                            <p><b>Updated at:</b> {{ $blog->updated_at }}</p>
+                            <p class="text-muted" data-toggle="tooltip" data-placement="top" title="{{ $blog->updated_at }}">
+                                Last updated: {{ date_diff(new \DateTime($blog->updated_at), new \DateTime(now()))->format("%m months, %d days, %h hours") }} ago
+                            </p>
                         </div>
                     </div>
 

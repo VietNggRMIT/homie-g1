@@ -44,6 +44,7 @@
                     <div class="card blog-card gy-3 px-3 py-2 mb-1 smooth-transition">
                         <div class="row align-items-center">
 
+                            {{-- Left Col --}}
                             <div class="col-md-8">
                                 <div class="row">
                                     <a class="card-title h5 mb-3 smooth-transition" href="{{ route('blogs.show', ['blog' => $blog]) }}">
@@ -59,6 +60,8 @@
                                     </p>
                                 </div>
                             </div>
+
+                            {{-- Right Col --}}
                             <div class="col-md-4">
                                 <div class="row">
                                     <p>
@@ -69,10 +72,12 @@
                                     </p>
                                 </div>
                                 <div class="row">
-                                    <p><b>Updated at:</b> {{ $blog->updated_at }}</p>
+                                    <p class="text-muted" data-toggle="tooltip" data-placement="top" title="{{ $blog->updated_at }}">
+                                        Last updated: {{ date_diff(new \DateTime($blog->updated_at), new \DateTime(now()))->format("%m months, %d days, %h hours") }} ago
+                                    </p>
                                 </div>
                             </div>
-                            
+
                         </div>
                     </div>
 

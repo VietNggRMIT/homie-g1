@@ -14,7 +14,7 @@
                 <div class="card dashboard-account mx-auto">
                     <div class="profile-pic-section mt-3">
                         <div class="profile-pic-container">
-                            <img class="card-img-top"  src="{{ asset('storage/images/').'/'.$user->user_image_path }}" alt="Card image cap">
+                            <img class="card-img-top" src="{{ asset('storage/images/').'/'.$user->user_image_path }}" alt="Card image cap">
                         </div>
                     </div>
                     <div class="card-body text-center">

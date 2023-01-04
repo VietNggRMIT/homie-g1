@@ -40,7 +40,14 @@
                             </li>
                             @if(session('user'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('users.show', ['user' => session('user')]) }}"> <i class="fa-solid fa-user-gear"></i> User</a>
+                                    <a class="nav-link" href="{{ route('users.show', ['user' => session('user')]) }}">
+                                        <div class="d-flex">
+                                            <div style="width: 25px; height: 25px">
+                                                <img class="img-fluid rounded" src="{{ asset('storage/images/').'/'.session('user')->user_image_path }}" alt="profile image">
+                                            </div>
+                                            <div>Profile</div>
+                                        </div>
+                                    </a>
                                 </li>
                                 <form class="nav-item" method="POST" action="{{ url("logout/{session('user')}") }}">
                                     @csrf
