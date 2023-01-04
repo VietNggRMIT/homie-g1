@@ -81,7 +81,7 @@ class UserTableSeeder extends Seeder
                     'user_phone_number' => fake()->unique()->e164PhoneNumber(),
                     'user_password' => fake()->password(),
                     'user_real_name' => fake()->name(),
-                    'user_image_path' => "user_image_path_".fake()->numberBetween(1, 3).".jpg",
+                    'user_image_path' => "user_image_path.jpg",
                     'user_description' => fake()->realTextBetween(10, 100, 2),
                     'created_at' => now()->toDateTimeString(),
                     'updated_at' => now()->toDateTimeString()

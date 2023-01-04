@@ -31,7 +31,7 @@
                             <label for="user_email_address" class="mb-1">{{ __('Email Address') }}</label>
                             <div class="input-group">
                                 <i class="fa-solid fa-envelope"></i>
-                                <input id="user_email_address" type="email" class="form-control @error('user_email_address') is-invalid @enderror" name="user_email_address" value="{{ old('user_email_address') }}" required autocomplete="user_email_address" placeholder="Email">
+                                <input id="user_email_address" type="email" class="form-control @error('user_email_address') is-invalid @enderror" name="user_email_address" value="{{ old('user_email_address') }}" required autocomplete="user_email_address" placeholder="sample@gmail.com">
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -57,7 +57,7 @@
                             <label for="password-confirm" class="mb-1">{{ __('Confirm Password') }}</label>
                             <div class="input-group">
                                 <i class="fa-solid fa-key"></i>
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirm" required autocomplete="new-user_password" placeholder="Confirm password">
+                                <input id="password-confirm" type="password" class="form-control" name="password_confirm" required autocomplete="new-user_password" placeholder="Re-type Password">
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -72,7 +72,7 @@
                             <label for="user_real_name" class="mb-1">{{ __('Name') }}</label>
                             <div class="input-group">
                                 <i class="fa-solid fa-user"></i>
-                                <input id="user_real_name" type="text" class="form-control" name="user_real_name" value="{{ old('user_real_name') }}" required autocomplete="user_real_name" placeholder="Name" autofocus>
+                                <input id="user_real_name" type="text" class="form-control" name="user_real_name" value="{{ old('user_real_name') }}" required autocomplete="user_real_name" placeholder="Linus Torvalds" autofocus>
                             </div>
                         </div>
 
@@ -81,7 +81,7 @@
                             <label for="user_phone_number" class="mb-1">{{ __('Phone number') }}</label>
                             <div class="input-group">
                                 <i class="fa-solid fa-phone"></i>
-                                <input id="user_phone_number" type="text" class="form-control" name="user_phone_number" value="{{ old('user_phone_number') }}" required autocomplete="user_phone_number" placeholder="Phone number" autofocus>
+                                <input id="user_phone_number" type="text" class="form-control" name="user_phone_number" value="{{ old('user_phone_number') }}" required autocomplete="user_phone_number" placeholder="012354435" autofocus>
                             </div>
                         </div>
 

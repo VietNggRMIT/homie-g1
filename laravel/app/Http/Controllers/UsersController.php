@@ -66,7 +66,7 @@ class UsersController extends Controller
             $user->user_image_path = basename($path);
         }
         else{
-            $user->user_image_path = 'user_image_path_1.jpg';
+            $user->user_image_path = 'user_image_path.jpg';
         }
         $user->save();
         session(['user' => $user]);
@@ -167,7 +167,7 @@ class UsersController extends Controller
             $user->user_image_path = basename($path);
         }
         else{
-            $user->user_image_path = 'user_image_path_1.jpg';
+            $user->user_image_path = 'user_image_path.jpg';
         }
         $user->id = $request->user_id;
         $user->save();
