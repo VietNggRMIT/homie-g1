@@ -18,13 +18,16 @@ class ReviewFactory extends Factory
      */
     public function definition()
     {
-
+        $date_max = fake()->date();
+        $time_max = fake()->time();
         return [
             'review_name' => fake()->optional()->name(),
             'review_description' => fake()->realTextBetween(10, 200, 2),
             'review_rating' => fake()->numberBetween(1,5),
             'review_image_path' => ['richard-stallman.png', 'linus-torvalds.webp'][array_rand([0, 1])],
             'listing_id' => Listing::factory(),
+            'created_at' => fake()->dateTimeBetween('1970-01-01 01:01:01', $date_max." ".$time_max),
+            'updated_at' => $date_max." ".$time_max,
         ];
     }
 }

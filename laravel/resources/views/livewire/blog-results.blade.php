@@ -54,7 +54,7 @@
                                 <div class="row">
                                     <p>
                                         <i class="fa-solid fa-calendar-days"></i>
-                                        {{ $blog->created_at }}
+                                        {{ date_diff(new DateTime($blog->created_at), new DateTime(now()))->format("%m months, %d days, %h hours") }} ago
                                         <i class="fa-solid fa-hashtag purple-ice"></i>
                                         {{ $blog->id }}
                                     </p>
@@ -73,7 +73,7 @@
                                 </div>
                                 <div class="row">
                                     <p class="text-muted" data-toggle="tooltip" data-placement="top" title="{{ $blog->updated_at }}">
-                                        Last updated: {{ date_diff(new \DateTime($blog->updated_at), new \DateTime(now()))->format("%m months, %d days, %h hours") }} ago
+                                        Last updated: {{ date_diff(new DateTime($blog->updated_at), new DateTime(now()))->format("%m months, %d days, %h hours") }} ago
                                     </p>
                                 </div>
                             </div>

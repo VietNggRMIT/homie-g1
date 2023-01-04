@@ -17,12 +17,15 @@ class BlogFactory extends Factory
      */
     public function definition()
     {
+        $date_max = fake()->date();
+        $time_max = fake()->time();
         return [
-            //
 //            'blog_name' => fake()->realTextBetween(10, 100, 2),
             'blog_name' => fake()->words(10, true), // === sentence(4);
             'blog_description' => fake()->paragraphs(5, true),
             'user_id' => User::factory(),
+            'created_at' => fake()->dateTimeBetween('1970-01-01 01:01:01', $date_max." ".$time_max),
+            'updated_at' => $date_max." ".$time_max,
         ];
     }
 }

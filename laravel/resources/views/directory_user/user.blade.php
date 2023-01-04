@@ -168,7 +168,7 @@
                                     <p class="card-text">{{ $blog->blog_name }}</p>
                                 </div>
                                 <div class="card-footer">
-                                    <small class="text-muted">Last updated {{ date_diff(new \DateTime($blog->updated_at), new \DateTime(now()))->format("%m months, %d days, %h hours") }} ago</small>
+                                    <small class="text-muted">Last updated: {{ date_diff(new DateTime($blog->updated_at), new DateTime(now()))->format("%m months, %d days, %h hours") }} ago</small>
                                 </div>
                             </a>
                         </div>

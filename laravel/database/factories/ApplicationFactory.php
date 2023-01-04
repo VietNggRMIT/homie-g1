@@ -17,10 +17,14 @@ class ApplicationFactory extends Factory
      */
     public function definition()
     {
+        $date_max = fake()->date();
+        $time_max = fake()->time();
         return [
             //
             'application_description' => fake()->paragraphs(2, true),
             'listing_id' => Listing::factory(),
+            'created_at' => fake()->dateTimeBetween('1970-01-01 01:01:01', $date_max." ".$time_max),
+            'updated_at' => $date_max." ".$time_max,
         ];
     }
 }

@@ -148,7 +148,7 @@
                                 </div>
                                 <div class="card-footer">
                                     <small class="text-muted" data-toggle="tooltip" data-placement="top" title="{{ $listing->updated_at }}">
-                                        Last updated: {{ date_diff(new \DateTime($listing->updated_at), new \DateTime(now()))->format("%m months, %d days, %h hours") }} ago
+                                        Last updated: {{ date_diff(new DateTime($listing->updated_at), new DateTime(now()))->format("%m months, %d days, %h hours") }} ago
                                     </small>
                                 </div>
                             </a>

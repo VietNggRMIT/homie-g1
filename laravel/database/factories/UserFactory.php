@@ -57,6 +57,9 @@ class UserFactory extends Factory
      */
     public function definition()
     {
+        $date_max = fake()->date();
+        $time_max = fake()->time();
+
         return [
 //            $table->string('user_email_address')->unique();
 //            $table->string('user_phone_number')->unique();
@@ -77,8 +80,10 @@ class UserFactory extends Factory
             'user_real_name' => fake()->name(),
 //            'user_image_path' => "user_image_path_".fake()->optional()->numberBetween(1, 3).".jpg",
             'user_image_path' => "user_image_path_".fake()->numberBetween(1, 3).".jpg",
-            'user_description' => fake()->realTextBetween(10, 100, 2)
-//            'user_description' => fake()->paragraphs(2, true)
+            'user_description' => fake()->realTextBetween(10, 100, 2),
+//            'user_description' => fake()->paragraphs(2, true),
+            'created_at' => fake()->dateTimeBetween('1970-01-01 01:01:01', $date_max." ".$time_max),
+            'updated_at' => $date_max." ".$time_max
         ];
     }
 }

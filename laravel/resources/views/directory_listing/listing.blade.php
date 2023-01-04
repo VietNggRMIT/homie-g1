@@ -404,7 +404,7 @@
                                         <div class="d-flex justify-content-between mb-1">
                                             <div class="d-flex flex-column">
                                                 <div class="p">Review name: {{ $review->review_name }}</div>
-                                                <div class="text-muted">{{ $review->created_at }}</div>
+                                                <div class="text-secondary text-opacity-25">{{ date_diff(new DateTime($review->created_at), new DateTime(now()))->format("%m months, %d days, %h hours") }} ago</div>
                                             </div>
                                             <div class="d-flex">
                                                 @for ($i = 0; $i < $review->review_rating; $i++)
