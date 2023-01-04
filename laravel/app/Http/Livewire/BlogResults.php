@@ -14,8 +14,8 @@ class BlogResults extends Component
 
     public function filter()
     {
-        $this->resetPage();
-        $this->setPage(1);
+        // $this->resetPage();
+        // $this->setPage(1);
         if($this->searchName != '' || $this->order != 'byID'){
             $this->searched = true;
             $this->everChanged = true;
