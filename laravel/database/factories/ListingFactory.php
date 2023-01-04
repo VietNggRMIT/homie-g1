@@ -32,8 +32,8 @@ class ListingFactory extends Factory
 //            'listing_description' => fake()->optional()->realTextBetween(10, 500, 5),
             'listing_description' => fake()->optional()->paragraphs(3, true),
             'listing_address_subdivision_1' => fake()->randomElement($vietnam_provinces), // fake()->city()
-            'listing_address_subdivision_2' => fake()->optional()->streetAddress(),
-            'listing_address_subdivision_3' => fake()->optional()->streetName(),
+            'listing_address_subdivision_2' => fake()->optional()->streetName(),
+            'listing_address_subdivision_3' => fake()->optional()->streetAddress(),
             'listing_address_latitude' => fake()->latitude($min = 20, $max = 21),
             'listing_address_longitude' => fake()->longitude($min = 104, $max = 106),
 //            'listing_address_coordinate' => new Point($x,  $y, 4326),

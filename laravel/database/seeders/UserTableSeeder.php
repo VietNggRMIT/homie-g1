@@ -73,9 +73,12 @@ class UserTableSeeder extends Seeder
 //            });
 
         // VERSION 3: LazyCollection, with array_chunk
+        // Yes (X,Y): 10000 10, 1000 n/a
+        // No (X,Y): 10000 5000, 10000 1000, 10000 n/a, 5000 n/a,
         LazyCollection::make(function () {
             $i = 0;
-            while ($i < 400000) {
+            $date_time_max = fake()->dateTimeBetween();
+            while ($i < 1500) {
                 yield $user = [
                     'user_email_address' => fake()->unique()->freeEmail(),
                     'user_phone_number' => fake()->unique()->e164PhoneNumber(),
@@ -83,8 +86,10 @@ class UserTableSeeder extends Seeder
                     'user_real_name' => fake()->name(),
                     'user_image_path' => "user_image_path.jpg",
                     'user_description' => fake()->realTextBetween(10, 100, 2),
-                    'created_at' => now()->toDateTimeString(),
-                    'updated_at' => now()->toDateTimeString()
+//                    'created_at' => fake()->dateTimeBetween('1970-01-01 01:01:01', $date_time_max),
+//                    'updated_at' => $date_time_max,
+                    'created_at' => fake()->dateTimeBetween('-20 years ', '-10 years'),
+                    'updated_at' => fake()->dateTimeBetween('-5 years ', '-2 years'),
                 ];
                 $i++;
             }
@@ -93,13 +98,10 @@ class UserTableSeeder extends Seeder
             ->each(function ($users) {
 
                 // From 10,000 chunks divided into Y smaller array_chunks
-                // Yes (X,Y): 10000 10, 1000 n/a
-                // No (X,Y): 10000 5000, 10000 1000, 10000 n/a, 5000 n/a,
 //                $chunks = array_chunk($users->toArray(), 1000);
 //                foreach($chunks as $chunk) {
                     User::insert($users->toArray());
 //                }
-
             });
     }
 }

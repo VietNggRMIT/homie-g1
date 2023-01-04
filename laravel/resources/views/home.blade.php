@@ -145,8 +145,8 @@
 {{--                            <div><i class="fa-solid fa-paper-plane purple-ice"></i> {{ (int) $listing->applications_count }}</div>--}}
                             <div class="listing-rating">
                                 <i class="fa-solid fa-star"></i>
-                                <span>{{ round( (float) $listing->reviews_avg_review_rating, 2) }}</span>
-                                <span class="sum-review light-gray">({{ (int) $listing->reviews_count }})</span>
+                                <span>{{ round( (float) $listing->reviews->avg('review_rating'), 2) }}</span>
+                                <span class="sum-review light-gray">({{ count($listing->reviews) }})</span>
                             </div>
                         </div>
                     </div>

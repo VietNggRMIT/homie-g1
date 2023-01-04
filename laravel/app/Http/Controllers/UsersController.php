@@ -97,15 +97,23 @@ class UsersController extends Controller
             ->with('listings.listingimages:listing_image_path,listing_id')
 //            ->with('listings.reviews') // Cannot query grandchildren
 //            ->with('listings.applications') // Cannot query grandchildren
-            ->with(['listings' => function($query){
-                $query->withAvg('reviews', 'review_rating');
-                $query->withCount('reviews');
-                $query->withCount('applications');
-            }])
+
+            // Thanh Nguyen (04 Jan 2023)
+//            ->with(['listings' => function($query){
+//                $query->withAvg('reviews', 'review_rating');
+//                $query->withCount('reviews');
+//                $query->withCount('applications');
+//            }])
+            // Thanh Nguyen (04 Jan 2023)
+
 //            ->withCount(['listings', 'reviews']) // Can't do this since it would AVG of all listings
 //            ->withCount(['listings', 'applications']) // Can't do this it would COUNT of all applications received
-            ->withCount(['listings', 'reviews', 'applications', 'blogs']) // Get COUNT of these four
-            ->withAvg('reviews','review_rating') // Get AVG COUNT of this column
+
+            // Thanh Nguyen (04 Jan 2023)
+//            ->withCount(['listings', 'reviews', 'applications', 'blogs']) // Get COUNT of these four
+//            ->withAvg('reviews','review_rating') // Get AVG COUNT of this column
+            // Thanh Nguyen (04 Jan 2023)
+
             ->with('blogs')
             ->find($user->id);
 

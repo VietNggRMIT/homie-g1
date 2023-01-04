@@ -27,50 +27,76 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-//        $this->call([
-//            UserTableSeeder::class,
-//            ListingTableSeeder::class,
-//            ReviewTableSeeder::class,
-//            BlogTableSeeder::class,
-//            ApplicationTableSeeder::class,
-//            ListingImageTableSeeder::class,
-//        ]);
+        $this->call([
+            UserTableSeeder::class,
+            ListingTableSeeder::class,
+            ReviewTableSeeder::class,
+            BlogTableSeeder::class,
+            ApplicationTableSeeder::class,
+            ListingImageTableSeeder::class,
+        ]);
+
+        // ADMIN TEST ACCOUNT
+        $sample_admin = User::create([
+            'user_email_address' => 'admin@gmail.com',
+            'user_phone_number' => '07689425214',
+            'user_password' => 'admin',
+            'user_real_name' => 'admin real name',
+            'user_image_path' => "user_image_path.jpg",
+            'user_description' => fake()->realTextBetween(10, 100, 2),
+            'created_at' => fake()->dateTimeBetween('-20 years ', '-10 years'),
+            'updated_at' => fake()->dateTimeBetween('-5 years ', '-2 years'),
+        ]);
+        for ($i = 1; $i < 4; $i++) {
+            Listing::factory()
+                ->count(1)
+                ->recycle($sample_admin)
+                ->has(Review::factory()->times(rand(2,5)))
+                ->has(Application::factory()->times(rand(1,10)))
+                ->has(ListingImage::factory()->times(rand(1,2)))
+                ->create();
+            Blog::factory()
+                ->count(1)
+                ->recycle($sample_admin)
+                ->create();
+        }
+        // END ADMIN TEST ACCOUNT
 
 //        =============================================================================================
 //        !IMPORTANT: DO NOT DELETE BELOW
 //        =============================================================================================
 
-        $users = User::factory()
-            ->count(10)
-            ->create();
-
-        $listings = Listing::factory()
-            ->count(50)
-            ->recycle($users)
-//            ->has(Review::factory()->times(2))
-//            ->has(Application::factory()->times(2))
-//            ->has(ListingImage::factory()->times(2))
-            ->create();
-
-        Review::factory()
-            ->count(300)
-            ->recycle($listings)
-            ->create();
-
-        Blog::factory()
-            ->count(50)
-            ->recycle($users)
-            ->create();
-
-        Application::factory()
-            ->count(300)
-            ->recycle($listings)
-            ->create();
-
-        ListingImage::factory()
-            ->count(300)
-            ->recycle($listings)
-            ->create();
+//        $users = User::factory()
+//            ->count(10)
+//            ->create();
+//
+//        $listings = Listing::factory()
+//            ->count(50)
+//            ->recycle($users)
+////            ->has(Review::factory()->times(2))
+////            ->has(Application::factory()->times(2))
+////            ->has(ListingImage::factory()->times(2))
+//            ->create();
+//
+//        Review::factory()
+//            ->count(300)
+//            ->recycle($listings)
+//            ->create();
+//
+//        Blog::factory()
+//            ->count(50)
+//            ->recycle($users)
+//            ->create();
+//
+//        Application::factory()
+//            ->count(300)
+//            ->recycle($listings)
+//            ->create();
+//
+//        ListingImage::factory()
+//            ->count(300)
+//            ->recycle($listings)
+//            ->create();
 
 //        =============================================================================================
 //        !IMPORTANT: DO NOT DELETE BELOW

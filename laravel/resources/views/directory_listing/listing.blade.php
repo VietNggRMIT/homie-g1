@@ -260,7 +260,6 @@
                                 @else
                                     <i class="fa-solid fa-handshake-slash"></i>
                                     <span>Not for Rent</span>
-                                    DEBUG: {{ $listing->listing_available }}
                                 @endif
                             </div>
 

@@ -20,7 +20,6 @@ class Listing extends Model
         'listing_address_latitude',
         'listing_address_longitude',
         'listing_price',
-        'listing_rating',
         'listing_available',
         'listing_specification_bathroom',
         'listing_specification_bedroom',
