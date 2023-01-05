@@ -269,7 +269,7 @@
                     </div>
 
                     {{-- 15 listingimages --}}
-                    <div class="row mb-3">
+                    <div class="row g-2 mb-3 d-flex justify-content-center">
 {{--                        <div class="d-flex justify-content-center align-items-center">--}}
 {{--                            <label for="listing_images">Upload images</label>--}}
 {{--                            <input type="file"--}}
@@ -278,9 +278,8 @@
 {{--                                   accept="image/png, image/jpeg"--}}
 {{--                            >--}}
 {{--                        </div>--}}
-                        <div class="d-flex justify-content-center align-items-center">
-                            <div class="col-6">
-                                <label for="listingimages" class="form-label">Upload Image(s)</label>
+                            <div class="col-md-4">
+                                <label for="listingimages" class="form-label">Upload Listing Image(s)</label>
                                 <input
                                     class="form-control"
                                     type="file"
@@ -291,7 +290,18 @@
                                     accept="image/*"
                                 >
                             </div>
-                        </div>
+                            <div class="col-md-4">
+                                <label for="listingimages" class="form-label">Upload Contract Image(s)</label>
+                                <input
+                                    class="form-control"
+                                    type="file"
+                                    id="listingimages"
+                                    multiple
+                                    name="listingimages[]"
+{{--                                    accept="image/png, image/jpeg"--}}
+                                    accept="image/*"
+                                >
+                            </div>
                     </div>
 
                     {{-- 16 User ID (Hidden) --}}

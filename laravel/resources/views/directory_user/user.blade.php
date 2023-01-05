@@ -24,10 +24,10 @@
                         <span class="text-muted">{{ count($user->listings) }} listings |</span>
                         <span class="text-muted">{{ count($user->blogs) }} blogs |</span>
                         <i class="fa-solid fa-star"></i>
-                        <b>{{ round( (float) $user->reviews_avg_review_rating, 2) }}</b>
-                        <span class="text-muted">({{ $user->reviews_count }}) |</span>
+                        <b>{{ round( (float) $user->reviews->avg('review_rating'), 2) }}</b>
+                        <span class="text-muted">({{ count($user->reviews) }}) |</span>
                         <i class="fa-solid fa-paper-plane purple-ice"></i>
-                        <b>{{ $user->applications_count }}</b>
+                        <b>{{ count($user->applications) }}</b>
                     </p>
                     <p class="card-text">"{!!  nl2br(e($user->user_description)) !!}"</p>
                     <ul class="social-icons">
@@ -62,7 +62,7 @@
         <div class="col-lg-8">
             <div class="card mb-3">
                 <div class="dashboard-title">
-                    <div class="h3 m-3 ms-4">Property Listings ({{ $user->listings_count }})</div>
+                    <div class="h3 m-3 ms-4">Property Listings ({{ count($user->listings) }})</div>
                 </div>
                 <hr>
                 <div class="row">
@@ -134,8 +134,8 @@
                                         <p class="card-text price">{{ number_format( (int) $listing->listing_price) }} VND <span class="light-gray">/mo</span></p>
                                         <div class="listing-rating">
                                             <i class="fa-solid fa-star"></i>
-                                            <span>{{ round( (float) $listing->reviews_avg_review_rating, 2) }}</span>
-                                            <span class="sum-review light-gray">({{ (int) $listing->reviews_count }})</span>
+                                            <span>{{ round( (float) $listing->reviews->avg('review_rating'), 2) }}</span>
+                                            <span class="sum-review light-gray">({{ count($listing->reviews)  }})</span>
                                         </div>
                                     </div>
                                 </div>
@@ -156,7 +156,7 @@
             </div>
             <div class="card mb-3">
                 <div class="dashboard-title">
-                    <div class="h3 m-3 ms-4">Blogs ({{ $user->blogs_count }})</div>
+                    <div class="h3 m-3 ms-4">Blogs ({{ count($user->blogs) }})</div>
                 </div>
                 <hr>
                 <div class="row row-cols-1 row-cols-md-2 g-4">

@@ -2,10 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\Blog;
 use App\Models\User;
+use App\Models\Blog;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\LazyCollection;
 
 class BlogTableSeeder extends Seeder
 {
@@ -16,21 +17,26 @@ class BlogTableSeeder extends Seeder
      */
     public function run()
     {
-//        $blogs = [];
-//        $users_ids = collect(User::all()->modelKeys());
-//        for ($i = 0; $i < 100; $i++) {
-//            $blogs[] = [
-//                'blog_name' => fake()->words(10, true), // === sentence(4);
-//                'blog_description' => fake()->paragraphs(5, true),
-//                'user_id' => $users_ids->random(),
-//                'created_at' => now()->toDateTimeString(),
-//                'updated_at' => now()->toDateTimeString()
-//            ];
-//        }
-//
-//        $chunks = array_chunk($blogs, 100);
-//        foreach($chunks as $chunk) {
-//            Blog::insert($chunk);
-//        }
+        LazyCollection::make(function () {
+            $i = 0;
+            $date_time_max = fake()->dateTimeBetween();
+            $foreign_key = collect(User::all()->modelKeys());
+            while ($i < 4500) {
+                yield $review = [
+                    'blog_name' => fake()->words(10, true), // === sentence(4);
+                    'blog_description' => fake()->paragraphs(5, true),
+                    'user_id' => $foreign_key->random(),
+//                    'created_at' => fake()->dateTimeBetween('1970-01-01 01:01:01', $date_time_max),
+//                    'updated_at' => $date_time_max,
+                    'created_at' => fake()->dateTimeBetween('-20 years ', '-10 years'),
+                    'updated_at' => fake()->dateTimeBetween('-5 years ', '-2 years'),
+                ];
+                $i++;
+            }
+        })
+            ->chunk(1000)
+            ->each(function ($reviews) {
+                Blog::insert($reviews->toArray());
+            });
     }
 }

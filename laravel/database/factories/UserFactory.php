@@ -79,7 +79,7 @@ class UserFactory extends Factory
             'user_password' => fake()->password(),
             'user_real_name' => fake()->name(),
 //            'user_image_path' => "user_image_path_".fake()->optional()->numberBetween(1, 3).".jpg",
-            'user_image_path' => "user_image_path_".fake()->numberBetween(1, 3).".jpg",
+            'user_image_path' => "user_image_path.jpg",
             'user_description' => fake()->realTextBetween(10, 100, 2),
 //            'user_description' => fake()->paragraphs(2, true),
             'created_at' => fake()->dateTimeBetween('1970-01-01 01:01:01', $date_max." ".$time_max),
