@@ -31,7 +31,6 @@ class ListingResults extends Component
     The code below uses elements from:
     *Title: Pagination
     *Author: Laravel Livewire
-    *Date: 
     *Code version: 2.x
     *Availability: https://laravel-livewire.com/docs/2.x/pagination (Accessed 2 January 2023)
     *****************************************************************************/
@@ -157,9 +156,8 @@ class ListingResults extends Component
         The code below uses elements from:
         *Title: Quickstart
         *Author: Laravel Livewire
-        *Date: 
         *Code version: 2.x
-        *Availability: https://laravel-livewire.com/docs/2.x/quickstart (Accessed 1 January 2023)
+        *Availability: https://laravel-livewire.com/docs/2.x/quickstart (Accessed 30 December 2023)
         *****************************************************************************/
         if($this->searchName || $this->searchAddress || $this->filterRating || $this->minPrice != 0 || $this->maxPrice != 20 ||$this->order != 'byID'){
             return view('livewire.listing-results', [
