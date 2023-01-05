@@ -69,7 +69,7 @@
                                 </div>
                             @else
                                 @foreach ($listing->listingimages as $listingimage)
-                                    <div class="carousel-item active">
+                                    <div class="carousel-item">
                                         <img src="{{ asset('storage/images/').'/'.$listingimage->listing_image_path }}" class="d-block w-100" alt="...">
                                     </div>
                                 @endforeach

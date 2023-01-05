@@ -87,13 +87,15 @@
                                 <div id="carouselControls" class="carousel slide card-slider" data-bs-ride="false">
                                     <div class="carousel-inner">
                                         @if($listing->listingimages->isEmpty())
-                                            <div class="carousel-item active">
+                                            <div class="carousel-item">
                                                 <img src="https://via.placeholder.com/300.png/" class="d-block" alt="listing-img">
                                             </div>
                                         @else
-                                            <div class="carousel-item active">
-                                                <img src="{{ asset('storage/images/').'/'.$listing->listingimages->first()->listing_image_path }}" class="d-block" alt="listing-img">
-                                            </div>
+                                            @foreach ($listing->listingimages->all() as $i)
+                                                <div class="carousel-item">
+                                                    <img src="{{ asset('storage/images/').'/'.$i->listing_image_path }}" class="d-block" alt="listing-img">
+                                                </div>
+                                            @endforeach
                                         @endif
                                     </div>
                                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselControls" data-bs-slide="prev">

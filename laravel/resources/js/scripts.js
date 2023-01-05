@@ -11,6 +11,14 @@ $(".card-slider").each(function(i) {
     // console.log(carouselBtn.data('bs-target'));
 });
 
+$(".carousel-inner").each(function () {
+  var carouselDiv = $(this);
+
+  //append active class name to first carousel item
+  carouselDiv.children(".carousel-item:first-child").addClass("active");
+  
+}); 
+
 $(document).ready(function(){
   
     /* 1. Visualizing things on Hover - See next part for action on click */
