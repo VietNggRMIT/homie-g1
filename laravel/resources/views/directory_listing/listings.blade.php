@@ -21,7 +21,15 @@
         <div class="breadcrumb justify-content-center mt-5">
             <h2>{{ Breadcrumbs::render('breadcrumb_listings') }}</h2>
         </div>
-
+        {{-- /*****************************************************************************
+        The code below uses elements from:
+        *Title: Quickstart
+        *Author: Laravel Livewire
+        *Date: 
+        *Code version: 2.x
+        *Availability: https://laravel-livewire.com/docs/2.x/quickstart (Accessed 2 January 2023)
+        *****************************************************************************/ --}}
+        
         <div>
             @livewire('listing-results')
         </div>

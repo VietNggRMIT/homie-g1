@@ -32,6 +32,12 @@ class LoginController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    /*****************************************************************************
+    The code below uses elements from:
+    *Title: Eloquent
+    *Author: Laravel
+    *Availability: https://laravel.com/docs/9.x/eloquent (Accessed 31 November 2022)
+    *****************************************************************************/
     public function store(Request $request)
     {
         // return response()->view('auth.hello');
@@ -76,6 +82,12 @@ class LoginController extends Controller
      * @param  int  $user_id
      * @return \Illuminate\Http\Response
      */
+    /*****************************************************************************
+    The code below uses elements from:
+    *Title: Eloquent
+    *Author: Laravel
+    *Availability: https://laravel.com/docs/9.x/eloquent (Accessed 31 November 2022)
+    *****************************************************************************/
     public function update(Request $request, $user_id)
     {
         $user = User::find($user_id);

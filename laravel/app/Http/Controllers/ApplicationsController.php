@@ -77,6 +77,12 @@ class ApplicationsController extends Controller
             $request->convicted = "no convicted";
         }
 
+    /*****************************************************************************
+    The code below uses elements from:
+    *Title: Eloquent
+    *Author: Laravel
+    *Availability: https://laravel.com/docs/9.x/eloquent (Accessed 31 November 2022)
+    *****************************************************************************/
         $content = sprintf('Applicant: %s; Phone: %s; Email: %s; Date of birth: %s
                     Expected duration: %s; Expected move in date: %s;
                     Expected payment via %s; Vehicle: %s; Pet: %s;

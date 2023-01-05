@@ -17,22 +17,28 @@ class ListingsController extends Controller
      */
     public function index()
     {
-//        ======================DO NOT DELETE======================
-//        $custom_listings = DB::table('listing')
-//            ->leftJoin('user', 'listing.user_id', '=', 'user.id')
-//            ->select('listing.*', 'user.user_real_name')
-//            ->where('listing_available', '1')
-//            ->get();
-//        ======================DO NOT DELETE======================
+    //        ======================DO NOT DELETE======================
+    //        $custom_listings = DB::table('listing')
+    //            ->leftJoin('user', 'listing.user_id', '=', 'user.id')
+    //            ->select('listing.*', 'user.user_real_name')
+    //            ->where('listing_available', '1')
+    //            ->get();
+    //        ======================DO NOT DELETE======================
+    /*****************************************************************************
+    The code below uses elements from:
+    *Title: Eloquent: Relationships
+    *Author: Laravel
+    *Code version: 9.x
+    *Availability: https://laravel.com/docs/9.x/eloquent-relationships (Accessed 2 October 2022)
+    *****************************************************************************/
+    $custom_listings = Listing::with('user')
+        ->with('listingimages:listing_image_path,listing_id')
+        ->withAvg('reviews', 'review_rating')
+        ->withCount('reviews')
+        ->withCount('applications')->paginate(30); //replace get() with paginate()
 
-        $custom_listings = Listing::with('user')
-            ->with('listingimages:listing_image_path,listing_id')
-            ->withAvg('reviews', 'review_rating')
-            ->withCount('reviews')
-            ->withCount('applications')->paginate(30); //replace get() with paginate()
-
-            return response()
-                ->view('directory_listing.listings', ['listings' => $custom_listings], 200);
+        return response()
+            ->view('directory_listing.listings', ['listings' => $custom_listings], 200);
     }
 
     /**
@@ -52,6 +58,13 @@ class ListingsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    /*****************************************************************************
+    The code below uses elements from:
+    *Title: Eloquent
+    *Author: Laravel
+    *Code version: 9.x
+    *Availability: https://laravel.com/docs/9.x/eloquent (Accessed 31 November 2022)
+    *****************************************************************************/
     public function store(Request $request)
     {
         // First Part
@@ -83,6 +96,13 @@ class ListingsController extends Controller
         $listing->save();
 
         // Second Part, save all image(s) to the listing_images table
+        /*****************************************************************************
+        The code below uses elements from:
+        *Title: File Storage
+        *Author: Laravel
+        *Code version: 9.x
+        *Availability: https://laravel.com/docs/9.x/filesystem (Accessed 7 December 2022)
+        *****************************************************************************/
         if($request->has('listingimages')) {
             foreach ($request->file('listingimages') as $image) {
                 $imageName = 'image-'.time().rand(1,100000000).'.'.$image->extension();
@@ -105,39 +125,46 @@ class ListingsController extends Controller
      */
     public function show(Listing $listing)
     {
-//        ======================DO NOT DELETE======================
-//        Not working 1
-//        $new_listing = DB::table('listing')
-//            ->join('listing','user.id', '=', 'listing.user_id')
-//            ->join('listing_image','user.id', '=', 'listing.user_id')
-//            ->where('listing.id', '=', $listing)
-//            ->first();
+    //        ======================DO NOT DELETE======================
+    //        Not working 1
+    //        $new_listing = DB::table('listing')
+    //            ->join('listing','user.id', '=', 'listing.user_id')
+    //            ->join('listing_image','user.id', '=', 'listing.user_id')
+    //            ->where('listing.id', '=', $listing)
+    //            ->first();
 
-//        Not working 1
-//        $custom_listing = DB::table('listing')
-//            ->join('user','user.id', '=', 'listing.user_id')
-//            ->leftJoin('listing_image','listing_image.listing_id', '=', 'listing.id')
-//            ->leftJoin('review','review.listing_id', '=', 'listing.id')
-//            ->leftJoin('application','application.listing_id', '=', 'listing.id')
-//            ->where('listing.id', '=', $listing->id)
-//            ->first();
-//        ======================DO NOT DELETE======================
+    //        Not working 1
+    //        $custom_listing = DB::table('listing')
+    //            ->join('user','user.id', '=', 'listing.user_id')
+    //            ->leftJoin('listing_image','listing_image.listing_id', '=', 'listing.id')
+    //            ->leftJoin('review','review.listing_id', '=', 'listing.id')
+    //            ->leftJoin('application','application.listing_id', '=', 'listing.id')
+    //            ->where('listing.id', '=', $listing->id)
+    //            ->first();
+    //        ======================DO NOT DELETE======================
 
-//        Good 1
-        $custom_listing = Listing::
-            with(['user','listingimages:listing_image_path,listing_id','applications','reviews'])
-            ->withAvg('reviews', 'review_rating')
-            ->withCount('reviews')
-            ->withCount('applications')
-            ->find($listing->id);
+    //        Good 1
+    /*****************************************************************************
+    The code below uses elements from:
+    *Title: Eloquent: Relationships
+    *Author: Laravel
+    *Code version: 9.x
+    *Availability: https://laravel.com/docs/9.x/eloquent-relationships (Accessed 2 October 2022)
+    *****************************************************************************/
+    $custom_listing = Listing::
+        with(['user','listingimages:listing_image_path,listing_id','applications','reviews'])
+        ->withAvg('reviews', 'review_rating')
+        ->withCount('reviews')
+        ->withCount('applications')
+        ->find($listing->id);
 
-        $custom_user = User::
-            withCount(['reviews', 'applications']) // Get COUNT of these two
-            ->withAvg('reviews','review_rating') // Get AVG COUNT of this column
-            ->find($listing->user_id);
-
-        return response()
-            ->view('directory_listing.listing', ['listing' => $custom_listing, 'custom_user' => $custom_user], 200);
+    $custom_user = User::
+        withCount(['reviews', 'applications']) // Get COUNT of these two
+        ->withAvg('reviews','review_rating') // Get AVG COUNT of this column
+        ->find($listing->user_id);
+    
+    return response()
+        ->view('directory_listing.listing', ['listing' => $custom_listing, 'custom_user' => $custom_user], 200);
     }
 
     /**
@@ -162,6 +189,13 @@ class ListingsController extends Controller
      * @param  $listing_id
      * @return \Illuminate\Http\Response
      */
+    /*****************************************************************************
+    The code below uses elements from:
+    *Title: Eloquent
+    *Author: Laravel
+    *Code version: 9.x
+    *Availability: https://laravel.com/docs/9.x/eloquent (Accessed 31 November 2022)
+    *****************************************************************************/
     public function update(Request $request, $listing_id)
     {
         // First Part
@@ -193,6 +227,13 @@ class ListingsController extends Controller
         $listing->save();
 
         // Second Part, save all image(s) to the listing_images table
+        /*****************************************************************************
+        The code below uses elements from:
+        *Title: File Storage
+        *Author: Laravel
+        *Code version: 9.x
+        *Availability: https://laravel.com/docs/9.x/filesystem (Accessed 7 December 2022)
+        *****************************************************************************/
         if($request->has('listingimages')) {
             foreach ($request->file('listingimages') as $image) {
                 $imageName = 'image-'.time().rand(1,100000000).'.'.$image->extension();
@@ -213,6 +254,13 @@ class ListingsController extends Controller
      * @param  $listing_id the listing id
      * @return \Illuminate\Http\Response
      */
+    /*****************************************************************************
+    The code below uses elements from:
+    *Title: Eloquent
+    *Author: Laravel
+    *Code version: 9.x
+    *Availability: https://laravel.com/docs/9.x/eloquent (Accessed 31 November 2022)
+    *****************************************************************************/
     public function destroy($listing_id)
     {
         $success = Listing::destroy($listing_id);

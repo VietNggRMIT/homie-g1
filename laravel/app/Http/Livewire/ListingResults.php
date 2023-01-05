@@ -6,7 +6,7 @@ use App\Models\Listing;
 use App\Models\User;
 use Livewire\WithPagination;
 use Livewire\Component;
-//create a new livewire called 'listing-results' and move this there
+
 class ListingResults extends Component
 {
     use WithPagination;
@@ -26,16 +26,16 @@ class ListingResults extends Component
         'searchAddress' => ['except' => ''],
     ];
     public $isChanged = false; //check if the searchAddress term has been changed (backspace)
-    // public $listings;
-    // protected $listeners = ['reloadListings'];
+   
+    /*****************************************************************************
+    The code below uses elements from:
+    *Title: Pagination
+    *Author: Laravel Livewire
+    *Date: 
+    *Code version: 2.x
+    *Availability: https://laravel-livewire.com/docs/2.x/pagination (Accessed 2 January 2023)
+    *****************************************************************************/
 
-    // public function mount(){
-    //     $this->listings = Listing::with('user')
-    //     ->with('listingimages:listing_image_path,listing_id')
-    //     ->withAvg('reviews', 'review_rating')
-    //     ->withCount('reviews')
-    //     ->withCount('applications')->get();
-    // }
     public function filter()
     {
         $this->resetPage();
@@ -52,6 +52,13 @@ class ListingResults extends Component
         $this->isChanged = true;
         $this->everChanged = true;
     }
+    /*****************************************************************************
+    The code below uses elements from:
+    *Title: Lifecycle Hooks
+    *Author: Laravel Livewire
+    *Code version: 2.x
+    *Availability: https://laravel-livewire.com/docs/2.x/pagination (Accessed 2 January 2023)
+    *****************************************************************************/
     public function updated(){
         $this->resetPage();
         $this->setPage(1);
@@ -145,6 +152,15 @@ class ListingResults extends Component
             default:
                 $listings = $listings->orderBy('id', 'asc');
         }
+        
+        /*****************************************************************************
+        The code below uses elements from:
+        *Title: Quickstart
+        *Author: Laravel Livewire
+        *Date: 
+        *Code version: 2.x
+        *Availability: https://laravel-livewire.com/docs/2.x/quickstart (Accessed 1 January 2023)
+        *****************************************************************************/
         if($this->searchName || $this->searchAddress || $this->filterRating || $this->minPrice != 0 || $this->maxPrice != 20 ||$this->order != 'byID'){
             return view('livewire.listing-results', [
                 'listings' => $listings->get(),

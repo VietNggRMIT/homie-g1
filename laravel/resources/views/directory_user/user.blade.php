@@ -46,6 +46,14 @@
                             </ul>
                         </div>
                         <hr>
+                        {{-- /*****************************************************************************
+                        The code below uses elements from:
+                        *Title: Database: Routing
+                        *Author: Laravel
+                        *Date: 
+                        *Code version: 9.x
+                        *Availability: https://laravel.com/docs/9.x/routing (Accessed 5 November 2022)
+                        *****************************************************************************/ --}}
                         @if(session('user'))
                             @if (session('user')->id == $user->id)
                                 <div class="acc-options-btns d-grid gap-2 md-block">

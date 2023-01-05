@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 use App\Models\Blog;
 use App\Models\User;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class BlogResults extends Component
 {
@@ -11,6 +12,15 @@ class BlogResults extends Component
     public $order = 'byID';
     public $searched = false;
     public $everChanged = false;
+
+    /*****************************************************************************
+    The code below uses elements from:
+    *Title: Pagination
+    *Author: Laravel Livewire
+    *Date: 
+    *Code version: 2.x
+    *Availability: https://laravel-livewire.com/docs/2.x/pagination (Accessed 2 January 2023)
+    *****************************************************************************/
 
     public function filter()
     {
@@ -24,6 +34,13 @@ class BlogResults extends Component
             $this->searched = false;
         }
     }
+    /*****************************************************************************
+    The code below uses elements from:
+    *Title: Lifecycle Hooks
+    *Author: Laravel Livewire
+    *Code version: 2.x
+    *Availability: https://laravel-livewire.com/docs/2.x/pagination (Accessed 2 January 2023)
+    *****************************************************************************/
     public function updatedsearchName(){
         // $this->resetPage();
         // $this->setPage(1);
@@ -65,6 +82,15 @@ class BlogResults extends Component
             default:
                 $blogs = $blogs->orderBy('id', 'asc');
         }
+
+        /*****************************************************************************
+        The code below uses elements from:
+        *Title: Quickstart
+        *Author: Laravel Livewire
+        *Date: 
+        *Code version: 2.x
+        *Availability: https://laravel-livewire.com/docs/2.x/quickstart (Accessed 1 January 2023)
+        *****************************************************************************/
         if($this->searchName != '' || $this->order != 'byID'){ //some search going on -> no pagination
             return view('livewire.blog-results', [
                 'blogs' => $blogs->get(),

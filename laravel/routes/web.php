@@ -20,6 +20,14 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+/*****************************************************************************
+The code below uses elements from:
+*Title: Database: Routing
+*Author: Laravel
+*Date: 
+*Code version: 9.x
+*Availability: https://laravel.com/docs/9.x/routing (Accessed 5 November 2022)
+*****************************************************************************/
 
 // ==========================How to call Controller==========================
 //Route::get('/listing/{id}', [ListingsController::class, 'index']);

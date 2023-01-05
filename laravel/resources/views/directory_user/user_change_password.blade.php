@@ -26,6 +26,14 @@
                     @if (isset($message))
                         <div class="alert alert-danger" role="alert">{{ $message }}</div>
                     @endif
+                    {{-- /*****************************************************************************
+                    The code below uses elements from:
+                    *Title: 	CSRF Protection
+                    *Author: Laravel
+                    *Code version: 9.x
+                    *Availability: https://laravel.com/docs/9.x/csrf (Accessed 7 December 2022)
+                    *****************************************************************************/ --}}
+
                     <form method="POST" action="{{ url("update-login/{$user->id}") }}" enctype="multipart/form-data">
                         @csrf    
 

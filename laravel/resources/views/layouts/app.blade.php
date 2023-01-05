@@ -17,6 +17,13 @@
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        {{-- /*****************************************************************************
+                        The code below uses elements from:
+                        *Title: Database: Routing
+                        *Author: Laravel
+                        *Code version: 9.x
+                        *Availability: https://laravel.com/docs/9.x/routing (Accessed 5 November 2022)
+                        *****************************************************************************/ --}}
                         <ul class="navbar-nav ms-auto nav-icons align-items-center">
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('route_home') }}"> <i class="fa-solid fa-house"></i> Home</a>
@@ -93,7 +100,13 @@
                             the future should we pursue it.
                             </p>
                         </div>
-
+                        {{-- /*****************************************************************************
+                        The code below uses elements from:
+                        *Title: Database: Routing
+                        *Author: Laravel
+                        *Code version: 9.x
+                        *Availability: https://laravel.com/docs/9.x/routing (Accessed 5 November 2022)
+                        *****************************************************************************/ --}}
                         <div class="col-xs-6 col-md-3">
                             <h6>Categories</h6>
                             <ul class="footer-links">

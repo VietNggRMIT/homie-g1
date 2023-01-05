@@ -33,6 +33,12 @@ class UsersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    /*****************************************************************************
+    The code below uses elements from:
+    *Title: Eloquent
+    *Author: Laravel
+    *Availability: https://laravel.com/docs/9.x/eloquent (Accessed 31 November 2022)
+    *****************************************************************************/
     public function store(Request $request)
     {
         $user = new User;
@@ -59,6 +65,14 @@ class UsersController extends Controller
             return response()->view('auth.register', ['message' => 'Wrong input format.']);
         }
         $user->user_description = $request->user_description;
+        
+        /*****************************************************************************
+        The code below uses elements from:
+        *Title: File Storage
+        *Author: Laravel
+        *Code version: 9.x
+        *Availability: https://laravel.com/docs/9.x/filesystem (Accessed 7 December 2022)
+        *****************************************************************************/
         if($request->hasFile(('image_upload'))){
             $file = $request->file('image_upload');
             $filename = str_replace(' ', '', $user->user_real_name) . '.' . $file->extension();
@@ -79,6 +93,12 @@ class UsersController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
+    /*****************************************************************************
+    The code below uses elements from:
+    *Title: Eloquent
+    *Author: Laravel
+    *Availability: https://laravel.com/docs/9.x/eloquent (Accessed 31 November 2022)
+    *****************************************************************************/
     public function show(User $user)
     {
 
@@ -140,6 +160,12 @@ class UsersController extends Controller
      * @param  $user_id
      * @return \Illuminate\Http\Response
      */
+    /*****************************************************************************
+    The code below uses elements from:
+    *Title: Eloquent
+    *Author: Laravel
+    *Availability: https://laravel.com/docs/9.x/eloquent (Accessed 31 November 2022)
+    *****************************************************************************/
     public function update(Request $request, $user_id)
     {
         $user = User::find($user_id);
@@ -150,14 +176,6 @@ class UsersController extends Controller
             }
         }
         $user->user_email_address = $request->user_email_address;
-
-
-        // if($request->password_confirm != $request->user_password){
-        //     return response()->view('directory_user.user_update', ['user' => $user, 'message' => 'Password does not match.']);
-        // }
-        // else{
-        //     $user->user_password = $request->user_password;
-        // }
         $user->user_real_name = $request->user_real_name;
         //match 098... and +849282...
         if(preg_match('/[+]?([0-9])*/', $request->user_phone_number, $match)){
@@ -168,6 +186,13 @@ class UsersController extends Controller
         }
         $user->user_description = $request->user_description;
 
+        /*****************************************************************************
+        The code below uses elements from:
+        *Title: File Storage
+        *Author: Laravel
+        *Code version: 9.x
+        *Availability: https://laravel.com/docs/9.x/filesystem (Accessed 7 December 2022)
+        *****************************************************************************/
         if($request->hasFile(('image_upload'))){
             $file = $request->file('image_upload');
             $filename = str_replace(' ', '', $user->user_real_name) . '.' . $file->extension();
