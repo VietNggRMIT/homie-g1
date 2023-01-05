@@ -11,7 +11,7 @@
 
 @section('content')
 
-    <div class="container mt-4">
+    <div class="container my-5">
 
         <div class="card edit-form p-3">
             <!-- <div class="card-header text-center font-weight-bold">Add or Edit Blog Post Form</div> -->
@@ -88,7 +88,7 @@
 
                     {{-- 4. Submit Buton --}}
                     <div class="text-center">
-                        <button type="submit" class="custom-btn btn-1 purple-ice">Submit</button>
+                        <button type="submit" class="custom-btn btn-1 purple-ice mt-5">Submit</button>
                     </div>
 
               </form> {{-- form end --}}

@@ -17,7 +17,7 @@
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav ms-auto nav-icons">
+                        <ul class="navbar-nav ms-auto nav-icons align-items-center">
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('route_home') }}"> <i class="fa-solid fa-house"></i> Home</a>
                             </li>
@@ -45,13 +45,13 @@
                                             <div style="width: 25px; height: 25px">
                                                 <img class="img-fluid rounded" src="{{ asset('storage/images/').'/'.session('user')->user_image_path }}" alt="profile image">
                                             </div>
-                                            <div>Profile</div>
+                                            <div class="ms-1">Profile</div>
                                         </div>
                                     </a>
                                 </li>
                                 <form class="nav-item" method="POST" action="{{ url("logout/{session('user')}") }}">
                                     @csrf
-                                    <button class="btn btn-outline-danger" type="submit">Log out</button>
+                                    <button class="btn btn-outline-danger me-2" type="submit">Log out</button>
                                 </form>
                                 <li class="nav-item">
                                     <a class="nav-link create-listing" href="{{ route('listings.create', ['user' => session('user')->id]) }}"> <i class="fa-solid fa-plus"></i> Create listing</a>

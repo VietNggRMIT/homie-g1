@@ -19,6 +19,22 @@ $(".carousel-inner").each(function () {
   
 }); 
 
+$(".carousel-indicators").each(function () {
+  var carouselIndicators = $(this);
+
+  //append active class name to first carousel item
+  carouselIndicators.children(".indicator-btn:first-child").addClass("active");
+  
+}); 
+
+//accommodate dynamic number of carousel indicators
+$(".indicator-btn").each(function (i) {
+  var indicatorBtn = $(this);
+  indicatorBtn.attr("data-bs-slide-to", i);
+});
+
+
+
 $(document).ready(function(){
   
     /* 1. Visualizing things on Hover - See next part for action on click */

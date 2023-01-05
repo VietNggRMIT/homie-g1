@@ -5,25 +5,25 @@
     <div class="container">
 
         @if(session('listing_success_store'))
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
                 <span>Saved listing ID: {{ $listing->id }} to the database!</span>
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         @endif
         @if(session('listing_success_update'))
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
                 <span>Updated listing ID: {{ $listing->id }} to the database!</span>
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         @endif
         @if(session('application_success_store'))
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
                 <span>You successfully applied to the listing ID: {{ $listing->id }}!</span>
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         @endif
         @if(session('review_success_store'))
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
                 <span>You successfully reviewed to the listing ID: {{ $listing->id }}!</span>
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
@@ -33,16 +33,16 @@
             <div class="col-xl">
 
                 <div class="listing-img-carousel">
-                    <div id="carouselExampleIndicators" class="carousel slide listing-carousel" data-bs-ride="true">
+                    <div id="carouselExampleIndicators" class="carousel slide listing-carousel" data-bs-ride="false">
                         <div class="carousel-indicators">
                             <!-- $listing->listingimages: -->
                             @if($listing->listingimages->isEmpty())
-                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1">
+                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="indicator-btn" aria-current="true" aria-label="Slide 1">
                                     <img src="https://via.placeholder.com/300.png/" class="d-block w-100 img-fluid">
                                 </button>
                             @else
                                 @foreach ($listing->listingimages as $listingimage)
-                                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1">
+                                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="indicator-btn" aria-current="true" aria-label="Slide 1">
                                         <img src="{{ asset('storage/images/').'/'.$listingimage->listing_image_path }}" class="d-block w-100 img-fluid">
                                     </button>
                                 @endforeach
@@ -62,7 +62,7 @@
                                 <img src="php1\resources\listing_image\3.jpg" class="d-block w-100 img-fluid">
                             </button> -->
                         </div>
-                        <div class="carousel-inner">
+                        <div class="carousel-inner detail-carousel">
                             @if($listing->listingimages->isEmpty())
                                 <div class="carousel-item">
                                     <img src="https://via.placeholder.com/300.png/" class="d-block w-100" alt="...">
@@ -132,11 +132,11 @@
         >
             Submit an application to this listing
         </button> -->
-        <div class="breadcrumb justify-content-center">
+        <div class="breadcrumb justify-content-center mt-3">
             <h2>{{ Breadcrumbs::render('breadcrumb_listing', $listing) }}</h2>
         </div>
 
-        <div class="row listing-description mt-5">
+        <div class="row listing-description mt-3">
             <div class="col col-xl-7">
 
                 <div class="card listing-details">
@@ -419,7 +419,7 @@
                             @endforeach
                         @endif
                     </div>
-                    <button class="btn btn-outline-primary">Load more reviews</button>
+                    <!-- <button class="btn btn-outline-primary">Load more reviews</button> -->
                 </div>
             </div>
             <div class="col col-lg-5 review-form">
