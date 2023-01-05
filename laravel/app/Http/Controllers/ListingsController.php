@@ -149,6 +149,7 @@ class ListingsController extends Controller
     public function edit(Listing $listing)
     {
         $custom_listing = Listing::with('user')
+            ->with('listingimages')
             ->find($listing->id);
 
         return response()

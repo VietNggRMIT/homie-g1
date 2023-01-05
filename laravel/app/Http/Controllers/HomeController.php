@@ -32,6 +32,7 @@ class HomeController extends Controller
 //            ->withCount('applications')
 //            ->limit(3) // here is yours limit
         $listings = Listing::inRandomOrder()
+            ->with('listingimages')
             ->limit(3)
             ->get();
 
@@ -59,7 +60,6 @@ class HomeController extends Controller
             User::count(),
             Blog::count(),
         ];
-
 
         return response()
             ->view('home', [

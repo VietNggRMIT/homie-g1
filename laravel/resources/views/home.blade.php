@@ -64,7 +64,7 @@
     <div class="mb-3">
         <hr>
         <div class="d-flex justify-content-between align-items-center">
-            <h1>Listings</h1>
+            <h1>Listings ({{ $custom_count[0] }})</h1>
             <button onclick="window.location.href='{{ route('listings.index') }}';" type="button" class="custom-btn btn-1">
                 See more
             </button>
@@ -77,42 +77,56 @@
         @foreach ($listings as $listing)
             <div class="col">
                 <a class="card listing-card" href="{{ route('listings.show', ['listing' => $listing]) }}">
-                    <div id="carouselControls" class="carousel slide card-slider" data-bs-ride="false">
-                        <div class="carousel-inner">
-                            @if($listing->listingimages->isEmpty())
-                                <div class="carousel-item">
-                                    <img src="https://via.placeholder.com/300.png/" class="d-block" alt="listing-img">
-                                </div>
 
+                    {{-- Part 1. Top Card --}}
+                    <div id="carouselID{{ $loop->index }}" class="carousel slide carousel-dark" data-bs-ride="true">
+
+                        {{-- Part 1.1. Indicators --}}
+                        @if (count($listing->listingimages) >= 2)
+                            <div class="carousel-indicators">
+                                @foreach ($listing->listingimages as $listingimage)
+                                    @if ($loop->first)
+                                        <button type="button" data-bs-target="#carouselID{{ $loop->index }}" data-bs-slide-to="{{ $loop->index }}" class="active" aria-current="true" aria-label="Slide {{ $loop->index }}"></button>
+                                    @else
+                                        <button type="button" data-bs-target="#carouselID{{ $loop->index }}" data-bs-slide-to="{{ $loop->index }}" aria-label="Slide {{ $loop->index }}"></button>
+                                    @endif
+                                @endforeach
+                            </div>
+                        @endif
+
+                        {{-- Part 1.2. Images --}}
+                        <div class="carousel-inner">
+                            @if ($listing->listingimages->isEmpty())
+                                <div class="carousel-item active opacity-25">
+                                    <img src="{{ asset('storage/images/listing_image_path_default.png')}}" class="d-block rounded-4" style="max-height: 100%; min-height: 100%; object-fit: contain">
+                                </div>
                             @else
-                                @foreach ($listing->listingimages->all() as $i)
-                                    <div class="carousel-item">
-                                        <img src="{{ asset('storage/images/').'/'.$i->listing_image_path }}" class="d-block" alt="listing-img">
+                                @foreach ($listing->listingimages as $listingimage)
+                                    <div @if ($loop->first) class="carousel-item active" @else class="carousel-item" @endif>
+                                        {{-- img tag old class: class="d-block w-100 rounded-4" --}}
+                                        <img src="{{ asset('storage/images').'/'.$listingimage->listing_image_path }}" class="d-block rounded-4" style="max-height: 100%; min-height: 100%; object-fit: contain">
                                     </div>
                                 @endforeach
                             @endif
-                            <!-- <div class="carousel-item active">
-                                <img src="php1\resources\listing_image\1.jpg" class="d-block" alt="listing-img">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="php1\resources\listing_image\2.jpg" class="d-block" alt="listing-img">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="php1\resources\listing_image\3.jpg" class="d-block" alt="listing-img">
-                            </div> -->
                         </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselControls" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselControls" data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
+
+                        {{-- Part 1.3. Buttons --}}
+                        @if (count($listing->listingimages) >= 2)
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselID{{ $loop->index }}" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselID{{ $loop->index }}" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        @endif
                     </div>
+
+                    {{-- Part 2. Middle Card --}}
                     <div class="card-body">
                         <h5 class="card-title">{{ $listing->listing_name }}</h5>
-                        <p class="mb-1">Posted by: {{ $listing->user->user_real_name }}</p>
+                        <p class="text-secondary text-opacity-25 mb-1">Posted by: {{ $listing->user->user_real_name }}</p>
 {{--                        <p class="mb-1" onclick="window.location.href='{{ route('users.show', ['user' => $listing->user]) }}';">Posted by: {{ $listing->user->user_real_name }}</p>--}}
                         <div class="card-listing-location d-flex mb-2">
                             <i class="fa-solid fa-location-dot"></i>
@@ -142,21 +156,31 @@
                             </div>
                         </div>
                         <hr>
+
+                        {{-- Part 2.1. Listing Price, Application, Review --}}
                         <div class="card-price-rating d-flex">
-                            <p class="card-text price">{{ number_format( (int) $listing->listing_price) }} VND<span class="light-gray">/mo</span></p>
-{{--                            <div><i class="fa-solid fa-paper-plane purple-ice"></i> {{ (int) $listing->applications_count }}</div>--}}
-                            <div class="listing-rating">
-                                <i class="fa-solid fa-star"></i>
-                                <span>{{ round( (float) $listing->reviews->avg('review_rating'), 2) }}</span>
-                                <span class="sum-review light-gray">({{ count($listing->reviews) }})</span>
+                            <p class="card-text price">{{ number_format( (int) $listing->listing_price) }} VND<span class="text-secondary text-opacity-25">/mo</span></p>
+                            <div class="d-flex justify-content-end">
+                                <div class="pe-2">
+                                    <i class="fa-solid fa-paper-plane purple-ice"></i>
+                                    <span>{{ count($listing->applications) }}</span>
+                                </div>
+                                <div class="listing-rating">
+                                    <i class="fa-solid fa-star"></i>
+                                    <span>{{ round( (float) $listing->reviews->avg('review_rating'), 2) }}</span>
+                                    <span class="sum-review text-secondary text-opacity-25">({{ count($listing->reviews) }})</span>
+                                </div>
                             </div>
                         </div>
                     </div>
+
+                    {{-- Part 3. Bottom Card --}}
                     <div class="card-footer">
-                        <small class="text-muted" data-toggle="tooltip" data-placement="top" title="{{ $listing->updated_at }}">
-                            Last updated: {{ date_diff(new DateTime($listing->updated_at), new DateTime(now()))->format("%m months, %d days, %h hours") }} ago
+                        <small class="text-secondary text-opacity-25" data-toggle="tooltip" data-placement="top" title="{{ $listing->updated_at }}">
+                            Last updated: {{ date_diff(new DateTime($listing->updated_at), new DateTime(now()))->format("%m months, %d days") }} ago
                         </small>
                     </div>
+
                 </a>
             </div>
         @endforeach
@@ -166,7 +190,7 @@
     <div class="mb-3">
         <hr>
         <div class="l-blogheader d-flex justify-content-between align-items-center">
-            <h1>Blogs</h1>
+            <h1>Blogs ({{ $custom_count[5] }})</h1>
             <button onclick="window.location.href='{{ route('blogs.index') }}';" type="button" class="custom-btn btn-1">
                 See more
             </button>
@@ -189,7 +213,7 @@
                         <div class="row">
                             <p>
                                 <i class="fa-solid fa-calendar-days"></i>
-                                {{ date_diff(new DateTime($listing->updated_at), new DateTime(now()))->format("%m months, %d days, %h hours") }} ago
+                                {{ date_diff(new DateTime($listing->updated_at), new DateTime(now()))->format("%m months, %d days") }} ago
                                 <i class="fa-solid fa-hashtag purple-ice"></i>
                                 {{ $blog->id }}
                             </p>
@@ -206,7 +230,7 @@
                         </div>
                         <div class="row">
                             <p class="text-muted" data-toggle="tooltip" data-placement="top" title="{{ $blog->updated_at }}">
-                                Last updated: {{ date_diff(new DateTime($blog->updated_at), new DateTime(now()))->format("%m months, %d days, %h hours") }} ago
+                                Last updated: {{ date_diff(new DateTime($blog->updated_at), new DateTime(now()))->format("%m months, %d days") }} ago
                             </p>
                         </div>
                     </div>

@@ -29,87 +29,53 @@
             </div>
         @endif
 
-        <div class="row mt-5">
-            <div class="col-xl">
+        <div class="card listing-card responsive-listings mt-3">
+            {{-- Part 1. Top Card --}}
+            <div id="carouselID9999" class="carousel slide carousel-dark" data-bs-ride="true">
 
-                <div class="listing-img-carousel">
-                    <div id="carouselExampleIndicators" class="carousel slide listing-carousel" data-bs-ride="false">
-                        <div class="carousel-indicators">
-                            <!-- $listing->listingimages: -->
-                            @if($listing->listingimages->isEmpty())
-                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="indicator-btn" aria-current="true" aria-label="Slide 1">
-                                    <img src="https://via.placeholder.com/300.png/" class="d-block w-100 img-fluid">
-                                </button>
+                {{-- Part 1.1. Indicators --}}
+                @if (count($listing->listingimages) >= 2)
+                    <div class="carousel-indicators">
+                        @foreach ($listing->listingimages as $listingimage)
+                            @if ($loop->first)
+                                <button type="button" data-bs-target="#carouselID{{ $loop->index }}" data-bs-slide-to="{{ $loop->index }}" class="active" aria-current="true" aria-label="Slide {{ $loop->index }}"></button>
                             @else
-                                @foreach ($listing->listingimages as $listingimage)
-                                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="indicator-btn" aria-current="true" aria-label="Slide 1">
-                                        <img src="{{ asset('storage/images/').'/'.$listingimage->listing_image_path }}" class="d-block w-100 img-fluid">
-                                    </button>
-                                @endforeach
+                                <button type="button" data-bs-target="#carouselID{{ $loop->index }}" data-bs-slide-to="{{ $loop->index }}" aria-label="Slide {{ $loop->index }}"></button>
                             @endif
-                            <!-- @foreach ($listing->listingimages as $listingimage)
-                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1">
-                                    <img src="{{ asset('storage/images/').'/'.$listingimage->listing_image_path }}" class="d-block w-100 img-fluid">
-                                </button>
-                            @endforeach -->
-                            <!-- <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1">
-                                <img src="php1\resources\listing_image\1.jpg" class="d-block w-100 img-fluid">
-                            </button>
-                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2">
-                                <img src="php1\resources\listing_image\2.jpg" class="d-block w-100 img-fluid">
-                            </button>
-                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3">
-                                <img src="php1\resources\listing_image\3.jpg" class="d-block w-100 img-fluid">
-                            </button> -->
-                        </div>
-                        <div class="carousel-inner detail-carousel">
-                            @if($listing->listingimages->isEmpty())
-                                <div class="carousel-item">
-                                    <img src="https://via.placeholder.com/300.png/" class="d-block w-100" alt="...">
-                                </div>
-                            @else
-                                @foreach ($listing->listingimages as $listingimage)
-                                    <div class="carousel-item">
-                                        <img src="{{ asset('storage/images/').'/'.$listingimage->listing_image_path }}" class="d-block w-100" alt="...">
-                                    </div>
-                                @endforeach
-                            @endif
-                            <!-- <div class="carousel-item active">
-                                <img src="php1\resources\listing_image\1.jpg" class="d-block w-100" alt="...">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="php1\resources\listing_image\2.jpg" class="d-block w-100" alt="...">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="php1\resources\listing_image\3.jpg" class="d-block w-100" alt="...">
-                            </div> -->
-                        </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
+                        @endforeach
                     </div>
+                @endif
+
+                {{-- Part 1.2. Images --}}
+                <div class="carousel-inner">
+                    @if ($listing->listingimages->isEmpty())
+                        <div class="carousel-item active opacity-25">
+                            <img src="{{ asset('storage/images/listing_image_path_default.png')}}" class="d-block rounded-4" style="max-height: 100%; min-height: 100%; object-fit: contain">
+                        </div>
+                    @else
+                        @foreach ($listing->listingimages as $listingimage)
+                            <div @if ($loop->first) class="carousel-item active" @else class="carousel-item" @endif>
+                                {{-- img tag old class: class="d-block w-100 rounded-4" --}}
+                                <img src="{{ asset('storage/images').'/'.$listingimage->listing_image_path }}" class="d-block rounded-4" style="max-height: 100%; min-height: 100%; object-fit: contain">
+                            </div>
+                        @endforeach
+                    @endif
                 </div>
 
+                {{-- Part 1.3. Buttons --}}
+                @if (count($listing->listingimages) >= 2)
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselID9999" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselID9999" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                @endif
             </div>
         </div>
-        @if(session('user'))
-            @if (session('user')->id == $listing->user->id)
-                <div class="listing-modifications d-flex justify-content-end mt-3">
-                    <form class="" method="POST" action="{{ url("delete-listing/{$listing->id}") }}">
-                        @csrf
-                        <button class="btn btn-outline-danger" type="submit">Delete this listing</button>
-                    </form>
-                    <div class="ms-3">
-                        <a class="btn btn-outline-primary" href="{{ route('listings.edit', ['listing' => $listing]) }}">Edit this listing</a>
-                    </div>
-                </div>
-            @endif
-        @endif
+
         <!-- <button
             onclick="window.location.href='{{ route('listings.edit', ['listing' => $listing]) }}';"
             type="button"
@@ -132,6 +98,7 @@
         >
             Submit an application to this listing
         </button> -->
+
         <div class="breadcrumb justify-content-center mt-3">
             <h2>{{ Breadcrumbs::render('breadcrumb_listing', $listing) }}</h2>
         </div>
@@ -178,15 +145,31 @@
                             @endif
                         </div>
 
+                        {{-- 5. Edit & Delete Buttons --}}
+                        @if(session('user'))
+                            @if (session('user')->id == $listing->user->id)
+                                <div class="listing-modifications d-flex justify-content-end mt-3">
+                                    <div>
+                                        <a class="btn btn-sm btn-outline-secondary" href="{{ route('listings.edit', ['listing' => $listing]) }}">Edit</a>
+                                    </div>
+                                    <form class="ms-3" method="POST" action="{{ url("delete-listing/{$listing->id}") }}">
+                                        @csrf
+                                        <button class="btn btn-sm btn-outline-danger" type="submit">Delete</button>
+                                    </form>
+                                </div>
+                            @endif
+                        @endif
+
                     </div>
-                    {{-- 5. Updated Date --}}
+
+                    {{-- 6. Updated Date --}}
                     <div class="card-footer">
                         <div class="d-flex justify-content-between">
-                            <small class="text-muted" data-toggle="tooltip" data-placement="top" title="{{ $listing->updated_at }}">
-                                Posted: {{ date_diff(new DateTime($listing->created_at), new DateTime(now()))->format("%m months, %d days, %h hours") }} ago
+                            <small class="text-secondary text-opacity-25" data-toggle="tooltip" data-placement="top" title="{{ $listing->created_at }}">
+                                Posted: {{ date_diff(new DateTime($listing->created_at), new DateTime(now()))->format("%m months, %d days") }} ago
                             </small>
-                            <small class="text-muted" data-toggle="tooltip" data-placement="top" title="{{ $listing->updated_at }}">
-                                Last updated: {{ date_diff(new DateTime($listing->updated_at), new DateTime(now()))->format("%m months, %d days, %h hours") }} ago
+                            <small class="text-secondary text-opacity-25" data-toggle="tooltip" data-placement="top" title="{{ $listing->updated_at }}">
+                                Last updated: {{ date_diff(new DateTime($listing->updated_at), new DateTime(now()))->format("%m months, %d days") }} ago
                             </small>
                         </div>
                     </div>
@@ -266,11 +249,11 @@
                         </div> {{-- close 6 amenities div tag --}}
                         <hr>
                         <div class="card-price-rating d-flex justify-content-between">
-                            <div class="card-text price mb-0"><strong>{{ number_format( (int) $listing->listing_price) }} VND</strong><span class="light-gray"> /month</span></div>
+                            <div class="card-text price mb-0"><strong>{{ number_format( (int) $listing->listing_price) }} VND</strong><span class="text-secondary text-opacity-25">/month</span></div>
                             <div class="listing-rating">
                                 <i class="fa-solid fa-star"></i>
                                 <span>{{ round( (float) $listing->reviews_avg_review_rating, 2) }}</span>
-                                <span class="sum-review light-gray">({{ (int) $listing->reviews_count }})</span>
+                                <span class="sum-review text-secondary text-opacity-25">({{ (int) $listing->reviews_count }})</span>
                             </div>
                         </div>
                     </div>
@@ -320,9 +303,9 @@
                                     <div class="listing-rating">
                                         {{-- Star --}} <i class="fa-solid fa-star"></i>
                                         {{-- AVG --}} <span>{{ round( (float) $custom_user->reviews_avg_review_rating, 2) }}</span>
-                                        {{-- COUNT --}} <span class="sum-review light-gray">({{ $custom_user->reviews_count }}) |</span>
+                                        {{-- COUNT --}} <span class="sum-review text-secondary text-opacity-25">({{ $custom_user->reviews_count }}) |</span>
                                         {{-- Paper Plane --}} <i class="fa-solid fa-paper-plane purple-ice"></i>
-                                        {{-- COUNT --}} <b>{{ $custom_user->applications_count }}</b>
+                                        {{-- COUNT --}} {{ $custom_user->applications_count }}
                                     </div>
                                 </div>
                             </div>
@@ -341,7 +324,12 @@
                                     <li><p>Viet Nam <i class="fa-regular fa-compass"></i></p></li>
                                     <li><p>{{ $listing->user->user_phone_number }} <i class="fa-solid fa-mobile-screen"></i></p></li>
                                     <li><p>{{ $listing->user->user_email_address }} <i class="fa-regular fa-envelope"></i></p></li>
-                                    <li><p>Since: {{ $listing->user->created_at }} <i class="fa-regular fa-user"></i></p></li>
+                                    <li><p>
+                                        <span data-toggle="tooltip" data-placement="top" title="{{ $listing->user->created_at }}">
+                                            Member for: {{ date_diff(new DateTime($listing->user->created_at), new DateTime(now()))->format("%m months, %d days") }}
+                                        </span>
+                                        <i class="fa-regular fa-user"></i>
+                                        </p></li>
                                     <li><p>Date of Birth: 6/12/2000 <i class="fa-sharp fa-solid fa-cake-candles"></i></p></li>
                                 </ul>
                             </div>
@@ -403,7 +391,7 @@
                                         <div class="d-flex justify-content-between mb-1">
                                             <div class="d-flex flex-column">
                                                 <div class="p">Review name: {{ $review->review_name }}</div>
-                                                <div class="text-secondary text-opacity-25">{{ date_diff(new DateTime($review->created_at), new DateTime(now()))->format("%m months, %d days, %h hours") }} ago</div>
+                                                <div class="text-secondary text-opacity-25">{{ date_diff(new DateTime($review->created_at), new DateTime(now()))->format("%m months, %d days") }} ago</div>
                                             </div>
                                             <div class="d-flex">
                                                 @for ($i = 0; $i < $review->review_rating; $i++)
@@ -562,3 +550,19 @@
         </div> --}}
     </div>
 @endsection
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+<script type="text/javascript">
+
+    window.onload = function () {
+        if (window.jQuery) {
+            // jQuery is loaded
+            // alert("Yes jQuery");
+        } else {
+            // jQuery is not loaded
+            // alert("No jQuery");
+        }
+    }
+</script>
+
