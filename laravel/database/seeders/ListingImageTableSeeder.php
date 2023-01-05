@@ -23,7 +23,7 @@ class ListingImageTableSeeder extends Seeder
             $foreign_key = collect(Listing::all()->modelKeys());
             while ($i < 8000) {
                 yield $listingimage = [
-                    'listing_image_path' => 'listing_image_path_' . rand(1, 3) .'.jpg',
+                    'listing_image_path' => 'listing_image_path_' . rand(1, 6) .'.jpg',
                     'listing_id' => $foreign_key->random(),
 //                    'created_at' => fake()->dateTimeBetween('1970-01-01 01:01:01', $date_time_max),
 //                    'updated_at' => $date_time_max,

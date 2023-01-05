@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     @vite(['resources/css/app.css', 'resources/js/customScript.js', 'resources/js/app.js', 'webfonts.css'])
     <title>@yield('title')</title>
+{{--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">--}}
     </head>
     <body>
         <header>
@@ -52,7 +53,7 @@
                                             <div style="width: 25px; height: 25px">
                                                 <img class="img-fluid rounded" src="{{ asset('storage/images/').'/'.session('user')->user_image_path }}" alt="profile image">
                                             </div>
-                                            <div class="ms-1">Profile</div>
+                                            <div class="ms-1">{{ session('user')->user_email_address }}</div>
                                         </div>
                                     </a>
                                 </li>
@@ -151,5 +152,6 @@
             </div>
 
         </footer>
+{{--        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>--}}
     </body>
 </html>
