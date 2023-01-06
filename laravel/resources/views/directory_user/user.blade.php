@@ -230,7 +230,9 @@
                                     <p class="card-text">{{ $blog->blog_name }}</p>
                                 </div>
                                 <div class="card-footer">
-                                    <small class="text-muted">Last updated {{ $blog->updated_at->diffForHumans(['parts' => 3, 'join' => ', ', 'short' => false]) }}</small>
+                                    <small class="text-muted" data-toggle="tooltip" data-placement="top" title="{{ $blog->updated_at }}">
+                                        Last updated {{ $blog->updated_at->diffForHumans(['parts' => 3, 'join' => ', ', 'short' => false]) }}
+                                    </small>
                                 </div>
                             </a>
                         </div>
@@ -259,11 +261,18 @@
                         <div class="col">
                             <a class="card listing-card blog-card">
                                 <div class="card-body">
-                                    <h5 class="card-title">Application #{{ $application->id }}</h5>
-                                    <p class="card-text">{{ $application->application_description }}</p>
+                                    <h5 class="card-title"><i class="fa-solid fa-hashtag purple-ice"></i> Application number {{ $application->id }}</h5>
+                                    <p class="card-text">{!! nl2br(e($application->application_description)) !!}</p>
                                 </div>
-                                <div class="card-footer">
-                                    <small class="text-muted">Applied on {{ $application->created_at->diffForHumans(['parts' => 3, 'join' => ', ', 'short' => false]) }}</small>
+                                <div class="card-footer d-flex justify-content-between align-items-center">
+                                    <small class="text-secondary text-opacity-25" data-toggle="tooltip" data-placement="top" title="{{ $application->created_at }}">
+                                        Applied {{ $application->created_at->diffForHumans(['parts' => 3, 'join' => ', ', 'short' => false]) }}
+                                    </small>
+                                    <form method="POST" action="{{ route('applications.destroy', ['application' => $application]) }}" name="deleteApplicationForm">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="btn btn-outline-danger btn-sm" type="submit" onClick="envio2(event)">Delete</button>
+                                    </form>
                                 </div>
                             </a>
                         </div>

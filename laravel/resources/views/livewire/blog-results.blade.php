@@ -64,7 +64,9 @@ The code below uses elements from:
                                         <i class="fa-solid fa-hashtag purple-ice"></i>
                                         {{ $blog->id }}
                                         <i class="fa-solid fa-calendar-days"></i>
-                                        Posted {{ $blog->created_at->diffForHumans(['parts' => 3, 'join' => ', ', 'short' => false]) }}
+                                        <span data-toggle="tooltip" data-placement="top" title="{{ $blog->created_at }}">
+                                            Posted {{ $blog->created_at->diffForHumans(['parts' => 3, 'join' => ', ', 'short' => false]) }}
+                                        </span>
                                     </p>
                                 </div>
                             </div>

@@ -398,7 +398,9 @@
                                         <div class="d-flex justify-content-between mb-1">
                                             <div class="d-flex flex-column">
                                                 <div class="p">{{ $review->review_name }}</div>
-                                                <div class="text-secondary text-opacity-25">{{ $review->created_at->diffForHumans(['parts' => 3, 'join' => ', ', 'short' => false]) }}</div>
+                                                <small class="text-secondary text-opacity-25" data-toggle="tooltip" data-placement="top" title="{{ $review->created_at }}">
+                                                    {{ $review->created_at->diffForHumans(['parts' => 3, 'join' => ', ', 'short' => false]) }}
+                                                </div>
                                             </div>
                                             <div class="d-flex">
                                                 @for ($i = 0; $i < $review->review_rating; $i++)
@@ -496,9 +498,9 @@
                                             <h5 class="card-title"><i class="fa-solid fa-hashtag purple-ice"></i> Application number {{ $application->id }}</h5>
                                             <p class="card-text">{!! nl2br(e($application->application_description)) !!}</p>
                                         </div>
-                                        <div class="card-footer d-flex justify-content-between">
+                                        <div class="card-footer d-flex justify-content-between align-items-center">
                                             <small class="text-secondary text-opacity-25" data-toggle="tooltip" data-placement="top" title="{{ $application->created_at }}">
-                                                <small class="text-muted">Applied on {{ $application->created_at->diffForHumans(['parts' => 3, 'join' => ', ', 'short' => false]) }}</small>
+                                                Applied {{ $application->created_at->diffForHumans(['parts' => 3, 'join' => ', ', 'short' => false]) }}
                                             </small>
                                             <form method="POST" action="{{ route('applications.destroy', ['application' => $application]) }}" name="deleteApplicationForm">
                                                 @csrf

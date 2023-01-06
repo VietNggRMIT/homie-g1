@@ -42,7 +42,7 @@
 
     <div class="filter-img-section mt-5">
         <div class="filter-img text-center">
-            <h2>Choose a city you want to start at</h2>
+            <h2>Let's choose a city to begin!</h2>
             <div class='row mb-5 mt-3'>
                 <div class='col-sm-6'>
                     <a href="/listings?searchAddress=Ho Chi Minh"><img src="{{ asset('storage/images/filter-img/hcmc-listing.png')}}" alt="HCM"></a>
@@ -222,7 +222,9 @@
                                 <i class="fa-solid fa-hashtag purple-ice"></i>
                                 {{ $blog->id }}
                                 <i class="fa-solid fa-calendar-days"></i>
-                                Posted {{ $blog->created_at->diffForHumans(['parts' => 3, 'join' => ', ', 'short' => false]) }}
+                                <span data-toggle="tooltip" data-placement="top" title="{{ $blog->created_at }}">
+                                    Posted {{ $blog->created_at->diffForHumans(['parts' => 3, 'join' => ', ', 'short' => false]) }}
+                                </span>
                             </p>
                         </div>
                     </div>
