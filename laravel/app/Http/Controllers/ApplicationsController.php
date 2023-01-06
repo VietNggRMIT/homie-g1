@@ -92,7 +92,8 @@ class ApplicationsController extends Controller
                     Expected payment via %s;
                     Vehicle: %s;
                     Pet: %s;
-                    Current job: %s; Annual income in VND: %d;
+                    Current job: %s;
+                    Annual income in VND: %d;
                     Current address: %s;
                     Reason for leaving: %s;
                     Previous landlord phone: %s;

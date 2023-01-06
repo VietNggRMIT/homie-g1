@@ -522,8 +522,14 @@
                                 <div class="col">
                                     <a class="card listing-card blog-card">
                                         <div class="card-body">
-                                            <h5 class="card-title"><i class="fa-solid fa-hashtag purple-ice"></i> Application number {{ $application->id }}</h5>
-                                            <p class="card-text">{!! nl2br(e($application->application_description)) !!}</p>
+                                            <h5 class="card-title"><i class="fa-solid fa-hashtag purple-ice"></i> Application {{ $application->id }}</h5>
+                                            <p class="card-text">
+                                                <i class="fa-solid fa-hashtag purple-ice"></i>
+                                                To property listing
+                                                <b class="link-warning" onclick="window.location.href='{{ route('listings.show', ['listing' => $application->listing]) }}';">{{ $application->listing->listing_name }}</b>
+                                                <br>
+                                                {!! nl2br(e($application->application_description)) !!}
+                                            </p>
                                         </div>
                                         <div class="card-footer d-flex justify-content-between align-items-center">
                                             <small class="text-secondary text-opacity-25" data-toggle="tooltip" data-placement="top" title="{{ $application->created_at }}">

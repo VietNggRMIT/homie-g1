@@ -19,7 +19,6 @@ class ReviewTableSeeder extends Seeder
     {
         LazyCollection::make(function () {
             $i = 0;
-            $date_time_max = fake()->dateTimeBetween();
             $foreign_key = collect(Listing::all()->modelKeys());
             while ($i < 900) {
                 yield $review = [
@@ -28,8 +27,6 @@ class ReviewTableSeeder extends Seeder
                     'review_rating' => fake()->numberBetween(1,5),
                     'review_image_path' => 'user_image_path.jpg',
                     'listing_id' => $foreign_key->random(),
-//                    'created_at' => fake()->dateTimeBetween('1970-01-01 01:01:01', $date_time_max),
-//                    'updated_at' => $date_time_max,
                     'created_at' => fake()->dateTimeBetween('-20 years ', '-10 years'),
                     'updated_at' => fake()->dateTimeBetween('-5 years ', '-2 years'),
                 ];

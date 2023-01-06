@@ -25,8 +25,6 @@ class ListingImageTableSeeder extends Seeder
                 yield $listingimage = [
                     'listing_image_path' => 'listing_image_path_' . rand(1, 6) .'.jpg',
                     'listing_id' => $foreign_key->random(),
-//                    'created_at' => fake()->dateTimeBetween('1970-01-01 01:01:01', $date_time_max),
-//                    'updated_at' => $date_time_max,
                     'created_at' => fake()->dateTimeBetween('-20 years ', '-10 years'),
                     'updated_at' => fake()->dateTimeBetween('-5 years ', '-2 years'),
                 ];

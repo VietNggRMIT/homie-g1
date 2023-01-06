@@ -23,11 +23,10 @@ class BlogTableSeeder extends Seeder
             $foreign_key = collect(User::all()->modelKeys());
             while ($i < 200) {
                 yield $review = [
+//                    'blog_name' => fake()->realTextBetween(10, 100, 2),
                     'blog_name' => fake()->words(10, true), // === sentence(4);
                     'blog_description' => fake()->paragraphs(5, true),
                     'user_id' => $foreign_key->random(),
-//                    'created_at' => fake()->dateTimeBetween('1970-01-01 01:01:01', $date_time_max),
-//                    'updated_at' => $date_time_max,
                     'created_at' => fake()->dateTimeBetween('-20 years ', '-10 years'),
                     'updated_at' => fake()->dateTimeBetween('-5 years ', '-2 years'),
                 ];
