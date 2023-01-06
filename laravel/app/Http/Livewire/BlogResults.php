@@ -38,7 +38,7 @@ class BlogResults extends Component
     *Title: Lifecycle Hooks
     *Author: Laravel Livewire
     *Code version: 2.x
-    *Availability: https://laravel-livewire.com/docs/2.x/pagination (Accessed 2 January 2023)
+    *Availability: https://laravel-livewire.com/docs/2.x/lifecycle-hooks (Accessed 2 January 2023)
     *****************************************************************************/
     public function updatedsearchName(){
         // $this->resetPage();
