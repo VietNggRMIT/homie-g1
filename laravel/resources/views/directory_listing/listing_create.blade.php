@@ -51,13 +51,15 @@
                     @csrf
 
                     {{-- 0. User --}}
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">You Are</span>
-                        @if(isset($listing))
-                            <input type="text" class="form-control" disabled value="{{ \App\Models\User::where(['id' => $listing->user_id])->pluck('user_real_name')->first() }}">
-                        @else
-                            <input type="text" class="form-control" disabled value="{{ \App\Models\User::where(['id' => $user])->pluck('user_real_name')->first() }}">
-                        @endif
+                    <div class="col-md-6">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">You Are</span>
+                            @if(isset($listing))
+                                <input type="text" class="form-control" disabled value="{{ \App\Models\User::where(['id' => $listing->user_id])->pluck('user_real_name')->first() }}">
+                            @else
+                                <input type="text" class="form-control" disabled value="{{ \App\Models\User::where(['id' => $user])->pluck('user_real_name')->first() }}">
+                            @endif
+                        </div>
                     </div>
 
                     {{-- 1. Listing Name --}}
@@ -191,24 +193,25 @@
                         {{-- 8 Listing Specifications: Bathroom --}}
                         <div class="col-md">
                             <div class="form-floating">
-                                <input name="listing_specification_bathroom" type="number" min="0" class="form-control" placeholder="3"
+                                <input type="number" name="listing_specification_bathroom" class="form-control" min="0"  placeholder="3" required
                                 @if (isset($listing))
                                     value="{{ $listing->listing_specification_bathroom }}">
                                 @else
-                                    value=""
+                                    value="">
                                 @endif
                                 <label for="listing_specification_bathroom">Bathroom</label>
                             </div>
                         </div>
 
+
                         {{-- 9 Listing Specifications: Bedroom --}}
                         <div class="col-md">
                             <div class="form-floating">
-                                <input name="listing_specification_bedroom" type="number" min="0" class="form-control" placeholder="3"
+                                <input name="listing_specification_bedroom" type="number" min="0" class="form-control" placeholder="3" required
                                 @if (isset($listing))
                                     value="{{ $listing->listing_specification_bedroom }}">
                                 @else
-                                    value=""
+                                    value="">
                                 @endif
                                 <label for="listing_specification_bedroom">Bedroom</label>
                             </div>
@@ -217,11 +220,11 @@
                         {{-- 10 Listing Specifications: Size --}}
                         <div class="col-md">
                             <div class="form-floating">
-                                <input name="listing_specification_size" type="number" min="0" class="form-control" placeholder="3"
+                                <input name="listing_specification_size" type="number" min="0" class="form-control" placeholder="3" required
                                 @if (isset($listing))
                                     value="{{ $listing->listing_specification_size }}">
                                 @else
-                                    value=""
+                                    value="">
                                 @endif
                                 <label for="listing_specification_bedroom">Size (m<sup>2</sup>)</label>
                             </div>
@@ -230,11 +233,11 @@
                         {{-- 12 Listing Specifications: Maximum Tenants --}}
                         <div class="col-md">
                             <div class="form-floating">
-                                <input name="listing_specification_tenant" type="number" min="0" class="form-control" placeholder="3"
+                                <input name="listing_specification_tenant" type="number" min="0" class="form-control" placeholder="3" required
                                 @if (isset($listing))
                                     value="{{ $listing->listing_specification_tenant }}">
                                 @else
-                                    value=""
+                                    value="">
                                 @endif
                                 <label for="listing_specification_bedroom">Maximum Tenants</label>
                             </div>
@@ -243,7 +246,7 @@
                         {{-- 13 Listing Available --}}
                         <div class="col-md">
                             <div class="form-check form-switch">
-                                <input class="form-check-input" type="checkbox" role="switch" name="listing_specification_owner"
+                                <input class="form-check-input" type="checkbox" role="switch" name="listing_specification_owner" required
 
                                 @if (isset($listing))
                                     @if ($listing->listing_specification_owner == 1)
@@ -260,7 +263,7 @@
                         {{-- 14 Listing Available --}}
                         <div class="col-md">
                             <div class="form-check form-switch">
-                                <input class="form-check-input" type="checkbox" role="switch" name="listing_available"
+                                <input class="form-check-input" type="checkbox" role="switch" name="listing_available" required
 
                                 @if (isset($listing))
                                     @if ($listing->listing_available == 1)

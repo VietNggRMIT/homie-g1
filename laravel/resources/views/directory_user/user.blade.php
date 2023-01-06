@@ -61,7 +61,7 @@
                         <div class="acc-options-btns d-grid gap-2 md-block">
                             @if(session('user'))
                                 @if (session('user')->id == $user->id)
-                                    <a class="btn btn-warning" href="{{ route('users.edit', ['user' => $user]) }}">Update info</a>
+                                    <a class="btn btn-warning" href="{{ route('users.edit', ['user' => $user]) }}">Update personal information</a>
                                     <a class="btn btn-warning" href="{{ route('login.edit', ['login' => $user]) }}">Change password</a>
                                 @else
                                     <a href="tel:{{ $user->user_phone_number }}" class="btn btn-warning">Call {{ $user->user_phone_number }}</a>

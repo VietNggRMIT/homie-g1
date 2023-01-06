@@ -51,9 +51,11 @@
                     @csrf
 
                     {{-- 0. User --}}
-                    <div class="input-group mb-3">
-                        <label for="user_real_name" class="input-group-text">You Are</label>
-                        <input type="text" class="form-control" id="user_real_name" disabled value="{{ session('user')->user_real_name }}">
+                    <div class="col-md-4">
+                        <div class="input-group mb-3">
+                            <label for="user_real_name" class="input-group-text">You Are</label>
+                            <input type="text" class="form-control" id="user_real_name" disabled value="{{ session('user')->user_real_name }}">
+                        </div>
                     </div>
 
                     {{-- 1. Blog Name --}}
