@@ -299,6 +299,15 @@
 
 </div>
 
-
 @endsection
 
+<script type="text/javascript">
+    function envio2(event) {
+        console.log(event)
+        var r=confirm("Do you want to delete this application?");
+        if (r==true) {
+            // window.location="edicao-demandas-result.lbsp";
+            deleteApplicationForm.submit();
+        }
+    }
+</script>

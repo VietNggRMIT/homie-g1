@@ -544,6 +544,7 @@
                 </div>
             @endif
         @endif
+    </div>
 @endsection
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
@@ -568,13 +569,13 @@
             deleteListingForm.submit();
         }
     }
-    {{--function envio2(event) {--}}
-    {{--    event.preventDefault();--}}
-    {{--    var r=confirm("Do you want to delete {{ $application->id }}?");--}}
-    {{--    if (r==true) {--}}
-    {{--        // window.location="edicao-demandas-result.lbsp";--}}
-    {{--        deleteApplicationForm.submit();--}}
-    {{--    }--}}
-    {{--}--}}
-</script>
 
+    function envio2(event) {
+        console.log(event)
+        var r=confirm("Do you want to delete this application?");
+        if (r==true) {
+            // window.location="edicao-demandas-result.lbsp";
+            deleteApplicationForm.submit();
+        }
+    }
+</script>
