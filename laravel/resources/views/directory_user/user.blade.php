@@ -308,10 +308,16 @@
                                     <div class="col">
                                         <a class="card listing-card blog-card">
                                             <div class="card-body">
-                                                <h5 class="card-title"><i class="fa-solid fa-hashtag purple-ice"></i> Application {{ $application->id }}</h5>
+{{--                                                <h5 class="card-title text-secondary text-opacity-25">--}}
+{{--                                                    <i class="fa-solid fa-hashtag purple-ice"></i>--}}
+{{--                                                    {{ $application->id }}--}}
+{{--                                                    <i class="fa-solid fa-arrow-right-long"></i>--}}
+{{--                                                    <b class="link-warning" onclick="window.location.href='{{ route('listings.show', ['listing' => $application->listing]) }}';">{{ $application->listing->listing_name }}</b>--}}
+{{--                                                </h5>--}}
                                                 <p class="card-text">
                                                     <i class="fa-solid fa-hashtag purple-ice"></i>
-                                                    To
+                                                    {{ $application->id }}
+                                                    <i class="fa-solid fa-arrow-right-long"></i>
                                                     <b class="link-warning" onclick="window.location.href='{{ route('listings.show', ['listing' => $application->listing]) }}';">{{ $application->listing->listing_name }}</b>
                                                     <br>
                                                     <small style="font-size: 0.8rem;">{!! nl2br(e($application->application_description)) !!}</small>

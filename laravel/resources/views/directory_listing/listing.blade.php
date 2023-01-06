@@ -507,58 +507,64 @@
             </div>
         </div>
 
-            @if(session('user'))
-                @if (session('user')->id == $listing->user_id)
-                    <div class="col-lg-12">
-                        <div class="row">
-                            {{-- Part 3. Applications --}}
-                            <div class="card mb-3">
+        @if(session('user'))
+            @if (session('user')->id == $listing->user_id)
+                <div class="col-lg-12">
+                    <div class="row">
+                        {{-- Part 3. Applications --}}
+                        <div class="card mb-3">
 
-                                <div class="dashboard-title">
-                                    <div class="h3 m-3 ms-4">Property Applications ({{ count($listing->applications) }})</div>
-                                </div>
+                            <div class="dashboard-title">
+                                <div class="h3 m-3 ms-4">Property Applications ({{ count($listing->applications) }})</div>
+                            </div>
 
-                                <hr>
+                            <hr>
 
-                                <div class="d-flex flex-wrap">
+                            <div class="d-flex flex-wrap">
 
-                                    @foreach($listing->applications as $application)
-                                        <div class="col">
-                                            <a class="card listing-card blog-card">
-                                                <div class="card-body">
-                                                    <h5 class="card-title"><i class="fa-solid fa-hashtag purple-ice"></i> Application {{ $application->id }}</h5>
-                                                    <p class="card-text">
-                                                        <i class="fa-solid fa-hashtag purple-ice"></i>
-                                                        To
-                                                        <b class="link-warning" onclick="window.location.href='{{ route('listings.show', ['listing' => $application->listing]) }}';">{{ $application->listing->listing_name }}</b>
-                                                        <br>
-                                                        <small style="font-size: 0.8rem;">{!! nl2br(e($application->application_description)) !!}</small>
-                                                    </p>
-                                                </div>
-                                                <div class="card-footer d-flex justify-content-between align-items-center">
-                                                    <small class="text-secondary text-opacity-25" data-toggle="tooltip" data-placement="top" title="{{ $application->created_at }}">
-                                                        Applied {{ $application->created_at->diffForHumans(['parts' => 3, 'join' => ', ', 'short' => false]) }}
-                                                    </small>
-                                                    <form method="POST" action="{{ route('applications.destroy', ['application' => $application]) }}" name="deleteApplicationForm">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button class="btn btn-outline-danger btn-sm" type="submit" onClick="return confirm('Delete application ID {{ $application->id }}. Are you sure?')">Delete</button>
-                                                    </form>
-                                                </div>
-                                            </a>
-                                        </div>
-                                        {{--                        @if ($loop->index == 6)--}}
-                                        {{--                            @break--}}
-                                        {{--                        @endif--}}
-                                    @endforeach
-
-                                </div>
+                                @foreach($listing->applications as $application)
+                                    <div class="col">
+                                        <a class="card listing-card blog-card">
+                                            <div class="card-body">
+{{--                                                <h5 class="card-title text-secondary text-opacity-25">--}}
+{{--                                                    <i class="fa-solid fa-hashtag purple-ice"></i>--}}
+{{--                                                    {{ $application->id }}--}}
+{{--                                                    <i class="fa-solid fa-arrow-right-long"></i>--}}
+{{--                                                    <b class="link-warning" onclick="window.location.href='{{ route('listings.show', ['listing' => $application->listing]) }}';">{{ $application->listing->listing_name }}</b>--}}
+{{--                                                </h5>--}}
+                                                <p class="card-text">
+                                                    <i class="fa-solid fa-hashtag purple-ice"></i>
+                                                    {{ $application->id }}
+                                                    <i class="fa-solid fa-arrow-right-long"></i>
+                                                    <b class="link-warning" onclick="window.location.href='{{ route('listings.show', ['listing' => $application->listing]) }}';">{{ $application->listing->listing_name }}</b>
+                                                    <br>
+                                                    <small style="font-size: 0.8rem;">{!! nl2br(e($application->application_description)) !!}</small>
+                                                </p>
+                                            </div>
+                                            <div class="card-footer d-flex justify-content-between align-items-center">
+                                                <small class="text-secondary text-opacity-25" data-toggle="tooltip" data-placement="top" title="{{ $application->created_at }}">
+                                                    Applied {{ $application->created_at->diffForHumans(['parts' => 3, 'join' => ', ', 'short' => false]) }}
+                                                </small>
+                                                <form method="POST" action="{{ route('applications.destroy', ['application' => $application]) }}" name="deleteApplicationForm">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button class="btn btn-outline-danger btn-sm" type="submit" onClick="return confirm('Delete application ID {{ $application->id }}. Are you sure?')">Delete</button>
+                                                </form>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    {{--                        @if ($loop->index == 6)--}}
+                                    {{--                            @break--}}
+                                    {{--                        @endif--}}
+                                @endforeach
 
                             </div>
+
                         </div>
                     </div>
-                @endif
+                </div>
             @endif
+        @endif
     </div>
 @endsection
 
