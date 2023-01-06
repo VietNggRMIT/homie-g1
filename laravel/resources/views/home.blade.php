@@ -14,7 +14,7 @@
                 *Author: srexi/purecounterjs on NPM
                 *Availability: https://github.com/srexi/purecounterjs (Accessed 06 Jan 2023)
                 *****************************************************************************/ --}}
-                There are <span data-purecounter-end="{{ $custom_count[0] }}" class="purecounter">0</span> listings available
+                There are <span data-purecounter-end="{{ $custom_count[0] }}" class="purecounter">0</span> property listings available
                 (<span data-purecounter-end="{{ $custom_count[1] }}" class="purecounter">0</span> listing images,
                 <span data-purecounter-end="{{ $custom_count[2] }}" class="purecounter">0</span> reviews,
                 <span data-purecounter-end="{{ $custom_count[3] }}" class="purecounter">0</span> applications)<br>
@@ -70,7 +70,7 @@
     <div class="mb-3">
         <hr>
         <div class="d-flex justify-content-between align-items-center">
-            <h1>Listings ({{ $custom_count[0] }})</h1>
+            <h1>Property Listings ({{ $custom_count[0] }})</h1>
             <button onclick="window.location.href='{{ route('listings.index') }}';" type="button" class="custom-btn btn-1">
                 See more
             </button>

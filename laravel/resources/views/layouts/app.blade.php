@@ -30,7 +30,7 @@
                                 <a class="nav-link" href="{{ route('route_home') }}"> <i class="fa-solid fa-house"></i> Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('listings.index') }}"> <i class="fa-solid fa-house-circle-check"></i> Listings</a>
+                                <a class="nav-link" href="{{ route('listings.index') }}"> <i class="fa-solid fa-house-circle-check"></i> Property Listings</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('blogs.index') }}"> <i class="fa-solid fa-pen"></i> Blogs</a>
@@ -112,7 +112,7 @@
                             <h6>Categories</h6>
                             <ul class="footer-links">
                             <li><a href="{{ route('route_home') }}">Home</a></li>
-                            <li><a href="{{ route('listings.index') }}">Listings</a></li>
+                            <li><a href="{{ route('listings.index') }}">Property Listings</a></li>
                             <li><a href="{{ route('blogs.index') }}">Blogs</a></li>
                             <li><a href="{{ route('route_article') }}">Articles</a></li>
                             </ul>

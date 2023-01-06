@@ -6,25 +6,31 @@
 
         @if(session('listing_success_store'))
             <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
-                <span>Saved listing ID <b>{{ $listing->id }}</b> to the database!</span>
+                <span>Saved property listing <b>{{ $listing->listing_name }}</b> to the database!</span>
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         @endif
         @if(session('listing_success_update'))
             <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
-                <span>Updated listing ID <b>{{ $listing->id }}</b> to the database!</span>
+                <span>Updated property listing <b>{{ $listing->listing_name }}</b> to the database!</span>
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         @endif
         @if(session('application_success_store'))
             <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
-                <span>You successfully applied to the listing ID <b>{{ $listing->id }}</b>!</span>
+                <span>You successfully applied to the property listing <b>{{ $listing->listing_name }}</b>!</span>
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         @endif
         @if(session('review_success_store'))
             <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
-                <span>You successfully reviewed to the listing ID <b>{{ $listing->id }}</b>!</span>
+                <span>You successfully reviewed to the property listing <b>{{ $listing->listing_name }}</b>!</span>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
+        @if(session('application_success_destroy'))
+            <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+                <span>You deleted an application</span>
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         @endif
@@ -150,11 +156,11 @@
                             @if (session('user')->id == $listing->user->id)
                                 <div class="listing-modifications d-flex justify-content-end mt-3">
                                     <div>
-                                        <a class="btn btn-sm btn-outline-secondary" href="{{ route('listings.edit', ['listing' => $listing]) }}">Edit</a>
+                                        <a class="btn btn-outline-secondary" href="{{ route('listings.edit', ['listing' => $listing]) }}">Edit</a>
                                     </div>
-                                    <form class="ms-3" method="POST" action="{{ url("delete-listing/{$listing->id}") }}">
+                                    <form class="ms-3" method="POST" action="{{ url("delete-listing/{$listing->id}") }}" name="deleteListingForm">
                                         @csrf
-                                        <button class="btn btn-sm btn-outline-danger" type="submit">Delete</button>
+                                        <button class="btn btn-outline-danger" type="submit" onClick="envio(event)">Delete</button>
                                     </form>
                                 </div>
                             @endif
@@ -285,7 +291,7 @@
             <div class="col col-lg-7">
                 <div class="card p-3">
                     <div class="title mt-3">
-                        <div class="h2">Owner</div>
+                        <div class="h2">Property Owner</div>
                         <hr class="baby">
                     </div>
                     <div class="row gx-4">
@@ -335,8 +341,9 @@
                             </div>
                         </div>
                         <div class="mt-3 mx-auto">
-                            <a href="mailto:{{ $listing->user->user_email_address }}" class="btn btn-warning mb-3">Contact owner</a>
-                            <a href="{{ route('users.show', ['user' => $listing->user]) }}" class="btn btn-warning mb-3">View profile</a>
+                            <a href="tel:{{ $listing->user->user_phone_number }}" class="btn btn-outline-warning mb-3">Call</a>
+                            <a href="mailto:{{ $listing->user->user_email_address }}" class="btn btn-outline-warning mb-3">Email</a>
+                            <a href="{{ route('users.show', ['user' => $listing->user]) }}" class="btn btn-warning mb-3">View Profile</a>
                         </div>
                     </div>
                 </div>
@@ -367,7 +374,7 @@
             <div class="col col-lg-7">
                 <div class="card px-3 py-3">
                     <div class="title mt-3">
-                        <div class="h3">Reviews ({{ (int) $listing->reviews_count }})</div>
+                        <div class="h3">Property Reviews ({{ (int) $listing->reviews_count }})</div>
                         <hr class="baby">
                     </div>
 
@@ -464,17 +471,55 @@
                             <input type="number" id="listing_id" name="listing_id" hidden class="form-control" value={{ $listing->id }}>
 
                             {{-- Review Form, Part 5 Submit Button --}}
-                            <button class="btn btn-warning" type="submit" value="submit">Submit review</button>
+                            <button class="btn btn-warning" type="submit" value="submit">Submit Review</button>
                         </form> <!-- End Review Form -->
                     </div>
                 </div>
             </div>
         </div>
+
+        @if(session('user'))
+            @if (session('user')->id == $listing->user_id)
+                <div class="row">
+                    {{-- Part 3. Applications --}}
+                    <div class="card mb-3">
+                        <div class="dashboard-title">
+                            <div class="h3 m-3 ms-4">Property Applications ({{ count($listing->applications) }})</div>
+                        </div>
+                        <hr>
+                        <div class="row row-cols-1 row-cols-md-2 g-4">
+
+                            @foreach($listing->applications as $application)
+                                <div class="col">
+                                    <a class="card listing-card blog-card">
+                                        <div class="card-body">
+                                            <h5 class="card-title"><i class="fa-solid fa-hashtag purple-ice"></i> Application number {{ $application->id }}</h5>
+                                            <p class="card-text">{!! nl2br(e($application->application_description)) !!}</p>
+                                        </div>
+                                        <div class="card-footer d-flex justify-content-between">
+                                            <small class="text-secondary text-opacity-25" data-toggle="tooltip" data-placement="top" title="{{ $application->created_at }}">
+                                                <small class="text-muted">Applied on {{ $application->created_at->diffForHumans(['parts' => 3, 'join' => ', ', 'short' => false]) }}</small>
+                                            </small>
+                                            <form method="POST" action="{{ route('applications.destroy', ['application' => $application]) }}" name="deleteApplicationForm">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button class="btn btn-outline-danger btn-sm" type="submit" onClick="envio2(event)">Delete</button>
+                                            </form>
+                                        </div>
+                                    </a>
+                                </div>
+                            @endforeach
+
+                        </div>
+                    </div>
+                </div>
+            @endif
+        @endif
     </div>
 @endsection
+
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-
 <script type="text/javascript">
 
     window.onload = function () {
@@ -486,5 +531,22 @@
             // alert("No jQuery");
         }
     }
+
+    function envio(event) {
+        event.preventDefault();
+        var r=confirm("Do you want to delete {{ $listing->listing_name }}?");
+        if (r==true) {
+            // window.location="edicao-demandas-result.lbsp";
+            deleteListingForm.submit();
+        }
+    }
+    {{--function envio2(event) {--}}
+    {{--    event.preventDefault();--}}
+    {{--    var r=confirm("Do you want to delete {{ $application->id }}?");--}}
+    {{--    if (r==true) {--}}
+    {{--        // window.location="edicao-demandas-result.lbsp";--}}
+    {{--        deleteApplicationForm.submit();--}}
+    {{--    }--}}
+    {{--}--}}
 </script>
 

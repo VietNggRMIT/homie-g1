@@ -6,12 +6,12 @@
 
     @if(session('blog_success_store'))
         <div class="alert alert-success alert-dismissible fade show" role="alert">
-            <span>Saved blog ID <b>{{ $blog->id }}</b> to the database!</span>
+            <span>Saved blog <b>{{ $blog->blog_name }}</b> to the database!</span>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     @elseif(session('blog_success_update'))
         <div class="alert alert-success alert-dismissible fade show" role="alert">
-            <span>Updated blog ID <b>{{ $blog->id }}</b> to the database!</span>
+            <span>Updated blog <b>{{ $blog->blog_name }}</b> to the database!</span>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     @endif
@@ -55,9 +55,9 @@
                     @if (session('user')->id == $blog->user->id)
                         <div class="blog-modifications d-flex justify-content-end mb-3">
                             <a class="btn btn-outline-secondary" href="{{ route('blogs.edit', ['blog' => $blog]) }}">Edit</a>
-                            <form method="POST" action="{{ url("delete-blog/{$blog->id}") }}">
+                            <form method="POST" action="{{ url("delete-blog/{$blog->id}") }}" name="deleteBlogForm">
                                 @csrf
-                                <button class="btn btn-outline-danger ms-3" type="submit">Delete</button>
+                                <button class="btn btn-outline-danger ms-3" type="submit" onClick="envio(event)">Delete</button>
                             </form>
                         </div>
                     @endif
@@ -69,3 +69,14 @@
 </div>
 
 @endsection
+
+<script>
+    function envio(event) {
+        event.preventDefault();
+        var r=confirm("Do you want to delete {{ $blog->blog_name }}?");
+        if (r==true) {
+            // window.location="edicao-demandas-result.lbsp";
+            deleteBlogForm.submit();
+        }
+    }
+</script>

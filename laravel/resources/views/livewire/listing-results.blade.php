@@ -141,11 +141,12 @@ The code below uses elements from:
                                 <div class="card-body">
                                     <h5 class="card-title">{{ $listing->listing_name }}</h5>
                                     <p class="text-secondary text-opacity-25 mb-1 text-truncate">Posted by {{ $listing->user->user_real_name }}</p>
+            {{--                        <p class="mb-1" onclick="window.location.href='{{ route('users.show', ['user' => $listing->user]) }}';">Posted by {{ $listing->user->user_real_name }}</p>--}}
                                     <div class="card-listing-location d-flex mb-2">
                                         <i class="fa-solid fa-location-dot"></i>
                                         <p class="card-text">{{ $listing->listing_address_subdivision_1 }}</p>
                                     </div>
-                                    <div class="listing-amenities d-flex my-2">
+                                    <div class="listing-amenities d-flex my-3">
                                         <div class="listing-feature">
                                             <i class="fa-solid fa-users-between-lines"></i>
                                             @if ($listing->listing_specification_tenant == 1)

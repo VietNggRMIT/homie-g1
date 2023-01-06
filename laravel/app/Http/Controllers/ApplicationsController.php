@@ -83,14 +83,21 @@ class ApplicationsController extends Controller
     *Author: Laravel
     *Availability: https://laravel.com/docs/9.x/eloquent (Accessed 31 November 2022)
     *****************************************************************************/
-        $content = sprintf('Applicant: %s; Phone: %s; Email: %s; Date of birth: %s
-                    Expected duration: %s; Expected move in date: %s;
-                    Expected payment via %s; Vehicle: %s; Pet: %s;
+        $content = sprintf('Applicant: %s;
+                    Phone: %s;
+                    Email: %s;
+                    Date of birth: %s;
+                    Expected duration: %s;
+                    Expected move in date: %s;
+                    Expected payment via %s;
+                    Vehicle: %s;
+                    Pet: %s;
                     Current job: %s; Annual income in VND: %d;
                     Current address: %s;
                     Reason for leaving: %s;
                     Previous landlord phone: %s;
-                    Evicted: %s; Convicted: %s',
+                    Evicted: %s;
+                    Convicted: %s',
                     $request->applicant, $request->phone, $request->email, $request->dateofbirth,
                     $request->occupancy, $request->movein, $request->payment, $request->vehicle, $request->pet,
                     $request->job, $request->income, $request->address, $request->reason, $request->landlord,
@@ -146,6 +153,7 @@ class ApplicationsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $success = Application::destroy($id);
+        return redirect()->back()->with('application_success_destroy', 'destroy');
     }
 }

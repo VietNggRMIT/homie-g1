@@ -21,7 +21,7 @@
                     <hr>
                     <div class="card-name h3 mb-3">{{ $user->user_real_name }}</div>
                     <p>
-                        <span class="text-muted">{{ count($user->listings) }} listings |</span>
+                        <span class="text-muted">{{ count($user->listings) }} property listings |</span>
                         <span class="text-muted">{{ count($user->blogs) }} blogs |</span>
                         <i class="fa-solid fa-star"></i>
                         <b>{{ round( (float) $user->reviews->avg('review_rating'), 2) }}</b>
@@ -58,20 +58,25 @@
                         *Code version: 9.x
                         *Availability: https://laravel.com/docs/9.x/routing (Accessed 5 November 2022)
                         *****************************************************************************/ --}}
-                        @if(session('user'))
-                            @if (session('user')->id == $user->id)
-                                <div class="acc-options-btns d-grid gap-2 md-block">
+                        <div class="acc-options-btns d-grid gap-2 md-block">
+                            @if(session('user'))
+                                @if (session('user')->id == $user->id)
                                     <a class="btn btn-warning" href="{{ route('users.edit', ['user' => $user]) }}">Update info</a>
                                     <a class="btn btn-warning" href="{{ route('login.edit', ['login' => $user]) }}">Change password</a>
-                                </div>
+                                @else
+                                    <a href="tel:{{ $user->user_phone_number }}" class="btn btn-warning">Call {{ $user->user_phone_number }}</a>
+                                    <a href="tel:{{ $user->user_email_address }}" class="btn btn-warning">Email {{ $user->user_email_address }}</a>
+                                @endif
                             @endif
-                        @endif
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
         <div class="col-lg-8">
+
+            {{-- Part 3. Listings --}}
             <div class="card mb-3">
                 <div class="dashboard-title">
                     <div class="h3 m-3 ms-4">Property Listings ({{ count($user->listings) }})</div>
@@ -133,6 +138,7 @@
                                 <div class="card-body">
                                     <h5 class="card-title">{{ $listing->listing_name }}</h5>
                                     <p class="text-secondary text-opacity-25 mb-1 text-truncate">Posted by {{ $listing->user->user_real_name }}</p>
+            {{--                        <p class="mb-1" onclick="window.location.href='{{ route('users.show', ['user' => $listing->user]) }}';">Posted by {{ $listing->user->user_real_name }}</p>--}}
                                     <div class="card-listing-location d-flex mb-2">
                                         <i class="fa-solid fa-location-dot"></i>
                                         <p class="card-text">{{ $listing->listing_address_subdivision_1 }}</p>
@@ -142,7 +148,7 @@
                                             {!!  nl2br(e($listing->listing_description)) !!}
                                         </p>
                                     </div>
-                                    <div class="listing-amenities d-flex mb-3">
+                                    <div class="listing-amenities d-flex my-3">
                                         <div class="listing-feature">
                                             <i class="fa-solid fa-users-between-lines"></i>
                                             @if ($listing->listing_specification_tenant == 1)
@@ -162,7 +168,7 @@
                                         </div>
                                         <div class="listing-feature">
                                             <i class="fa-solid fa-ruler-combined"></i>
-                                            <span>{{ $listing->listing_specification_size }} m<sup>2</sup></span>
+                                            <span>{{ (int) $listing->listing_specification_size }} m<sup>2</sup></span>
                                         </div>
                                     </div>
                                     <hr>
@@ -206,6 +212,8 @@
                     @endif
                 </div>
             </div>
+
+            {{-- Part 2. Blogs --}}
             <div class="card mb-3">
                 <div class="dashboard-title">
                     <div class="h3 m-3 ms-4">Blogs ({{ count($user->blogs) }})</div>
@@ -218,7 +226,7 @@
                             <a class="card listing-card blog-card" href="{{ route('blogs.show', ['blog' => $blog]) }}">
                                 <!-- <img src="php1\resources\background\tra-da-via-he-hanoi.jpg" class="card-img-top" alt="..."> -->
                                 <div class="card-body">
-                                    <h5 class="card-title">Blog by: {{ $blog->user->user_real_name }}</h5>
+                                    <h5 class="card-title">Blog by {{ $blog->user->user_real_name }}</h5>
                                     <p class="card-text">{{ $blog->blog_name }}</p>
                                 </div>
                                 <div class="card-footer">
@@ -237,6 +245,35 @@
                         @endif
                     @endif
                 </div>
+            </div>
+
+            {{-- Part 3. Applications --}}
+            <div class="card mb-3">
+                <div class="dashboard-title">
+                    <div class="h3 m-3 ms-4">Property Applications ({{ count($user->applications) }})</div>
+                </div>
+                <hr>
+                <div class="row row-cols-1 row-cols-md-2 g-4">
+
+                    @foreach($user->applications as $application)
+                        <div class="col">
+                            <a class="card listing-card blog-card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Application #{{ $application->id }}</h5>
+                                    <p class="card-text">{{ $application->application_description }}</p>
+                                </div>
+                                <div class="card-footer">
+                                    <small class="text-muted">Applied on {{ $application->created_at->diffForHumans(['parts' => 3, 'join' => ', ', 'short' => false]) }}</small>
+                                </div>
+                            </a>
+                        </div>
+                        @if ($loop->index == 6)
+                            @break
+                        @endif
+                    @endforeach
+
+                </div>
+
             </div>
 
         </div>

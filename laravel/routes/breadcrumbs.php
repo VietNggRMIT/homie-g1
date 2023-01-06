@@ -25,7 +25,7 @@ Breadcrumbs::for('breadcrumb_home', function (BreadcrumbTrail $trail) {
 // Home > Listings
 Breadcrumbs::for('breadcrumb_listings', function (BreadcrumbTrail $trail) {
     $trail->parent('breadcrumb_home');
-    $trail->push('Listings', route('listings.index'));
+    $trail->push('Property Listings', route('listings.index'));
 });
 
 // Home > Listings > [Listing]
