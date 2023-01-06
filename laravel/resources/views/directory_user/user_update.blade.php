@@ -21,7 +21,7 @@
         <div class="col-lg-5">
             <div class="card account-card">
                 <div class="card-content">
-                    <h4>Start renting and listing easily on our platform</h4>
+                    <h4>Update personal information</h4>
 
                     @if (isset($message))
                         <div class="alert alert-danger" role="alert">{{ $message }}</div>

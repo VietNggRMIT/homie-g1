@@ -106,46 +106,6 @@ body {
   margin-right: 0.25rem;
 }
 
-// .account-bg {
-//   box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
-//   border-radius: 0.25rem;
-//   overflow: hidden;
-
-//     .account-bgi {
-
-//         &.bgi-signup {
-//             background-image: url("..\\..\\storage\\app\\public\\images\\background\\tranphu-street.jpg");
-//         }
-
-//         &.bgi-signin {
-//             background-image: url("..\\..\\storage\\app\\public\\images\\background\\tranphu-street.jpg");
-//             background-position-x: right;
-//         }
-
-//         .overlay {
-//             opacity: 0.75;
-//             position: absolute;
-//             top: 0px;
-//             left: 0px;
-//             width: 100%;
-//             height: 100%;
-//             display: flex;
-//             flex-direction: column;
-//             align-items: center;
-//             justify-content: center;
-
-//             &.overlay-signup {
-//                 background-color: #FBDA61;
-//                 background-image: linear-gradient(45deg, #FBDA61 0%, #FF5ACD 100%);
-//             }
-
-//             &.overlay-signin {
-//                 background-image: linear-gradient(to right top, #9d9fa3, #9997a2, #9c8e9c, #a1848f, #a37c7d);
-//             }
-//         }
-//     }
-// }
-
 //logo
 .fa-brands {
   line-height: 40px;
@@ -187,44 +147,6 @@ body {
     background-image: linear-gradient(to right top, #5c8fdc, #678ee1, #738ce6, #8189e9, #8f86eb);
   }
 }
-
-// .review_rating {
-//   float: left;
-//   height: 46px;
-//   padding: 0 10px;
-
-//   &:not(:checked) > input {
-//     position:absolute;
-//     top:-9999px;
-//   }
-
-//   &:not(:checked) > label {
-//     float:right;
-//     width:1em;
-//     overflow:hidden;
-//     white-space:nowrap;
-//     cursor:pointer;
-//     font-size:30px;
-//     color:#ccc;
-
-//     &::before {
-//       content: '★ ';
-//     }
-
-//     &:hover, :hover ~ label {
-//       color: $orange-star; 
-//     }
-//   }
-
-//   >input:checked + label:hover,
-//   >input:checked + label:hover ~ label,
-//   >input:checked ~ label:hover,
-//   >input:checked ~ label.hover ~ label,
-//   >label:hover ~ input:checked ~ label {
-//     color: $orange-star;
-//   }
-
-// }
 
 .review_rating {
 	display: flex;
@@ -378,6 +300,7 @@ body {
     transition: all 0.3s ease;
   }
 }
+
 // .btn-1:after {
 
 // }

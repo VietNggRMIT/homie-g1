@@ -25,7 +25,7 @@
                         *Code version: 9.x
                         *Availability: https://laravel.com/docs/9.x/routing (Accessed 5 November 2022)
                         *****************************************************************************/ --}}
-                        <ul class="navbar-nav ms-auto nav-icons align-items-center">
+                        <ul class="navbar-nav ms-auto nav-icons">
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('route_home') }}"> <i class="fa-solid fa-house"></i> Home</a>
                             </li>
@@ -59,10 +59,10 @@
                                 </li>
                                 <form class="nav-item" method="POST" action="{{ url("logout/{session('user')}") }}">
                                     @csrf
-                                    <button class="btn btn-outline-danger me-2" type="submit">Log out</button>
+                                    <button class="btn btn-outline-danger btn-logout" type="submit">Log out</button>
                                 </form>
                                 <li class="nav-item">
-                                    <a class="nav-link create-listing" href="{{ route('listings.create', ['user' => session('user')->id]) }}"> <i class="fa-solid fa-plus"></i> Create listing</a>
+                                    <a class="nav-link create-listing px-2" href="{{ route('listings.create', ['user' => session('user')->id]) }}"> <i class="fa-solid fa-plus"></i> Create listing</a>
                                 </li>
                             @else
                                 <li class="nav-item">
