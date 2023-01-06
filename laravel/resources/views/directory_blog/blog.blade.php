@@ -57,7 +57,7 @@
                             <a class="btn btn-outline-secondary" href="{{ route('blogs.edit', ['blog' => $blog]) }}">Edit</a>
                             <form method="POST" action="{{ url("delete-blog/{$blog->id}") }}" name="deleteBlogForm">
                                 @csrf
-                                <button class="btn btn-outline-danger ms-3" type="submit" onClick="envio(event)">Delete</button>
+                                <button class="btn btn-outline-danger ms-3" type="submit" onClick="return confirm('Delete blog name {{ $blog->blog_name }}. Are you sure?')">Delete</button>
                             </form>
                         </div>
                     @endif
@@ -69,14 +69,3 @@
 </div>
 
 @endsection
-
-<script>
-    function envio(event) {
-        event.preventDefault();
-        var r=confirm("Do you want to delete {{ $blog->blog_name }}?");
-        if (r==true) {
-            // window.location="edicao-demandas-result.lbsp";
-            deleteBlogForm.submit();
-        }
-    }
-</script>

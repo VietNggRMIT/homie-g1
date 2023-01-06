@@ -310,7 +310,7 @@
                                     <form method="POST" action="{{ route('applications.destroy', ['application' => $application]) }}" name="deleteApplicationForm">
                                         @csrf
                                         @method('DELETE')
-                                        <button class="btn btn-outline-danger btn-sm" type="submit" onClick="envio2(event)">Delete</button>
+                                        <button class="btn btn-outline-danger btn-sm" type="submit" onClick="return confirm('Delete application ID {{ $application->id }}. Are you sure?')">Delete</button>
                                     </form>
                                 </div>
                             </a>
@@ -331,14 +331,3 @@
 </div>
 
 @endsection
-
-<script type="text/javascript">
-    function envio2(event) {
-        console.log(event)
-        var r=confirm("Do you want to delete this application?");
-        if (r==true) {
-            // window.location="edicao-demandas-result.lbsp";
-            deleteApplicationForm.submit();
-        }
-    }
-</script>

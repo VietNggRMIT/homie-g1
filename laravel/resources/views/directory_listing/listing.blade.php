@@ -160,7 +160,7 @@
                                     </div>
                                     <form class="ms-3" method="POST" action="{{ url("delete-listing/{$listing->id}") }}" name="deleteListingForm">
                                         @csrf
-                                        <button class="btn btn-outline-danger" type="submit" onClick="envio(event)">Delete</button>
+                                        <button class="btn btn-outline-danger" type="submit" onClick="return confirm('Delete property listing name {{ $listing->listing_name }}. Are you sure?')">Delete</button>
                                     </form>
                                 </div>
                             @endif
@@ -540,7 +540,7 @@
                                             <form method="POST" action="{{ route('applications.destroy', ['application' => $application]) }}" name="deleteApplicationForm">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button class="btn btn-outline-danger btn-sm" type="submit" onClick="envio2(event)">Delete</button>
+                                                <button class="btn btn-outline-danger btn-sm" type="submit" onClick="return confirm('Delete application ID {{ $application->id }}. Are you sure?')">Delete</button>
                                             </form>
                                         </div>
                                     </a>
@@ -566,24 +566,6 @@
         } else {
             // jQuery is not loaded
             // alert("No jQuery");
-        }
-    }
-
-    function envio(event) {
-        event.preventDefault();
-        var r=confirm("Do you want to delete {{ $listing->listing_name }}?");
-        if (r==true) {
-            // window.location="edicao-demandas-result.lbsp";
-            deleteListingForm.submit();
-        }
-    }
-
-    function envio2(event) {
-        console.log(event)
-        var r=confirm("Do you want to delete this application?");
-        if (r==true) {
-            // window.location="edicao-demandas-result.lbsp";
-            deleteApplicationForm.submit();
         }
     }
 </script>
