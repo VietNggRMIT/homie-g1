@@ -6,12 +6,12 @@
 
     @if(session('blog_success_store'))
         <div class="alert alert-success alert-dismissible fade show" role="alert">
-            <span>Saved blog ID: {{ $blog->id }} to the database!</span>
+            <span>Saved blog ID <b>{{ $blog->id }}</b> to the database!</span>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     @elseif(session('blog_success_update'))
         <div class="alert alert-success alert-dismissible fade show" role="alert">
-            <span>Updated blog ID: {{ $blog->id }} to the database!</span>
+            <span>Updated blog ID <b>{{ $blog->id }}</b> to the database!</span>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     @endif
@@ -30,17 +30,20 @@
                         <div class="header-content">
 
                             <h1 class="fw-bolder mb-1 mt-3">{{ $blog->blog_name }}</h1>
-                            <p class="mb-1">Blog ID: <i class="fa-solid fa-hashtag purple-ice"></i> {{ $blog->id }}</p>
+                            <p class="mb-1">Blog ID <i class="fa-solid fa-hashtag purple-ice"></i> {{ $blog->id }}</p>
                             <span class="h6">
                                 by <a class="author smooth-transition" href="{{ route('users.show', ['user' => $blog->user]) }}">{{ $blog->user->user_real_name }}</a>
                                 <i class="fa-solid fa-hashtag purple-ice"></i> {{ $blog->user_id }}
                             </span>
                             <div class="text-muted fst-italic my-2">
-                                Posted on {{ $blog->created_at }}
+                                <span class="text-secondary text-opacity-25" data-toggle="tooltip" data-placement="top" title="{{ $blog->created_at }}">
+                                    Posted at {{ $blog->created_at->diffForHumans(['parts' => 3, 'join' => ', ', 'short' => false]) }}
+                                </span>
                                 <br>
-                                Updated at {{ $blog->updated_at }}
+                                <span class="text-secondary text-opacity-25" data-toggle="tooltip" data-placement="top" title="{{ $blog->updated_at }}">
+                                    Updated at {{ $blog->updated_at->diffForHumans(['parts' => 3, 'join' => ', ', 'short' => false]) }}
+                                </span>
                             </div>
-
                         </div>
 
                     </header>
@@ -51,10 +54,10 @@
                 @if(session('user'))
                     @if (session('user')->id == $blog->user->id)
                         <div class="blog-modifications d-flex justify-content-end mb-3">
-                            <a class="btn btn-outline-primary" href="{{ route('blogs.edit', ['blog' => $blog]) }}">Edit this blog</a>
+                            <a class="btn btn-outline-secondary" href="{{ route('blogs.edit', ['blog' => $blog]) }}">Edit</a>
                             <form method="POST" action="{{ url("delete-blog/{$blog->id}") }}">
                                 @csrf
-                                <button class="btn btn-outline-danger ms-3" type="submit">Delete this blog</button>
+                                <button class="btn btn-outline-danger ms-3" type="submit">Delete</button>
                             </form>
                         </div>
                     @endif

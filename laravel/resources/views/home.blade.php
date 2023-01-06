@@ -8,6 +8,12 @@
             {{-- OPTION 1 --}}
             <div>
                 <h2>Welcome to Homie Rental</h2><br>
+                {{-- /*****************************************************************************
+                The code below uses elements from:
+                *Title: Counter JS
+                *Author: srexi/purecounterjs on NPM
+                *Availability: https://github.com/srexi/purecounterjs (Accessed 06 Jan 2023)
+                *****************************************************************************/ --}}
                 There are <span data-purecounter-end="{{ $custom_count[0] }}" class="purecounter">0</span> listings available
                 (<span data-purecounter-end="{{ $custom_count[1] }}" class="purecounter">0</span> listing images,
                 <span data-purecounter-end="{{ $custom_count[2] }}" class="purecounter">0</span> reviews,
@@ -126,8 +132,8 @@
                     {{-- Part 2. Middle Card --}}
                     <div class="card-body">
                         <h5 class="card-title">{{ $listing->listing_name }}</h5>
-                        <p class="text-secondary text-opacity-25 mb-1">Posted by: {{ $listing->user->user_real_name }}</p>
-{{--                        <p class="mb-1" onclick="window.location.href='{{ route('users.show', ['user' => $listing->user]) }}';">Posted by: {{ $listing->user->user_real_name }}</p>--}}
+                        <p class="text-secondary text-opacity-25 mb-1 text-truncate">Posted by {{ $listing->user->user_real_name }}</p>
+{{--                        <p class="mb-1" onclick="window.location.href='{{ route('users.show', ['user' => $listing->user]) }}';">Posted by {{ $listing->user->user_real_name }}</p>--}}
                         <div class="card-listing-location d-flex mb-2">
                             <i class="fa-solid fa-location-dot"></i>
                             <p class="card-text">{{ $listing->listing_address_subdivision_1 }}</p>
@@ -177,7 +183,7 @@
                     {{-- Part 3. Bottom Card --}}
                     <div class="card-footer">
                         <small class="text-secondary text-opacity-25" data-toggle="tooltip" data-placement="top" title="{{ $listing->updated_at }}">
-                            Last updated: {{ date_diff(new DateTime($listing->updated_at), new DateTime(now()))->format("%m months, %d days") }} ago
+                            Last updated {{ $listing->updated_at->diffForHumans(['parts' => 3, 'join' => ', ', 'short' => false]) }}
                         </small>
                     </div>
 
@@ -204,33 +210,36 @@
             <div class="card blog-card gy-3 px-3 py-2 mb-1 smooth-transition">
                 <div class="row align-items-center">
 
+                    {{-- Left Col --}}
                     <div class="col-md-8">
                         <div class="row">
-                            <a class="card-title h5 mb-3 smooth-transition" href="{{ route('blogs.show', ['blog' => $blog]) }}">
+                            <a class="card-title h5 mt-2 mb-3 smooth-transition" href="{{ route('blogs.show', ['blog' => $blog]) }}">
                                 {{ $blog->blog_name }}
                             </a>
                         </div>
                         <div class="row">
                             <p>
-                                <i class="fa-solid fa-calendar-days"></i>
-                                {{ date_diff(new DateTime($listing->updated_at), new DateTime(now()))->format("%m months, %d days") }} ago
                                 <i class="fa-solid fa-hashtag purple-ice"></i>
                                 {{ $blog->id }}
+                                <i class="fa-solid fa-calendar-days"></i>
+                                Posted {{ $blog->created_at->diffForHumans(['parts' => 3, 'join' => ', ', 'short' => false]) }}
                             </p>
                         </div>
                     </div>
+
+                    {{-- Right Col --}}
                     <div class="col-md-4">
                         <div class="row">
                             <p>
                                 <i class="fa-regular fa-id-card"></i>
                                 <a class="user-name smooth-transition" href="{{ route('users.show', ['user' => $blog->user]) }}">{{ $blog->user->user_real_name }}</a>
-                                <i class="fa-solid fa-hashtag purple-ice"></i>
-                                {{ $blog->user->id }}
+{{--                                        <i class="fa-solid fa-hashtag purple-ice"></i>--}}
+{{--                                        {{ $blog->user->id }}--}}
                             </p>
                         </div>
                         <div class="row">
-                            <p class="text-muted" data-toggle="tooltip" data-placement="top" title="{{ $blog->updated_at }}">
-                                Last updated: {{ date_diff(new DateTime($blog->updated_at), new DateTime(now()))->format("%m months, %d days") }} ago
+                            <p class="text-secondary text-opacity-25" data-toggle="tooltip" data-placement="top" title="{{ $blog->updated_at }}">
+                                Last updated {{ $blog->updated_at->diffForHumans(['parts' => 3, 'join' => ', ', 'short' => false]) }}
                             </p>
                         </div>
                     </div>

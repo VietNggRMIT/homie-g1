@@ -37,12 +37,12 @@
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="fa-solid fa-circle-info"></i> Resources
+                                    <i class="fa-solid fa-bars"></i> Resources
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-dark">
                                     <li><a class="dropdown-item" href="{{ route('route_article')}}">Articles</a></li>
                                     <li><hr class="dropdown-divider"></li>
-                                    <li><a class="dropdown-item" href="{{ route('route_about') }}">About us</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('route_about') }}">About Us</a></li>
                                     <li><a class="dropdown-item" href="{{ route('route_privacy') }}">Privacy</a></li>
                                 </ul>
                             </li>

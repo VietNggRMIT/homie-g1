@@ -125,15 +125,12 @@
       }
 
       &.responsive-listings {
-        //width: 20rem;
-          width: 50vw;
+        width: 20rem;
 
         .carousel {
           .carousel-inner {
             .carousel-item {
-                //height: 200px;
-                height: 50vh;
-
+                height: 200px;
             }
           }
         }
@@ -160,6 +157,40 @@
         }
 
       }
+
+    &.responsive-listings-bigger {
+        width: 50vw;
+
+        .carousel {
+            .carousel-inner {
+                .carousel-item {
+                    height: 50vh;
+                }
+            }
+        }
+
+        .card-body {
+
+            hr {
+                margin: 0.7rem 0;
+            }
+
+            .listing-amenities {
+                justify-content: space-around;
+
+                .listing-feature {
+                    text-align: center;
+
+                    i {
+                        font-size: 1.2rem;
+                        display: block;
+                    }
+                }
+            }
+
+        }
+
+    }
 
       &:hover {
           box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;

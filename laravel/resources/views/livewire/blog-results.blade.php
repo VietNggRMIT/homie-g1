@@ -55,16 +55,16 @@ The code below uses elements from:
                             {{-- Left Col --}}
                             <div class="col-md-8">
                                 <div class="row">
-                                    <a class="card-title h5 mb-3 smooth-transition" href="{{ route('blogs.show', ['blog' => $blog]) }}">
+                                    <a class="card-title h5 mt-2 mb-3 smooth-transition" href="{{ route('blogs.show', ['blog' => $blog]) }}">
                                         {{ $blog->blog_name }}
                                     </a>
                                 </div>
                                 <div class="row">
                                     <p>
-                                        <i class="fa-solid fa-calendar-days"></i>
-                                        {{ date_diff(new DateTime($blog->created_at), new DateTime(now()))->format("%m months, %d days") }} ago
                                         <i class="fa-solid fa-hashtag purple-ice"></i>
                                         {{ $blog->id }}
+                                        <i class="fa-solid fa-calendar-days"></i>
+                                        Posted {{ $blog->created_at->diffForHumans(['parts' => 3, 'join' => ', ', 'short' => false]) }}
                                     </p>
                                 </div>
                             </div>
@@ -75,20 +75,19 @@ The code below uses elements from:
                                     <p>
                                         <i class="fa-regular fa-id-card"></i>
                                         <a class="user-name smooth-transition" href="{{ route('users.show', ['user' => $blog->user]) }}">{{ $blog->user->user_real_name }}</a>
-                                        <i class="fa-solid fa-hashtag purple-ice"></i>
-                                        {{ $blog->user->id }}
+{{--                                        <i class="fa-solid fa-hashtag purple-ice"></i>--}}
+{{--                                        {{ $blog->user->id }}--}}
                                     </p>
                                 </div>
                                 <div class="row">
-                                    <p class="text-muted" data-toggle="tooltip" data-placement="top" title="{{ $blog->updated_at }}">
-                                        Last updated: {{ date_diff(new DateTime($blog->updated_at), new DateTime(now()))->format("%m months, %d days") }} ago
+                                    <p class="text-secondary text-opacity-25" data-toggle="tooltip" data-placement="top" title="{{ $blog->updated_at }}">
+                                        Last updated {{ $blog->updated_at->diffForHumans(['parts' => 3, 'join' => ', ', 'short' => false]) }}
                                     </p>
                                 </div>
                             </div>
 
                         </div>
                     </div>
-
                 @endforeach
             </div>
             <div class="pagination justify-content-center mt-5">

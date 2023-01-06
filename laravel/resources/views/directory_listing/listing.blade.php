@@ -6,30 +6,30 @@
 
         @if(session('listing_success_store'))
             <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
-                <span>Saved listing ID: {{ $listing->id }} to the database!</span>
+                <span>Saved listing ID <b>{{ $listing->id }}</b> to the database!</span>
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         @endif
         @if(session('listing_success_update'))
             <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
-                <span>Updated listing ID: {{ $listing->id }} to the database!</span>
+                <span>Updated listing ID <b>{{ $listing->id }}</b> to the database!</span>
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         @endif
         @if(session('application_success_store'))
             <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
-                <span>You successfully applied to the listing ID: {{ $listing->id }}!</span>
+                <span>You successfully applied to the listing ID <b>{{ $listing->id }}</b>!</span>
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         @endif
         @if(session('review_success_store'))
             <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
-                <span>You successfully reviewed to the listing ID: {{ $listing->id }}!</span>
+                <span>You successfully reviewed to the listing ID <b>{{ $listing->id }}</b>!</span>
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         @endif
 
-        <div class="card listing-card responsive-listings mt-3">
+        <div class="card listing-card responsive-listings-bigger mt-3">
             {{-- Part 1. Top Card --}}
             <div id="carouselID9999" class="carousel slide carousel-dark" data-bs-ride="true">
 
@@ -166,10 +166,10 @@
                     <div class="card-footer">
                         <div class="d-flex justify-content-between">
                             <small class="text-secondary text-opacity-25" data-toggle="tooltip" data-placement="top" title="{{ $listing->created_at }}">
-                                Posted: {{ date_diff(new DateTime($listing->created_at), new DateTime(now()))->format("%m months, %d days") }} ago
+                                Posted {{ $listing->created_at->diffForHumans(['parts' => 3, 'join' => ', ', 'short' => false]) }}
                             </small>
                             <small class="text-secondary text-opacity-25" data-toggle="tooltip" data-placement="top" title="{{ $listing->updated_at }}">
-                                Last updated: {{ date_diff(new DateTime($listing->updated_at), new DateTime(now()))->format("%m months, %d days") }} ago
+                                Last updated {{ $listing->updated_at->diffForHumans(['parts' => 3, 'join' => ', ', 'short' => false]) }}
                             </small>
                         </div>
                     </div>
@@ -326,7 +326,7 @@
                                     <li><p>{{ $listing->user->user_email_address }} <i class="fa-regular fa-envelope"></i></p></li>
                                     <li><p>
                                         <span data-toggle="tooltip" data-placement="top" title="{{ $listing->user->created_at }}">
-                                            Member for: {{ date_diff(new DateTime($listing->user->created_at), new DateTime(now()))->format("%m months, %d days") }}
+                                            Member for {{ $listing->user->created_at->diffForHumans(now(), Carbon\CarbonInterface::DIFF_ABSOLUTE, false, 3) }}
                                         </span>
                                         <i class="fa-regular fa-user"></i>
                                         </p></li>
@@ -390,8 +390,8 @@
                                     <div class="col-lg-10">
                                         <div class="d-flex justify-content-between mb-1">
                                             <div class="d-flex flex-column">
-                                                <div class="p">Review name: {{ $review->review_name }}</div>
-                                                <div class="text-secondary text-opacity-25">{{ date_diff(new DateTime($review->created_at), new DateTime(now()))->format("%m months, %d days") }} ago</div>
+                                                <div class="p">{{ $review->review_name }}</div>
+                                                <div class="text-secondary text-opacity-25">{{ $review->created_at->diffForHumans(['parts' => 3, 'join' => ', ', 'short' => false]) }}</div>
                                             </div>
                                             <div class="d-flex">
                                                 @for ($i = 0; $i < $review->review_rating; $i++)
@@ -429,7 +429,7 @@
                             The code below uses elements from:
                             *Title: 5 star rating with css and html
                             *Author: allenhe
-                            *Code version: 
+                            *Code version:
                             *Availability: https://codepen.io/hesguru/pen/BaybqXv (Accessed 2 January 2023)
                             *****************************************************************************/ --}}
                             <div>Ratings</div>
