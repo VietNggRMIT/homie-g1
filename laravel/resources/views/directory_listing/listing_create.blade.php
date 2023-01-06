@@ -243,10 +243,10 @@
                             </div>
                         </div>
 
-                        {{-- 13 Listing Available --}}
+                        {{-- 13 Listing Specifications: Owner --}}
                         <div class="col-md">
                             <div class="form-check form-switch">
-                                <input class="form-check-input" type="checkbox" role="switch" name="listing_specification_owner"
+                                <input class="form-check-input h-3" type="checkbox" role="switch" name="listing_specification_owner" required
 
                                 @if (isset($listing))
                                     @if ($listing->listing_specification_owner == 1)
@@ -263,7 +263,7 @@
                         {{-- 14 Listing Available --}}
                         <div class="col-md">
                             <div class="form-check form-switch">
-                                <input class="form-check-input" type="checkbox" role="switch" name="listing_available"
+                                <input class="form-check-input h-3" type="checkbox" role="switch" name="listing_available" required
 
                                 @if (isset($listing))
                                     @if ($listing->listing_available == 1)
@@ -331,7 +331,7 @@
                     </div>
 
                     {{-- 17 Submit Button --}}
-                    <div class="text-center mb-3">
+                    <div class="text-center mt-5 mb-3">
                         <button type="submit" class="custom-btn btn-1 purple-ice">
                             @if(isset($listing))
                                 Save Listing

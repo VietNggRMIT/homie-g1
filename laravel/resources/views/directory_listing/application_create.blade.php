@@ -7,7 +7,7 @@
     <div class="container mt-4">
         @if($listing)
             <div class="card edit-form">
-                <div class="text-center">
+                <div class="text-center mt-5">
                     <h1>Application Form</h1>
                 </div>
 
@@ -214,8 +214,8 @@
                         </div>
 
                         {{-- 18. Final --}}
-                        <div class="text-center">
-                            <button type="submit" class="custom-btn btn-1">Submit</button>
+                        <div class="text-center mb-3">
+                            <button type="submit" class="custom-btn btn-1 purple-ice">Submit</button>
                         </div>
 
                     </form> {{-- end form --}}

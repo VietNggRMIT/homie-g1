@@ -4,3 +4,9 @@
         border-color: transparent;
     }
 }
+
+.form-check-input {
+    &.h-3 {
+        height: 1rem;
+    }
+}
