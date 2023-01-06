@@ -380,7 +380,34 @@
 
                     <div>
                         @if($listing->reviews->isEmpty())
+                            <div class="row review-block mb-5">
+                                <div class="col-lg-2">
+                                    <div class="profile-pic-section">
+                                        <div class="profile-pic-container listing-details">
+                                            <img
+                                                class="card-img-top"
+                                                alt="person"
+                                                src="{{asset('storage/images/user_image_path.jpg')}}">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-10">
+                                    <div class="d-flex justify-content-between mb-1">
+                                        <div class="d-flex flex-column">
+                                            <div class="p">&nbsp;</div>
+                                            <small class="text-secondary text-opacity-25" data-toggle="tooltip" data-placement="top" title="&nbsp;">
+                                                &nbsp;
+                                            </small>
+                                        </div>
+                                        <div class="d-flex">
 
+                                        </div>
+                                    </div>
+                                    <div class="review-comments h6">
+                                        Be the first to review this place
+                                    </div>
+                                </div>
+                            </div>
                         @else
                             @foreach ($listing->reviews as $review)
                                 <div class="row review-block mb-5">
@@ -398,10 +425,10 @@
                                         <div class="d-flex justify-content-between mb-1">
                                             <div class="d-flex flex-column">
                                                 <div class="p">{{ $review->review_name }}</div>
-                                                <small class="text-secondary text-opacity-25" data-toggle="tooltip" data-placement="top" title="{{ $review->created_at }}">
+                                                <div class="text-secondary text-opacity-25" data-toggle="tooltip" data-placement="top" title="{{ $review->created_at }}">
                                                     {{ $review->created_at->diffForHumans(['parts' => 3, 'join' => ', ', 'short' => false]) }}
                                                 </div>
-                                            </div>
+                                            </mdiv>
                                             <div class="d-flex">
                                                 @for ($i = 0; $i < $review->review_rating; $i++)
                                                     <i class="fa-solid fa-star"></i>
@@ -517,7 +544,6 @@
                 </div>
             @endif
         @endif
-    </div>
 @endsection
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
