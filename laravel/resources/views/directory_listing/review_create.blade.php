@@ -7,7 +7,7 @@
 <body>
     <div class="container mt-4">
     @if(session('status'))
-        <div class="alert alert-success">
+        <div class="alert alert-success mt-3">
             {{ session('status') }}
         </div>
     @endif

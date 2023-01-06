@@ -30,7 +30,7 @@ The code below uses elements from:
                     <h4>Start renting and listing easily on our platform</h4>
 
                     @if (isset($message))
-                        <div class="alert alert-danger" role="alert">{{ $message }}</div>
+                        <div class="alert alert-danger mt-3" role="alert">{{ $message }}</div>
                     @endif
                     {{-- /*****************************************************************************
                     The code below uses elements from:

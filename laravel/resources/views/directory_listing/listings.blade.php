@@ -5,7 +5,7 @@
     <div class="container show-listings">
 
         @if(session('listing_success_destroy'))
-            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
                 <span>Deleted listing from the database!</span>
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
