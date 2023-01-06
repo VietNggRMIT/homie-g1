@@ -10,6 +10,31 @@
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     @endif
+    @if(session('user_success_update_information'))
+        <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+            <span>User <b>{{ session('user')->user_real_name }}</b> update information successfully</span>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
+    @if(session('user_success_update_password'))
+        <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+            <span>User <b>{{ session('user')->user_real_name }}</b> update password successfully</span>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
+    @if(session('user_success_sign_up'))
+        <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+            <span>Welcome user <b>{{ session('user')->user_real_name }}</b> to HOMIE RENTAL!!! 🎉🎉🎉😆😆😆</span>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
+    @if(session('user_success_login'))
+        <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+            <span>Welcome back, user <b>{{ session('user')->user_real_name }}</b> to HOMIE RENTAL!!! 🎉🎉🎉😆😆😆</span>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
+
 
     <div class="breadcrumb justify-content-center mt-5">
         <h2>{{ Breadcrumbs::render('breadcrumb_user', $user) }}</h2>

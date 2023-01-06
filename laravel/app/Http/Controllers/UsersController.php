@@ -65,7 +65,7 @@ class UsersController extends Controller
             return response()->view('auth.register', ['message' => 'Wrong input format.']);
         }
         $user->user_description = $request->user_description;
-        
+
         /*****************************************************************************
         The code below uses elements from:
         *Title: File Storage
@@ -84,7 +84,7 @@ class UsersController extends Controller
         }
         $user->save();
         session(['user' => $user]);
-        return redirect()->action([UsersController::class, 'show'], ['user' => $user]);
+        return redirect()->action([UsersController::class, 'show'], ['user' => $user])->with('user_success_sign_up', 'sign_up');
     }
 
     /**
@@ -204,7 +204,7 @@ class UsersController extends Controller
         }
         $user->id = $request->user_id;
         $user->save();
-        return redirect()->action([UsersController::class, 'show'],['user' => $user])->with('success', 'Updated');
+        return redirect()->action([UsersController::class, 'show'],['user' => $user])->with('user_success_update_information', 'update');
     }
 
     /**

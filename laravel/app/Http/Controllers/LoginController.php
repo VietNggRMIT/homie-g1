@@ -45,7 +45,7 @@ class LoginController extends Controller
         if($user){
             if($user->user_password == $request->password){ //existing email, correct password
                 session(['user' => $user]);
-                return redirect()->action([UsersController::class, 'show'], ['user' => $user]);
+                return redirect()->action([UsersController::class, 'show'], ['user' => $user])->with('user_success_login', 'login');
             }
         }
         //vague message by design so that attackers cannot guess the db's rows
@@ -98,7 +98,7 @@ class LoginController extends Controller
         }
         $user->user_password = $changed;
         $user->save();
-        return redirect()->action([UsersController::class, 'show'], ['user' => $user]);
+        return redirect()->action([UsersController::class, 'show'], ['user' => $user])->with('user_success_update_password', 'update');
     }
 
     /**
