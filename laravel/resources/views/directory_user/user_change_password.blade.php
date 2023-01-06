@@ -1,6 +1,7 @@
 @extends('layouts.app')
-
+@section('title', 'Change Password')
 @section('content')
+
 <div class="container">
 
     <div class="row account-bg my-5">
