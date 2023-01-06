@@ -30,7 +30,7 @@ class ListingFactory extends Factory
 //            'listing_name' => fake()->realTextBetween(10, 100, 2), // generate 10 to 100 English characters; indexSize 1->5, with 5 to get most accurate word generation
             'listing_name' => fake()->words(5, true), // === sentence(4);
 //            'listing_description' => fake()->optional()->realTextBetween(10, 500, 5),
-            'listing_description' => fake()->optional()->paragraphs(3, true),
+            'listing_description' => fake()->paragraphs(3, true),
             'listing_address_subdivision_1' => fake()->randomElement($vietnam_provinces), // fake()->city()
             'listing_address_subdivision_2' => fake()->optional()->streetName(),
             'listing_address_subdivision_3' => fake()->optional()->streetAddress(),

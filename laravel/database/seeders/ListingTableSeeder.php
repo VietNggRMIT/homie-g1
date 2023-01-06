@@ -25,7 +25,7 @@ class ListingTableSeeder extends Seeder
             while ($i < 300) {
                 yield $listing = [
                     'listing_name' => fake()->words(5, true), // === sentence(4);
-                    'listing_description' => fake()->optional()->paragraphs(3, true),
+                    'listing_description' => fake()->paragraphs(3, true),
                     'listing_address_subdivision_1' => fake()->randomElement($vietnam_provinces), // fake()->city()
                     'listing_address_subdivision_2' => fake()->optional()->streetName(),
                     'listing_address_subdivision_3' => fake()->optional()->streetAddress(),

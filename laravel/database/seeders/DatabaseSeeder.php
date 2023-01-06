@@ -47,13 +47,13 @@ class DatabaseSeeder extends Seeder
             'created_at' => fake()->dateTimeBetween('-20 years ', '-10 years'),
             'updated_at' => fake()->dateTimeBetween('-5 years ', '-2 years'),
         ]);
-        for ($i = 1; $i < 4; $i++) {
+        for ($i = 0; $i < 4; $i++) {
             Listing::factory()
                 ->count(1)
                 ->recycle($sample_admin)
-                ->has(Review::factory()->times(rand(2,5))) // CAME FROM FACTORY, NOT TABLE SEEDER
-                ->has(Application::factory()->times(rand(1,10))) // CAME FROM FACTORY, NOT TABLE SEEDER
-                ->has(ListingImage::factory()->times(rand(1,2))) // CAME FROM FACTORY, NOT TABLE SEEDER
+                ->has(Review::factory()->times(rand(4,7))) // CAME FROM FACTORY, NOT TABLE SEEDER
+                ->has(Application::factory()->times(rand(6,13))) // CAME FROM FACTORY, NOT TABLE SEEDER
+                ->has(ListingImage::factory()->times(rand(3,5))) // CAME FROM FACTORY, NOT TABLE SEEDER
                 ->create();
             Blog::factory() // CAME FROM FACTORY, NOT TABLE SEEDER
                 ->count(1)

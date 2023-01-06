@@ -246,7 +246,7 @@
                         {{-- 13 Listing Specifications: Owner --}}
                         <div class="col-md">
                             <div class="form-check form-switch">
-                                <input class="form-check-input h-3" type="checkbox" role="switch" name="listing_specification_owner" required
+                                <input class="form-check-input h-3" type="checkbox" role="switch" name="listing_specification_owner"
 
                                 @if (isset($listing))
                                     @if ($listing->listing_specification_owner == 1)
@@ -263,7 +263,7 @@
                         {{-- 14 Listing Available --}}
                         <div class="col-md">
                             <div class="form-check form-switch">
-                                <input class="form-check-input h-3" type="checkbox" role="switch" name="listing_available" required
+                                <input class="form-check-input h-3" type="checkbox" role="switch" name="listing_available"
 
                                 @if (isset($listing))
                                     @if ($listing->listing_available == 1)
