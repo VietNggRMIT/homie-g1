@@ -1,5 +1,24 @@
 <?php
+    /*****************************************************************************
+    *Title: Eloquent: Relationships
+    *Author: Laravel
+    *Code version: 9.x
+    *Availability: https://laravel.com/docs/9.x/eloquent-relationships (Accessed 2 October 2022)
+    *****************************************************************************/
 
+    /*****************************************************************************
+    *Title: Eloquent
+    *Author: Laravel
+    *Code version: 9.x
+    *Availability: https://laravel.com/docs/9.x/eloquent (Accessed 31 November 2022)
+    *****************************************************************************/
+
+    /*****************************************************************************
+    *Title: File Storage
+    *Author: Laravel
+    *Code version: 9.x
+    *Availability: https://laravel.com/docs/9.x/filesystem (Accessed 7 December 2022)
+    *****************************************************************************/
 namespace App\Http\Controllers;
 
 use App\Models\User;
@@ -24,13 +43,7 @@ class ListingsController extends Controller
     //            ->where('listing_available', '1')
     //            ->get();
     //        ======================DO NOT DELETE======================
-    /*****************************************************************************
-    The code below uses elements from:
-    *Title: Eloquent: Relationships
-    *Author: Laravel
-    *Code version: 9.x
-    *Availability: https://laravel.com/docs/9.x/eloquent-relationships (Accessed 2 October 2022)
-    *****************************************************************************/
+    
     $custom_listings = Listing::with('user')
         ->with('listingimages:listing_image_path,listing_id')
         ->withAvg('reviews', 'review_rating')
@@ -58,13 +71,7 @@ class ListingsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    /*****************************************************************************
-    The code below uses elements from:
-    *Title: Eloquent
-    *Author: Laravel
-    *Code version: 9.x
-    *Availability: https://laravel.com/docs/9.x/eloquent (Accessed 31 November 2022)
-    *****************************************************************************/
+    
     public function store(Request $request)
     {
         // First Part
@@ -96,13 +103,7 @@ class ListingsController extends Controller
         $listing->save();
 
         // Second Part, save all image(s) to the listing_images table
-        /*****************************************************************************
-        The code below uses elements from:
-        *Title: File Storage
-        *Author: Laravel
-        *Code version: 9.x
-        *Availability: https://laravel.com/docs/9.x/filesystem (Accessed 7 December 2022)
-        *****************************************************************************/
+        
         if($request->has('listingimages')) {
             foreach ($request->file('listingimages') as $image) {
                 $imageName = 'image-'.time().rand(1,100000000).'.'.$image->extension();
@@ -144,13 +145,7 @@ class ListingsController extends Controller
     //        ======================DO NOT DELETE======================
 
     //        Good 1
-    /*****************************************************************************
-    The code below uses elements from:
-    *Title: Eloquent: Relationships
-    *Author: Laravel
-    *Code version: 9.x
-    *Availability: https://laravel.com/docs/9.x/eloquent-relationships (Accessed 2 October 2022)
-    *****************************************************************************/
+    
     $custom_listing = Listing::
         with(['user','listingimages:listing_image_path,listing_id','applications','reviews'])
         ->withAvg('reviews', 'review_rating')
@@ -190,13 +185,7 @@ class ListingsController extends Controller
      * @param  $listing_id
      * @return \Illuminate\Http\Response
      */
-    /*****************************************************************************
-    The code below uses elements from:
-    *Title: Eloquent
-    *Author: Laravel
-    *Code version: 9.x
-    *Availability: https://laravel.com/docs/9.x/eloquent (Accessed 31 November 2022)
-    *****************************************************************************/
+
     public function update(Request $request, $listing_id)
     {
         // First Part
@@ -228,13 +217,6 @@ class ListingsController extends Controller
         $listing->save();
 
         // Second Part, save all image(s) to the listing_images table
-        /*****************************************************************************
-        The code below uses elements from:
-        *Title: File Storage
-        *Author: Laravel
-        *Code version: 9.x
-        *Availability: https://laravel.com/docs/9.x/filesystem (Accessed 7 December 2022)
-        *****************************************************************************/
         if($request->has('listingimages')) {
             foreach ($request->file('listingimages') as $image) {
                 $imageName = 'image-'.time().rand(1,100000000).'.'.$image->extension();
@@ -255,13 +237,7 @@ class ListingsController extends Controller
      * @param  $listing_id the listing id
      * @return \Illuminate\Http\Response
      */
-    /*****************************************************************************
-    The code below uses elements from:
-    *Title: Eloquent
-    *Author: Laravel
-    *Code version: 9.x
-    *Availability: https://laravel.com/docs/9.x/eloquent (Accessed 31 November 2022)
-    *****************************************************************************/
+
     public function destroy($listing_id)
     {
         $success = Listing::destroy($listing_id);

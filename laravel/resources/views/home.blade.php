@@ -2,19 +2,19 @@
 @section('title', 'Home')
 @section('content')
 @livewireStyles
-
-<div class="container-fluid" id="banner-box-3">
-    <div class="row justify-content-center">
-        <div class="col" id="hero-box">
-            {{-- OPTION 1 --}}
-            <div>
-                <h2>Welcome to Homie Rental</h2><br>
                 {{-- /*****************************************************************************
                 The code below uses elements from:
                 *Title: Counter JS
                 *Author: srexi/purecounterjs on NPM
                 *Availability: https://github.com/srexi/purecounterjs (Accessed 06 Jan 2023)
                 *****************************************************************************/ --}}
+<div class="container-fluid" id="banner-box-3">
+    <div class="row justify-content-center">
+        <div class="col" id="hero-box">
+            {{-- OPTION 1 --}}
+            <div>
+                <h2>Welcome to Homie Rental</h2><br>
+
                 There are <span data-purecounter-end="{{ $custom_count[0] }}" class="purecounter">0</span> property listings available
                 (<span data-purecounter-end="{{ $custom_count[1] }}" class="purecounter">0</span> listing images,
                 <span data-purecounter-end="{{ $custom_count[2] }}" class="purecounter">0</span> reviews,

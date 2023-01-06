@@ -1,11 +1,17 @@
-{{-- /*****************************************************************************
-The code below uses elements from:
-*Title: Quickstart
-*Author: Laravel Livewire
-*Code version: 2.x
-*Availability: https://laravel-livewire.com/docs/2.x/quickstart (Accessed 30 December 2022)
-*****************************************************************************/ --}}
-
+                {{-- /*****************************************************************************
+                The code below uses elements from:
+                *Title: Quickstart
+                *Author: Laravel Livewire
+                *Code version: 2.x
+                *Availability: https://laravel-livewire.com/docs/2.x/quickstart (Accessed 30 December 2022)
+                *****************************************************************************/ --}}
+                {{-- /*****************************************************************************
+                The code below uses elements from:
+                *Title: Pagination
+                *Author: Laravel Livewire
+                *Code version: 2.x
+                *Availability: https://laravel-livewire.com/docs/2.x/pagination (Accessed 2 January 2023)
+                *****************************************************************************/ --}}
 <div>
     <div>
         <div class="row blog-filter-group filter-section align-items-center mb-5 p-4">
@@ -94,13 +100,6 @@ The code below uses elements from:
             </div>
             <div class="pagination justify-content-center mt-5">
                 {{-- below is the box containing links to different page. get it to center? --}}
-                {{-- /*****************************************************************************
-                The code below uses elements from:
-                *Title: Pagination
-                *Author: Laravel Livewire
-                *Code version: 2.x
-                *Availability: https://laravel-livewire.com/docs/2.x/pagination (Accessed 2 January 2023)
-                *****************************************************************************/ --}}
                 @if(!$everChanged)
                     <br><div>{{ $blogs->links('pagination::bootstrap-4') }}</div>
                 @endif

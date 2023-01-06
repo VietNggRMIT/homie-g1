@@ -1,5 +1,17 @@
 <?php
+    /*****************************************************************************
+    *Title: Eloquent: Relationships
+    *Author: Laravel
+    *Code version: 9.x
+    *Availability: https://laravel.com/docs/9.x/eloquent-relationships (Accessed 2 October 2022)
+    *****************************************************************************/
 
+    /*****************************************************************************
+    *Title: Eloquent
+    *Author: Laravel
+    *Code version: 9.x
+    *Availability: https://laravel.com/docs/9.x/eloquent (Accessed 31 November 2022)
+    *****************************************************************************/
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
@@ -13,14 +25,7 @@ class BlogsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    /*****************************************************************************
-    The code below uses elements from:
-    *Title: Eloquent: Relationships
-    *Author: Laravel
-    *Code version: 9.x
-    *Availability: https://laravel.com/docs/9.x/eloquent-relationships (Accessed 2 October 2022)
-    *****************************************************************************/
-
+    
     public function index()
     {
         $custom_blogs = Blog::with('user')
@@ -47,13 +52,7 @@ class BlogsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    /*****************************************************************************
-    The code below uses elements from:
-    *Title: Eloquent
-    *Author: Laravel
-    *Code version: 9.x
-    *Availability: https://laravel.com/docs/9.x/eloquent (Accessed 31 November 2022)
-    *****************************************************************************/
+    
     public function store(Request $request)
     {
         $blog = new Blog;
@@ -70,13 +69,7 @@ class BlogsController extends Controller
      * @param  \App\Models\Blog  $blog
      * @return \Illuminate\Http\Response
      */
-    /*****************************************************************************
-    The code below uses elements from:
-    *Title: Eloquent: Relationships
-    *Author: Laravel
-    *Code version: 9.x
-    *Availability: https://laravel.com/docs/9.x/eloquent-relationships (Accessed 2 October 2022)
-    *****************************************************************************/
+    
     public function show(Blog $blog)
     {
         $custom_blog = Blog::with('user')
@@ -108,13 +101,7 @@ class BlogsController extends Controller
      * @param  $blog_id
      * @return \Illuminate\Http\Response
      */
-    /*****************************************************************************
-    The code below uses elements from:
-    *Title: Eloquent
-    *Author: Laravel
-    *Code version: 9.x
-    *Availability: https://laravel.com/docs/9.x/eloquent (Accessed 31 November 2022)
-    *****************************************************************************/
+    
     public function update(Request $request, $blog_id)
     {
         $new_blog = Blog::find($blog_id);
@@ -132,13 +119,7 @@ class BlogsController extends Controller
      * @param  $blog_id
      * @return \Illuminate\Http\Response
      */
-    /*****************************************************************************
-    The code below uses elements from:
-    *Title: Eloquent
-    *Author: Laravel
-    *Code version: 9.x
-    *Availability: https://laravel.com/docs/9.x/eloquent (Accessed 31 November 2022)
-    *****************************************************************************/
+    
     public function destroy($blog_id)
     {
         $success = Blog::destroy($blog_id);

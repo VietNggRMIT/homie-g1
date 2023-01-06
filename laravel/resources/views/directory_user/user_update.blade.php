@@ -2,7 +2,13 @@
 @section('title', 'Update Information')
 @section('content')
 <div class="container">
-
+                    {{-- /*****************************************************************************
+                    The code below uses elements from:
+                    *Title: 	CSRF Protection
+                    *Author: Laravel
+                    *Code version: 9.x
+                    *Availability: https://laravel.com/docs/9.x/csrf (Accessed 7 December 2022)
+                    *****************************************************************************/ --}}
     <div class="row account-bg my-5">
         @if (!isset($user))
             @php redirect('/home'); @endphp
@@ -26,13 +32,7 @@
                     @if (isset($message))
                         <div class="alert alert-danger mt-3" role="alert">{{ $message }}</div>
                     @endif
-                    {{-- /*****************************************************************************
-                    The code below uses elements from:
-                    *Title: 	CSRF Protection
-                    *Author: Laravel
-                    *Code version: 9.x
-                    *Availability: https://laravel.com/docs/9.x/csrf (Accessed 7 December 2022)
-                    *****************************************************************************/ --}}
+
                     <form method="POST" action="{{ url("update-user/{$user->id}") }}" enctype="multipart/form-data">
                         @csrf
 

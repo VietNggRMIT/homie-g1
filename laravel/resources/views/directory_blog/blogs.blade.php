@@ -1,6 +1,13 @@
 @extends('layouts.app')
 @section('title', 'Blogs')
 @section('content')
+{{-- /*****************************************************************************
+The code below uses elements from:
+*Title: Quickstart
+*Author: Laravel Livewire
+*Code version: 2.x
+*Availability: https://laravel-livewire.com/docs/2.x/quickstart (Accessed 2 January 2023)
+*****************************************************************************/ --}}
 @livewireStyles
     <div class="hero-top">
         <div class="container-fluid">
@@ -29,13 +36,6 @@
             <div class="breadcrumb justify-content-center">
                 <h2>{{ Breadcrumbs::render('breadcrumb_blogs') }}</h2>
             </div>
-            {{-- /*****************************************************************************
-            The code below uses elements from:
-            *Title: Quickstart
-            *Author: Laravel Livewire
-            *Code version: 2.x
-            *Availability: https://laravel-livewire.com/docs/2.x/quickstart (Accessed 2 January 2023)
-            *****************************************************************************/ --}}
         @livewire('blog-results')
 
         @livewireScripts

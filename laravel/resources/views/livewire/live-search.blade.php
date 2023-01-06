@@ -1,3 +1,10 @@
+        {{-- /*****************************************************************************
+        The code below uses elements from:
+        *Title: Quickstart
+        *Author: Laravel Livewire
+        *Code version: 2.x
+        *Availability: https://laravel-livewire.com/docs/2.x/quickstart (Accessed 30 December 2022)
+        *****************************************************************************/ --}}
 <div>
     <div class="row">
         <div class="col-md-8 offset-md-2">

@@ -1,5 +1,9 @@
 <?php
-
+    /*****************************************************************************
+    *Title: Eloquent
+    *Author: Laravel
+    *Availability: https://laravel.com/docs/9.x/eloquent (Accessed 31 November 2022)
+    *****************************************************************************/
 namespace App\Http\Controllers;
 
 use App\Models\Application;
@@ -77,12 +81,6 @@ class ApplicationsController extends Controller
             $request->convicted = "no convicted";
         }
 
-    /*****************************************************************************
-    The code below uses elements from:
-    *Title: Eloquent
-    *Author: Laravel
-    *Availability: https://laravel.com/docs/9.x/eloquent (Accessed 31 November 2022)
-    *****************************************************************************/
         $content = sprintf('Applicant: %s;
                     Phone: %s;
                     Email: %s;

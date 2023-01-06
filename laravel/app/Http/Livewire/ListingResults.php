@@ -1,5 +1,25 @@
 <?php
+    /*****************************************************************************
+    *Title: Lifecycle Hooks
+    *Author: Laravel Livewire
+    *Code version: 2.x
+    *Availability: https://laravel-livewire.com/docs/2.x/lifecycle-hooks (Accessed 2 January 2023)
+    *****************************************************************************/
 
+    /*****************************************************************************
+    *Title: Pagination
+    *Author: Laravel Livewire
+    *Code version: 2.x
+    *Availability: https://laravel-livewire.com/docs/2.x/pagination (Accessed 2 January 2023)
+    *****************************************************************************/
+
+    /*****************************************************************************
+    The code below uses elements from:
+    *Title: Quickstart
+    *Author: Laravel Livewire
+    *Code version: 2.x
+    *Availability: https://laravel-livewire.com/docs/2.x/quickstart (Accessed 30 December 2023)
+    *****************************************************************************/
 namespace App\Http\Livewire;
 
 use App\Models\Listing;
@@ -27,13 +47,6 @@ class ListingResults extends Component
     ];
     public $isChanged = false; //check if the searchAddress term has been changed (backspace)
    
-    /*****************************************************************************
-    The code below uses elements from:
-    *Title: Pagination
-    *Author: Laravel Livewire
-    *Code version: 2.x
-    *Availability: https://laravel-livewire.com/docs/2.x/pagination (Accessed 2 January 2023)
-    *****************************************************************************/
 
     public function filter()
     {
@@ -51,13 +64,7 @@ class ListingResults extends Component
         $this->isChanged = true;
         $this->everChanged = true;
     }
-    /*****************************************************************************
-    The code below uses elements from:
-    *Title: Lifecycle Hooks
-    *Author: Laravel Livewire
-    *Code version: 2.x
-    *Availability: https://laravel-livewire.com/docs/2.x/lifecycle-hooks (Accessed 2 January 2023)
-    *****************************************************************************/
+
     public function updated(){
         $this->resetPage();
         $this->setPage(1);
@@ -152,13 +159,7 @@ class ListingResults extends Component
                 $listings = $listings->orderBy('id', 'asc');
         }
         
-        /*****************************************************************************
-        The code below uses elements from:
-        *Title: Quickstart
-        *Author: Laravel Livewire
-        *Code version: 2.x
-        *Availability: https://laravel-livewire.com/docs/2.x/quickstart (Accessed 30 December 2023)
-        *****************************************************************************/
+
         if($this->searchName || $this->searchAddress || $this->filterRating || $this->minPrice != 0 || $this->maxPrice != 20 ||$this->order != 'byID'){
             return view('livewire.listing-results', [
                 'listings' => $listings->get(),

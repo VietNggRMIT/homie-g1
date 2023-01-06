@@ -1,10 +1,17 @@
-{{-- /*****************************************************************************
-The code below uses elements from:
-*Title: Quickstart
-*Author: Laravel Livewire
-*Code version: 2.x
-*Availability: https://laravel-livewire.com/docs/2.x/quickstart (Accessed 30 December 2022)
-*****************************************************************************/ --}}
+        {{-- /*****************************************************************************
+        The code below uses elements from:
+        *Title: Quickstart
+        *Author: Laravel Livewire
+        *Code version: 2.x
+        *Availability: https://laravel-livewire.com/docs/2.x/quickstart (Accessed 30 December 2022)
+        *****************************************************************************/ --}}
+        {{-- /*****************************************************************************
+        The code below uses elements from:
+        *Title: Pagination
+        *Author: Laravel Livewire
+        *Code version: 2.x
+        *Availability: https://laravel-livewire.com/docs/2.x/pagination (Accessed 2 January 2023)
+        *****************************************************************************/ --}}
 <div class="container">
     <div class="search-filter" role="search">
         <input wire:model="searchName" wire:change="filter" class="form-control border-end-0 border rounded-pill me-2 search-name" type="text" placeholder="Search by name" aria-label="Search">
@@ -208,13 +215,6 @@ The code below uses elements from:
 
     <div class="pagination justify-content-center my-3">
         {{-- below is the box containing links to different page. only show on first landing --}}
-        {{-- /*****************************************************************************
-        The code below uses elements from:
-        *Title: Pagination
-        *Author: Laravel Livewire
-        *Code version: 2.x
-        *Availability: https://laravel-livewire.com/docs/2.x/pagination (Accessed 2 January 2023)
-        *****************************************************************************/ --}}
         @if(!$everChanged)
             <br><div>{{ $listings->links('pagination::bootstrap-4') }}</div>
         @endif

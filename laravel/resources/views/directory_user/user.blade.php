@@ -1,7 +1,13 @@
 @extends('layouts.app')
 @section('title', 'User'.' '.$user->user_real_name)
 @section('content')
-
+                        {{-- /*****************************************************************************
+                        The code below uses elements from:
+                        *Title: Database: Routing
+                        *Author: Laravel
+                        *Code version: 9.x
+                        *Availability: https://laravel.com/docs/9.x/routing (Accessed 5 November 2022)
+                        *****************************************************************************/ --}}
 <div class="container">
 
     @if(session('application_success_destroy'))
@@ -84,13 +90,7 @@
                             </ul>
                         </div>
                         <hr>
-                        {{-- /*****************************************************************************
-                        The code below uses elements from:
-                        *Title: Database: Routing
-                        *Author: Laravel
-                        *Code version: 9.x
-                        *Availability: https://laravel.com/docs/9.x/routing (Accessed 5 November 2022)
-                        *****************************************************************************/ --}}
+
                         <div class="acc-options-btns d-grid gap-2 md-block">
                             @if(session('user'))
                                 @if (session('user')->id == $user->id)

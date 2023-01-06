@@ -1,6 +1,12 @@
 @extends('layouts.app')
 @section('title', 'Create Application')
-
+{{-- /*****************************************************************************
+The code below uses elements from:
+*Title: Database: Routing
+*Author: Laravel
+*Code version: 9.x
+*Availability: https://laravel.com/docs/9.x/routing (Accessed 5 November 2022)
+*****************************************************************************/ --}}
 <meta name="csrf-token" content="{{ csrf_token() }}">
 
 @section('content')
@@ -12,13 +18,7 @@
                 </div>
 
                 <div class="card-body">
-                    {{-- /*****************************************************************************
-                    The code below uses elements from:
-                    *Title: Database: Routing
-                    *Author: Laravel
-                    *Code version: 9.x
-                    *Availability: https://laravel.com/docs/9.x/routing (Accessed 5 November 2022)
-                    *****************************************************************************/ --}}
+                    
                     {{-- Problems with clicking - fixed (2023 Jan 04) --}}
                     <button onclick="window.location.href='{{ route('listings.show', ['listing' => \App\Models\Listing::where(['id' => $listing])->pluck('listing_name')->first()]) }}';" type="button" class="btn btn-danger mb-3">Cancel</button>
                     <button onclick="window.location.href='{{ route('listings.index') }}';" type="button" class="btn btn-secondary mb-3">Back to all listings</button>

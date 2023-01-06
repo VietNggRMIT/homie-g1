@@ -1,6 +1,12 @@
 @extends('layouts.app')
 @section('title', 'Create/Edit Listing')
-
+{{-- /*****************************************************************************
+The code below uses elements from:
+*Title: Database: Routing
+*Author: Laravel
+*Code version: 9.x
+*Availability: https://laravel.com/docs/9.x/routing (Accessed 5 November 2022)
+*****************************************************************************/ --}}
 @if(isset($listing))
     <title>Edit Listing</title>
 @else
@@ -25,13 +31,6 @@
                 @endif
 
                 {{-- 0. Buttons --}}
-                {{-- /*****************************************************************************
-                The code below uses elements from:
-                *Title: Database: Routing
-                *Author: Laravel
-                *Code version: 9.x
-                *Availability: https://laravel.com/docs/9.x/routing (Accessed 5 November 2022)
-                *****************************************************************************/ --}}
                 @if(isset($listing))
                     <button onclick="window.location.href='{{ route('listings.show', ['listing' => $listing]) }}';" type="button" class="btn btn-danger mb-3">Cancel</button>
                 @else

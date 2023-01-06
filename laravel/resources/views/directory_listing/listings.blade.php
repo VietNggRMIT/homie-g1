@@ -1,7 +1,13 @@
 @extends('layouts.app')
 @section('title', 'Listings')
 @section('content')
-
+{{-- /*****************************************************************************
+The code below uses elements from:
+*Title: Quickstart
+*Author: Laravel Livewire
+*Code version: 2.x
+*Availability: https://laravel-livewire.com/docs/2.x/quickstart (Accessed 2 January 2023)
+*****************************************************************************/ --}}
     <div class="container show-listings">
 
         @if(session('listing_success_destroy'))
@@ -21,13 +27,7 @@
         <div class="breadcrumb justify-content-center mt-5">
             <h2>{{ Breadcrumbs::render('breadcrumb_listings') }}</h2>
         </div>
-        {{-- /*****************************************************************************
-        The code below uses elements from:
-        *Title: Quickstart
-        *Author: Laravel Livewire
-        *Code version: 2.x
-        *Availability: https://laravel-livewire.com/docs/2.x/quickstart (Accessed 2 January 2023)
-        *****************************************************************************/ --}}
+
         <div>
             @livewire('listing-results')
         </div>

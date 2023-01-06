@@ -1,5 +1,10 @@
 <?php
-
+    /*****************************************************************************
+    *Title: Quickstart
+    *Author: Laravel Livewire
+    *Code version: 2.x
+    *Availability: https://laravel-livewire.com/docs/2.x/quickstart (Accessed 30 December 2022)
+    *****************************************************************************/
 namespace App\Http\Livewire;
 
 use App\Models\Listing;

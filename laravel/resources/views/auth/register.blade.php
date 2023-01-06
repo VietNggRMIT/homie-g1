@@ -7,6 +7,12 @@ The code below uses elements from:
 *Availability: https://github.com/laravel/ui/blob/4.x/src/Auth/bootstrap-stubs/auth/register.stub (Accessed 30 December 2022)
 *****************************************************************************/ --}}
 
+{{-- /*****************************************************************************
+*Title: 	CSRF Protection
+*Author: Laravel
+*Code version: 9.x
+*Availability: https://laravel.com/docs/9.x/csrf (Accessed 7 December 2022)
+*****************************************************************************/ --}}
 @extends('layouts.app')
 
 @section('content')
@@ -32,13 +38,7 @@ The code below uses elements from:
                     @if (isset($message))
                         <div class="alert alert-danger mt-3" role="alert">{{ $message }}</div>
                     @endif
-                    {{-- /*****************************************************************************
-                    The code below uses elements from:
-                    *Title: 	CSRF Protection
-                    *Author: Laravel
-                    *Code version: 9.x
-                    *Availability: https://laravel.com/docs/9.x/csrf (Accessed 7 December 2022)
-                    *****************************************************************************/ --}}
+
                     <form method="POST" action="{{ route('users.store') }}" enctype="multipart/form-data">
                         @csrf
 
