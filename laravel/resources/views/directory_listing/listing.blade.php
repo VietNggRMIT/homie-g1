@@ -528,7 +528,7 @@
                                                 To property listing
                                                 <b class="link-warning" onclick="window.location.href='{{ route('listings.show', ['listing' => $application->listing]) }}';">{{ $application->listing->listing_name }}</b>
                                                 <br>
-                                                {!! nl2br(e($application->application_description)) !!}
+                                                <small>{!! nl2br(e($application->application_description)) !!}</small>
                                             </p>
                                         </div>
                                         <div class="card-footer d-flex justify-content-between align-items-center">
