@@ -259,8 +259,13 @@
                             <a class="card listing-card blog-card" href="{{ route('blogs.show', ['blog' => $blog]) }}">
                                 <!-- <img src="php1\resources\background\tra-da-via-he-hanoi.jpg" class="card-img-top" alt="..."> -->
                                 <div class="card-body">
-                                    <h5 class="card-title">Blog by {{ $blog->user->user_real_name }}</h5>
-                                    <p class="card-text">{{ $blog->blog_name }}</p>
+                                    <h5 class="card-title">{{ $blog->blog_name }}</h5>
+{{--                                    <p class="card-text">{{ $blog->blog_name }}</p>--}}
+                                    <div class="card-description">
+                                        <p>
+                                            {!!  nl2br(e($blog->blog_description)) !!}
+                                        </p>
+                                    </div>
                                 </div>
                                 <div class="card-footer">
                                     <small class="text-muted" data-toggle="tooltip" data-placement="top" title="{{ $blog->updated_at }}">
