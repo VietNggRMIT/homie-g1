@@ -42,7 +42,7 @@ class ListingFactory extends Factory
 //            'listing_image' => fake()->optional()->imageUrl(640, 480, 'listing', true, 'image', true),
             'listing_price' => fake()->numberBetween(500, 20000).'000', // 500k->20m VND
 //            'listing_rating' => fake()->optional()->numberBetween(1,5), // 1-5 stars
-            'listing_available' => fake()->numberBetween(0,1), // 0,1 is FALSE, TRUE
+            'listing_available' => fake()->numberBetween(1,1), // 0,1 is FALSE, TRUE
             'listing_specification_bathroom' => fake()->numberBetween(0, 3), // 0-3 bathrooms
             'listing_specification_bedroom' => fake()->numberBetween(0, 4), // 0-4 bedrooms
             'listing_specification_size' => fake()->numberBetween(5, 120), // 5-120 m2

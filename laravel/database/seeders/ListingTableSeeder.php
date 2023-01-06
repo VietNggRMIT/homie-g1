@@ -32,7 +32,7 @@ class ListingTableSeeder extends Seeder
                     'listing_address_latitude' => fake()->latitude($min = 20, $max = 21),
                     'listing_address_longitude' => fake()->longitude($min = 104, $max = 106),
                     'listing_price' => fake()->numberBetween(500, 20000).'000', // 500k->20m VND
-                    'listing_available' => fake()->numberBetween(0,1), // 0,1 is FALSE, TRUE
+                    'listing_available' => fake()->numberBetween(1,1), // 0,1 is FALSE, TRUE
                     'listing_specification_bathroom' => fake()->numberBetween(0, 3), // 0-3 bathrooms
                     'listing_specification_bedroom' => fake()->numberBetween(0, 4), // 0-4 bedrooms
                     'listing_specification_size' => fake()->numberBetween(5, 120), // 5-120 m2

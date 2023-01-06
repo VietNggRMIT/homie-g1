@@ -273,9 +273,7 @@
                             @endif
                         </div>
                         <div class="btn-container my-3">
-                            @if (session('user')->id == $listing->user_id)
-                             <a class="btn btn-secondary btn-lg px-5 disabled text-decoration-line-through" href="{{ route('applications.create', ['listing' => $listing->id]) }}">You are the owner of this property</a>
-                            @elseif ($listing->listing_available == 1)
+                            @if ($listing->listing_available == 1)
                                 <a class="btn btn-warning btn-lg px-5" href="{{ route('applications.create', ['listing' => $listing->id]) }}">Apply Now! 🔥</a>
                             @else
                                 <a class="btn btn-secondary btn-lg px-5 disabled text-decoration-line-through" href="{{ route('applications.create', ['listing' => $listing->id]) }}">Not Available 🥶</a>
