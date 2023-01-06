@@ -22,8 +22,8 @@ class ListingImageFactory extends Factory
 //            'image_path' => storage_path('app\public\listing_image-' . rand(1, 3) .'.jpg'),
 //            'image_path' => fake()->imageUrl(640, 480, 'listing', true, 'image', false),
             'listing_id' => Listing::factory(),
-            'created_at' => fake()->dateTimeBetween('-20 years ', '-10 years'),
-            'updated_at' => fake()->dateTimeBetween('-5 years ', '-2 years'),
+            'created_at' => fake()->dateTimeBetween('-1 year', '-6 months'),
+            'updated_at' => fake()->dateTimeBetween('-1 month', '-1 day'),
         ];
     }
 }

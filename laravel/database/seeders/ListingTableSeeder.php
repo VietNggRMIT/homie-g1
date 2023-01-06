@@ -19,7 +19,6 @@ class ListingTableSeeder extends Seeder
     {
         LazyCollection::make(function () {
             $i = 0;
-            $date_time_max = fake()->dateTimeBetween();
             $vietnam_provinces = ['Ha Noi','Ha Giang','Cao Bang','Bac Kan','Tuyen Quang','Lao Cai','Dien Bien','Lai Chau','Son La','Yen Bai','Hoa Binh','Thai Nguyen','Lang Son','Quang Ninh','Bac Giang','Phu Tho','Vinh Phuc','Bac Ninh','Hai Duong','Hai Phong','Hung Yen','Thai Binh','Ha Nam','Nam Dinh','Ninh Binh','Thanh Hoa','Nghe An','Ha Tinh','Quang Binh','Quang Tri','Thua Thien Hue','Da Nang','Quang Nam','Quang Ngai','Binh Dinh','Phu Yen','Khanh Hoa','Ninh Thuan','Binh Thuan','Kon Tum','Gia Lai','Dak Lak','Dak Nong','Lam Dong','Binh Phuoc','Tay Ninh','Binh Duong','Dong Nai','Ba Ria - Vung Tau','Ho Chi Minh','Long An','Tien Giang','Ben Tre','Tra Vinh','Vinh Long','Dong Thap','An Giang','Kien Giang','Can Tho','Hau Giang','Soc Trang','Bac Lieu','Ca Mau'];
             $foreign_key = collect(User::all()->modelKeys());
             while ($i < 200) {
@@ -39,10 +38,8 @@ class ListingTableSeeder extends Seeder
                     'listing_specification_owner' => fake()->numberBetween(0, 1), // 0,1 is FALSE, TRUE
                     'listing_specification_tenant' => fake()->numberBetween(1, 5), // 1 to 5 people allowed
                     'user_id' => $foreign_key->random(),
-//                    'created_at' => fake()->dateTimeBetween('1970-01-01 01:01:01', $date_time_max),
-//                    'updated_at' => $date_time_max,
-                    'created_at' => fake()->dateTimeBetween('-20 years ', '-10 years'),
-                    'updated_at' => fake()->dateTimeBetween('-5 years ', '-2 years'),
+                    'created_at' => fake()->dateTimeBetween('-1 year', '-6 months'),
+                    'updated_at' => fake()->dateTimeBetween('-1 month', '-1 day'),
                 ];
                 $i++;
             }

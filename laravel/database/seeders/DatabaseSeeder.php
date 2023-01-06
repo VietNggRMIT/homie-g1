@@ -44,8 +44,8 @@ class DatabaseSeeder extends Seeder
             'user_real_name' => 'admin real name',
             'user_image_path' => "user_image_path.jpg",
             'user_description' => fake()->realTextBetween(10, 100, 2),
-            'created_at' => fake()->dateTimeBetween('-20 years ', '-10 years'),
-            'updated_at' => fake()->dateTimeBetween('-5 years ', '-2 years'),
+            'created_at' => fake()->dateTimeBetween('-1 year', '-6 months'),
+            'updated_at' => fake()->dateTimeBetween('-1 month', '-1 day'),
         ]);
         for ($i = 0; $i < 4; $i++) {
             Listing::factory()

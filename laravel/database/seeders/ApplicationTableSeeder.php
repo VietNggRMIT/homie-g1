@@ -19,7 +19,6 @@ class ApplicationTableSeeder extends Seeder
     {
         LazyCollection::make(function () {
             $i = 0;
-            $date_time_max = fake()->dateTimeBetween();
             $foreign_key = collect(Listing::all()->modelKeys());
             while ($i < 4000) {
                 yield $application = [
@@ -40,8 +39,8 @@ class ApplicationTableSeeder extends Seeder
                     Evicted: '.fake()->randomElement(['yes', 'no']).';
                     Convicted: '.fake()->randomElement(['yes', 'no']).';',
                     'listing_id' => $foreign_key->random(),
-                    'created_at' => fake()->dateTimeBetween('-20 years ', '-10 years'),
-                    'updated_at' => fake()->dateTimeBetween('-5 years ', '-2 years'),
+                    'created_at' => fake()->dateTimeBetween('-1 year', '-6 months'),
+                    'updated_at' => fake()->dateTimeBetween('-1 month', '-1 day'),
                 ];
                 $i++;
             }

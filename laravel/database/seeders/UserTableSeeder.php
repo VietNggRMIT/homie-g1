@@ -77,7 +77,6 @@ class UserTableSeeder extends Seeder
         // No (X,Y): 10000 5000, 10000 1000, 10000 n/a, 5000 n/a,
         LazyCollection::make(function () {
             $i = 0;
-            $date_time_max = fake()->dateTimeBetween();
             while ($i < 50) {
                 yield $user = [
                     'user_email_address' => fake()->unique()->freeEmail(),
@@ -86,10 +85,8 @@ class UserTableSeeder extends Seeder
                     'user_real_name' => fake()->name(),
                     'user_image_path' => "user_image_path.jpg",
                     'user_description' => fake()->realTextBetween(10, 100, 2),
-//                    'created_at' => fake()->dateTimeBetween('1970-01-01 01:01:01', $date_time_max),
-//                    'updated_at' => $date_time_max,
-                    'created_at' => fake()->dateTimeBetween('-20 years ', '-10 years'),
-                    'updated_at' => fake()->dateTimeBetween('-5 years ', '-2 years'),
+                    'created_at' => fake()->dateTimeBetween('-1 year', '-6 months'),
+                    'updated_at' => fake()->dateTimeBetween('-1 month', '-1 day'),
                 ];
                 $i++;
             }

@@ -23,8 +23,6 @@ class ListingFactory extends Factory
 //        The world is from -90-90; -180-180. Vietnam is from 8-23, 104-110
 //        $x = fake()->latitude($min = 20, $max = 21); // "77.147489 86.211205"
 //        $y = fake()->longitude($min = 104, $max = 106);
-        $date_max = fake()->date();
-        $time_max = fake()->time();
 
         return [
 //            'listing_name' => fake()->realTextBetween(10, 100, 2), // generate 10 to 100 English characters; indexSize 1->5, with 5 to get most accurate word generation
@@ -48,8 +46,8 @@ class ListingFactory extends Factory
             'listing_specification_size' => fake()->numberBetween(5, 120), // 5-120 m2
             'listing_specification_owner' => fake()->numberBetween(0, 1), // 0,1 is FALSE, TRUE
             'listing_specification_tenant' => fake()->numberBetween(1, 5), // 1 to 5 people allowed
-            'created_at' => fake()->dateTimeBetween('1970-01-01 01:01:01', $date_max." ".$time_max),
-            'updated_at' => $date_max." ".$time_max,
+            'created_at' => fake()->dateTimeBetween('-1 year', '-6 months'),
+            'updated_at' => fake()->dateTimeBetween('-1 month', '-1 day'),
             'user_id' => User::factory(),
         ];
     }

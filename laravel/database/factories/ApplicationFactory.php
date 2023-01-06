@@ -35,8 +35,8 @@ class ApplicationFactory extends Factory
                     Evicted: '.fake()->randomElement(['yes', 'no']).';
                     Convicted: '.fake()->randomElement(['yes', 'no']).';',
             'listing_id' => Listing::factory(),
-            'created_at' => fake()->dateTimeBetween('-20 years ', '-10 years'),
-            'updated_at' => fake()->dateTimeBetween('-5 years ', '-2 years'),
+            'created_at' => fake()->dateTimeBetween('-1 year', '-6 months'),
+            'updated_at' => fake()->dateTimeBetween('-1 month', '-1 day'),
         ];
     }
 }

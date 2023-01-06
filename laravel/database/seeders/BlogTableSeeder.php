@@ -19,7 +19,6 @@ class BlogTableSeeder extends Seeder
     {
         LazyCollection::make(function () {
             $i = 0;
-            $date_time_max = fake()->dateTimeBetween();
             $foreign_key = collect(User::all()->modelKeys());
             while ($i < 150) {
                 yield $review = [
@@ -27,8 +26,8 @@ class BlogTableSeeder extends Seeder
                     'blog_name' => fake()->words(10, true), // === sentence(4);
                     'blog_description' => fake()->paragraphs(5, true),
                     'user_id' => $foreign_key->random(),
-                    'created_at' => fake()->dateTimeBetween('-20 years ', '-10 years'),
-                    'updated_at' => fake()->dateTimeBetween('-5 years ', '-2 years'),
+                    'created_at' => fake()->dateTimeBetween('-1 year', '-6 months'),
+                    'updated_at' => fake()->dateTimeBetween('-1 month', '-1 day'),
                 ];
                 $i++;
             }

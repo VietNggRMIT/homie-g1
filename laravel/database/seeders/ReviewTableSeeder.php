@@ -27,8 +27,8 @@ class ReviewTableSeeder extends Seeder
                     'review_rating' => fake()->numberBetween(1,5),
                     'review_image_path' => 'user_image_path.jpg',
                     'listing_id' => $foreign_key->random(),
-                    'created_at' => fake()->dateTimeBetween('-20 years ', '-10 years'),
-                    'updated_at' => fake()->dateTimeBetween('-5 years ', '-2 years'),
+                    'created_at' => fake()->dateTimeBetween('-1 year', '-6 months'),
+                    'updated_at' => fake()->dateTimeBetween('-1 month', '-1 day'),
                 ];
                 $i++;
             }
