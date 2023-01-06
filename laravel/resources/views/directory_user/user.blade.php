@@ -3,6 +3,14 @@
 @section('content')
 
 <div class="container">
+
+    @if(session('application_success_destroy'))
+        <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+            <span>You deleted an application</span>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
+
     <div class="breadcrumb justify-content-center mt-5">
         <h2>{{ Breadcrumbs::render('breadcrumb_user', $user) }}</h2>
     </div>
