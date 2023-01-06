@@ -240,7 +240,7 @@
                     {{-- <button class="btn btn-outline-primary me-3">Show more</button> --}}
                     @if(session('user'))
                         @if (session('user')->id == $user->id)
-                            <a class="btn btn-outline-primary" href="{{ route('listings.create', ['user' => $user->id]) }}">Create a listing</a>
+                            <a class="btn btn-outline-success" href="{{ route('listings.create', ['user' => $user->id]) }}">Create a property listing</a>
                         @endif
                     @endif
                 </div>
@@ -276,7 +276,7 @@
                     {{-- <button class="btn btn-outline-primary me-3">Show more</button> --}}
                     @if(session('user'))
                         @if (session('user')->id == $user->id)
-                            <a class="btn btn-outline-primary" href="{{ route('blogs.create', ['user' => $user->id]) }}">Add a blog post</a>
+                            <a class="btn btn-outline-success" href="{{ route('blogs.create', ['user' => $user->id]) }}">Create a blog post</a>
                         @endif
                     @endif
                 </div>

@@ -34,10 +34,10 @@
                     *Availability: https://laravel.com/docs/9.x/csrf (Accessed 7 December 2022)
                     *****************************************************************************/ --}}
                     <form method="POST" action="{{ url("update-user/{$user->id}") }}" enctype="multipart/form-data">
-                        @csrf    
+                        @csrf
 
                         <div class="form-group mb-3">
-                            <label for="user_email_address" class="mb-1">{{ __('Email Address') }}</label>
+                            <label for="user_email_address" class="mb-1">{{ __('Email address') }}</label>
                             <div class="input-group">
                                 <i class="fa-solid fa-envelope"></i>
                                 <input id="user_email_address" type="email" class="form-control" name="user_email_address" value="{{ $user->user_email_address }}" required placeholder="Email">
@@ -47,7 +47,7 @@
                                     </span>
                                 @enderror
                             </div>
-                        </div>    
+                        </div>
 
                         <hr>
 
@@ -75,8 +75,8 @@
                                 <textarea id="user_description" class="form-control" name="user_description">{{ $user->user_description }}</textarea>
                             </div>
                         </div>
-                        
-            
+
+
                         <div class="form-group mb-4">
                         <label for="image_upload" class="mb-1">{{ __('Upload profile picture') }}</label>
                             <div class="input-group">
@@ -86,10 +86,12 @@
                         </div>
 
                         <input hidden name="user_id" value="{{ $user->id}}">
-                        <div class="d-grid col-6 mx-auto mb-5">
-                            <button class="btn btn-primary" type="submit" name="confirm">Confirm changes</button>
+
+                        <div class="d-flex justify-content-center mx-auto mb-5">
+                            <button onclick="window.location.href='{{ route('users.show', ['user' => $user]) }}';" type="button" class="btn btn-outline-danger me-5">Cancel</button>
+                            <button class="btn btn-success" type="submit" name="confirm">Confirm</button>
                         </div>
-                    
+
                     </form>
 
                 </div>
