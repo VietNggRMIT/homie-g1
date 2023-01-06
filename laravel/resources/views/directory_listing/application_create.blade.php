@@ -121,7 +121,7 @@
                             <div class="col-md">
                                 {{-- 8. Car? --}}
                                 <div class="form-check form-switch">
-                                    <input class="form-check-input" type="checkbox" role="switch" id="vehicle" checked name="vehicle">
+                                    <input class="form-check-input" type="checkbox" role="switch" id="vehicle" name="vehicle">
                                     <label class="form-check-label" for="vehicle">Own a vehicle?</label>
                                 </div>
 {{--                                <label>Do you have a vehicle?</label>--}}
@@ -131,7 +131,7 @@
 {{--                                <label for="n_vehicle">No</label><br>--}}
                                 {{-- 9. Pet? --}}
                                 <div class="form-check form-switch">
-                                    <input class="form-check-input" type="checkbox" role="switch" id="pet" checked name="pet">
+                                    <input class="form-check-input" type="checkbox" role="switch" id="pet" name="pet">
                                     <label class="form-check-label" for="pet">Have pets?</label>
                                 </div>
 {{--                                <label>Do you have pets?</label>--}}
@@ -185,7 +185,7 @@
                             <div class="col-md">
                                 {{-- 15. Evited? --}}
                                 <div class="form-check form-switch">
-                                    <input class="form-check-input" type="checkbox" role="switch" id="evicted" checked name="evicted">
+                                    <input class="form-check-input" type="checkbox" role="switch" id="evicted" name="evicted">
                                     <label class="form-check-label" for="evicted">Have you ever been evicted before?</label>
                                 </div>
 {{--                                <label for="evicted">Have you ever been evicted before?</label>--}}
@@ -195,7 +195,7 @@
 {{--                                <label for="n_evicted">No</label><br>--}}
                                 {{-- 16. Crime & felony? --}}
                                 <div class="form-check form-switch">
-                                    <input class="form-check-input" type="checkbox" role="switch" id="convicted" checked name="convicted">
+                                    <input class="form-check-input" type="checkbox" role="switch" id="convicted" name="convicted">
                                     <label class="form-check-label" for="convicted">Have you ever been convicted of a crime or felony?</label>
                                 </div>
 {{--                                <label>Have you ever been convicted of a crime or felony?</label>--}}

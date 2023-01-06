@@ -511,9 +511,9 @@
             @if (session('user')->id == $listing->user_id)
                 <div class="row">
                     {{-- Part 3. Applications --}}
-                    <div class="card mb-3">
+                    <div class="card mb-5 p-3">
                         <div class="dashboard-title">
-                            <div class="h3 m-3 ms-4">Property Applications ({{ count($listing->applications) }})</div>
+                            <div class="h3 mt-3">Property Applications ({{ count($listing->applications) }})</div>
                         </div>
                         <hr>
                         <div class="row row-cols-1 row-cols-md-2 g-4">
