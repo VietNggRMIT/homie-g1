@@ -428,7 +428,7 @@
                                                 <div class="text-secondary text-opacity-25" data-toggle="tooltip" data-placement="top" title="{{ $review->created_at }}">
                                                     {{ $review->created_at->diffForHumans(['parts' => 3, 'join' => ', ', 'short' => false]) }}
                                                 </div>
-                                            </mdiv>
+                                            </div>
                                             <div class="d-flex">
                                                 @for ($i = 0; $i < $review->review_rating; $i++)
                                                     <i class="fa-solid fa-star"></i>
