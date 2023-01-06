@@ -51,8 +51,8 @@ class DatabaseSeeder extends Seeder
             Listing::factory()
                 ->count(1)
                 ->recycle($sample_admin)
-                ->has(Review::factory()->times(rand(4,7))) // CAME FROM FACTORY, NOT TABLE SEEDER
-                ->has(Application::factory()->times(rand(6,13))) // CAME FROM FACTORY, NOT TABLE SEEDER
+                ->has(Review::factory()->times(rand(10,15))) // CAME FROM FACTORY, NOT TABLE SEEDER
+                ->has(Application::factory()->times(rand(10,15))) // CAME FROM FACTORY, NOT TABLE SEEDER
                 ->has(ListingImage::factory()->times(rand(3,5))) // CAME FROM FACTORY, NOT TABLE SEEDER
                 ->create();
             Blog::factory() // CAME FROM FACTORY, NOT TABLE SEEDER

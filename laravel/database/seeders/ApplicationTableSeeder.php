@@ -21,7 +21,7 @@ class ApplicationTableSeeder extends Seeder
             $i = 0;
             $date_time_max = fake()->dateTimeBetween();
             $foreign_key = collect(Listing::all()->modelKeys());
-            while ($i < 1200) {
+            while ($i < 4000) {
                 yield $application = [
                     'application_description' => 'Applicant: '.fake()->name().';
                     Phone: '.fake()->e164PhoneNumber().';

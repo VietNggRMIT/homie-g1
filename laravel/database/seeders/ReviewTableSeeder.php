@@ -20,7 +20,7 @@ class ReviewTableSeeder extends Seeder
         LazyCollection::make(function () {
             $i = 0;
             $foreign_key = collect(Listing::all()->modelKeys());
-            while ($i < 900) {
+            while ($i < 4000) {
                 yield $review = [
                     'review_name' => fake()->optional()->name(),
                     'review_description' => fake()->realTextBetween(10, 200, 2),

@@ -78,7 +78,7 @@ class UserTableSeeder extends Seeder
         LazyCollection::make(function () {
             $i = 0;
             $date_time_max = fake()->dateTimeBetween();
-            while ($i < 100) {
+            while ($i < 50) {
                 yield $user = [
                     'user_email_address' => fake()->unique()->freeEmail(),
                     'user_phone_number' => fake()->unique()->e164PhoneNumber(),
