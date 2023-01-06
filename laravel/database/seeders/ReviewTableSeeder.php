@@ -21,7 +21,7 @@ class ReviewTableSeeder extends Seeder
             $i = 0;
             $date_time_max = fake()->dateTimeBetween();
             $foreign_key = collect(Listing::all()->modelKeys());
-            while ($i < 48000) {
+            while ($i < 900) {
                 yield $review = [
                     'review_name' => fake()->optional()->name(),
                     'review_description' => fake()->realTextBetween(10, 200, 2),

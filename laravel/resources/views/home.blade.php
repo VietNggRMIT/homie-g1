@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('title', 'Home')
 @section('content')
+@livewireStyles
 
 <div class="container-fluid" id="banner-box-3">
     <div class="row justify-content-center">
@@ -41,9 +42,13 @@
 <div class="container">
 
     <div class="filter-img-section mt-5">
+
         <div class="filter-img text-center">
-            <h2>Let's choose a city to begin!</h2>
-            <div class='row mb-5 mt-3'>
+            <h2 class="mb-5">Let's choose a city to begin!</h2>
+
+            @livewire('live-search')
+
+            <div class='row my-5'>
                 <div class='col-sm-6'>
                     <a href="/listings?searchAddress=Ho Chi Minh"><img src="{{ asset('storage/images/filter-img/hcmc-listing.png')}}" alt="HCM"></a>
                 </div>
@@ -65,6 +70,7 @@
                 </div>
             </div>
         </div>
+
     </div>
 
     <div class="mb-3">
@@ -253,4 +259,5 @@
     </div>
 
 </div>
+@livewireScripts
 @endsection

@@ -21,7 +21,7 @@ class ListingImageTableSeeder extends Seeder
             $i = 0;
             $date_time_max = fake()->dateTimeBetween();
             $foreign_key = collect(Listing::all()->modelKeys());
-            while ($i < 18000) {
+            while ($i < 1200) {
                 yield $listingimage = [
                     'listing_image_path' => 'listing_image_path_' . rand(1, 6) .'.jpg',
                     'listing_id' => $foreign_key->random(),

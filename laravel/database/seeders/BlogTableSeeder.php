@@ -21,7 +21,7 @@ class BlogTableSeeder extends Seeder
             $i = 0;
             $date_time_max = fake()->dateTimeBetween();
             $foreign_key = collect(User::all()->modelKeys());
-            while ($i < 4500) {
+            while ($i < 200) {
                 yield $review = [
                     'blog_name' => fake()->words(10, true), // === sentence(4);
                     'blog_description' => fake()->paragraphs(5, true),
